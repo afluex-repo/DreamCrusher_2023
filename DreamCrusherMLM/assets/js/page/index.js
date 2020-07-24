@@ -7,126 +7,126 @@ if ($("#message-list").length) {
 	}).niceScroll();
 }
 
-/* chart shadow */
-var draw = Chart.controllers.line.prototype.draw;
-Chart.controllers.lineShadow = Chart.controllers.line.extend({
-	draw : function() {
-		draw.apply(this, arguments);
-		var ctx = this.chart.chart.ctx;
-		var _stroke = ctx.stroke;
-		ctx.stroke = function() {
-			ctx.save();
-			ctx.shadowColor = '#00000075';
-			ctx.shadowBlur = 10;
-			ctx.shadowOffsetX = 8;
-			ctx.shadowOffsetY = 8;
-			_stroke.apply(this, arguments)
-			ctx.restore();
-		}
-	}
-});
+///* chart shadow */
+//var draw = Chart.controllers.line.prototype.draw;
+//Chart.controllers.lineShadow = Chart.controllers.line.extend({
+//	draw : function() {
+//		draw.apply(this, arguments);
+//		var ctx = this.chart.chart.ctx;
+//		var _stroke = ctx.stroke;
+//		ctx.stroke = function() {
+//			ctx.save();
+//			ctx.shadowColor = '#00000075';
+//			ctx.shadowBlur = 10;
+//			ctx.shadowOffsetX = 8;
+//			ctx.shadowOffsetY = 8;
+//			_stroke.apply(this, arguments)
+//			ctx.restore();
+//		}
+//	}
+//});
 
-function monthlySalesChart() {
-	var options = {
-		series: [{
-		name: 'Sales Goal',
-		type: 'column',
-		data: [210, 315, 299, 415, 456, 413, 399, 352, 452, 320, 257,333]
-	  }, {
-		name: 'Achieved Sales',
-		type: 'line',
-		data: [250, 300, 289, 475, 488, 489, 388, 312, 472, 300, 297,333]
-	  }],
-		chart: {
-		height: 350,
-		type: 'line',
-		toolbar : {
-			show : false,
-		}
-	  },
-	  colors: ['#cdb4cf','#9234eb'],
-	  stroke: {
-		width: [0, 4]
-	  },
+//function monthlySalesChart() {
+//	var options = {
+//		series: [{
+//		name: 'Sales Goal',
+//		type: 'column',
+//		data: [210, 315, 299, 415, 456, 413, 399, 352, 452, 320, 257,333]
+//	  }, {
+//		name: 'Achieved Sales',
+//		type: 'line',
+//		data: [250, 300, 289, 475, 488, 489, 388, 312, 472, 300, 297,333]
+//	  }],
+//		chart: {
+//		height: 350,
+//		type: 'line',
+//		toolbar : {
+//			show : false,
+//		}
+//	  },
+//	  colors: ['#cdb4cf','#9234eb'],
+//	  stroke: {
+//		width: [0, 4]
+//	  },
 	  
-	  dataLabels: {
-		enabled: true,
-		enabledOnSeries: [1],
-		style: {
-			colors: ['#968a96','#9234eb']
-		}
+//	  dataLabels: {
+//		enabled: true,
+//		enabledOnSeries: [1],
+//		style: {
+//			colors: ['#968a96','#9234eb']
+//		}
 		
-	  },
-	  labels: ['Jan', 'Feb', 'Mar', 'Apr','May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+//	  },
+//	  labels: ['Jan', 'Feb', 'Mar', 'Apr','May', 'June', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 	  
 	  
-	  };
+//	  };
 
-	var chart = new ApexCharts(document.querySelector("#monthlySalesChart"), options);
+//	var chart = new ApexCharts(document.querySelector("#monthlySalesChart"), options);
 
-	chart.render();
+//	chart.render();
 
-}
+//}
 
-monthlySalesChart();
+//monthlySalesChart();
 
-function yearlySalesChart() {
-	var options = {
-		series : [ {
-			name : 'Revenue',
-			data : [ 87, 57, 74, 88, 75, 45, 69 ],
-			labels : [ "thousands" ]
-		}, {
-			name : "Expense",
-			data : [ 35, 41, 62, 42, 13, 18, 29 ],
-			labels : [ "thousands" ]
-		}, {
-			name : 'Profit',
-			data : [ 60, 47, 68, 74, 70, 36, 60 ],
-			labels : [ "thousands" ]
-		} ],
-		xaxis : {
-			categories : [ "2020", "2019", "2018", "2017", "2016", "2015","2014" ]
-		},
-		chart : {
-			type : 'line',
-			height : 350,
-			toolbar : {
-				show : false
-			},
-			dropShadow: {
-				enabled: true,
-				enabledOnSeries: undefined,
-				bottom: 10,
-				left: 0,
-				color: '#000',
-				opacity: 0.35
-			}
-		},
-		dataLabels : {
-			enabled : false
-		},
-		stroke: {
-			curve: 'smooth',
-			width: [4, 4, 4],
-          	dashArray: [0, 3, 3]
-		},
-		markers: {
-			size: 0,
-			hover: {
-				size: 2,
-				sizeOffset: 3
-			}
-		},
-	};
+//function yearlySalesChart() {
+//	var options = {
+//		series : [ {
+//			name : 'Revenue',
+//			data : [ 87, 57, 74, 88, 75, 45, 69 ],
+//			labels : [ "thousands" ]
+//		}, {
+//			name : "Expense",
+//			data : [ 35, 41, 62, 42, 13, 18, 29 ],
+//			labels : [ "thousands" ]
+//		}, {
+//			name : 'Profit',
+//			data : [ 60, 47, 68, 74, 70, 36, 60 ],
+//			labels : [ "thousands" ]
+//		} ],
+//		xaxis : {
+//			categories : [ "2020", "2019", "2018", "2017", "2016", "2015","2014" ]
+//		},
+//		chart : {
+//			type : 'line',
+//			height : 350,
+//			toolbar : {
+//				show : false
+//			},
+//			dropShadow: {
+//				enabled: true,
+//				enabledOnSeries: undefined,
+//				bottom: 10,
+//				left: 0,
+//				color: '#000',
+//				opacity: 0.35
+//			}
+//		},
+//		dataLabels : {
+//			enabled : false
+//		},
+//		stroke: {
+//			curve: 'smooth',
+//			width: [4, 4, 4],
+//          	dashArray: [0, 3, 3]
+//		},
+//		markers: {
+//			size: 0,
+//			hover: {
+//				size: 2,
+//				sizeOffset: 3
+//			}
+//		},
+//	};
 
 	 
-	var chart = new ApexCharts(document.querySelector("#yearlySalesChart"), options);
+//	var chart = new ApexCharts(document.querySelector("#yearlySalesChart"), options);
 
-	chart.render();
-}
+//	chart.render();
+//}
 
-yearlySalesChart();
+//yearlySalesChart();
 
 function salesBySocialSourceChart() {
 	var options = {
@@ -199,8 +199,8 @@ function chart1(){
 	
     var options = {
             series: [{
-            name: 'Total Earning',
-            data: [80, 60, 100, 80, 130, 100, 150]
+          //  name: 'Total Earning',
+          //  data: [80, 60, 100, 80, 130, 100, 150]
 		  }],
 		  sparkline: {
 			enabled: true
@@ -271,8 +271,8 @@ function chart2(){
 	
 	var options = {
 		series: [{
-		name: 'Total Earning',
-		data: [80, 60, 100, 80, 130, 100, 150]
+		//name: 'Total Earning',
+		//data: [80, 60, 100, 80, 130, 100, 150]
 	  }],
 	  sparkline: {
 		enabled: true
@@ -343,8 +343,8 @@ function chart3(){
 	
 	var options = {
 		series: [{
-		name: 'Total Earning',
-		data: [80, 60, 100, 80, 130, 100, 150]
+		//name: 'Total Earning',
+		//data: [80, 60, 100, 80, 130, 100, 150]
 	  }],
 	  sparkline: {
 		enabled: true
@@ -417,8 +417,8 @@ function chart4(){
 	
 	var options = {
 		series: [{
-		name: 'Total Earning',
-		data: [80, 60, 100, 80, 130, 100, 150]
+	//	name: 'Total Earning',
+	//	data: [80, 60, 100, 80, 130, 100, 150]
 	  }],
 	  sparkline: {
 		enabled: true
@@ -485,3 +485,77 @@ function chart4(){
 	
 }
 chart4();
+
+
+function chart5() {
+
+    var options = {
+        series: [{
+        //   name: 'Total Earning',
+          // data: [80, 60, 100, 80, 130, 100, 150]
+        }],
+        sparkline: {
+            enabled: true
+        },
+        chart: {
+            height: 120,
+            type: 'line',
+            toolbar: {
+                show: false
+            }
+        },
+        colors: ['#FFF'],
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'smooth'
+        },
+        grid: {
+            show: false,
+            padding: {
+                top: -15,
+                right: 0,
+                bottom: 0,
+                left: 0
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                size: 2,
+                sizeOffset: 3
+            }
+        },
+        xaxis: {
+            show: false,
+            position: 'bottom',
+            labels: {
+                offsetY: -1,
+                show: false
+            },
+            axisBorder: {
+                show: false
+            },
+            axisTicks: {
+                show: false
+            },
+            tooltip: {
+                enabled: false,
+
+
+            }
+        },
+        yaxis: {
+            show: false,
+            min: 50,
+            max: 160
+        }
+    };
+
+
+    var chart = new ApexCharts(document.querySelector("#chart-5"), options);
+    chart.render();
+
+}
+chart5();

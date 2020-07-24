@@ -7,131 +7,120 @@
 }
 
 
-<div class="row">
-    <div class="col-sm-12">
-
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>
-                <a href="#">
-                    Reports
-                </a>
-            </li>
-            <li class="active">
-                Paid Payout Details
-            </li>
-
-        </ol>
-
-
-    </div>
-</div>
-<br />
 @using (Html.BeginForm("PaidPayoutDetails", "UserReports", FormMethod.Post, new { @id = "form1" }))
 {
-
-<div class="row">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                Paid Payout Details
-            </div>
-            <!-- /.panel-heading -->
-            <div class="panel-body">
-
-
-                <div class="col-md-12 table-responsive">
-                    <div class="row">
-
-                        <div class="col-md-3">
-                                <label> From Date</label>
-                                @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @readonly = "readonly" })
-
+    
+            <div class="section-header">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="section-header-breadcrumb-content">
+                            <h1>Paid Payout Details</h1>
                         </div>
-                        <div class="col-lg-3 col-md-3">
-                            <div class="form-group ">
-                                <label> To Date </label>
-                                @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @readonly = "readonly" })
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-3">
-                            <div class="form-group ">
-                                <input type="submit" class="btn btn-info" name="btnDetails" id="btnDetails" style="margin-top:25px" value="Get Details" />
-                            </div>
-                        </div>
-                      
                     </div>
-                    <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
-                        <thead>
-                            <tr>
-                                <th>Sr No.</th>
-                                <th>Login Id</th>
-                                <th>Name</th>
-                                <th>Amount</th>
-                                <th>Description</th>
-                                <th>Payment Date</th>
-                                <th>Transaction Date</th>
-                                <th>Transaction No</th>
-
-
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model != null)
-                            {
-                                if (Model.PaidPayoutlist != null)
-                                {
-                                    int i = 1;
-                                    foreach (var Item in Model.PaidPayoutlist)
-                                    {
-                                        <tr class="text-left">
-                                            <td>
-                                                @i
-
-                                            </td>
-                                            <td>@Item.LoginId</td>
-                                            <td>@Item.Name</td>
-                                            <td>@Item.Amount</td>
-                                            <td>@Item.Description</td>
-                                            <td>@Item.PaymentDate</td>
-                                            <td>@Item.TransactionDate</td>
-                                            <td>@Item.TransactionNo</td>
-
-                                        </tr>
-                                        i++;
-                                    }
-
-                                }
-                            }
-                        </tbody>
-                    </table>
 
                 </div>
-            <!-- /.panel-body -->
-        </div>
-        <!-- /.panel -->
-    </div>
-    <!-- /.col-lg-12 -->
-</div>
-}
+            </div>
+
+            <div class="row">
+                <div class="panel panel-default">
+                    
+                    <!-- /.panel-heading -->
+                    <div class="panel-body">
 
 
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script src="../..//WebsiteCss/js/jquery.min.js"></script>
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
-    
-<script>
-    $('#FromDate').datepicker({
-        dateFormat: 'dd/mm/yy',
-    });
+                        <div class="col-md-12 table-responsive">
+                            <div class="row">
 
-    $('#ToDate').datepicker({
-        dateFormat: 'dd/mm/yy'
-    });
+                                <div class="col-md-3">
+                                    <label> From Date</label>
+                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @readonly = "readonly" })
 
-</script>
+                                </div>
+                                <div class="col-lg-3 col-md-3">
+                                    <div class="form-group ">
+                                        <label> To Date </label>
+                                        @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @readonly = "readonly" })
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3">
+                                    <div class="form-group ">
+                                        <input type="submit" class="btn btn-info" name="btnDetails" id="btnDetails" style="margin-top:25px" value="Get Details" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No.</th>
+                                        <th>Login Id</th>
+                                        <th>Name</th>
+                                        <th>Amount</th>
+                                        <th>Description</th>
+                                        <th>Payment Date</th>
+                                        <th>Transaction Date</th>
+                                        <th>Transaction No</th>
+
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        if (Model.PaidPayoutlist != null)
+                                        {
+                                            int i = 1;
+                                            foreach (var Item in Model.PaidPayoutlist)
+                                            {
+                                                <tr class="text-left">
+                                                    <td>
+                                                        @i
+
+                                                    </td>
+                                                    <td>@Item.LoginId</td>
+                                                    <td>@Item.Name</td>
+                                                    <td>@Item.Amount</td>
+                                                    <td>@Item.Description</td>
+                                                    <td>@Item.PaymentDate</td>
+                                                    <td>@Item.TransactionDate</td>
+                                                    <td>@Item.TransactionNo</td>
+
+                                                </tr>
+                                                i++;
+                                            }
+
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            }
+
+
+            <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+            <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+            <script src="../..//WebsiteCss/js/jquery.min.js"></script>
+            <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+            <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
+            <script>
+                $('#FromDate').datepicker({
+                    dateFormat: 'dd/mm/yy',
+                });
+
+                $('#ToDate').datepicker({
+                    dateFormat: 'dd/mm/yy'
+                });
+
+            </script>
 
 
 

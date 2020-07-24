@@ -347,7 +347,7 @@ namespace DharaMLM.Controllers
                         try
                         {
                             string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
-                            BLSMS.SendSMSNew(MobileNo, str2);
+                           // BLSMS.SendSMSNew(MobileNo, str2);
                         }
                         catch { }
                         obj.Response = "1";

@@ -19,76 +19,76 @@ namespace DharaMLM.Controllers
             List<DashBoard> lstinvestment = new List<DashBoard>();
             obj.Fk_UserId = Session["Pk_UserId"].ToString();
             DataSet ds = obj.GetAssociateDashboard();
-            if (ds != null && ds.Tables[0].Rows.Count > 0)
-            {
-                ViewBag.TotalDownline = ds.Tables[0].Rows[0]["TotalDownline"].ToString();
-                ViewBag.TotalDirects = ds.Tables[0].Rows[0]["TotalDirect"].ToString();
-                //ViewBag.ProductWalletBalance = ds.Tables[0].Rows[0]["ProductWalletBalance"].ToString();
-                ViewBag.PayoutWalletBalance = ds.Tables[0].Rows[0]["PayoutWalletBalance"].ToString();
-                ViewBag.TotalPayout=ds.Tables[0].Rows[0]["TotalPayout"].ToString();
-                ViewBag.TotalDeduction = ds.Tables[0].Rows[0]["TotalDeduction"].ToString();
-                ViewBag.TotalAdvance = ds.Tables[0].Rows[0]["TotalAdvance"].ToString();
-                ViewBag.TotalActive = ds.Tables[0].Rows[0]["TotalActive"].ToString();
-                ViewBag.TotalInActive = ds.Tables[0].Rows[0]["TotalInActive"].ToString();
-
-
-                ViewBag.PaidBusinessLeft = ds.Tables[2].Rows[0]["PaidBusinessLeft"].ToString();
-                ViewBag.PaidBusinessRight = ds.Tables[2].Rows[0]["PaidBusinessRight"].ToString();
-                ViewBag.TotalBusinessLeft = ds.Tables[2].Rows[0]["TotalBusinessLeft"].ToString();
-                ViewBag.TotalBusinessRight = ds.Tables[2].Rows[0]["TotalBusinessRight"].ToString();
-                ViewBag.CarryLeft = ds.Tables[2].Rows[0]["CarryLeft"].ToString();
-                ViewBag.CarryRight = ds.Tables[2].Rows[0]["CarryRight"].ToString();
-
-
-                //ViewBag.ProductPaidBusinessLeft = ds.Tables[3].Rows[0]["PaidBusinessLeft"].ToString();
-                //ViewBag.ProductPaidBusinessRight = ds.Tables[3].Rows[0]["PaidBusinessRight"].ToString();
-                //ViewBag.ProductTotalBusinessLeft = ds.Tables[3].Rows[0]["TotalBusinessLeft"].ToString();
-                //ViewBag.ProductTotalBusinessRight = ds.Tables[3].Rows[0]["TotalBusinessRight"].ToString();
-                //ViewBag.ProductCarryLeft = ds.Tables[3].Rows[0]["CarryLeft"].ToString();
-                //ViewBag.ProductCarryRight = ds.Tables[3].Rows[0]["CarryRight"].ToString();
-            }
             DashBoard model = new DashBoard();
-            #region Messages
+           if (ds != null && ds.Tables[0].Rows.Count > 0)
+           {
+               ViewBag.TotalDownline = ds.Tables[0].Rows[0]["TotalDownline"].ToString();
+               ViewBag.TotalDirects = ds.Tables[0].Rows[0]["TotalDirect"].ToString();
+               //ViewBag.ProductWalletBalance = ds.Tables[0].Rows[0]["ProductWalletBalance"].ToString();
+               ViewBag.PayoutWalletBalance = ds.Tables[0].Rows[0]["PayoutWalletBalance"].ToString();
+               ViewBag.TotalPayout=ds.Tables[0].Rows[0]["TotalPayout"].ToString();
+               ViewBag.TotalDeduction = ds.Tables[0].Rows[0]["TotalDeduction"].ToString();
+               ViewBag.TotalAdvance = ds.Tables[0].Rows[0]["TotalAdvance"].ToString();
+               ViewBag.TotalActive = ds.Tables[0].Rows[0]["TotalActive"].ToString();
+               ViewBag.TotalInActive = ds.Tables[0].Rows[0]["TotalInActive"].ToString();
 
-            model.Fk_UserId = Session["Pk_UserId"].ToString();
 
-            List<DashBoard> lst1 = new List<DashBoard>();
+               ViewBag.PaidBusinessLeft = ds.Tables[2].Rows[0]["PaidBusinessLeft"].ToString();
+               ViewBag.PaidBusinessRight = ds.Tables[2].Rows[0]["PaidBusinessRight"].ToString();
+               ViewBag.TotalBusinessLeft = ds.Tables[2].Rows[0]["TotalBusinessLeft"].ToString();
+               ViewBag.TotalBusinessRight = ds.Tables[2].Rows[0]["TotalBusinessRight"].ToString();
+               ViewBag.CarryLeft = ds.Tables[2].Rows[0]["CarryLeft"].ToString();
+               ViewBag.CarryRight = ds.Tables[2].Rows[0]["CarryRight"].ToString();
 
-            DataSet ds11 = model.GetAllMessages();
 
-            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
-            {
-                foreach (DataRow r in ds11.Tables[0].Rows)
-                {
-                    DashBoard Obj = new DashBoard();
-                    Obj.Pk_MessageId = r["Pk_MessageId"].ToString();
-                    Obj.Fk_UserId = r["Fk_UserId"].ToString();
-                    Obj.MemberName = r["Name"].ToString();
-                    Obj.MessageTitle = r["MessageTitle"].ToString();
-                    Obj.AddedOn = r["AddedOn"].ToString();
-                    Obj.Message = r["Message"].ToString();
-                    Obj.cssclass = r["cssclass"].ToString();
-                    Obj.ProfilePic = r["ProfilePic"].ToString();
-                    lst1.Add(Obj);
-                }
-                model.lstmessages = lst1;
-            }
-            #endregion Messages
-            #region Investment
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[1].Rows.Count > 0)
-            {
-                foreach (DataRow r in ds.Tables[1].Rows)
-                {
-                    DashBoard Obj = new DashBoard();
-                    Obj.ProductName = r["ProductName"].ToString();
-                    Obj.Amount = r["Amount"].ToString();
-                    Obj.Status = r["Status"].ToString();
-                    
-                    lstinvestment.Add(Obj);
-                }
-                model.lstinvestment = lstinvestment;
-            }
-            #endregion Investment
+               //ViewBag.ProductPaidBusinessLeft = ds.Tables[3].Rows[0]["PaidBusinessLeft"].ToString();
+               //ViewBag.ProductPaidBusinessRight = ds.Tables[3].Rows[0]["PaidBusinessRight"].ToString();
+               //ViewBag.ProductTotalBusinessLeft = ds.Tables[3].Rows[0]["TotalBusinessLeft"].ToString();
+               //ViewBag.ProductTotalBusinessRight = ds.Tables[3].Rows[0]["TotalBusinessRight"].ToString();
+               //ViewBag.ProductCarryLeft = ds.Tables[3].Rows[0]["CarryLeft"].ToString();
+               //ViewBag.ProductCarryRight = ds.Tables[3].Rows[0]["CarryRight"].ToString();
+           }
+           #region Messages
+
+           model.Fk_UserId = Session["Pk_UserId"].ToString();
+
+           List<DashBoard> lst1 = new List<DashBoard>();
+
+           DataSet ds11 = model.GetAllMessages();
+
+           if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+           {
+               foreach (DataRow r in ds11.Tables[0].Rows)
+               {
+                   DashBoard Obj = new DashBoard();
+                   Obj.Pk_MessageId = r["Pk_MessageId"].ToString();
+                   Obj.Fk_UserId = r["Fk_UserId"].ToString();
+                   Obj.MemberName = r["Name"].ToString();
+                   Obj.MessageTitle = r["MessageTitle"].ToString();
+                   Obj.AddedOn = r["AddedOn"].ToString();
+                   Obj.Message = r["Message"].ToString();
+                   Obj.cssclass = r["cssclass"].ToString();
+                   Obj.ProfilePic = r["ProfilePic"].ToString();
+                   lst1.Add(Obj);
+               }
+               model.lstmessages = lst1;
+           }
+           #endregion Messages
+           #region Investment
+           if (ds != null && ds.Tables.Count > 0 && ds.Tables[1].Rows.Count > 0)
+           {
+               foreach (DataRow r in ds.Tables[1].Rows)
+               {
+                   DashBoard Obj = new DashBoard();
+                   Obj.ProductName = r["ProductName"].ToString();
+                   Obj.Amount = r["Amount"].ToString();
+                   Obj.Status = r["Status"].ToString();
+
+                   lstinvestment.Add(Obj);
+               }
+               model.lstinvestment = lstinvestment;
+           }
+           #endregion Investment
             return View(model);
         }
 
@@ -305,7 +305,7 @@ namespace DharaMLM.Controllers
                         try
                         {
                             string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
-                            BLSMS.SendSMSNew(MobileNo, str2);
+                            //BLSMS.SendSMSNew(MobileNo, str2);
                         }
                         catch { }
                         obj.Response = "1";
