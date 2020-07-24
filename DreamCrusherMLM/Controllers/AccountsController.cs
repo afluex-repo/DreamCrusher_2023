@@ -40,9 +40,9 @@ namespace DharaMLM.Controllers
             Wallet obj = new Wallet();
             obj.Package = ProductId;
             DataSet ds = obj.BindPriceByProduct();
-            if (ds.Tables != null && ds.Tables[2].Rows.Count > 0)
+            if (ds.Tables != null && ds.Tables[1].Rows.Count > 0)
             {
-                obj.Amount = ds.Tables[2].Rows[0]["ProductPrice"].ToString();
+                obj.Amount = ds.Tables[1].Rows[0]["ProductPrice"].ToString();
             }
             else { }
             return Json(obj, JsonRequestBehavior.AllowGet);

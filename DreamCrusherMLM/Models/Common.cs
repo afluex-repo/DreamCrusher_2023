@@ -308,7 +308,7 @@ namespace DharaMLM.Models
 
     public class SoftwareDetails
     {
-        public static string CompanyName = "Dhara World";
+        public static string CompanyName = "Dream Crusher";
         public static string CompanyAddress = "Shop No- THSH 2/5, H-10, CP-4/1 Square 1 Plaza, Ratan Khand, Lucknow-226012 (UP)";
         public static string Pin1 = "226012";
         public static string State1 = "UP";
@@ -317,7 +317,7 @@ namespace DharaMLM.Models
         public static string LandLine = "7985207220";
         public static string GSTNO = "09AAHCD3782E1ZJ";
         public static string Website = "";
-        public static string EmailID = "dharaworldhealth@gmail.com";
+        public static string EmailID = "dreamcrusher@gmail.com";
     }
 
 }

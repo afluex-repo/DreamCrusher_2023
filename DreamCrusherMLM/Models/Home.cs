@@ -75,7 +75,7 @@ namespace DharaMLM.Models
         public string Email { get; set; }
         [Required(ErrorMessage = "Please Fill Mobile No ")]
         public string MobileNo { get; set; }
-        [Required(ErrorMessage = "Please select DharaMLM amount")]
+        [Required(ErrorMessage = "Please select DreamCrusher amount")]
         public string Commitment { get; set; }
         [Required(ErrorMessage = "Please select payment method ")]
         public List<Home> lstMenu { get; set; }

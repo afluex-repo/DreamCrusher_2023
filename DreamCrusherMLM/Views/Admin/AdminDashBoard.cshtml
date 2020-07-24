@@ -5,59 +5,84 @@
 }
 
 
-<div class="row">
-    <div class="col-sm-12">
-
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>
-                <a href="#">
-                    Home
-                </a>
-            </li>
-            <li class="active">
-                Dashboard
-            </li>
-
-        </ol>
-
+<div class="section-header">
+    <div class="row">
+        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
+            <div class="section-header-breadcrumb-content">
+                <h1>Admin Dashboard</h1>
+            </div>
+        </div>
 
     </div>
 </div>
+
 <div class="row">
-    <div class="col-sm-12">
-        <div class="row space12">
-            <ul class="mini-stats col-sm-12">
-                <li class="col-sm-3">
-
-                    <div class="values">
-                        <strong>@ViewBag.TotalUsers</strong> Total Associates
-                    </div>
-                </li>
-                <li class="col-sm-3">
-
-                    <div class="values">
-                        <strong>@ViewBag.ActiveUsers</strong> Active Users
-                    </div>
-                </li>
-                <li class="col-sm-3">
-
-                    <div class="values">
-                        <strong>@ViewBag.InactiveUsers</strong> Inactive Users
-                    </div>
-                </li>
-                <li class="col-sm-3">
-
-                    <div class="values">
-                        <strong>@ViewBag.BlockedUsers</strong> Blocked Users
-                    </div>
-                </li>
-            </ul>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card card-sales-widget card-bg-blue-gradient">
+            <div class="card-icon shadow-primary bg-blue">
+                <i class="fas fa-user-plus"></i>
+            </div>
+            <div class="card-wrap pull-right">
+                <div class="card-header">
+                    <h3>@ViewBag.TotalUsers</h3>
+                    <h4>Total Associates</h4>
+                </div>
+            </div>
+            <div class="card-chart">
+                <div id="chart-1"></div>
+            </div>
         </div>
     </div>
-
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card card-sales-widget card-bg-yellow-gradient">
+            <div class="card-icon shadow-primary bg-warning">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="card-wrap pull-right">
+                <div class="card-header">
+                    <h3>@ViewBag.ActiveUsers</h3>
+                    <h4>Active Users</h4>
+                </div>
+            </div>
+            <div class="card-chart">
+                <div id="chart-2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card card-sales-widget card-bg-orange-gradient">
+            <div class="card-icon shadow-primary bg-hibiscus">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="card-wrap pull-right">
+                <div class="card-header">
+                    <h3>@ViewBag.InactiveUsers</h3>
+                    <h4>Inactive Users</h4>
+                </div>
+            </div>
+            <div class="card-chart">
+                <div id="chart-3"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-12">
+        <div class="card card-sales-widget card-bg-green-gradient">
+            <div class="card-icon shadow-primary bg-green">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="card-wrap pull-right">
+                <div class="card-header">
+                    <h3>@ViewBag.BlockedUsers</h3>
+                    <h4>Blocked Users</h4>
+                </div>
+            </div>
+            <div class="card-chart">
+                <div id="chart-4"></div>
+            </div>
+        </div>
+    </div>
+   
 </div>
-
 
 
 <!-- /.row -->
@@ -131,7 +156,19 @@
         <!-- /.panel -->
     </div>
 </div>
+<meta charset="UTF-8">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+<title>DreamCrusher - User Dashboard Template</title>
+<!-- General CSS Files -->
+<link rel="stylesheet" href="../assets/css/app.min.css">
+<!-- Template CSS -->
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="../assets/bundles/bootstrap-social/bootstrap-social.css">
+<link rel="stylesheet" href="../assets/bundles/flag-icon-css/css/flag-icon.min.css">
+<!-- Custom style CSS -->
 
+<link rel='shortcut icon' type='image/x-icon' href='../assets/img/favicon.ico' />
 <script src="../vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
