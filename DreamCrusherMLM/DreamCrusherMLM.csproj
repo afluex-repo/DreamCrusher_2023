@@ -2264,6 +2264,8 @@
     <Content Include="images\RewardImages\LandRover.jpg" />
     <Content Include="images\RewardImages\TataStorme.jpg" />
     <Content Include="images\search-icon.png" />
+    <Content Include="images\Success.jpg" />
+    <Content Include="images\success1.gif" />
     <Content Include="images\tick.png" />
     <Content Include="images\treeicon.jpg" />
     <Content Include="images\TreeIcon\default.png" />
