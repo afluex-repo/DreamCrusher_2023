@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DharaMLM.Models;
+using DreamCrusherMLM.Models;
 using System.Data;
-using DharaMLM.Filter;
+using DreamCrusherMLM.Filter;
 using BusinessLayer;
 
-namespace DharaMLM.Controllers
+namespace DreamCrusherMLM.Controllers
 {
     public class ForgotPasswordController : Controller
     {

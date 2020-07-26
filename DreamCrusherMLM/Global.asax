@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="DharaMLM.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="DreamCrusherMLM.Global" Language="C#" %>

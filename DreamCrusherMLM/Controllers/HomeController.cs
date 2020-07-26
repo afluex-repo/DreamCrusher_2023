@@ -5,12 +5,12 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using BusinessLayer;
-using DharaMLM.Models;
+using DreamCrusherMLM.Models;
 
 using System.IO;
-using DharaMLM.Filter;
+using DreamCrusherMLM.Filter;
 
-namespace DharaMLM.Controllers
+namespace DreamCrusherMLM.Controllers
 {
     public class HomeController : Controller
     {

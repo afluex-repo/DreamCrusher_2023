@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Data;
-using DharaMLM.Models;
+using DreamCrusherMLM.Models;
 
-namespace DharaMLM
+namespace DreamCrusherMLM
 {
     public partial class DirectKitTransfer : System.Web.UI.Page
     {

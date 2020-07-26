@@ -5,7 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace DharaMLM.Models
+namespace DreamCrusherMLM.Models
 {
     public class Transactions : Common
     {

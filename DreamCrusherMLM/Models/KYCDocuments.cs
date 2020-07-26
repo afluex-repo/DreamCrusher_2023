@@ -5,7 +5,7 @@ using System.Web;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace DharaMLM.Models
+namespace DreamCrusherMLM.Models
 {
     public class KYCDocuments
     {

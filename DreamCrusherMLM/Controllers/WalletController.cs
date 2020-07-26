@@ -5,11 +5,11 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DharaMLM.Models;
-using DharaMLM.Filter;
+using DreamCrusherMLM.Models;
+using DreamCrusherMLM.Filter;
 using BusinessLayer;
 
-namespace DharaMLM.Controllers
+namespace DreamCrusherMLM.Controllers
 {
     public class WalletController : BaseController
     {

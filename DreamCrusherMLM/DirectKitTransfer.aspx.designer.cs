@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace DharaMLM {
+namespace DreamCrusherMLM {
     
     
     public partial class DirectKitTransfer {

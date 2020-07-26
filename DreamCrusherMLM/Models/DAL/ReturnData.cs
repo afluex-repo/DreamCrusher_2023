@@ -6,7 +6,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 
-namespace DharaMLM.Models.DAL
+namespace DreamCrusherMLM.Models.DAL
 {
     public class ReturnData
     {
