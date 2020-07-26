@@ -4,9 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DharaMLM.Models;
+using DreamCrusherMLM.Models;
 
-namespace DharaMLM.Controllers
+namespace DreamCrusherMLM.Controllers
 {
     public class AccountsController : AdminBaseController
     {

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ApproveKitRequest.aspx.cs" Inherits="DharaMLM.ApproveKitRequest" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ApproveKitRequest.aspx.cs" Inherits="DreamCrusherMLM.ApproveKitRequest" %>
 
 <!DOCTYPE html>
 

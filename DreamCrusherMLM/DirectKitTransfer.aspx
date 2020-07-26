@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DirectKitTransfer.aspx.cs" Inherits="DharaMLM.DirectKitTransfer" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DirectKitTransfer.aspx.cs" Inherits="DreamCrusherMLM.DirectKitTransfer" %>
 
 <%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
 

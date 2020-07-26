@@ -1,5 +1,5 @@
-﻿using DharaMLM.Filter;
-using DharaMLM.Models;
+﻿using DreamCrusherMLM.Filter;
+using DreamCrusherMLM.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,7 +9,7 @@ using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace DharaMLM.Controllers
+namespace DreamCrusherMLM.Controllers
 {
     public class ProductBoosterController : AdminBaseController
     {

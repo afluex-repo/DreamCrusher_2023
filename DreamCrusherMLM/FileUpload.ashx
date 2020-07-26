@@ -1,1 +1,1 @@
-﻿<%@ WebHandler Language="C#" CodeBehind="FileUpload.ashx.cs" Class="DharaMLM.FileUpload" %>
+﻿<%@ WebHandler Language="C#" CodeBehind="FileUpload.ashx.cs" Class="DreamCrusherMLM.FileUpload" %>

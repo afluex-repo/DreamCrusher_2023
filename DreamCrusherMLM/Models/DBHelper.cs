@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DharaMLM.Models
+namespace DreamCrusherMLM.Models
 {
     public class DBHelper
     {

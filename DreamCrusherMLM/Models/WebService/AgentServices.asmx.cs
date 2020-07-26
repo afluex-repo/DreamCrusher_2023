@@ -1,6 +1,6 @@
 ﻿
-using DharaMLM.DAL;
-using DharaMLM.Models.DAL;
+using DreamCrusherMLM.DAL;
+using DreamCrusherMLM.Models.DAL;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -11,7 +11,7 @@ using System.Web;
 using System.Web.Script.Services;
 using System.Web.Services;
 
-namespace DharaMLM.Models.WebService
+namespace DreamCrusherMLM.Models.WebService
 {
     /// <summary>
     /// Summary description for AutoComplete1
@@ -24,8 +24,8 @@ namespace DharaMLM.Models.WebService
     [System.Web.Script.Services.ScriptService]
     public class Agent : System.Web.Services.WebService
     {
-        [ScriptMethod()]
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public List<AgentModel> GetGeneology(string memID)
         {
             AgentModel model = new AgentModel();
@@ -86,8 +86,8 @@ namespace DharaMLM.Models.WebService
         }
 
 
-        [ScriptMethod()]
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public List<AgentModel> GetGeneologyForAdmin(string memID)
         {
             AgentModel model = new AgentModel();
@@ -148,8 +148,8 @@ namespace DharaMLM.Models.WebService
 
         }
 
-        [ScriptMethod()]
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public List<AgentModel> GetUserFirst(string memID)
         {
             AgentModel model = new AgentModel();
@@ -201,8 +201,8 @@ namespace DharaMLM.Models.WebService
             return List;
         }
 
-        [ScriptMethod()]
-        [WebMethod]
+        [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public List<AgentModel> GetUserFirstForAdmin(string memID)
         {
             AgentModel model = new AgentModel();
@@ -254,8 +254,8 @@ namespace DharaMLM.Models.WebService
             return List;
         }
 
-        [ScriptMethod()]
         [WebMethod(EnableSession = true)]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
         public List<string> SearchCustomersByLoginId2(string prefix)
         {
             List<string> list = new List<string>();

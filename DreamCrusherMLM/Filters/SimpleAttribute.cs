@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Web;
 using System.Web.Mvc;
 
-namespace DharaMLM.Filter
+namespace DreamCrusherMLM.Filter
 {
     public class SimpleAttribute
     {

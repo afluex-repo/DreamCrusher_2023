@@ -3,9 +3,9 @@ using System.Data.SqlClient;
 using System.Collections.Generic;
 using System;
 using System.Linq;
-using DharaMLM.Models;
+using DreamCrusherMLM.Models;
 
-namespace DharaMLM.DAL
+namespace DreamCrusherMLM.DAL
 {
     public class AgentDAL
     {

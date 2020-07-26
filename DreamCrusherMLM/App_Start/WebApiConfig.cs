@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
-namespace DharaMLM
+namespace DreamCrusherMLM
 {
     public static class WebApiConfig
     {
