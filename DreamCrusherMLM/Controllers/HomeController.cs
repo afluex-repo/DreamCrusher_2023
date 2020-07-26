@@ -268,7 +268,7 @@ namespace DharaMLM.Controllers
                         try
                         {
                             string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
-                            BLSMS.SendSMSNew(MobileNo, str2);
+                           // BLSMS.SendSMSNew(MobileNo, str2);
                         }
                         catch (Exception ex) { }
                         obj.Response = "1";
@@ -466,6 +466,16 @@ namespace DharaMLM.Controllers
         {
             return View();
         }
+
+        public ActionResult ProductServies()
+        {
+            return View();
+        }
+        public ActionResult HighestEarnerClub()
+        {
+            return View();
+        }
+
         public ActionResult Packages()
         {
             return View();

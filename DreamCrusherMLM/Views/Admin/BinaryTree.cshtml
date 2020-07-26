@@ -153,7 +153,7 @@
         right: 0;
     }
 
-    
+
     .popover {
         background: #f5f5f5 !important;
         max-width: 400px;
@@ -166,35 +166,32 @@
         display: none !important;
     }
 
-    
+
 
     .popover-content {
         float: left;
         width: 100%;
-          color: #29292b;
+        color: #29292b;
         font-size: 13px;
-         background: #f5f5f5 !important;
-     
+        background: #f5f5f5 !important;
     }
 
-    
 
-            .popover-content .table td, .popover-content .table th {
-                font-size: 11px;
-                border: 1px solid black;
-                border-left: 1px solid black;
-                word-wrap: break-word !important;
-                padding: 2px 2px;
-                word-break: break-all;
-                  background: #f5f5f5 !important;
-     
-            }
 
-            .popover-content .table th {
-                  background: #f5f5f5 !important;
-     
-                color: black;
-            }
+        .popover-content .table td, .popover-content .table th {
+            font-size: 11px;
+            border: 1px solid black;
+            border-left: 1px solid black;
+            word-wrap: break-word !important;
+            padding: 2px 2px;
+            word-break: break-all;
+            background: #f5f5f5 !important;
+        }
+
+        .popover-content .table th {
+            background: #f5f5f5 !important;
+            color: black;
+        }
 
     #member-details {
         position: absolute;
@@ -479,7 +476,7 @@
                 </a>
             </li>
             <li class="active">
-               Binary Tree
+                Binary Tree
             </li>
 
         </ol>
@@ -546,7 +543,7 @@
 
                                                         </div>
                                                         <div class="form-group col-md-3">
-                                                            <br/>
+                                                            <br />
                                                             <button type="button" id="close">&times;</button>
                                                             <img src="../../images/treeicon.jpg" id="userimage" style="width: 50px; height: 50px;border:1px solid" />
                                                         </div>
@@ -829,7 +826,7 @@
     $("#close").click(function () {
         $("#member-details").removeClass('active');
     });
-  
+
 </script>
 
 <script type="text/javascript">
@@ -852,9 +849,9 @@
     $(window).on("load", function () {
 
         var id = $("#firtsMemberID").val();
-       
+
         GetDataFirst(id, "clicked");
-       
+
         //GetData(id);
 
     });
@@ -890,8 +887,8 @@
                 $("#lblWarning").text("No Member Found...For this Associate");
                 //$("#userTree").hide();
 
-                freeBlockL = "<li id='1'><a href='Registration?Pid='123466'&amp;lg=L' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
-                freeBlockR = "<li id='2'><a href='Registration?Pid='123466'&amp;lg=R' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                freeBlockL = "<li id='1'><a href='Registration.cshtml?Pid='123466'&amp;lg=L' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                freeBlockR = "<li id='2'><a href='Registration.cshtml?Pid='123466'&amp;lg=R' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
                 ul.append(freeBlockL + freeBlockR);
                 $("#firstRow").fadeIn(500);
                 window.setTimeout(function () {
@@ -984,7 +981,7 @@
                                                      "<input type='hidden' id='" + item1.Fk_UserId + "' value='" + item1.Fk_UserId + "' />" +
                                                      "</a></li>";
                         }
-                        freeBlock = "<li id='1'><a href='Registration?Pid=" + item1.LoginId + "&amp;lg=" + item1.Leg + "' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                        freeBlock = "<li id='1'><a href='Registration.cshtml?Pid=" + item1.LoginId + "&amp;lg=" + item1.Leg + "' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
                         if (item1.Leg == 'L') {
                             ul.append(child + freeBlock);
                         }
@@ -1007,8 +1004,8 @@
                                     var ul2 = $("<ul></ul>");
                                     var level2 = 0;
                                     if (!$.trim(model2)) {
-                                        freeBlockL = "<li id='1'><a href='Registration?Pid='123466'&amp;lg=L' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
-                                        freeBlockR = "<li id='2'><a href='Registration?Pid='123466'&amp;lg=R' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                                        freeBlockL = "<li id='1'><a href='Registration.cshtml?Pid='123466'&amp;lg=L' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                                        freeBlockR = "<li id='2'><a href='Registration.cshtml?Pid='123466'&amp;lg=R' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
 
                                         ul2.append(freeBlockL + freeBlockR);
                                         //$("#firstRow").fadeIn(2000);
@@ -1093,7 +1090,7 @@
                                                             "</a></li>";
 
                                                 }
-                                                freeBlock = "<li id='1'><a href='Registration?Pid=" + item2.LoginId + "&amp;lg=" + item2.Leg + "' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                                                freeBlock = "<li id='1'><a href='Registration.cshtml?Pid=" + item2.LoginId + "&amp;lg=" + item2.Leg + "' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
                                                 if (item2.Leg == 'L') {
                                                     ul2.append(child + freeBlock);
                                                 }
@@ -1114,8 +1111,8 @@
                                                             var ul3 = $("<ul></ul>");
                                                             var level3 = 0;
                                                             if (!$.trim(model3)) {
-                                                                freeBlockL = "<li id='1'><a href='Registration?Pid='123466'&amp;lg=L' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
-                                                                freeBlockR = "<li id='2'><a href='Registration?Pid='123466'&amp;lg=R' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                                                                freeBlockL = "<li id='1'><a href='Registration.cshtml?Pid='123466'&amp;lg=L' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                                                                freeBlockR = "<li id='2'><a href='Registration.cshtml?Pid='123466'&amp;lg=R' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
 
                                                                 ul3.append(freeBlockL + freeBlockR);
                                                                 $("#firstRow").fadeIn(500);
@@ -1198,7 +1195,7 @@
                                                                                       "<input type='hidden' id='" + item3.Fk_UserId + "' value='" + item3.Fk_UserId + "' />" +
                                                                                       "</a></li>";
                                                                         }
-                                                                        freeBlock = "<li id='1'><a href='Registration?Pid=" + item3.LoginId + "&amp;lg=" + item3.Leg + "' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
+                                                                        freeBlock = "<li id='1'><a href='Registration.cshtml?Pid=" + item3.LoginId + "&amp;lg=" + item3.Leg + "' target='_blank'><img src='/Content/img/open-member.png'><br><span>Join Now</span></a></li>";
                                                                         //if (item3.Leg == 'L') {
                                                                         //    ul3.append(child + freeBlock);
                                                                         //}
@@ -1273,12 +1270,12 @@
 
             failure: function (response) {
                 $('#divload').hide();
-              
+
 
             },
             error: function (response) {
                 $('#divload').hide();
-               
+
             }
 
         });

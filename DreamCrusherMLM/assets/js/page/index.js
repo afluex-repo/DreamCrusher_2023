@@ -199,8 +199,8 @@ function chart1(){
 	
     var options = {
             series: [{
-          //  name: 'Total Earning',
-          //  data: [80, 60, 100, 80, 130, 100, 150]
+            name: 'Total Earning',
+            data: [80, 60, 100, 80, 130, 100, 150]
 		  }],
 		  sparkline: {
 			enabled: true
@@ -271,8 +271,8 @@ function chart2(){
 	
 	var options = {
 		series: [{
-		//name: 'Total Earning',
-		//data: [80, 60, 100, 80, 130, 100, 150]
+		name: 'Total Earning',
+		data: [80, 60, 100, 80, 130, 100, 150]
 	  }],
 	  sparkline: {
 		enabled: true
@@ -343,8 +343,8 @@ function chart3(){
 	
 	var options = {
 		series: [{
-		//name: 'Total Earning',
-		//data: [80, 60, 100, 80, 130, 100, 150]
+		name: 'Total Earning',
+		data: [80, 60, 100, 80, 130, 100, 150]
 	  }],
 	  sparkline: {
 		enabled: true
@@ -417,8 +417,8 @@ function chart4(){
 	
 	var options = {
 		series: [{
-	//	name: 'Total Earning',
-	//	data: [80, 60, 100, 80, 130, 100, 150]
+		name: 'Total Earning',
+		data: [80, 60, 100, 80, 130, 100, 150]
 	  }],
 	  sparkline: {
 		enabled: true
@@ -491,8 +491,8 @@ function chart5() {
 
     var options = {
         series: [{
-        //   name: 'Total Earning',
-          // data: [80, 60, 100, 80, 130, 100, 150]
+           name: 'Total Earning',
+           data: [80, 60, 100, 80, 130, 100, 150]
         }],
         sparkline: {
             enabled: true

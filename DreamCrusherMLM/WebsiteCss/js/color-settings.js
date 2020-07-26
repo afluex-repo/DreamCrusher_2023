@@ -13,6 +13,7 @@
         $(this).addClass('active');
 	});
 
+	
 	var layoutChangerBtn = $(".color-palate .box-version li");
 	var body = $("body");
 	layoutChangerBtn.on("click", function(e) {
@@ -35,7 +36,6 @@
         	wrapper.removeClass("rtl");
     	};
 	});
-
 
 
 }(jQuery));

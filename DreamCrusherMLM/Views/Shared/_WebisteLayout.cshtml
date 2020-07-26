@@ -1,20 +1,22 @@
 ﻿<!DOCTYPE html>
+<title>@ViewBag.Title</title>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Grexsan - Admin Dashboard Template</title>
-    <!-- General CSS Files -->
-    <link rel="stylesheet" href="assets/css/app.min.css">
-    <!-- Template CSS -->
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/components.css">
-    <link rel="stylesheet" href="assets/bundles/bootstrap-social/bootstrap-social.css">
-    <link rel="stylesheet" href="assets/bundles/flag-icon-css/css/flag-icon.min.css">
-    <!-- Custom style CSS -->
-
-    <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
-
+    <meta charset="utf-8">
+    <title>Dream Crusher | Homepage</title>
+    <!-- Stylesheets -->
+    <link href="../WebsiteCss/css/bootstrap.css" rel="stylesheet">
+    <link href="../WebsiteCss/css/style.css" rel="stylesheet">
+    <link href="../WebsiteCss/css/responsive.css" rel="stylesheet">
+    <!-- Color Switcher Mockup -->
+    <link href="../WebsiteCss/css/color-switcher-design.css" rel="stylesheet">
+    <link rel="shortcut icon" href="../WebsiteCss/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="../WebsiteCss/images/favicon.png" type="image/x-icon">
+    <!-- Responsive -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+    <!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
 </head>
 
 <body>
@@ -24,47 +26,263 @@
         <div id="app">
             <div class="main-wrapper main-wrapper-1">
                 @*<div class="outer-box clearfix">
-                    <ul class="contact-info">
-                        <li><span class="fa fa-phone text-white"></span> (+91) 9198707017 </li>
-                        <li><span class="fa fa-envelope-o text-white"></span> support@dharaworld.com</li>
+                        <ul class="contact-info">
+                            <li><span class="fa fa-phone text-white"></span> (+91) 9198707017 </li>
+                            <li><span class="fa fa-envelope-o text-white"></span> support@dharaworld.com</li>
 
-                        <li><a href="/Home/Login" class="text-white">Login</a></li>
-                        <li><a href="/Home/Registration" class="text-white">Registration</a></li>
-                        <li><a href="/Home/ContactUs" class="text-white">Contact Us</a></li>
-                        @*<li><a href="/Home/BookingRequest" class="text-white">Booking Request</a></li>
-                    </ul>
-                </div>*@
-                
-              
-                <!-- Main Content -->
-            
-                @RenderBody();
-                <footer class="main-footer">
-                    <div class="footer-left">
-                        Copyright &copy; 2020 <div class="bullet"></div> Design By <a href="#">Snkthemes</a>
+                            <li><a href="/Home/Login" class="text-white">Login</a></li>
+                            <li><a href="/Home/Registration" class="text-white">Registration</a></li>
+                            <li><a href="/Home/ContactUs" class="text-white">Contact Us</a></li>
+                            @*<li><a href="/Home/BookingRequest" class="text-white">Booking Request</a></li>
+                        </ul>
+                    </div>*@
+                <header class="main-header header-style-one">
+                    <!--Header Top-->
+                    <div class="header-top">
+                        <div class="auto-container">
+                            <div class="clearfix">
+                                <!--Top Left-->
+                                <div class="top-left clearfix">
+                                    <div class="text">Welcome to Dream Crusher Pvt. Ltd.</div>
+                                </div>
+                                <!--Top Right-->
+                                <div class="top-right pull-right">
+                                    <!-- Social Nav -->
+                                    <ul class="social-nav">
+                                        <li class="facebook"><a href="#"><span class="fa fa-facebook-f"></span></a></li>
+                                        <li class="twitter"><a href="#"><span class="fa fa-twitter"></span></a></li>
+                                        <li class="google"><a href="#"><span class="fa fa-google-plus"></span></a></li>
+                                        <li class="linked"><a href="#"><span class="fa fa-linkedin"></span></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="footer-right">
+                    <!--Header-Upper-->
+                    <div class="header-upper">
+                        <div class="auto-container">
+                            <div class="clearfix">
+                                <div class="pull-left logo-box">
+                                    <div class="logo"><a href="/Home/Website"><img src="../WebsiteCss/images/logo.png" alt="" title=""></a></div>
+                                </div>
+                                <div class="pull-right upper-right clearfix">
+                                    <!--Info Box-->
+                                    <div class="upper-column info-box">
+                                        <div class="icon-box"><span class="flaticon-phone-call"></span></div>
+                                        <ul>
+                                            <li><strong>Phone No</strong></li>
+                                            <li>+91 7275 065834 </li>
+                                        </ul>
+                                    </div>
+                                    <!--Info Box-->
+                                    <div class="upper-column info-box">
+                                        <div class="icon-box"><span class="flaticon-email-3"></span></div>
+                                        <ul>
+                                            <li>E-mail Id</li>
+                                            <li>support@dreamcrushers.in</li>
+                                        </ul>
+                                    </div>
+                                    <!--Info Box-->
+                                    <div class="upper-column info-box">
+                                        <div class="icon-box"><span class="flaticon-clock-3"></span></div>
+                                        <ul>
+                                            <li>Mon - Sat 10.00am to 07.00pm </li>
+                                            <li><strong>Sunday Closed</strong></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--End Header Upper-->
+                    <!--Header Lower-->
+                    <div class="header-lower">
+                        <div class="auto-container">
+                            <div class="nav-outer clearfix">
+                                <!-- Mobile Navigation Toggler -->
+                                <div class="mobile-nav-toggler"><span class="icon flaticon-menu-2"></span></div>
+                                <!-- Main Menu -->
+                                <nav class="main-menu show navbar-expand-md">
+                                    <div class="navbar-header">
+                                        <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                                aria-expanded="false" aria-label="Toggle navigation">
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                            <span class="icon-bar"></span>
+                                        </button>
+                                    </div>
+                                    <div class="navbar-collapse collapse clearfix" id="navbarSupportedContent">
+                                        <ul class="navigation clearfix">
+                                            <li class="current">
+                                                <a href="/Home/Website">Home</a>
+                                            </li>
+                                            <li class="dropdown">
+                                                <a href="#">About us</a>
+                                                <ul>
+                                                    <li><a href="/Home/AboutUs">Company Overview</a></li>
+                                                    <li><a href="/Home/Vission">Mission & Vision</a></li>
+                                                </ul>
+                                            </li>
+
+                                            <li><a href="/Home/ProductServies">Product & services</a></li>
+                                            <li><a href="/Home/HighestEarnerClub">Highest Earner Club</a></li>
+                                            <li><a href="/Home/Gallery">Gallery</a></li>
+                                            <li><a href="/Home/ContactUs">Contact us</a></li>
+                                        </ul>
+                                    </div>
+                                </nav>
+                                <!-- Main Menu End-->
+                                <!-- Options Box -->
+                                <div class="options-box clearfix">
+                                    <div class="btn-box">
+                                        <a href="/Home/Registration" class="theme-btn btn-style-one"><span class="txt">Registration</span></a>
+                                    </div>
+                                    <div class="btn-box">
+                                        <a href="/Home/Login" class="theme-btn btn-style-six"><span class="txt">Login</span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Header Lower -->
+                    <!-- Mobile Menu  -->
+                    <div class="mobile-menu">
+                        <div class="menu-backdrop"></div>
+                        <div class="close-btn"><span class="icon flaticon-multiply"></span></div>
+                        <nav class="menu-box">
+                            <div class="nav-logo"><a href="/Home/Website"><img src="../WebsiteCss/images/logo.png" alt="" title=""></a></div>
+                            <div class="menu-outer">
+                                <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
+                            </div>
+                        </nav>
+                    </div><!-- End Mobile Menu -->
+                </header>
+
+                <!-- Main Content -->
+
+                @RenderBody();
+
+                <footer class="main-footer" style="background-image: url(../WebsiteCss/images/background/3.jpg)">
+                    <div class="auto-container">
+                        <!--Widgets Section-->
+                        <div class="widgets-section">
+                            <div class="row clearfix">
+                                <!-- Footer Column -->
+                                <div class="footer-column col-lg-3 col-md-3 col-sm-12">
+                                    <div class="footer-widget logo-widget">
+                                        <div class="logo">
+                                            <a href="/Home/Website"><img src="../WebsiteCss/images/footer-logo.png" alt="" /></a>
+                                        </div>
+                                        <div class="text">
+                                            DREAM CRUSHERS PRIVATE LIMITED established in 2020 is a direct selling
+                                            organization offering wide range personal case lifestyle products and services to
+                                            all world wide customers.
+                                        </div>
+                                        <ul class="social-icon-one">
+                                            <li><a href="#"><i class="fa fa-facebook-f"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-skype"></i></a></li>
+                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- Footer Column -->
+                                <div class="footer-column col-lg-2 col-md-2 col-sm-12">
+                                    <div class="footer-widget news-widget">
+                                        <div class="footer-title">
+                                            <h4>Important Links</h4>
+                                        </div>
+                                        <!-- Footer Column -->
+                                        <div class="widget-content">
+                                            <ul class="service-list">
+                                                <li><a href="/Home/ProductServies">Product & services</a></li>
+                                                <li><a href="/Home/HighestEarnerClub">Highest Earner Club</a></li>
+                                                <li><a href="/Home/AboutUs">Company Overview</a></li>
+                                                <li><a href="/Home/Vission">Mission & Vision</a></li>
+                                                <li><a href="/Home/Gallery">Gallery</a></li>
+                                                <li><a href="/Home/ContactUs">Contact Us</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Footer Column -->
+                                <div class="footer-column col-lg-4 col-md-4 col-sm-12">
+                                    <div class="footer-widget newsletter-widget">
+                                        <div class="footer-title">
+                                            <h4>Newsletter</h4>
+                                        </div>
+                                        <div class="text">Sign up for our mailing list to get latest updates and offers.</div>
+                                        <div class="newsletter-form">
+                                            <form method="post" action="#">
+                                                <div class="form-group">
+                                                    <input type="email" name="email" value=""
+                                                           placeholder="Enter your email address ....." required="">
+                                                    <button type="submit" class="theme-btn submit-btn">
+                                                        <span class="txt flaticon-send"></span>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Footer Column -->
+                                <div class="footer-column col-lg-3 col-md-3 col-sm-12">
+                                    <div class="footer-widget newsletter-widget">
+                                        <div class="footer-title">
+                                            <h4>Contact Info</h4>
+                                        </div>
+                                        <ul class="contact-link">
+                                            <li>
+                                                <span class="icon flaticon-home-page"></span> Registered Office: <br>Devkali
+                                                Bypass Lucknow Road Ayodhya UP 224001 India
+                                            </li>
+                                            <li><span class="icon flaticon-phone-call"></span> +91 7275 065834</li>
+                                            <li><span class="icon flaticon-email-4"></span> support@dreamcrushers.in</li>
+                                            <li><span class="icon flaticon-clock"></span> Mon - Sat 10.00am To 07.00pm</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="footer-bottom">
+                        <div class="auto-container">
+                            <div class="clearfix">
+                                <div class="text-center">
+                                    <div class="copyright">
+                                        Copyright &copy; 2020 Dream Crusher Pvt. Ltd. All Rights Reserved.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </footer>
             </div>
         </div>
-   
+
         <!--End Hidden Bar -->
         <!-- Bnner Section -->
-       
-     
-        </div>
-    <script src="assets/js/app.min.js"></script>
-    <!-- JS Libraies -->
-    <script src="assets/bundles/echart/echarts.js"></script>
 
-    <script src="assets/bundles/chartjs/chart.min.js"></script>
-    <script src="assets/bundles/apexcharts/apexcharts.min.js"></script>
-    <!-- Page Specific JS File -->
-    <script src="assets/js/page/index.js"></script>
-    <!-- Template JS File -->
-    <script src="assets/js/scripts.js"></script>
-    <script src="assets/bundles/jquery.sparkline.min.js"></script>
+
+    </div>
+    <div class="scroll-to-top scroll-to-target" data-target="html"><span class="fa fa-long-arrow-up"></span></div>
+
+    <script src="../WebsiteCss/js/jquery.js"></script>
+    <script src="../WebsiteCss/js/popper.min.js"></script>
+    <script src="../WebsiteCss/js/bootstrap.min.js"></script>
+    <script src="../WebsiteCss/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="../WebsiteCss/js/jquery.fancybox.js"></script>
+    <script src="../WebsiteCss/js/appear.js"></script>
+    <script src="../WebsiteCss/js/nav-tool.js"></script>
+    <script src="../WebsiteCss/js/mixitup.js"></script>
+    <script src="../WebsiteCss/js/owl.js"></script>
+    <script src="../WebsiteCss/js/wow.js"></script>
+    <script src="../WebsiteCss/js/isotope.js"></script>
+    <script src="../WebsiteCss/js/jquery-ui.js"></script>
+    <script src="../WebsiteCss/js/script.js"></script>
+    <script src="../WebsiteCss/js/color-settings.js"></script>
 </body>
 
 </html>

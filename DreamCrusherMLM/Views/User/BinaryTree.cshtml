@@ -848,6 +848,7 @@
     $(window).on("load", function () {
 
         var id = $("#firtsMemberID").val();
+        console.log('memid',id)
         GetDataFirst(id);
         GetData(id);
 
@@ -863,9 +864,11 @@
             dataType: "json",
             success: OnSuccess,
             failure: function (response) {
+                console.log(response)
                 alert("Failed: " + response.d);
             },
             error: function (response) {
+                console.log(response)
                 alert("Error: " + response.d);
             }
         });
@@ -1267,11 +1270,13 @@
 
             failure: function (response) {
                 $('#divload').hide();
+                console.log(response)
                 alert(response.d);
 
             },
             error: function (response) {
                 $('#divload').hide();
+                console.log(response)
                 alert(response.d);
             }
 

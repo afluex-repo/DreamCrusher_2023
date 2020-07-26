@@ -16,5 +16,5 @@ var map = new GMaps({
 map.drawOverlay({
    	lat: 23.014280,
   	lng: 72.532057,
-  content: '<div class="popover" style="width:250px;"><div class="manual-arrow"><i class="fas fa-caret-down"></i></div><div class="popover-body"><b>Snkthemes</b><p><small>501, Saman Complex, Mansi Circle., <br>Gandho Road, Satellite 356987</p><p><a target="_blank" href="http://test.com">Website</a></small></p></div></div>'
+  content: '<div class="popover" style="width:250px;"><div class="manual-arrow"><i class="fas fa-caret-down"></i></div><div class="popover-body"><b>Afluex</b><p><small>501, Saman Complex, Mansi Circle., <br>Gandho Road, Satellite 356987</p><p><a target="_blank" href="http://test.com">Website</a></small></p></div></div>'
 });
