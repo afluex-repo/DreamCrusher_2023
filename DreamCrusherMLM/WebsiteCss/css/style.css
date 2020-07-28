@@ -12690,3 +12690,45 @@ img{
 .galleryhh {
     padding-top: 70px;
 }
+
+@media (min-width: 320px) and (max-width: 568px) {
+    .btn-style-one {
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 600;
+    overflow: hidden;
+    background: none;
+    border-radius: 0px;
+    padding: 10px 12px 10px;
+    text-transform: capitalize;
+    background-image: -ms-linear-gradient(top, #C2292A 0%, #d1641a 100%);
+    background-image: -moz-linear-gradient(top, #C2292A 0%, #d1641a 100%);
+    background-image: -o-linear-gradient(top, #C2292A 0%, #d1641a 100%);
+    background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #C2292A), color-stop(100, #d1641a));
+    background-image: -webkit-linear-gradient(top, #C2292A 0%, #d1641a 100%);
+    background-image: linear-gradient(to bottom, #C2292A 0%, #d1641a 100%);
+    font-family: 'Poppins', sans-serif;
+}
+    .btn-style-six {
+    position: relative;
+    display: inline-block;
+    font-size: 13px;
+    line-height: 30px;
+    color: #ffffff;
+    font-weight: 600;
+    overflow: hidden;
+    background: none;
+    border-radius: 0px;
+    padding: 10px 30px 10px;
+    text-transform: uppercase;
+    background-image: -ms-linear-gradient(left, #091494 0%, #3141fe 100%);
+    background-image: -moz-linear-gradient(left, #091494 0%, #3141fe 100%);
+    background-image: -o-linear-gradient(left, #091494 0%, #3141fe 100%);
+    background-image: -webkit-gradient(linear, left top, right top, color-stop(0, #091494), color-stop(100, #3141fe));
+    background-image: -webkit-linear-gradient(left, #091494 0%, #3141fe 100%);
+    background-image: linear-gradient(to right, #091494 0%, #3141fe 100%);
+}
+}
