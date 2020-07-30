@@ -1304,7 +1304,7 @@
 	}
 	
 	.main-header .options-box .btn-box{
-		display:none;
+		/* display:none; */
 	}
 	
 	.main-header.header-style-one .options-box .grid-box,
