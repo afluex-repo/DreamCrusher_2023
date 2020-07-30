@@ -28,7 +28,7 @@
         <div class="space1"></div>
     </div>
 </div>
-<body class="full-background-color" style="margin-left:40px;margin-right:20px;">
+<body class="full-background-color1" style="margin-left:40px;margin-right:20px;">
     <div class="loader" id="divload"></div>
 
     <div class="registration-page">
@@ -38,7 +38,7 @@
                 <form method="post">
                     <div class="row clearfix">
                         <!--Column-->
-                        <div class="column col-lg-12 col-md-12 col-sm-12">
+                        <div class="column col-lg-7 col-md-7 col-sm-12">
                             <div class="row clearfix">
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-12">
@@ -118,12 +118,10 @@
                                 <div class="form-group col-md-6 col-sm-12">
                                     <div class="pull-left">
                                         <div class="form-group no-margin">
-                                            <input type="button" id="Confirm" onclick="return confirmregistration();" class="btn btn-primary" name="Confirm" value="Confirm" />
+                                            <input type="button" id="Confirm" onclick="return confirmregistration();" class="btn btn-primary btn-lg" name="Confirm" value="Confirm" />
                                             <input type="button" id="Register" onclick="return saveregistration();"  class="btn btn-primary" style="display: none" name="Register" value="Register" />
-                                            <input type="button" id="Edit" onclick="editregistration();" style="display: none"  class="btn btn-primary" name="Edit" value="Edit" />
-                                            <a style="color:black" class="text-small" href="/Home/Login">
-                                             Sign In
-                                            </a>
+                                            <input type="button" id="Edit" onclick="editregistration();" style="display: none"  class="btn btn-primary" name="Edit" value="Edit" />                                          
+                                            <a href="/Home/Login" class="btn btn-info btn-lg">Sign In</a>
                                         </div>
                                     </div>
                                 </div>
@@ -131,6 +129,11 @@
 
 
                             </div>
+                        </div>
+                        <!--Column-->
+                        <!--Column-->
+                        <div class="column col-lg-5 col-md-5 col-sm-12">
+                            <img src="~/WebsiteCss/images/registrationc.png" class="img-fluid"/>
                         </div>
                         <!--Column-->
                     </div>

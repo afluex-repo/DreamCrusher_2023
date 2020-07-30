@@ -4502,7 +4502,7 @@ h6 .badge {
 
     .btn.btn-lg {
         padding: .55rem 1.5rem;
-        font-size: 12px;
+        font-size: 15px;
     }
 
         .btn.btn-lg.btn-icon-split i {
@@ -10785,3 +10785,9 @@ body:not(.sidebar-mini) .sidebar-style-2 .sidebar-menu li.active ul.dropdown-men
     .dark .statistic-details .statistic-details-item .detail-name {
         color: #96a2b4;
     }
+
+.full-background-color1 {
+    background: linear-gradient(180deg,#ffa426 0,#ffe626 100%);   
+    border-radius: 5px 5px 0 0;
+    padding-top: 10px;
+}
