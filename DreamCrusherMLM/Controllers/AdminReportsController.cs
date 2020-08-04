@@ -1513,6 +1513,56 @@ namespace DreamCrusherMLM.Controllers
             return View(model);
         }
 
+        public ActionResult DirectLevelTwo()
+        {
+            List<SelectListItem> AssociateStatus = Common.AssociateStatus();
+            ViewBag.ddlStatus = AssociateStatus;
+            List<SelectListItem> Leg = Common.Leg();
+            ViewBag.ddlleg = Leg;
+            return View();
+        }
+        [HttpPost]
+        [ActionName("DirectLevelTwo")]
+        [OnAction(ButtonName = "GetDetails")]
+        public ActionResult DirectLevelTwoList(Reports model)
+        {
+
+            List<Reports> lst = new List<Reports>();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            model.FromActivationDate = string.IsNullOrEmpty(model.FromActivationDate) ? null : Common.ConvertToSystemDate(model.FromActivationDate, "dd/MM/yyyy");
+            model.ToActivationDate = string.IsNullOrEmpty(model.ToActivationDate) ? null : Common.ConvertToSystemDate(model.ToActivationDate, "dd/MM/yyyy");
+
+            DataSet ds = model.GetDirectList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Reports obj = new Reports();
+                    obj.Mobile = r["Mobile"].ToString();
+                    obj.Email = r["Email"].ToString();
+                    obj.JoiningDate = r["JoiningDate"].ToString();
+                    obj.PermanentDate = (r["PermanentDate"].ToString());
+                    obj.Status = (r["Status"].ToString());
+                    obj.LoginId = (r["LoginId"].ToString());
+                    obj.Leg = r["Leg"].ToString();
+                    obj.Name = (r["Name"].ToString());
+                    obj.Package = (r["ProductName"].ToString());
+
+                    lst.Add(obj);
+                }
+                model.lstassociate = lst;
+
+
+            }
+            List<SelectListItem> AssociateStatus = Common.AssociateStatus();
+            ViewBag.ddlStatus = AssociateStatus;
+            List<SelectListItem> Leg = Common.Leg();
+            ViewBag.ddlleg = Leg;
+            return View(model);
+        }
+
 
     }
 }

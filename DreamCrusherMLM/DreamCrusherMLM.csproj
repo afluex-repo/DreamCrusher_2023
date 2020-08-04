@@ -2561,6 +2561,7 @@
     <Content Include="Views\UserReports\PaidPayoutDetails.cshtml" />
     <Content Include="Views\Home\ProductServies.cshtml" />
     <Content Include="Views\Home\HighestEarnerClub.cshtml" />
+    <Content Include="Views\AdminReports\DirectLevelTwo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
