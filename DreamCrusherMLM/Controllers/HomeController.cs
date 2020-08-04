@@ -235,7 +235,7 @@ namespace DreamCrusherMLM.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg)
+        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB)
 
         {
             Home obj = new Home();
@@ -252,6 +252,7 @@ namespace DreamCrusherMLM.Controllers
                 obj.RegistrationBy = "Web";
                 obj.Gender = Gender;
                 obj.PinCode = PinCode;
+                obj.DOB = DOB;
                 obj.Leg = Leg;
                 string password = Common.GenerateRandom();
                 obj.Password = Crypto.Encrypt(password);

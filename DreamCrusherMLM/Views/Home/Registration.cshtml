@@ -64,63 +64,73 @@
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label>First Name<sup style="color:red;font-size: 21px;">*</sup></label> 
+                                    <label>First Name<sup style="color:red;font-size: 21px;">*</sup></label>
                                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @Placeholder = "First Name" })
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label>Last Name</label> 
+                                    <label>Last Name</label>
                                     @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @Placeholder = "Last Name" })
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label>Email Id</label> 
+                                    <label>Email Id</label>
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email id" })
                                     @Html.ValidationMessageFor(m => m.Email)
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label>Mobile No.<sup style="color:red;font-size: 21px;">*</sup></label> 
-                                  @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);" })
+                                    <label>Mobile No.<sup style="color:red;font-size: 21px;">*</sup></label>
+                                    @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);" })
                                     @Html.ValidationMessageFor(m => m.MobileNo)
                                 </div>
-                                <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label>Gender</label> 
-                                    @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.ddlgender, "Value", "Text"),new { @class = "form-control" })
+                                    <label>Date of Birth<sup style="color:red;font-size: 21px;">*</sup></label>
+                                          @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @placeholder = "Date of Birth",@readonly="readonly" })
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-6 col-sm-12">
-                                    <label>Pancard</label> 
+                                    <label>Gender</label>
+                                    @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.ddlgender, "Value", "Text"), new { @class = "form-control" })
+                                </div>
+                                <!--Form Group-->
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label>Pancard</label>
                                     @Html.TextBoxFor(m => m.PanCard, new { @class = "form-control", @Placeholder = "Pan Card", @Maxlength = "10", @onchange = "return validatepan(event);" })
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-sm-12">
-                                    <label>Address</label> 
+                                    <label>Address</label>
                                     @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @Placeholder = "Address" })
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-4 col-sm-12">
-                                    <label>Pincode</label> 
+                                    <label>Pincode</label>
                                     @Html.TextBoxFor(m => m.PinCode, new { @class = "form-control", @Placeholder = "PinCode", @onchange = "return getstatecity();" })
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-4 col-sm-12">
-                                    <label>State</label> 
+                                    <label>State</label>
                                     @Html.TextBoxFor(m => m.State, new { @class = "form-control", @Placeholder = "State", @Disabled = "disabled" })
                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-4 col-sm-12">
-                                    <label>City</label> 
+                                    <label>City</label>
                                     @Html.TextBoxFor(m => m.City, new { @class = "form-control", @Placeholder = "City", @Disabled = "disabled" })
                                 </div>
+                                <div class="row" style="margin-left:5px;margin-right:300px;margin-bottom:14px;margin-top:14px">
+                                    <div class="col-md-12">
+                                        <input type="checkbox" id="condition" style="height:20px;width:20px;" />  &nbsp;I read carefully and accept all terms & conditions.
+                                        @* @Html.CheckBoxFor(m => m.condition, new { @class = "form-control"}) &nbsp;<label></label>*@
+                                    </div>
+                                </div>
                                 <!--Form Group-->
-                                <div class="form-group col-md-6 col-sm-12"> 
+                                <div class="form-group col-md-6 col-sm-12">
                                     <div class="pull-left">
                                         <div class="form-group no-margin">
                                             <input type="button" id="Confirm" onclick="return confirmregistration();" class="btn btn-primary btn-lg" name="Confirm" value="Confirm" />
-                                            <input type="button" id="Register" onclick="return saveregistration();"  class="btn btn-primary" style="display: none" name="Register" value="Register" />
-                                            <input type="button" id="Edit" onclick="editregistration();" style="display: none"  class="btn btn-primary" name="Edit" value="Edit" />                                          
+                                            <input type="button" id="Register" onclick="return saveregistration();" class="btn btn-primary" style="display: none" name="Register" value="Register" />
+                                            <input type="button" id="Edit" onclick="editregistration();" style="display: none" class="btn btn-primary" name="Edit" value="Edit" />
                                             <a href="/Home/Login" class="btn btn-info btn-lg">Sign In</a>
                                         </div>
                                     </div>
@@ -133,7 +143,7 @@
                         <!--Column-->
                         <!--Column-->
                         <div class="column col-lg-5 col-md-5 col-sm-12">
-                            <img src="~/WebsiteCss/images/registrationc.png" class="img-fluid"/>
+                            <img src="~/WebsiteCss/images/registrationc.png" class="img-fluid" />
                         </div>
                         <!--Column-->
                     </div>
@@ -144,12 +154,14 @@
 
         </div>
     </div>
-
+    
     <!--End CheckOut Page-->
     <!--Clients Section-->
 
-
-    <script src="../assets/js/app.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+    <script src=" ../assets/js/app.min.js"></script>
     <!-- JS Libraies -->
     <script src="../assets/bundles/echart/echarts.js"></script>
 
@@ -160,180 +172,240 @@
     <!-- Template JS File -->
     <script src="../assets/js/scripts.js"></script>
     <script src="../assets/bundles/jquery.sparkline.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
 </body>
-    <script>
-        $(document).ready(function () {
-            $("#divload").css({ 'display': 'none' });
-        });
+<script>
 
-        function getsponsordetails(obj) {
-            $("#divload").css({ 'display': '' });
-            $(".errortext").removeClass("errortext");
-            $.ajax({
-                url: '/Home/GetSponserDetails',
-                type: 'GET',
-                dataType: 'JSON',
-                data: { 'ReferBy': $(obj).val() },
-                success: function (response) {
-                    if (response.Result == "Yes") {
-                        $("#divload").css({ 'display': 'none' });
-                        $('#SponsorName').val(response.DisplayName);
-                    }
-                    else {
-                        $("#divload").css({ 'display': 'none' });
-                        $("#SponsorId").addClass('errortext');
-                        $('#SponsorName').val('');
-                        $('#SponsorId').val('');
-                        $('#SponsorId').focus();
-                        alert(response.Result);
-                    }
-                }
-            })
-        }
-        function validatepan(event) {
-            $(".errortext").removeClass("errortext");
-            var regExp = /[a-zA-z]{5}\d{4}[a-zA-Z]{1}/;
-            var txtpan = $('#PanCard').val();
-            if (txtpan.length == 10) {
-                if (txtpan.match(regExp)) {
+    $(document).ready(function () {
+        $("#divload").css({ 'display': 'none' });
+    });
 
+    function getsponsordetails(obj) {
+        $("#divload").css({ 'display': '' });
+        $(".errortext").removeClass("errortext");
+        $.ajax({
+            url: '/Home/GetSponserDetails',
+            type: 'GET',
+            dataType: 'JSON',
+            data: { 'ReferBy': $(obj).val() },
+            success: function (response) {
+                if (response.Result == "Yes") {
+                    $("#divload").css({ 'display': 'none' });
+                    $('#SponsorName').val(response.DisplayName);
                 }
                 else {
-                    $("#PanCard").addClass('errortext');
-                    $('#PanCard').focus();
-                    $('#PanCard').val('');
-                    alert('Please enter valid PanNo');
-
+                    $("#divload").css({ 'display': 'none' });
+                    $("#SponsorId").addClass('errortext');
+                    $('#SponsorName').val('');
+                    $('#SponsorId').val('');
+                    $('#SponsorId').focus();
+                    alert(response.Result);
                 }
+            }
+        })
+    }
+
+    $('#DOB').datepicker({
+        dateFormat: 'dd/mm/yy',
+    });
+
+
+    function validatepan(event) {
+        $(".errortext").removeClass("errortext");
+        var regExp = /[a-zA-z]{5}\d{4}[a-zA-Z]{1}/;
+        var txtpan = $('#PanCard').val();
+        if (txtpan.length == 10) {
+            if (txtpan.match(regExp)) {
+
             }
             else {
                 $("#PanCard").addClass('errortext');
                 $('#PanCard').focus();
                 $('#PanCard').val('');
-                alert('Please enter 10 digits for a valid PAN number');
+                alert('Please enter valid PanNo');
 
             }
         }
-        function getstatecity() {
-            $(".errortext").removeClass("errortext");
-            $.ajax({
-                url: "/Home/GetStateCity",
-                Type: "Get",
-                DataType: "JSON",
-                data: { PinCode: $("#PinCode").val() },
-                success: function (data) {
-                    if (data.Result == "1") {
-                        $("#State").val(data.State);
-                        $("#City").val(data.City);
-                    }
-                    else {
-                        $("#State").val('');
-                        $("#City").val('');
-                        $("#PinCode").val('');
-                        $("#PinCode").addClass('errortext');
-                        $('#PinCode').focus();
-                        alert(data.Result);
+        else {
+            $("#PanCard").addClass('errortext');
+            $('#PanCard').focus();
+            $('#PanCard').val('');
+            alert('Please enter 10 digits for a valid PAN number');
 
-                    }
-
+        }
+    }
+    function getstatecity() {
+        $(".errortext").removeClass("errortext");
+        $.ajax({
+            url: "/Home/GetStateCity",
+            Type: "Get",
+            DataType: "JSON",
+            data: { PinCode: $("#PinCode").val() },
+            success: function (data) {
+                if (data.Result == "1") {
+                    $("#State").val(data.State);
+                    $("#City").val(data.City);
+                }
+                else {
+                    $("#State").val('');
+                    $("#City").val('');
+                    $("#PinCode").val('');
+                    $("#PinCode").addClass('errortext');
+                    $('#PinCode').focus();
+                    alert(data.Result);
 
                 }
 
-            });
-        }
-        function confirmregistration() {
-            $(".errortext").removeClass("errortext");
-            if ($('#SponsorId').val() == '') {
-                $("#SponsorId").addClass('errortext');
-                $('#SponsorId').focus();
+
+            }
+
+        });
+    }
+    function confirmregistration() {
+
+        if ($('#DOB').val() != null) {
+
+            var today = new Date();
+            var nowyear = today.getFullYear();
+            var nowmonth = today.getMonth();
+            var nowday = today.getDate();
+            var b = $('#DOB').val();
+
+
+
+            var birth = new Date(b);
+
+            var birthyear = birth.getFullYear();
+            var birthmonth = birth.getMonth();
+            var birthday = birth.getDate();
+
+            var age = nowyear - birthyear;
+            if (age < 18) {
+                alert("Age must be more than 18 Years.")
                 return false;
             }
-            if ($('#FirstName').val() == '') {
-                $("#FirstName").addClass('errortext');
-                $('#FirstName').focus();
-                return false;
-            }
-            if ($('#MobileNo').val() == '') {
-                $("#MobileNo").addClass('errortext');
-                $('#MobileNo').focus();
-                return false;
-            }
-
-            $("#PaymentMethod").attr("disabled", "disabled");
-            $("#Commitment").attr("disabled", "disabled");
-            $("#MobileNo").attr("disabled", "disabled");
-            $("#FirstName").attr("disabled", "disabled");
-            $("#SponsorId").attr("disabled", "disabled");
-            $("#Email").attr("disabled", "disabled");
-            $("#LastName").attr("disabled", "disabled");
-            $("#Gender").attr("disabled", "disabled");
-            $("#PanCard").attr("disabled", "disabled");
-            $("#Address").attr("disabled", "disabled");
-            $("#PinCode").attr("disabled", "disabled");
-            $('#Confirm').hide();
-            $('#Edit').show();
-            $('#Register').show();
         }
 
-        function editregistration() {
-            $("#PaymentMethod").attr("disabled", false);
-            $("#Commitment").attr("disabled", false);
-            $("#MobileNo").attr("disabled", false);
-            $("#FirstName").attr("disabled", false);
-            $("#SponsorId").attr("disabled", false);
-            $("#Email").attr("disabled", false);
-            $("#LastName").attr("disabled", false);
-            $("#Gender").attr("disabled", false);
-            $("#PanCard").attr("disabled", false);
-            $("#Address").attr("disabled", false);
-            $("#PinCode").attr("disabled", false);
-            $('#Confirm').show();
-            $('#Edit').hide();
-            $('#Register').hide();
 
+        $(".errortext").removeClass("errortext");
+        if ($('#SponsorId').val() == '') {
+            $("#SponsorId").addClass('errortext');
+            $('#SponsorId').focus();
+            return false;
+        }
+        if ($('#FirstName').val() == '') {
+            $("#FirstName").addClass('errortext');
+            $('#FirstName').focus();
+            return false;
+        }
+        if ($('#MobileNo').val() == '') {
+            $("#MobileNo").addClass('errortext');
+            $('#MobileNo').focus();
+            return false;
+        }
+        if ($('#DOB').val() == '') {
+            $("#DOB").addClass('errortext');
+            $('#DOB').focus();
+            return false;
         }
 
-        function saveregistration() {
-            $("#divload").css({ 'display': '' });
-            var Leg = "";
-            if ($('#left').prop('checked')) {
-                Leg = "L";
+        $('#condition').click(function () {
+            if ($(this).prop("checked")) {
+                //$('input:checkbox[name=checkBoxId_]').attr('checked', true);
+                $('.chkclass').prop("checked", true);
+            } else {
+                //$('input:checkbox[name=checkBoxId_]').attr('checked', false);
+                $('.chkclass').prop("checked", false);
             }
-            else {
-                Leg = "R";
-            }
-            $.ajax({
-                url: "/Home/RegistrationAction",
-                Type: "Get",
-                DataType: "JSON",
-                data: { SponsorId: $("#SponsorId").val(), FirstName: $("#FirstName").val(), LastName: $("#LastName").val(), Email: $("#Email").val(), MobileNo: $("#MobileNo").val(), PanCard: $("#PanCard").val(), Address: $("#Address").val(), Gender: $("#Gender").val(), OTP: $("#OTP").val(), PinCode: $("#PinCode").val(), Leg: Leg },
-                success: function (data) {
-                    if (data.Response == "1") {
-                        window.location.href = '@Url.Action("ConfirmRegistration", "Home")';
-                    }
-                    else {
-                        $("#divload").css({ 'display': 'none' });
-                        alert(data.Response);
-                    }
+        });
+        if ($('#condition').prop('checked')) {
+            $('#condition').val(1);
+        } else {
+            alert('Please accept the condition')
+            return false;
+        }
+
+
+        $("#PaymentMethod").attr("disabled", "disabled");
+        $("#Commitment").attr("disabled", "disabled");
+        $("#MobileNo").attr("disabled", "disabled");
+        $("#FirstName").attr("disabled", "disabled");
+        $("#SponsorId").attr("disabled", "disabled");
+        $("#Email").attr("disabled", "disabled");
+        $("#LastName").attr("disabled", "disabled");
+        $("#Gender").attr("disabled", "disabled");
+        $("#PanCard").attr("disabled", "disabled");
+        $("#Address").attr("disabled", "disabled");
+        $("#DOB").attr("disabled", "disabled");
+        $("#PinCode").attr("disabled", "disabled");
+        $('#Confirm').hide();
+        $('#Edit').show();
+        $('#Register').show();
+    }
+
+    function editregistration() {
+        $("#PaymentMethod").attr("disabled", false);
+        $("#Commitment").attr("disabled", false);
+        $("#MobileNo").attr("disabled", false);
+        $("#FirstName").attr("disabled", false);
+        $("#SponsorId").attr("disabled", false);
+        $("#Email").attr("disabled", false);
+        $("#LastName").attr("disabled", false);
+        $("#Gender").attr("disabled", false);
+        $("#PanCard").attr("disabled", false);
+        $("#Address").attr("disabled", false);
+        $("#DOB").attr("disabled", false);
+        $("#PinCode").attr("disabled", false);
+        $('#Confirm').show();
+        $('#Edit').hide();
+        $('#Register').hide();
+
+    }
+
+    function saveregistration() {
+        $("#divload").css({ 'display': '' });
+        var Leg = "";
+        if ($('#left').prop('checked')) {
+            Leg = "L";
+        }
+        else {
+            Leg = "R";
+        }
+        $.ajax({
+            url: "/Home/RegistrationAction",
+            Type: "Get",
+            DataType: "JSON",
+            data: { SponsorId: $("#SponsorId").val(), FirstName: $("#FirstName").val(), LastName: $("#LastName").val(), Email: $("#Email").val(), MobileNo: $("#MobileNo").val(), PanCard: $("#PanCard").val(), Address: $("#Address").val(), Gender: $("#Gender").val(), OTP: $("#OTP").val(), PinCode: $("#PinCode").val(), Leg: Leg, DOB: $("#DOB").val() },
+            success: function (data) {
+                if (data.Response == "1") {
+                    window.location.href = '@Url.Action("ConfirmRegistration", "Home")';
                 }
+                else {
+                    $("#divload").css({ 'display': 'none' });
+                    alert(data.Response);
+                }
+            }
 
-            });
-        }
+        });
+    }
 
-        function isNumberKey(evt) {
+    function isNumberKey(evt) {
 
-            var charCode = (evt.which) ? evt.which : event.keyCode;
-            if (charCode != 46 && charCode > 31
-              && (charCode < 48 || charCode > 57))
-                return false;
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
 
-            return true;
-        }
-    </script>
-    <style>
-        .errortext {
-            border: 2px solid red !important;
-            background-color: #c18888 !important;
-        }
-    </style>
+        return true;
+    }
+</script>
+<style>
+    .errortext {
+        border: 2px solid red !important;
+        background-color: #c18888 !important;
+    }
+</style>
 

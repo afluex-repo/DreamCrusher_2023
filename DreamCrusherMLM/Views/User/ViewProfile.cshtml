@@ -98,16 +98,41 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Account Number <span style="color:red">*</span></label>
-                                            @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.AccountNumber)
+                                            @if (Model.AccountNumber != "")
+                                            {
+
+                                                @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control",@readonly="readonly" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.AccountNumber)
+                                            }
+
+                                            
+
                                             @*<input type ="text" id="txtEmail"  value="@item1.EmailId" disabled="disabled" class="form-control" />*@
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>IFSC <span style="color:red">*</span></label>
-                                            @Html.TextBoxFor(m => m.IFSC, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.IFSC)
+
+                                            @if (Model.IFSC != "")
+                                            {
+                                                @Html.TextBoxFor(m => m.IFSC, new { @class = "form-control",@readonly="readonly" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(m => m.IFSC, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.IFSC)
+                                            }
+
+
+
+
+
+
                                             @*<input type ="text"  value="@item1.JoiningDate" disabled="disabled" class="form-control" />*@
                                         </div>
                                     </div>
@@ -116,16 +141,33 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Bank Name <span style="color:red">*</span></label>
+                                           @if (Model.BankName != "")
+                                           {
+                                            @Html.TextBoxFor(m => m.BankName, new { @class = "form-control",@readonly="readonly" })
+                                           }
+                                           else
+                                           {
+
                                             @Html.TextBoxFor(m => m.BankName, new { @class = "form-control" })
                                             @Html.ValidationMessageFor(m => m.BankName)
+                                           }
                                             @*<input type ="text" id="txtEmail"  value="@item1.EmailId" disabled="disabled" class="form-control" />*@
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Bank Branch <span style="color:red">*</span></label>
-                                            @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.BankBranch)
+                                            @if (Model.BankBranch != "")
+                                            { @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control",@readonly="readonly" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.BankBranch)
+                                            }
+
+
+                                           
                                             @*<input type ="text"  value="@item1.JoiningDate" disabled="disabled" class="form-control" />*@
                                         </div>
                                     </div>

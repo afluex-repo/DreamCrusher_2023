@@ -9,6 +9,7 @@ namespace DreamCrusherMLM.Models
 {
     public class Profile : Common
     {
+        public string ProfilePic { get; set; }
         public string EncryptLoginID { get; set; }
         public string EncryptPayoutNo { get; set; }
         public string RealtionName { get; set; }

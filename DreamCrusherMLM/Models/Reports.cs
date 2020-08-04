@@ -9,6 +9,7 @@ namespace DreamCrusherMLM.Models
 {
     public class Reports : Common
     {
+        public string DCMI { get; set; }
         public string AdharCardPhoto { get; set; }
 
         public string AssociateName { get; set; }

@@ -112,7 +112,8 @@ namespace DreamCrusherMLM.Models
                                      new SqlParameter("@Gender",Gender),
                                      new SqlParameter("@PinCode",PinCode),
                                      new SqlParameter("@Leg",Leg),
-                                     new SqlParameter("@Password",Password)
+                                     new SqlParameter("@Password",Password),
+                                       new SqlParameter("@DOB",DOB)
 
                                    };
             DataSet ds = DBHelper.ExecuteQuery("Registration", para);

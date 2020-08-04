@@ -40,14 +40,17 @@ namespace DreamCrusherMLM.Controllers
                ViewBag.CarryLeft = ds.Tables[2].Rows[0]["CarryLeft"].ToString();
                ViewBag.CarryRight = ds.Tables[2].Rows[0]["CarryRight"].ToString();
 
+                Session["ProfilePic"] = ds.Tables[3].Rows[0]["ProfilePic"].ToString();
+                Session["Name"] = ds.Tables[3].Rows[0]["Name"].ToString();
+                Session["JoiningDate"] = ds.Tables[3].Rows[0]["JoiningDate"].ToString();
 
-               //ViewBag.ProductPaidBusinessLeft = ds.Tables[3].Rows[0]["PaidBusinessLeft"].ToString();
-               //ViewBag.ProductPaidBusinessRight = ds.Tables[3].Rows[0]["PaidBusinessRight"].ToString();
-               //ViewBag.ProductTotalBusinessLeft = ds.Tables[3].Rows[0]["TotalBusinessLeft"].ToString();
-               //ViewBag.ProductTotalBusinessRight = ds.Tables[3].Rows[0]["TotalBusinessRight"].ToString();
-               //ViewBag.ProductCarryLeft = ds.Tables[3].Rows[0]["CarryLeft"].ToString();
-               //ViewBag.ProductCarryRight = ds.Tables[3].Rows[0]["CarryRight"].ToString();
-           }
+                //ViewBag.ProductPaidBusinessLeft = ds.Tables[3].Rows[0]["PaidBusinessLeft"].ToString();
+                //ViewBag.ProductPaidBusinessRight = ds.Tables[3].Rows[0]["PaidBusinessRight"].ToString();
+                //ViewBag.ProductTotalBusinessLeft = ds.Tables[3].Rows[0]["TotalBusinessLeft"].ToString();
+                //ViewBag.ProductTotalBusinessRight = ds.Tables[3].Rows[0]["TotalBusinessRight"].ToString();
+                //ViewBag.ProductCarryLeft = ds.Tables[3].Rows[0]["CarryLeft"].ToString();
+                //ViewBag.ProductCarryRight = ds.Tables[3].Rows[0]["CarryRight"].ToString();
+            }
            #region Messages
 
            model.Fk_UserId = Session["Pk_UserId"].ToString();
@@ -273,7 +276,7 @@ namespace DreamCrusherMLM.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg)
+        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB)
         {
             Home obj = new Home();
 
@@ -289,6 +292,7 @@ namespace DreamCrusherMLM.Controllers
                 obj.RegistrationBy = "Web";
                 obj.Gender = Gender;
                 obj.PinCode = PinCode;
+                obj.DOB = DOB;
                 obj.Leg = Leg;
                 string password = Common.GenerateRandom();
                 obj.Password = Crypto.Encrypt(password);

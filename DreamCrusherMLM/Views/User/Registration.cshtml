@@ -58,11 +58,15 @@
                             </div>
                             </div>
                         <div class="row">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
                                 Gender
                                 @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.ddlgender, "Value", "Text"), new { @class = "form-control" })
                             </div>
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-4 form-group">
+                                Date of Birth <span style="color: red">*</span>
+                                @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @readonly = "readonly", @Placeholder = "Date Of Birth" })
+                            </div>
+                            <div class="col-md-4 form-group">
                                 Pan Card
                                 @Html.TextBoxFor(m => m.PanCard, new { @class = "form-control", @Placeholder = "Pan Card", @Maxlength = "10", @onchange = "return validatepan(event);" })
                             </div>
@@ -86,6 +90,12 @@
                                 @Html.TextBoxFor(m => m.City, new { @class = "form-control", @Placeholder = "City", @Disabled = "disabled" })
                             </div>
                             </div>
+                        <div class="row" style="margin-left:5px;margin-right:300px;margin-bottom:14px;margin-top:14px">
+                            <div class="col-md-12">
+                                <input type="checkbox" id="condition" style="height:20px;width:20px;" />  &nbsp;I read carefully and accept all terms & conditions.
+                                @* @Html.CheckBoxFor(m => m.condition, new { @class = "form-control"}) &nbsp;<label></label>*@
+                            </div>
+                        </div>
                             <div class="col-md-6 form-group">
                                 <input type="button" id="Confirm" onclick="return confirmregistration();" class="btn btn-success" name="Confirm" value="Confirm">
                                 <input type="button" id="Register" onclick="return saveregistration();" class="btn btn-success" style="display: none" name="Register" value="Register">
@@ -101,8 +111,9 @@
         </div>
        
 
-        <script src="../../AdminPanelCss/assets/vendors/jquery.js"></script>
-
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
         <script>
             $(document).ready(function () {
                 $("#divload").css({ 'display': 'none' });
@@ -162,6 +173,32 @@
             }
 
             function confirmregistration() {
+                
+                if ($('#DOB').val() != null) {
+
+                    var today = new Date();
+                    var nowyear = today.getFullYear();
+                    var nowmonth = today.getMonth();
+                    var nowday = today.getDate();
+                    var b = $('#DOB').val();
+
+
+
+                    var birth = new Date(b);
+
+                    var birthyear = birth.getFullYear();
+                    var birthmonth = birth.getMonth();
+                    var birthday = birth.getDate();
+
+                    var age = nowyear - birthyear;
+                    if (age < 18) {
+                        alert("Age must be more than 18 Years.")
+                        return false;
+                    }
+                }
+
+               
+
                 $(".errortext").removeClass("errortext");
                 if ($('#SponsorId').val() == '') {
                     $("#SponsorId").addClass('errortext');
@@ -178,6 +215,28 @@
                     $('#MobileNo').focus();
                     return false;
                 }
+                if ($('#DOB').val() == '') {
+                    $("#DOB").addClass('errortext');
+                    $('#DOB').focus();
+                    return false;
+                }
+
+                $('#condition').click(function () {
+                    if ($(this).prop("checked")) {
+                        //$('input:checkbox[name=checkBoxId_]').attr('checked', true);
+                        $('.chkclass').prop("checked", true);
+                    } else {
+                        //$('input:checkbox[name=checkBoxId_]').attr('checked', false);
+                        $('.chkclass').prop("checked", false);
+                    }
+                });
+                if ($('#condition').prop('checked')) {
+                    $('#condition').val(1);
+                } else {
+                    alert('Please accept the condition')
+                    return false;
+                }
+
 
                 $("#PaymentMethod").attr("disabled", "disabled");
                 $("#Commitment").attr("disabled", "disabled");
@@ -190,6 +249,7 @@
                 $("#PanCard").attr("disabled", "disabled");
                 $("#Address").attr("disabled", "disabled");
                 $("#PinCode").attr("disabled", "disabled");
+                $("#DOB").attr("disabled", "disabled");
                 $('#Confirm').hide();
                 $('#Edit').show();
                 $('#Register').show();
@@ -207,6 +267,7 @@
                 $("#PanCard").attr("disabled", false);
                 $("#Address").attr("disabled", false);
                 $("#PinCode").attr("disabled", false);
+                $("#DOB").attr("disabled", false);
                 $('#Confirm').show();
                 $('#Edit').hide();
                 $('#Register').hide();
@@ -226,7 +287,7 @@
                     url: "/User/RegistrationAction",
                     Type: "Get",
                     DataType: "JSON",
-                    data: { SponsorId: $("#SponsorId").val(), FirstName: $("#FirstName").val(), LastName: $("#LastName").val(), Email: $("#Email").val(), MobileNo: $("#MobileNo").val(), PanCard: $("#PanCard").val(), Address: $("#Address").val(), Gender: $("#Gender").val(), OTP: $("#OTP").val(), PinCode: $("#PinCode").val(), Leg: Leg },
+                    data: { SponsorId: $("#SponsorId").val(), FirstName: $("#FirstName").val(), LastName: $("#LastName").val(), Email: $("#Email").val(), MobileNo: $("#MobileNo").val(), PanCard: $("#PanCard").val(), Address: $("#Address").val(), Gender: $("#Gender").val(), OTP: $("#OTP").val(), PinCode: $("#PinCode").val(), Leg: Leg, DOB: $("#DOB").val() },
                     success: function (data) {
                         if (data.Response == "1") {
                             window.location.href = '@Url.Action("ConfirmRegistration", "User")';
@@ -276,4 +337,9 @@
                     }
                 })
             }
+
+            $('#DOB').datepicker({
+                dateFormat: 'dd/mm/yy',
+            });
+
         </script>

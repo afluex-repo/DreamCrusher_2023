@@ -46,15 +46,15 @@
                                             @*<input type ="text" id="txtLastName" value="@item1.LastName" disabled="disabled" class="form-control" />*@
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    @*<div class="col-lg-4">
                                         <div class="form-group">
                                             <label>Document Number <span style="color:red">*</span></label>
                                             @Html.TextBoxFor(m => m.DocumentNumber, new { @class = "form-control", @required = "required" })
                                             @Html.DisplayFor(m => m.DocumentStatus, new { @class = "form-control" })
                                             @Html.ValidationMessageFor(m => m.DocumentNumber)
-                                            @*<input type ="text" id="txtMobile"  value="@item1.Mobile" disabled="disabled" class="form-control" />*@
+                                            @*<input type ="text" id="txtMobile"  value="@item1.Mobile" disabled="disabled" class="form-control" />*
                                         </div>
-                                    </div>
+                                    </div>*@
                                 </div>
 
                                 <div class="row">
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="col-lg-4">
                                         <div class="form-group">
-                                            <label>Document Image <span style="color:red">*</span></label>
+                                            <label>Passbook Image <span style="color:red">*</span></label>
                                             <input type="file" name="postedFile" required="required" />
                                             <br />
                                             <img src="@Url.Content(Model.DocumentImage)" height="120" width="180" />

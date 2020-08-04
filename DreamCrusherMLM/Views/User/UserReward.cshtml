@@ -35,9 +35,9 @@
                                                     <thead>
                                                         <tr>
                                                             <th>S No.</th>
-                                                            <th>Reward</th>
-                                                            <th>Status</th>
-                                                            <th>Qualify Date</th>
+                                                            <th>Recognition</th>
+                                                            <th>Badge</th>
+                                                            <th hidden="hidden">Qualify Date</th>
                                                             <th>Action</th>
                                                         </tr>
                                                     </thead>
@@ -56,7 +56,7 @@
                                                                             <br />@Item.RewardName
                                                                         </td>
                                                                         <td><label class="@Item.Contact">@Item.Status</label></td>
-                                                                        <td>@Item.QualifyDate</td>
+                                                                        <td hidden="hidden">@Item.QualifyDate</td>
                                                                         <td>
                                                                             @if (Item.Status == "Achieved")
                                                                             {
