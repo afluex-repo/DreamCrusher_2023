@@ -40,13 +40,23 @@
             
 
                 <li class="dropdown">
-                    <a href="#" data-toggle="dropdown"
-                       class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                        <img alt="image" src="@Session["ProfilePic"]" class="user-img-radious-style">
-                        <span class="d-sm-none d-lg-inline-block"></span>
-                    </a>
-                   
-                   
+                    @if (Session["ProfilePic"]=="")
+                    {
+                        <a href="#" data-toggle="dropdown"
+                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="../assets/img/users/user.png" class="user-img-radious-style">
+                            <span class="d-sm-none d-lg-inline-block"></span>
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="#" data-toggle="dropdown"
+                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                            <img alt="image" src="@Session["ProfilePic"]" class="user-img-radious-style">
+                            <span class="d-sm-none d-lg-inline-block"></span>
+                        </a>
+                    }
+
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-title">@Session["Name"]</div>
                         <div class="dropdown-title">  Joining -  (@Session["JoiningDate"])</div>
@@ -80,9 +90,22 @@
                 <ul class="sidebar-menu">
                     <li class="dropdown active" style="display: block;">
                         <div class="sidebar-profile">
-                            <div class="siderbar-profile-pic">
-                                <img src="@Session["ProfilePic"]" class="profile-img-circle box-center" alt="User Image">
-                            </div>
+                            @if (Session["ProfilePic"] == "")
+                            {
+                                <div class="siderbar-profile-pic">
+                                    <img src="../assets/img/users/user.png" class="profile-img-circle box-center" alt="User Image">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="siderbar-profile-pic">
+                                    <img src="@Session["ProfilePic"]" class="profile-img-circle box-center" alt="User Image">
+                                </div>
+                            }
+
+
+
+                            
                             <div class="siderbar-profile-details">
                                 <div class="siderbar-profile-name"> Dream Crusher </div>
                                 @*<div class="siderbar-profile-position">Manager </div>*@
