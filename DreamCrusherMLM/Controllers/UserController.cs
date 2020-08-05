@@ -111,6 +111,7 @@ namespace DreamCrusherMLM.Controllers
                 obj.LastName = ds.Tables[0].Rows[0]["LastName"].ToString();
                 obj.JoiningDate = ds.Tables[0].Rows[0]["JoiningDate"].ToString();
                 obj.Mobile = ds.Tables[0].Rows[0]["Mobile"].ToString();
+                obj.AdharNo = ds.Tables[0].Rows[0]["AdharNumber"].ToString();
                 obj.EmailId = ds.Tables[0].Rows[0]["Email"].ToString();
                 obj.SponsorId = ds.Tables[0].Rows[0]["SponsorId"].ToString();
                 obj.SponsorName = ds.Tables[0].Rows[0]["SponsorName"].ToString();
@@ -276,7 +277,7 @@ namespace DreamCrusherMLM.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB)
+        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB,string AdharNo)
         {
             Home obj = new Home();
 
@@ -293,6 +294,8 @@ namespace DreamCrusherMLM.Controllers
                 obj.Gender = Gender;
                 obj.PinCode = PinCode;
                 obj.DOB = DOB;
+                obj.DOB = string.IsNullOrEmpty(obj.DOB) ? null : Common.ConvertToSystemDate(obj.DOB, "dd/MM/yyyy");
+                obj.AdharNo = AdharNo;
                 obj.Leg = Leg;
                 string password = Common.GenerateRandom();
                 obj.Password = Crypto.Encrypt(password);

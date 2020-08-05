@@ -378,6 +378,7 @@ namespace DreamCrusherMLM.Controllers
                 obj.EmailId = ds.Tables[0].Rows[0]["Email"].ToString();
                 obj.AccountNumber = ds.Tables[0].Rows[0]["AccountNo"].ToString();
                 obj.BankName = ds.Tables[0].Rows[0]["BankName"].ToString();
+                obj.AdharNo = ds.Tables[0].Rows[0]["AdharNumber"].ToString();
                 obj.BankBranch = ds.Tables[0].Rows[0]["BankBranch"].ToString();
                 obj.IFSC = ds.Tables[0].Rows[0]["IFSC"].ToString();
                 obj.JoiningDate = ds.Tables[0].Rows[0]["JoiningDate"].ToString();

@@ -101,6 +101,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Adhar Number<span style="color: red">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @MaxLength = "10", @placeholder= "Adhar Number", @onkeypress = "return isNumberKey(event);" })
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col-md-4">
@@ -243,6 +251,12 @@
             $('#PinCode').focus();
             return false;
         }
+        if ($('#AdharNo').val() == '') {
+            $("#AdharNo").addClass('errortext');
+            $('#AdharNo').focus();
+            return false;
+        }
+
 
 
         return true;

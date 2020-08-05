@@ -1964,8 +1964,12 @@
     <Content Include="images\Printer.png" />
     <Content Include="images\process.gif" />
     <Content Include="images\ProfilePicture\1b08199b-6889-491b-b0a3-18e5358cfee1.jpg" />
+    <Content Include="images\ProfilePicture\1b9c20f2-7485-448f-8d39-4f3b91d07f86.jpg" />
     <Content Include="images\ProfilePicture\24ea7b20-05f3-4389-a950-029206fcf692.jpg" />
+    <Content Include="images\ProfilePicture\68107dd3-ee11-44a2-b9cb-da5cc61c7c44.jpg" />
     <Content Include="images\ProfilePicture\69fa6ced-f4f9-4647-9277-cbd3fc9411f5.jpg" />
+    <Content Include="images\ProfilePicture\990bc71f-d8bc-461f-8a5c-53b73956352f.jpg" />
+    <Content Include="images\ProfilePicture\a3cf3cc1-3241-4ee7-8875-ad2d2b3154c0.jpg" />
     <Content Include="images\ProfilePicture\b3e7ddcb-8957-41ad-a66c-b360dc0da54b.jpg" />
     <Content Include="images\ProfilePicture\noimage.jpeg" />
     <Content Include="images\RewardImages\AMBASSADOR.jpg" />
