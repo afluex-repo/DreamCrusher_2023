@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace DreamCrusherMLM.Models
 {
@@ -227,6 +224,22 @@ namespace DreamCrusherMLM.Models
                                     new SqlParameter("@Status", Status),
                                   };
             DataSet ds = DBHelper.ExecuteQuery("GetDirectList", para);
+            return ds;
+        }
+
+        public DataSet GetDirectListL2()
+        {
+
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                                    new SqlParameter("@Name", Name),
+                                    new SqlParameter("@FromDate", FromDate),
+                                    new SqlParameter("@ToDate", ToDate),
+                                    new SqlParameter("@FromActivationDate", FromActivationDate),
+                                    new SqlParameter("@ToActivationDate", ToActivationDate),
+                                    new SqlParameter("@Leg", Leg),
+                                    new SqlParameter("@Status", Status),
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("GetDirectListL2", para);
             return ds;
         }
 
@@ -622,7 +635,7 @@ namespace DreamCrusherMLM.Models
         }
 
         public DataSet GetBookingRequestList()
-        { 
+        {
             DataSet ds = DBHelper.ExecuteQuery("BookingRequestList");
             return ds;
         }

@@ -1,11 +1,8 @@
-﻿using System;
+﻿using DreamCrusherMLM.Filter;
+using DreamCrusherMLM.Models;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using DreamCrusherMLM.Models;
-using DreamCrusherMLM.Filter;
 
 namespace DreamCrusherMLM.Controllers
 {
@@ -25,6 +22,41 @@ namespace DreamCrusherMLM.Controllers
             List<Reports> lst = new List<Reports>();
             model.LoginId = Session["LoginId"].ToString();
             DataSet ds = model.GetDirectList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Reports obj = new Reports();
+                    obj.Mobile = r["Mobile"].ToString();
+                    obj.Email = r["Email"].ToString();
+                    obj.JoiningDate = r["JoiningDate"].ToString();
+                    obj.Leg = r["Leg"].ToString();
+                    obj.PermanentDate = (r["PermanentDate"].ToString());
+                    obj.Status = (r["Status"].ToString());
+                    obj.SponsorId = (r["LoginId"].ToString());
+                    obj.SponsorName = (r["Name"].ToString());
+                    obj.Package = (r["ProductName"].ToString());
+                    lst.Add(obj);
+                }
+                model.lstassociate = lst;
+
+            }
+            return View(model);
+        }
+
+
+        public ActionResult DirectListL2()
+        {
+            List<SelectListItem> AssociateStatus = Common.AssociateStatus();
+            ViewBag.ddlStatus = AssociateStatus;
+            List<SelectListItem> Leg = Common.Leg();
+            ViewBag.ddlleg = Leg;
+
+            Reports model = new Reports();
+            List<Reports> lst = new List<Reports>();
+            model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetDirectListL2();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -127,7 +159,7 @@ namespace DreamCrusherMLM.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult DownLineListBy(Reports model)
         {
-           
+
             List<Reports> lst = new List<Reports>();
             model.LoginId = Session["LoginId"].ToString();
             DataSet ds = model.GetDownlineList();

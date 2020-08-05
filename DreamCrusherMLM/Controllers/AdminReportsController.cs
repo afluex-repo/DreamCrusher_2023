@@ -1,13 +1,9 @@
-﻿using System;
+﻿using DreamCrusherMLM.Filter;
+using DreamCrusherMLM.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using DreamCrusherMLM.Models;
-using DreamCrusherMLM.Filter;
-using System.Web.UI.WebControls;
-using System.Web.UI;
 
 namespace DreamCrusherMLM.Controllers
 {
@@ -1370,7 +1366,7 @@ namespace DreamCrusherMLM.Controllers
             ViewBag.ddlReward = ddlReward;
             #endregion
 
-            
+
 
             return View(model);
         }
@@ -1385,21 +1381,21 @@ namespace DreamCrusherMLM.Controllers
             DataSet ds = model.RewardListForAchiever();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-               foreach (DataRow r in ds.Tables[0].Rows)
+                foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     Reports obj = new Reports();
-                          
+
                     obj.PK_RewardItemId = r["PK_UserProdRewardID"].ToString();
                     obj.RewardID = r["FK_RewardId"].ToString();
                     obj.Status = r["Status"].ToString();
                     obj.QualifyDate = r["QualifyDate"].ToString();
                     obj.LoginId = r["LoginId"].ToString();
                     obj.RewardName = r["RewardName"].ToString();
-                    obj.Name=  r["FirstName"].ToString();
+                    obj.Name = r["FirstName"].ToString();
 
                     lst1.Add(obj);
                 }
-                model.lstassociate= lst1;
+                model.lstassociate = lst1;
 
 
             }
@@ -1424,10 +1420,10 @@ namespace DreamCrusherMLM.Controllers
             ViewBag.ddlReward = ddlReward;
             #endregion
 
-            
+
             return View(model);
         }
-        public ActionResult ApprovePayment(string PK_RewardItemId, string Description, string ApprovedDate,string PaidDate)
+        public ActionResult ApprovePayment(string PK_RewardItemId, string Description, string ApprovedDate, string PaidDate)
         {
             string FormName = "";
             string Controller = "";
@@ -1533,7 +1529,7 @@ namespace DreamCrusherMLM.Controllers
             model.FromActivationDate = string.IsNullOrEmpty(model.FromActivationDate) ? null : Common.ConvertToSystemDate(model.FromActivationDate, "dd/MM/yyyy");
             model.ToActivationDate = string.IsNullOrEmpty(model.ToActivationDate) ? null : Common.ConvertToSystemDate(model.ToActivationDate, "dd/MM/yyyy");
 
-            DataSet ds = model.GetDirectList();
+            DataSet ds = model.GetDirectListL2();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
