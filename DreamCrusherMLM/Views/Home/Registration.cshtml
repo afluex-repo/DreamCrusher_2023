@@ -98,6 +98,11 @@
                                     <label>Pancard</label>
                                     @Html.TextBoxFor(m => m.PanCard, new { @class = "form-control", @Placeholder = "Pan Card", @Maxlength = "10", @onchange = "return validatepan(event);" })
                                 </div>
+                                <div class="form-group col-md-6 col-sm-12">
+                                    <label>Adhar No<sup style="color:red;font-size: 21px;">*</sup></label>
+                                    @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Placeholder = "Adhar No", @Maxlength = "12",  @onkeypress = "return isNumberKey(event);" })
+                                    @Html.ValidationMessageFor(m => m.AdharNo)
+                                 </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-sm-12">
                                     <label>Address</label>
@@ -315,6 +320,12 @@
             $('#DOB').focus();
             return false;
         }
+        if ($('#AdharNo').val() == '') {
+            $("#AdharNo").addClass('errortext');
+            $('#AdharNo').focus();
+            return false;
+        }
+
 
         $('#condition').click(function () {
             if ($(this).prop("checked")) {
@@ -345,6 +356,7 @@
         $("#Address").attr("disabled", "disabled");
         $("#DOB").attr("disabled", "disabled");
         $("#PinCode").attr("disabled", "disabled");
+        $("#AdharNo").attr("disabled", "disabled");
         $('#Confirm').hide();
         $('#Edit').show();
         $('#Register').show();
@@ -363,6 +375,7 @@
         $("#Address").attr("disabled", false);
         $("#DOB").attr("disabled", false);
         $("#PinCode").attr("disabled", false);
+        $("#AdharNo").attr("disabled", false);
         $('#Confirm').show();
         $('#Edit').hide();
         $('#Register').hide();
@@ -382,7 +395,7 @@
             url: "/Home/RegistrationAction",
             Type: "Get",
             DataType: "JSON",
-            data: { SponsorId: $("#SponsorId").val(), FirstName: $("#FirstName").val(), LastName: $("#LastName").val(), Email: $("#Email").val(), MobileNo: $("#MobileNo").val(), PanCard: $("#PanCard").val(), Address: $("#Address").val(), Gender: $("#Gender").val(), OTP: $("#OTP").val(), PinCode: $("#PinCode").val(), Leg: Leg, DOB: $("#DOB").val() },
+            data: { SponsorId: $("#SponsorId").val(), FirstName: $("#FirstName").val(), LastName: $("#LastName").val(), Email: $("#Email").val(), MobileNo: $("#MobileNo").val(), PanCard: $("#PanCard").val(), Address: $("#Address").val(), Gender: $("#Gender").val(), OTP: $("#OTP").val(), PinCode: $("#PinCode").val(), Leg: Leg, DOB: $("#DOB").val(), AdharNo: $("#AdharNo").val() },
             success: function (data) {
                 if (data.Response == "1") {
                     window.location.href = '@Url.Action("ConfirmRegistration", "Home")';

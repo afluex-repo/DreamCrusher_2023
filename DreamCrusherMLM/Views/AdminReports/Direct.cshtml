@@ -52,14 +52,14 @@
                                     To Date
                                     @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @placeholder = "To Joining Date" })
                                 </div>
-                                <div class="col-md-3">
+                                @*<div class="col-md-3">
                                     From Activation Date
                                     @Html.TextBoxFor(m => m.FromActivationDate, new { @class = "form-control", @placeholder = "From Activation Date" })
                                 </div>
                                 <div class="col-md-3">
                                     To Activation Date
                                     @Html.TextBoxFor(m => m.ToActivationDate, new { @class = "form-control", @placeholder = "To Activation Date" })
-                                </div>
+                                </div>*@
                                 <div class="col-md-3">
                                     Leg
                                     @Html.DropDownListFor(m => m.Leg, new SelectList(ViewBag.ddlleg, "Value", "Text"), new { @class = "form-control" })

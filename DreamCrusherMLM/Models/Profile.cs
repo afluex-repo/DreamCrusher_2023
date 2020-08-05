@@ -9,6 +9,8 @@ namespace DreamCrusherMLM.Models
 {
     public class Profile : Common
     {
+        public string AdharNo { get; set; }
+        public string DCMI { get; set; }
         public string ProfilePic { get; set; }
         public string EncryptLoginID { get; set; }
         public string EncryptPayoutNo { get; set; }
@@ -81,7 +83,8 @@ namespace DreamCrusherMLM.Models
                                              new SqlParameter("@City", City) ,
                                              new SqlParameter("@Gender", Gender) ,
                                               new SqlParameter("@PinCode", PinCode),
-                                               new SqlParameter("@BankHolderName", AccountHolder)
+                                               new SqlParameter("@BankHolderName", AccountHolder),
+                                                new SqlParameter("@AdharNo", AdharNo)
                                   };
             DataSet ds = DBHelper.ExecuteQuery("UpdateAssociateProfileByAdmin", para);
             return ds;

@@ -33,12 +33,43 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>First Name <span style="color:red">*</span></label>
-                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.FirstName)
+
+                                            @if (Model.LastName != "")
+                                            {
+
+
+                                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @disabled = "disabled" })
+                                            }
+                                            else
+                                            {
+
+                                                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.FirstName)
+                                            }
+
+
+
+
+
+
                                             <br />
                                             <label>Last Name</label>
-                                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
-                                            @Html.ValidationMessageFor(m => m.LastName)
+
+                                            @if (Model.LastName != "")
+                                            {
+
+                                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @disabled = "disabled" })
+                                            }
+                                            else
+                                            {
+
+
+                                                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.LastName)
+                                            }
+
+
+
                                             <br />
                                             <label>Mobile <span style="color:red">*</span></label>
                                             @Html.TextBoxFor(m => m.Mobile, new { @class = "form-control" })
@@ -93,6 +124,14 @@
                                             @*<input type ="text"  value="@item1.JoiningDate" disabled="disabled" class="form-control" />*@
                                         </div>
                                     </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-group">
+                                            <label>Adhar No</label>
+                                            @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @disabled = "disabled" })
+                                            @Html.ValidationMessageFor(m => m.AdharNo)
+                                            @*<input type ="text"  value="@item1.JoiningDate" disabled="disabled" class="form-control" />*@
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -101,7 +140,7 @@
                                             @if (Model.AccountNumber != "")
                                             {
 
-                                                @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control",@readonly="readonly" })
+                                                @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control", @disabled = "disabled" })
                                             }
                                             else
                                             {
@@ -120,7 +159,7 @@
 
                                             @if (Model.IFSC != "")
                                             {
-                                                @Html.TextBoxFor(m => m.IFSC, new { @class = "form-control",@readonly="readonly" })
+                                                @Html.TextBoxFor(m => m.IFSC, new { @class = "form-control", @disabled = "disabled" })
                                             }
                                             else
                                             {
@@ -143,7 +182,7 @@
                                             <label>Bank Name <span style="color:red">*</span></label>
                                            @if (Model.BankName != "")
                                            {
-                                            @Html.TextBoxFor(m => m.BankName, new { @class = "form-control",@readonly="readonly" })
+                                            @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @disabled = "disabled" })
                                            }
                                            else
                                            {
@@ -158,7 +197,7 @@
                                         <div class="form-group">
                                             <label>Bank Branch <span style="color:red">*</span></label>
                                             @if (Model.BankBranch != "")
-                                            { @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control",@readonly="readonly" })
+                                            { @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @disabled = "disabled" })
                                             }
                                             else
                                             {
