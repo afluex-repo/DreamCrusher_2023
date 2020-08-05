@@ -340,6 +340,12 @@
 
             $('#DOB').datepicker({
                 dateFormat: 'dd/mm/yy',
+
+                maxDate: 'today',
+                onSelect: function (dateText) {
+                    $sD = new Date(dateText);
+                    $("#DOB").datepicker('option', 'maxDate', min);
+                }
             });
 
         </script>
