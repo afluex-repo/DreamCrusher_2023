@@ -776,5 +776,19 @@ namespace DreamCrusherMLM.Controllers
             return RedirectToAction("UserProductReward");
         }
         #endregion
+
+        public ActionResult AcceptanceForm(DashBoard model)
+        {
+            model.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds = model.GetAssociateDashboard();
+            ViewBag.LoginId = ds.Tables[3].Rows[0]["LoginId"].ToString();
+            ViewBag.DisplayName = ds.Tables[3].Rows[0]["Name"].ToString();
+            ViewBag.JoiningDate = ds.Tables[3].Rows[0]["JoiningDate"].ToString();
+            ViewBag.Address = ds.Tables[3].Rows[0]["Address"].ToString();
+            ViewBag.SponsorId = ds.Tables[3].Rows[0]["SponsorId"].ToString();
+            ViewBag.SponsorName = ds.Tables[3].Rows[0]["SponsorName"].ToString();
+            ViewBag.Mobile = ds.Tables[3].Rows[0]["Mobile"].ToString();
+            return View(model);
+        }
     }
 }

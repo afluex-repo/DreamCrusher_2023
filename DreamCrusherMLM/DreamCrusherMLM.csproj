@@ -131,6 +131,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="ApproveKitRequest.aspx" />
+    <Content Include="assets\AcceptanceCSS\css\bootstrap.min.css" />
+    <Content Include="assets\AcceptanceCSS\css\style.css" />
+    <Content Include="assets\AcceptanceCSS\images\logo.png" />
+    <Content Include="assets\AcceptanceCSS\js\bootstrap.min.js" />
     <Content Include="assets\bundles\amcharts4\animated.js" />
     <Content Include="assets\bundles\amcharts4\charts.js" />
     <Content Include="assets\bundles\amcharts4\core.js" />
@@ -2565,6 +2569,7 @@
     <Content Include="Views\Home\HighestEarnerClub.cshtml" />
     <Content Include="Views\AdminReports\DirectLevelTwo.cshtml" />
     <Content Include="Views\Downline\DirectListL2.cshtml" />
+    <Content Include="Views\User\AcceptanceForm.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
