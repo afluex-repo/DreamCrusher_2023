@@ -40,6 +40,9 @@ namespace DreamCrusherMLM.Controllers
                ViewBag.CarryLeft = ds.Tables[2].Rows[0]["CarryLeft"].ToString();
                ViewBag.CarryRight = ds.Tables[2].Rows[0]["CarryRight"].ToString();
 
+                ViewBag.LoginId = ds.Tables[3].Rows[0]["LoginId"].ToString();
+                ViewBag.DisplayName = ds.Tables[3].Rows[0]["Name"].ToString();
+                ViewBag.JoiningDate = ds.Tables[3].Rows[0]["JoiningDate"].ToString();
                 Session["ProfilePic"] = ds.Tables[3].Rows[0]["ProfilePic"].ToString();
                 Session["Name"] = ds.Tables[3].Rows[0]["Name"].ToString();
                 Session["JoiningDate"] = ds.Tables[3].Rows[0]["JoiningDate"].ToString();
@@ -277,7 +280,7 @@ namespace DreamCrusherMLM.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB,string AdharNo)
+        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB,string AdharNo,string UnderPlaceId)
         {
             Home obj = new Home();
 
@@ -294,6 +297,7 @@ namespace DreamCrusherMLM.Controllers
                 obj.Gender = Gender;
                 obj.PinCode = PinCode;
                 obj.DOB = DOB;
+                obj.UnderPlaceId = UnderPlaceId;
                 obj.DOB = string.IsNullOrEmpty(obj.DOB) ? null : Common.ConvertToSystemDate(obj.DOB, "dd/MM/yyyy");
                 obj.AdharNo = AdharNo;
                 obj.Leg = Leg;

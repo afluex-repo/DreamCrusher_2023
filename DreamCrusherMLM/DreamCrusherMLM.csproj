@@ -1977,6 +1977,8 @@
     <Content Include="images\RewardImages\CROWNDIAMOND.jpg" />
     <Content Include="images\RewardImages\DIAMOND.jpg" />
     <Content Include="images\RewardImages\EMERALD.jpg" />
+    <Content Include="images\RewardImages\favicon.png" />
+    <Content Include="images\RewardImages\footerlogo.png" />
     <Content Include="images\RewardImages\Gold.jpg" />
     <Content Include="images\RewardImages\PLATINUM.jpg" />
     <Content Include="images\RewardImages\ROYALDIAMOND.jpg" />

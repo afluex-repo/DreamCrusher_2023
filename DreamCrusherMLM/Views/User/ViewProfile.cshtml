@@ -92,7 +92,7 @@
                                 <div class="row">
                                     <div class="col-lg-6">
                                         <div class="form-group">
-                                            <label>Sponsor Id</label>
+                                            <label>Spill Id</label>
                                             @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control", @disabled = "disabled" })
                                             @Html.ValidationMessageFor(m => m.SponsorId)
                                             @*<input type ="text"  value="@item1.SponsorId" disabled="disabled" class="form-control" />*@
@@ -127,7 +127,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Adhar No</label>
-                                            @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @disabled = "disabled" })
+                                            @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
                                             @Html.ValidationMessageFor(m => m.AdharNo)
                                             @*<input type ="text"  value="@item1.JoiningDate" disabled="disabled" class="form-control" />*@
                                         </div>
@@ -264,6 +264,17 @@
                         $('#BankBranch').focus();
                         return false;
                     }
+                    return true;
+                }
+
+
+                function isNumberKey(evt) {
+
+                    var charCode = (evt.which) ? evt.which : event.keyCode;
+                    if (charCode != 46 && charCode > 31
+                      && (charCode < 48 || charCode > 57))
+                        return false;
+
                     return true;
                 }
             </script>

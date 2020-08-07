@@ -12,7 +12,7 @@
                 <div class="row">
                     <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
                         <div class="section-header-breadcrumb-content">
-                            <h1>User Reward</h1>
+                            <h1>Recognition</h1>
                         </div>
                     </div>
 
@@ -35,10 +35,10 @@
                                                     <thead>
                                                         <tr>
                                                             <th>S No.</th>
-                                                            <th>Recognition</th>
-                                                            <th>Badge</th>
+                                                            <th>Recognition Badge</th>
+                                                            <th>Status</th>
                                                             <th hidden="hidden">Qualify Date</th>
-                                                            <th>Action</th>
+                                                            <th hidden="hidden">Action</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -57,7 +57,7 @@
                                                                         </td>
                                                                         <td><label class="@Item.Contact">@Item.Status</label></td>
                                                                         <td hidden="hidden">@Item.QualifyDate</td>
-                                                                        <td>
+                                                                        <td hidden="hidden">
                                                                             @if (Item.Status == "Achieved")
                                                                             {
                                                                                 <a class="btn btn-info btn-sm" href="/User/ClaimReward/@Item.PK_RewardItemId" onclick="return confirm('Are you sure you wish to claim this Award?');">Claim</a>

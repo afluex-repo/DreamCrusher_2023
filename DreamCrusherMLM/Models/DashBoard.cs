@@ -9,6 +9,7 @@ namespace DreamCrusherMLM.Models
 {
     public class DashBoard:Common
     {
+        public string JoiningDate { get; set; }
         public string Total { get; set; }
 
         public string Status { get; set; }

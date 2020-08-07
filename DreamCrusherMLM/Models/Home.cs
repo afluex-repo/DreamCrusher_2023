@@ -36,6 +36,8 @@ namespace DreamCrusherMLM.Models
     }
     public class Home
     {
+        public string UnderPlaceName { get; set; }
+        public string UnderPlaceId { get; set; }
         public string Password { get; set; }
         public string CustomerId { get; set; }
         public string Name { get; set; }
@@ -115,7 +117,8 @@ namespace DreamCrusherMLM.Models
                                      new SqlParameter("@Password",Password),
                                        new SqlParameter("@DOB",DOB),
                                         new SqlParameter("@AdharNo",AdharNo)
-
+,
+                                         new SqlParameter("@UnderPlaceId",UnderPlaceId)
                                    };
             DataSet ds = DBHelper.ExecuteQuery("Registration", para);
             return ds;

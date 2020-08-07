@@ -56,7 +56,8 @@ namespace DreamCrusherMLM.Models
                                       new SqlParameter("@BankName", BankName) ,
                                       new SqlParameter("@BankBranch", BankBranch) ,
                                       new SqlParameter("@IFSC", IFSC),
-                                      new SqlParameter("@ProfilePic", ProfilePicture)
+                                      new SqlParameter("@ProfilePic", ProfilePicture),
+                                      new SqlParameter("@AdharNo",AdharNo)
                                   };
             DataSet ds = DBHelper.ExecuteQuery("UpdateProfile", para);
             return ds;
