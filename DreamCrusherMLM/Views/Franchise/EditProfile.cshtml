@@ -39,19 +39,19 @@
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
-                            Sponsor ID <span style="color: red">*</span>
-                            @Html.TextBoxFor(m => m.ReferBy, new { @class = "form-control", @Placeholder = "Sponsor Login ID", @onchange = "return getsponsordetails();", @readonly = "readonly" })
+                            Spill ID <span style="color: red">*</span>
+                            @Html.TextBoxFor(m => m.ReferBy, new { @class = "form-control", @Placeholder = "Spill Login ID", @onchange = "return getsponsordetails();", @readonly = "readonly" })
                             @Html.HiddenFor(m => m.PK_FranchiseID)
                             @Html.HiddenFor(m => m.FranchiseType)
                             
                         </div>
                         <div class="col-md-6 form-group">
-                            Sponsor ID <span style="color: red">*</span>
-                            @Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control", @Placeholder = "Sponsor Name", @readonly = "readonly" })
+                            Spill Name <span style="color: red">*</span>
+                            @Html.TextBoxFor(m => m.DisplayName, new { @class = "form-control", @Placeholder = "Spill Name", @readonly = "readonly" })
                         </div>
                         <div class="col-md-6 form-group">
                             Franchise Type <span style="color: red">*</span>
-                            @Html.TextBoxFor(m => m.FranchiseTypeName, new { @class = "form-control", @Placeholder = "Sponsor Name", @readonly = "readonly" })
+                            @Html.TextBoxFor(m => m.FranchiseTypeName, new { @class = "form-control", @Placeholder = "Spill Name", @readonly = "readonly" })
                         </div>
                         <div class="col-md-6 form-group">
                             Firm Name <span style="color: red">*</span>

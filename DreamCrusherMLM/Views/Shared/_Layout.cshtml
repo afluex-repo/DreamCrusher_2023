@@ -7,7 +7,7 @@
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>DreamCrusher - User Dashboard Template</title>
+    <title>Dream Crushers</title>
     <!-- General CSS Files -->
     <link rel="stylesheet" href="../assets/css/app.min.css">
     <!-- Template CSS -->
@@ -58,7 +58,7 @@
                     }
 
                     <div class="dropdown-menu dropdown-menu-right">
-                        <div class="dropdown-title">@Session["Name"]</div>
+                        <div class="dropdown-title">@Session["Name1"] </div>
                         <div class="dropdown-title">  Joining -  (@Session["JoiningDate"])</div>
                         <a href="/User/ViewProfile" class="dropdown-item has-icon">
                             <i class="far fa-user"></i> Profile
@@ -84,7 +84,7 @@
                 <div class="sidebar-brand">
                     <a href="../../User/AssociateDashBoard">
                         <img alt="image" src="../WebsiteCss/images/favicon.png" class="header-logo" />
-                        <span class="logo-name">Dream Crusher</span>
+                        <span class="logo-name">Dream Crushers</span>
                     </a>
                 </div>
                 <ul class="sidebar-menu">
@@ -107,7 +107,7 @@
 
                             
                             <div class="siderbar-profile-details">
-                                <div class="siderbar-profile-name"> @Session["Name"] </div>
+                                <div class="siderbar-profile-name"> @Session["Name1"] </div>
                                 @*<div class="siderbar-profile-position">Manager </div>*@
                             </div>
                           
@@ -125,7 +125,7 @@
                             <li><a class="nav-link" href="/User/ViewProfile">View Profile</a></li>
                             <li><a class="nav-link" href="/KYCDocuments/KYCDocuments">Upload KYC</a></li>
                             <li><a class="nav-link" href="/Profile/ChangePassword">Change Password</a></li>
-                            <li><a class="nav-link" href="/User/AcceptanceForm">Acceptance Form</a></li>
+                            <li><a class="nav-link" target="_blank" href="/User/AcceptanceForm">Acceptance Form</a></li>
                         </ul>
                     </li>
 

@@ -45,6 +45,7 @@ namespace DreamCrusherMLM.Controllers
                 ViewBag.JoiningDate = ds.Tables[3].Rows[0]["JoiningDate"].ToString();
                 Session["ProfilePic"] = ds.Tables[3].Rows[0]["ProfilePic"].ToString();
                 Session["Name"] = ds.Tables[3].Rows[0]["Name"].ToString();
+                Session["Name1"] = ds.Tables[3].Rows[0]["Name"].ToString();
                 Session["JoiningDate"] = ds.Tables[3].Rows[0]["JoiningDate"].ToString();
 
                 //ViewBag.ProductPaidBusinessLeft = ds.Tables[3].Rows[0]["PaidBusinessLeft"].ToString();

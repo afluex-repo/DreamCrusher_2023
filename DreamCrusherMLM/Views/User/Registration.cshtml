@@ -25,7 +25,7 @@
                         @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control", @onchange = "getsponsordetails(this);" })
                     </div>
                     <div class="col-md-6 form-group">
-                        Sponsor Name <span style="color: red">*</span>
+                        Spill Name <span style="color: red">*</span>
                         @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @readonly = "readonly" })
                     </div>
                 </div>
@@ -43,7 +43,7 @@
                         @Html.TextBoxFor(m => m.UnderPlaceId, new { @class = "form-control", @Placeholder = "Under Place Id", @onchange = "getsponsordetails1(this);" })
                     </div>
                     <div class="col-md-6 form-group">
-                        Name
+                        Under Place Name
                         @Html.TextBoxFor(m => m.UnderPlaceName, new { @class = "form-control", @Placeholder = "Name" })
                     </div>
                 </div>
@@ -120,6 +120,11 @@
 
                 </div>
                 <br />
+                <p>
+                    Note :- To Complete the Registration process please follow below steps.<br />
+                    Step 1 - Fill all the required information and click on <b>Confirm</b> button to verify all entered data are correct.<br />
+                    Step 2 - Click on <b>Regsiter</b> button to complete the registration process.
+                </p>
                 <p style="color: red">@TempData["Registration"] </p>
             </div>
         </div>
@@ -388,12 +393,7 @@
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: "-60:+0" ,
-        maxDate: 'today',
-        onSelect: function (dateText) {
-            $sD = new Date(dateText);
-            $("#DOB").datepicker('option', 'maxDate', min);
-        }
+        yearRange: "-60:+0" 
     });
 
 </script>
