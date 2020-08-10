@@ -112,10 +112,11 @@
                         @* @Html.CheckBoxFor(m => m.condition, new { @class = "form-control"}) &nbsp;<label></label>*@
                     </div>
                 </div>
-                <p id="note" style="display:none">
-                    Note :- To Complete the Registration process please follow below steps.<br />
-                    Step 1 - Fill all the required information and click on <b>Confirm</b> button to verify all entered data are correct.<br />
-                    Step 2 - Click on <b>Regsiter</b> button to complete the registration process.
+               
+              <p id="note" class="bg-warning" style="display:none;padding: 5px 20px; border-left: 5px solid #686868;">
+                    <b class="font-bold"> Note :- </b>To Complete the Registration process please follow below steps.<br />
+                    <b class="font-bold"> Step 1 -</b> Fill all the required information and click on <b class="font-bold">Confirm</b> button to verify all entered data are correct.<br />  
+                    <b class="font-bold"> Step 2 -</b> Click on <b class="font-bold">Regsiter</b> button to complete the registration process.
                 </p>
                 <div class="col-md-6 form-group">
                     <input type="button" id="Confirm" onclick="return confirmregistration();" class="btn btn-success" name="Confirm" value="Confirm">
@@ -124,8 +125,7 @@
                     <br />
 
                 </div>
-                <br />
-               
+                <br /> 
                 <p style="color: red">@TempData["Registration"] </p>
             </div>
         </div>
@@ -317,7 +317,8 @@
             url: "/User/RegistrationAction",
             Type: "Get",
             DataType: "JSON",
-            data: { SponsorId: $("#SponsorId").val(), FirstName: $("#FirstName").val(), LastName: $("#LastName").val(), Email: $("#Email").val(), MobileNo: $("#MobileNo").val(), PanCard: $("#PanCard").val(), Address: $("#Address").val(), Gender: $("#Gender").val(), OTP: $("#OTP").val(), PinCode: $("#PinCode").val(), Leg: Leg, DOB: $("#DOB").val(), AdharNo: $("#AdharNo").val(),
+            data: {
+                SponsorId: $("#SponsorId").val(), FirstName: $("#FirstName").val(), LastName: $("#LastName").val(), Email: $("#Email").val(), MobileNo: $("#MobileNo").val(), PanCard: $("#PanCard").val(), Address: $("#Address").val(), Gender: $("#Gender").val(), OTP: $("#OTP").val(), PinCode: $("#PinCode").val(), Leg: Leg, DOB: $("#DOB").val(), AdharNo: $("#AdharNo").val(),
                 UnderPlaceId: $("#UnderPlaceId").val()
             },
             success: function (data) {
@@ -408,7 +409,7 @@
         dateFormat: 'dd/mm/yy',
         changeMonth: true,
         changeYear: true,
-        yearRange: "-60:+0" 
+        yearRange: "-60:+0"
     });
 
 </script>
