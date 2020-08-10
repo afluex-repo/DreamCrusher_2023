@@ -1,28 +1,15 @@
-﻿
-using DreamCrusherMLM.DAL;
-using DreamCrusherMLM.Models.DAL;
+﻿using DreamCrusherMLM.DAL;
+using DreamCrusherMLM.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Web.Script.Services;
-using System.Web.Services;
+using System.Web.Mvc;
 
-namespace DreamCrusherMLM.Models.WebService
+namespace DreamCrusherMLM.Controllers
 {
-    /// <summary>
-    /// Summary description for AutoComplete1
-    /// </summary>
-    /// </summary>
-    [WebService(Namespace = "http://tempuri.net/")]
-    [WebServiceBinding(ConformsTo = WsiProfiles.BasicProfile1_1)]
-    [System.ComponentModel.ToolboxItem(false)]
-    // To allow this Web Service to be called from script, using ASP.NET AJAX, uncomment the following line. 
-    [System.Web.Script.Services.ScriptService]
-    public class Agent : System.Web.Services.WebService
+    public class AgentServicesController : UserBaseController
     {
-        [WebMethod(EnableSession = true)]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public List<AgentModel> GetGeneology(string memID)
+        public JsonResult GetGeneology(string memID)
         {
             AgentModel model = new AgentModel();
             model.Fk_UserId = memID;
@@ -43,7 +30,7 @@ namespace DreamCrusherMLM.Models.WebService
                     CssClass = dr["cssStatus"].ToString(),
                     SelfBusiness = dr["PackageName"].ToString(),
                     Href = dr["href"].ToString(),
-                    JoiningDate = string.IsNullOrEmpty(dr["ActivationDate"].ToString()) ? "N/A" : Convert.ToDateTime(dr["ActivationDate"]).ToString("dd-MMM, yyyy"),
+                    JoiningDate = string.IsNullOrEmpty(dr["JoiningDate"].ToString()) ? "N/A" : Convert.ToDateTime(dr["JoiningDate"]).ToString("dd-MMM, yyyy"),
                     Spillby = dr["Spillby"].ToString(),
                     AllLeg1 = dr["AllLeg1"].ToString(),
                     AllLeg2 = dr["AllLeg2"].ToString(),
@@ -77,14 +64,11 @@ namespace DreamCrusherMLM.Models.WebService
 
 
             }
-            return tree;
+            return Json(tree, JsonRequestBehavior.AllowGet);
 
         }
 
-
-        [WebMethod(EnableSession = true)]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public List<AgentModel> GetGeneologyForAdmin(string memID)
+        public JsonResult GetGeneologyForAdmin(string memID)
         {
             AgentModel model = new AgentModel();
             model.Fk_UserId = memID;
@@ -140,13 +124,11 @@ namespace DreamCrusherMLM.Models.WebService
 
 
             }
-            return tree;
+            return Json(tree, JsonRequestBehavior.AllowGet);
 
         }
 
-        [WebMethod(EnableSession = true)]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public List<AgentModel> GetUserFirst(string memID)
+        public JsonResult GetUserFirst(string memID)
         {
             AgentModel model = new AgentModel();
             model.Fk_UserId = memID;
@@ -194,12 +176,10 @@ namespace DreamCrusherMLM.Models.WebService
                 List.Add(model);
             }
 
-            return List;
+            return Json(List, JsonRequestBehavior.AllowGet);
         }
 
-        [WebMethod(EnableSession = true)]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public List<AgentModel> GetUserFirstForAdmin(string memID)
+        public JsonResult GetUserFirstForAdmin(string memID)
         {
             AgentModel model = new AgentModel();
             model.Fk_UserId = memID;
@@ -247,20 +227,18 @@ namespace DreamCrusherMLM.Models.WebService
                 List.Add(model);
             }
 
-            return List;
+            return Json(List, JsonRequestBehavior.AllowGet);
         }
 
-        [WebMethod(EnableSession = true)]
-        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
-        public List<string> SearchCustomersByLoginId2(string prefix)
+        public JsonResult SearchCustomersByLoginId2(string prefix)
         {
             List<string> list = new List<string>();
             if (Session["Pk_AdminId"] != null)
             {
                 int headId = 1;
-                string qry = "Select LoginId,Pk_UserId as MemberID from tbluserlogin Where LoginID = '" + prefix + "'";
-                ReturnData obj = new ReturnData();
-                DataTable dt = obj.GetQueryData(qry);
+                //string qry = "Select LoginId,Pk_UserId as MemberID from tbluserlogin Where LoginID = '" + prefix + "'";
+                Models.DAL.ReturnData obj = new Models.DAL.ReturnData();
+                DataTable dt = obj.GetUserLoginDetailByLoginId(prefix);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -289,9 +267,9 @@ namespace DreamCrusherMLM.Models.WebService
             else if (Session["Pk_UserId"] != null)
             {
                 int headId = Convert.ToInt32(Session["Pk_UserId"].ToString());
-                string qry = "Select LoginId,Pk_UserId as MemberID from tbluserlogin Where LoginID = '" + prefix + "'";
-                ReturnData obj = new ReturnData();
-                DataTable dt = obj.GetQueryData(qry);
+                //string qry = "Select LoginId,Pk_UserId as MemberID from tbluserlogin Where LoginID = '" + prefix + "'";
+                Models.DAL.ReturnData obj = new Models.DAL.ReturnData();
+                DataTable dt = obj.GetUserLoginDetailByLoginId(prefix);
 
                 if (dt.Rows.Count > 0)
                 {
@@ -320,12 +298,7 @@ namespace DreamCrusherMLM.Models.WebService
             {
                 list.Add(string.Format("{0}.{1}", "Please Login First", "0"));
             }
-            return list;
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
     }
 }

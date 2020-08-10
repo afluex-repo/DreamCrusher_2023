@@ -656,7 +656,7 @@
     $("a").click(function () {
         $("a").popover('hide');
     });
-    function openPopup(obj, item1, item2, item3, item4, item5, JoiningDate, ProductName, AllLeg1, AllLeg2, PermanentLeg1, PermanentLeg2, InactiveLeft, InactiveRight, PCountLeg1, PCountLeg2, PaidLeg1, PaidLeg2, BalanceLeft, BalanceRight, Profilepic, ActivationDate, AllBusinessLeft, AllBusinessRight, ProductRightBusiness, ProductLeftBusiness) {
+    function openPopup(obj, cssclaa, item1, item2, item3, item4, item5, JoiningDate, ProductName, AllLeg1, AllLeg2, PermanentLeg1, PermanentLeg2, InactiveLeft, InactiveRight, PCountLeg1, PCountLeg2, PaidLeg1, PaidLeg2, BalanceLeft, BalanceRight, Profilepic, ActivationDate, AllBusinessLeft, AllBusinessRight, ProductRightBusiness, ProductLeftBusiness) {
 
         var loginid = 'LoginId - ' + ' ' + item2;
         var JoiningDate = 'JoiningDate - ' + ' ' + JoiningDate;
@@ -669,12 +669,23 @@
         $("#lblJoiningDate").html(JoiningDate);
         $("#lblProductName").html(ProductName);
         $("#lblupgradedate").html(ActivationDate);
-        if (ProductName == "No Package") {
-            $("#lblstatus").html('Status - InActive');
-        }
-        else {
+
+
+        if (cssclaa == "active-member") {
             $("#lblstatus").html('Status - Active');
         }
+        else if (cssclaa == "block-member") {
+            $("#lblstatus").html('Status - Block');
+        }
+        else if (cssclaa == "inactive-member") {
+            $("#lblstatus").html('Status - InActive');
+        }
+        //if (ProductName == "No Package") {
+        //    $("#lblstatus").html('Status - InActive');
+        //}
+        //else {
+        //    $("#lblstatus").html('Status - Active');
+        //}
 
 
         $(".TotalMemberLeft").html(AllLeg1);
@@ -848,7 +859,6 @@
     $(window).on("load", function () {
 
         var id = $("#firtsMemberID").val();
-        console.log('memid',id)
         GetDataFirst(id);
         GetData(id);
 
@@ -857,19 +867,19 @@
     function GetData(id) {
         //
         $.ajax({
-            type: "POST",
-            url: "../../Models/WebService/AgentServices.asmx/GetGeneology",
-            data: '{memID: ' + id + '}',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            method: "GET",
+            url: window.location.origin + "/AgentServices/GetGeneology?memID=" + id,
+            //data: '{memID: ' + id + '}',
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "json",
             success: OnSuccess,
             failure: function (response) {
-                console.log(response)
-                alert("Failed: " + response.d);
+                console.log("Failed: " + response);
+                console.log(response);
             },
             error: function (response) {
-                console.log(response)
-                alert("Error: " + response.d);
+                console.log("Error: " + response);
+                console.log(response);
             }
         });
 
@@ -881,7 +891,7 @@
             var freeBlock = "";
             var freeBlockL = "";
             var freeBlockR = "";
-            var model = response.d;
+            var model = response;
             if (!$.trim(model)) {
                 $(".alert-warning").show();
                 $("#lblWarning").text("No Member Found...For this Associate");
@@ -895,12 +905,12 @@
                     $('#alertbox .alert').hide(500, 0).slideUp(1500, function () {
                         $('#alertbox .alert').slideUp(500);
                     });
-                }, 2000); 
+                }, 2000);
             }
-            else { 
+            else {
                 var $child = "";
                 var level = 0;
-                $.each(response.d, function (i, k) {
+                $.each(response, function (i, k) {
                     level++;
                 });
 
@@ -942,7 +952,7 @@
                         if (id != '-1') {
 
                             child = " <li id='level" + i + "'><a data-toggle='popover' id='levelLink" + i + "' href='" + item1.Href + "' class='from " + cssclass + " rounded-circle' " +
-                                                      " onmouseover='openPopup(this," + item1.Fk_UserId + "," + '"' + item1.LoginId + '"' + ", " + '"' + item1.MemberName + '"' + "," + '"' + item1.Leg + '"' + "," + '"' + item1.ParentLoginId + '"' + "," + '"' + item1.JoiningDate + '"' + "," + '"' + item1.ProductName + '"' + "," + '"' + item1.AllLeg1 + '"' + "," + '"' + item1.AllLeg2 + '"' + "," + '"' + item1.PermanentLeg1 + '"' + "," + '"' + item1.PermanentLeg2 + '"' + "," + '"' + item1.InactiveLeft + '"' + "," + '"' + item1.InactiveRight + '"' + "," + '"' + item1.PCountLeg1 + '"' + "," + '"' + item1.PCountLeg2 + '"' + "," + '"' + item1.PaidLeg1 + '"' + "," + '"' + item1.PaidLeg2 + '"' + "," + '"' + item1.BalanceLeft + '"' + "," + '"' + item1.BalanceRight + '"' + "," + '"' + item1.ProfilePic + '"' + "," + '"' + item1.ActivationDate + '"' + "," + '"' + item1.AllBusinessLeft + '"' + "," + '"' + item1.AllBusinessRight + '"' + "," + '"' + item1.ProductRightBusiness + '"' + "," + '"' + item1.ProductLeftBusiness + '"' + ")' " +
+                                                      " onmouseover='openPopup(this," + '"' + cssclaa + '"' + "," + item1.Fk_UserId + "," + '"' + item1.LoginId + '"' + ", " + '"' + item1.MemberName + '"' + "," + '"' + item1.Leg + '"' + "," + '"' + item1.ParentLoginId + '"' + "," + '"' + item1.JoiningDate + '"' + "," + '"' + item1.ProductName + '"' + "," + '"' + item1.AllLeg1 + '"' + "," + '"' + item1.AllLeg2 + '"' + "," + '"' + item1.PermanentLeg1 + '"' + "," + '"' + item1.PermanentLeg2 + '"' + "," + '"' + item1.InactiveLeft + '"' + "," + '"' + item1.InactiveRight + '"' + "," + '"' + item1.PCountLeg1 + '"' + "," + '"' + item1.PCountLeg2 + '"' + "," + '"' + item1.PaidLeg1 + '"' + "," + '"' + item1.PaidLeg2 + '"' + "," + '"' + item1.BalanceLeft + '"' + "," + '"' + item1.BalanceRight + '"' + "," + '"' + item1.ProfilePic + '"' + "," + '"' + item1.ActivationDate + '"' + "," + '"' + item1.AllBusinessLeft + '"' + "," + '"' + item1.AllBusinessRight + '"' + "," + '"' + item1.ProductRightBusiness + '"' + "," + '"' + item1.ProductLeftBusiness + '"' + ")' " +
                                                       " onmouseout='closePopup(this)' href='#' " + clickOption + " >" +
 
                                                       "<div class='outer-ring " + cssclass + " rounded-circle'><div class='member-img " + cssclass + " rounded-circle'><i class='" + cssclass + " rounded-circle '></i></div></div><span class='name member-name'>" +
@@ -963,7 +973,7 @@
                     else {
                         if (id != '-1') {
                             child = " <li id='level" + i + "'><a data-toggle='popover' id='levelLink" + i + "' href='" + item1.Href + "' class='from " + cssclass + " rounded-circle' " +
-                                                      " onmouseover='openPopup(this," + item1.Fk_UserId + "," + '"' + item1.LoginId + '"' + ", " + '"' + item1.MemberName + '"' + "," + '"' + item1.Leg + '"' + "," + '"' + item1.ParentLoginId + '"' + "," + '"' + item1.JoiningDate + '"' + "," + '"' + item1.ProductName + '"' + "," + '"' + item1.AllLeg1 + '"' + "," + '"' + item1.AllLeg2 + '"' + "," + '"' + item1.PermanentLeg1 + '"' + "," + '"' + item1.PermanentLeg2 + '"' + "," + '"' + item1.InactiveLeft + '"' + "," + '"' + item1.InactiveRight + '"' + "," + '"' + item1.PCountLeg1 + '"' + "," + '"' + item1.PCountLeg2 + '"' + "," + '"' + item1.PaidLeg1 + '"' + "," + '"' + item1.PaidLeg2 + '"' + "," + '"' + item1.BalanceLeft + '"' + "," + '"' + item1.BalanceRight + '"' + "," + '"' + item1.ProfilePic + '"' + "," + '"' + item1.ActivationDate + '"' + "," + '"' + item1.AllBusinessLeft + '"' + "," + '"' + item1.AllBusinessRight + '"' + "," + '"' + item1.ProductRightBusiness + '"' + "," + '"' + item1.ProductLeftBusiness + '"' + ")' " +
+                                                      " onmouseover='openPopup(this," + '"' + cssclaa + '"' + "," + item1.Fk_UserId + "," + '"' + item1.LoginId + '"' + ", " + '"' + item1.MemberName + '"' + "," + '"' + item1.Leg + '"' + "," + '"' + item1.ParentLoginId + '"' + "," + '"' + item1.JoiningDate + '"' + "," + '"' + item1.ProductName + '"' + "," + '"' + item1.AllLeg1 + '"' + "," + '"' + item1.AllLeg2 + '"' + "," + '"' + item1.PermanentLeg1 + '"' + "," + '"' + item1.PermanentLeg2 + '"' + "," + '"' + item1.InactiveLeft + '"' + "," + '"' + item1.InactiveRight + '"' + "," + '"' + item1.PCountLeg1 + '"' + "," + '"' + item1.PCountLeg2 + '"' + "," + '"' + item1.PaidLeg1 + '"' + "," + '"' + item1.PaidLeg2 + '"' + "," + '"' + item1.BalanceLeft + '"' + "," + '"' + item1.BalanceRight + '"' + "," + '"' + item1.ProfilePic + '"' + "," + '"' + item1.ActivationDate + '"' + "," + '"' + item1.AllBusinessLeft + '"' + "," + '"' + item1.AllBusinessRight + '"' + "," + '"' + item1.ProductRightBusiness + '"' + "," + '"' + item1.ProductLeftBusiness + '"' + ")' " +
                                                       " onmouseout='closePopup(this)' href='#' " + clickOption + " >" +
                                                       "<div class='outer-ring " + cssclass + " rounded-circle'><div class='member-img " + cssclass + " rounded-circle'><i class='" + cssclass + " rounded-circle'></i></div></div><span class='name member-name'>" +
                                                       " " + item1.LoginId + "</span> <span class='member-join-time'> " + item1.MemberName + "</span>" +
@@ -990,13 +1000,13 @@
                     if (winWidth > 766) {
                         if (id != null) {
                             $.ajax({
-                                type: "POST",
-                                url: "../../Models/WebService/AgentServices.asmx/GetGeneology",
-                                data: '{memID: ' + id + '}',
-                                contentType: "application/json; charset=utf-8",
-                                dataType: "json",
+                                method: "GET",
+                                url: window.location.origin + "/AgentServices/GetGeneology?memID=" + id,
+                                //data: '{memID: ' + id + '}',
+                                //contentType: "application/json; charset=utf-8",
+                                //dataType: "json",
                                 success: function (response2) {
-                                    var model2 = response2.d;
+                                    var model2 = response2;
                                     var ul2 = $("<ul></ul>");
                                     var level2 = 0;
                                     if (!$.trim(model2)) {
@@ -1013,7 +1023,7 @@
                                         $("#level" + i).append(ul2);
                                     }
                                     else {
-                                        $.each(response2.d, function (i1, k2) {
+                                        $.each(response2, function (i1, k2) {
                                             level2++;
                                         });
                                         $.each(model2, function (i1, item2) {
@@ -1051,7 +1061,7 @@
                                             if (level2 == 2) {
                                                 if (id != '-1') {
                                                     child = " <li id='level" + i + i1 + "'><a data-toggle='popover' id='levelLink" + i + i1 + "' href='" + item2.Href + "' class='from " + cssclass + " rounded-circle' " +
-                                                              " onmouseover='openPopup(this," + item2.Fk_UserId + "," + '"' + item2.LoginId + '"' + ", " + '"' + item2.MemberName + '"' + "," + '"' + item2.Leg + '"' + "," + '"' + item2.ParentLoginId + '"' + "," + '"' + item2.JoiningDate + '"' + "," + '"' + item2.ProductName + '"' + "," + '"' + item2.AllLeg1 + '"' + "," + '"' + item2.AllLeg2 + '"' + "," + '"' + item2.PermanentLeg1 + '"' + "," + '"' + item2.PermanentLeg2 + '"' + "," + '"' + item2.InactiveLeft + '"' + "," + '"' + item2.InactiveRight + '"' + "," + '"' + item2.PCountLeg1 + '"' + "," + '"' + item2.PCountLeg2 + '"' + "," + '"' + item2.PaidLeg1 + '"' + "," + '"' + item2.PaidLeg2 + '"' + "," + '"' + item2.BalanceLeft + '"' + "," + '"' + item2.BalanceRight + '"' + "," + '"' + item2.ProfilePic + '"' + "," + '"' + item2.ActivationDate + '"' + "," + '"' + item2.AllBusinessLeft + '"' + "," + '"' + item2.AllBusinessRight + '"' + "," + '"' + item2.ProductRightBusiness + '"' + "," + '"' + item2.ProductLeftBusiness + '"' + ")' " +
+                                                              " onmouseover='openPopup(this," + '"' + cssclaa + '"' + "," + item2.Fk_UserId + "," + '"' + item2.LoginId + '"' + ", " + '"' + item2.MemberName + '"' + "," + '"' + item2.Leg + '"' + "," + '"' + item2.ParentLoginId + '"' + "," + '"' + item2.JoiningDate + '"' + "," + '"' + item2.ProductName + '"' + "," + '"' + item2.AllLeg1 + '"' + "," + '"' + item2.AllLeg2 + '"' + "," + '"' + item2.PermanentLeg1 + '"' + "," + '"' + item2.PermanentLeg2 + '"' + "," + '"' + item2.InactiveLeft + '"' + "," + '"' + item2.InactiveRight + '"' + "," + '"' + item2.PCountLeg1 + '"' + "," + '"' + item2.PCountLeg2 + '"' + "," + '"' + item2.PaidLeg1 + '"' + "," + '"' + item2.PaidLeg2 + '"' + "," + '"' + item2.BalanceLeft + '"' + "," + '"' + item2.BalanceRight + '"' + "," + '"' + item2.ProfilePic + '"' + "," + '"' + item2.ActivationDate + '"' + "," + '"' + item2.AllBusinessLeft + '"' + "," + '"' + item2.AllBusinessRight + '"' + "," + '"' + item2.ProductRightBusiness + '"' + "," + '"' + item2.ProductLeftBusiness + '"' + ")' " +
                                                               " onmouseout='closePopup(this)' href='#' " + clickOption + ">" +
                                                               "<div class='outer-ring " + cssclass + " rounded-circle'><div class='member-img " + cssclass + " rounded-circle'><i class='" + cssclass + "  rounded-circle'></i></div></div><span class='name member-name'>" +
                                                               " " + item2.LoginId + "</span> <span class='member-join-time'> " + item2.MemberName + "</span>" +
@@ -1071,7 +1081,7 @@
                                             else {
                                                 if (id != '-1') {
                                                     child = " <li id='level" + i + i1 + "'><a data-toggle='popover' id='levelLink" + i + i1 + "' href='" + item2.Href + "' class='from " + cssclass + " rounded-circle' " +
-                                                             " onmouseover='openPopup(this," + item2.Fk_UserId + "," + '"' + item2.LoginId + '"' + ", " + '"' + item2.MemberName + '"' + "," + '"' + item2.Leg + '"' + "," + '"' + item2.ParentLoginId + '"' + "," + '"' + item2.JoiningDate + '"' + "," + '"' + item2.ProductName + '"' + "," + '"' + item2.AllLeg1 + '"' + "," + '"' + item2.AllLeg2 + '"' + "," + '"' + item2.PermanentLeg1 + '"' + "," + '"' + item2.PermanentLeg2 + '"' + "," + '"' + item2.InactiveLeft + '"' + "," + '"' + item2.InactiveRight + '"' + "," + '"' + item2.PCountLeg1 + '"' + "," + '"' + item2.PCountLeg2 + '"' + "," + '"' + item2.PaidLeg1 + '"' + "," + '"' + item2.PaidLeg2 + '"' + "," + '"' + item2.BalanceLeft + '"' + "," + '"' + item2.BalanceRight + '"' + "," + '"' + item2.ProfilePic + '"' + "," + '"' + item2.ActivationDate + '"' + "," + '"' + item2.AllBusinessLeft + '"' + "," + '"' + item2.AllBusinessRight + '"' + "," + '"' + item2.ProductRightBusiness + '"' + "," + '"' + item2.ProductLeftBusiness + '"' + ")' " +
+                                                             " onmouseover='openPopup(this," + '"' + cssclaa + '"' + "," + item2.Fk_UserId + "," + '"' + item2.LoginId + '"' + ", " + '"' + item2.MemberName + '"' + "," + '"' + item2.Leg + '"' + "," + '"' + item2.ParentLoginId + '"' + "," + '"' + item2.JoiningDate + '"' + "," + '"' + item2.ProductName + '"' + "," + '"' + item2.AllLeg1 + '"' + "," + '"' + item2.AllLeg2 + '"' + "," + '"' + item2.PermanentLeg1 + '"' + "," + '"' + item2.PermanentLeg2 + '"' + "," + '"' + item2.InactiveLeft + '"' + "," + '"' + item2.InactiveRight + '"' + "," + '"' + item2.PCountLeg1 + '"' + "," + '"' + item2.PCountLeg2 + '"' + "," + '"' + item2.PaidLeg1 + '"' + "," + '"' + item2.PaidLeg2 + '"' + "," + '"' + item2.BalanceLeft + '"' + "," + '"' + item2.BalanceRight + '"' + "," + '"' + item2.ProfilePic + '"' + "," + '"' + item2.ActivationDate + '"' + "," + '"' + item2.AllBusinessLeft + '"' + "," + '"' + item2.AllBusinessRight + '"' + "," + '"' + item2.ProductRightBusiness + '"' + "," + '"' + item2.ProductLeftBusiness + '"' + ")' " +
                                                              " onmouseout='closePopup(this)' href='#' " + clickOption + ">" +
                                                              "<div class='outer-ring " + cssclass + " rounded-circle'><div class='member-img " + cssclass + " rounded-circle'><i class='" + cssclass + " rounded-circle'></i></div></div><span class='name member-name'>" +
                                                              " " + item2.LoginId + "</span> <span class='member-join-time'> " + item2.MemberName + "</span>" +
@@ -1097,13 +1107,13 @@
                                             if (winWidth > 980) {
                                                 if (id != null) {
                                                     $.ajax({
-                                                        type: "POST",
-                                                        url: "../../Models/WebService/AgentServices.asmx/GetGeneology",
-                                                        data: '{memID: ' + id + '}',
-                                                        contentType: "application/json; charset=utf-8",
-                                                        dataType: "json",
+                                                        method: "GET",
+                                                        url: window.location.origin + "/AgentServices/GetGeneology?memID=" + id,
+                                                        //data: '{memID: ' + id + '}',
+                                                        //contentType: "application/json; charset=utf-8",
+                                                        //dataType: "json",
                                                         success: function (response3) {
-                                                            var model3 = response3.d;
+                                                            var model3 = response3;
                                                             var ul3 = $("<ul></ul>");
                                                             var level3 = 0;
                                                             if (!$.trim(model3)) {
@@ -1120,7 +1130,7 @@
                                                                 $("#level" + i + i1).append(ul3);
                                                             }
                                                             else {
-                                                                $.each(response3.d, function (i2, k3) {
+                                                                $.each(response3, function (i2, k3) {
                                                                     level3++;
                                                                 });
                                                                 $.each(model3, function (i2, item3) {
@@ -1158,7 +1168,7 @@
                                                                     if (level3 == 2) {
                                                                         if (id != '-1') {
                                                                             child = " <li id='level" + i + i1 + i2 + "'><a data-toggle='popover' id='levelLink" + i + i1 + i2 + "' href='" + item3.Href + "' class='from " + cssclass + " rounded-circle' " +
-                                                                                      " onmouseover='openPopup(this," + item3.Fk_UserId + "," + '"' + item3.LoginId + '"' + ", " + '"' + item3.MemberName + '"' + "," + '"' + item3.Leg + '"' + "," + '"' + item3.ParentLoginId + '"' + "," + '"' + item3.JoiningDate + '"' + "," + '"' + item3.ProductName + '"' + "," + '"' + item3.AllLeg1 + '"' + "," + '"' + item3.AllLeg2 + '"' + "," + '"' + item3.PermanentLeg1 + '"' + "," + '"' + item3.PermanentLeg2 + '"' + "," + '"' + item3.InactiveLeft + '"' + "," + '"' + item3.InactiveRight + '"' + "," + '"' + item3.PCountLeg1 + '"' + "," + '"' + item3.PCountLeg2 + '"' + "," + '"' + item3.PaidLeg1 + '"' + "," + '"' + item3.PaidLeg2 + '"' + "," + '"' + item3.BalanceLeft + '"' + "," + '"' + item3.BalanceRight + '"' + "," + '"' + item3.ProfilePic + '"' + "," + '"' + item3.ActivationDate + '"' + "," + '"' + item3.AllBusinessLeft + '"' + "," + '"' + item3.AllBusinessRight + '"' + "," + '"' + item3.ProductRightBusiness + '"' + "," + '"' + item3.ProductLeftBusiness + '"' + ")' " +
+                                                                                      " onmouseover='openPopup(this," + '"' + cssclaa + '"' + "," + item3.Fk_UserId + "," + '"' + item3.LoginId + '"' + ", " + '"' + item3.MemberName + '"' + "," + '"' + item3.Leg + '"' + "," + '"' + item3.ParentLoginId + '"' + "," + '"' + item3.JoiningDate + '"' + "," + '"' + item3.ProductName + '"' + "," + '"' + item3.AllLeg1 + '"' + "," + '"' + item3.AllLeg2 + '"' + "," + '"' + item3.PermanentLeg1 + '"' + "," + '"' + item3.PermanentLeg2 + '"' + "," + '"' + item3.InactiveLeft + '"' + "," + '"' + item3.InactiveRight + '"' + "," + '"' + item3.PCountLeg1 + '"' + "," + '"' + item3.PCountLeg2 + '"' + "," + '"' + item3.PaidLeg1 + '"' + "," + '"' + item3.PaidLeg2 + '"' + "," + '"' + item3.BalanceLeft + '"' + "," + '"' + item3.BalanceRight + '"' + "," + '"' + item3.ProfilePic + '"' + "," + '"' + item3.ActivationDate + '"' + "," + '"' + item3.AllBusinessLeft + '"' + "," + '"' + item3.AllBusinessRight + '"' + "," + '"' + item3.ProductRightBusiness + '"' + "," + '"' + item3.ProductLeftBusiness + '"' + ")' " +
                                                                                       " onmouseout='closePopup(this)' href='#' " + clickOption + ">" +
                                                                                       "<div class='outer-ring " + cssclass + " rounded-circle'><div class='member-img " + cssclass + " rounded-circle'><i class='" + cssclass + " rounded-circle'></i></div></div><span class='name member-name'>" +
                                                                                       " " + item3.LoginId + "</span> <span class='member-join-time'> " + item3.MemberName + "</span>" +
@@ -1177,7 +1187,7 @@
                                                                     else {
                                                                         if (id != '-1') {
                                                                             child = " <li id='level" + i + i1 + i2 + "'><a data-toggle='popover' id='levelLink" + i + i1 + i2 + "' href='" + item3.Href + "' class='from " + cssclass + "' " +
-                                                                                        " onmouseover='openPopup(this," + item3.Fk_UserId + "," + '"' + item3.LoginId + '"' + ", " + '"' + item3.MemberName + '"' + "," + '"' + item3.Leg + '"' + "," + '"' + item3.ParentLoginId + '"' + "," + '"' + item3.JoiningDate + '"' + "," + '"' + item3.ProductName + '"' + "," + '"' + item3.AllLeg1 + '"' + "," + '"' + item3.AllLeg2 + '"' + "," + '"' + item3.PermanentLeg1 + '"' + "," + '"' + item3.PermanentLeg2 + '"' + "," + '"' + item3.InactiveLeft + '"' + "," + '"' + item3.InactiveRight + '"' + "," + '"' + item3.PCountLeg1 + '"' + "," + '"' + item3.PCountLeg2 + '"' + "," + '"' + item3.PaidLeg1 + '"' + "," + '"' + item3.PaidLeg2 + '"' + "," + '"' + item3.BalanceLeft + '"' + "," + '"' + item3.BalanceRight + '"' + "," + '"' + item3.ProfilePic + '"' + "," + '"' + item3.ActivationDate + '"' + "," + '"' + item3.AllBusinessLeft + '"' + "," + '"' + item3.AllBusinessRight + '"' + "," + '"' + item3.ProductRightBusiness + '"' + "," + '"' + item3.ProductLeftBusiness + '"' + ")' " +
+                                                                                        " onmouseover='openPopup(this," + '"' + cssclaa + '"' + "','" + item3.Fk_UserId + "','" + '"' + item3.LoginId + '"' + ", " + '"' + item3.MemberName + '"' + "," + '"' + item3.Leg + '"' + "," + '"' + item3.ParentLoginId + '"' + "," + '"' + item3.JoiningDate + '"' + "," + '"' + item3.ProductName + '"' + "," + '"' + item3.AllLeg1 + '"' + "," + '"' + item3.AllLeg2 + '"' + "," + '"' + item3.PermanentLeg1 + '"' + "," + '"' + item3.PermanentLeg2 + '"' + "," + '"' + item3.InactiveLeft + '"' + "," + '"' + item3.InactiveRight + '"' + "," + '"' + item3.PCountLeg1 + '"' + "," + '"' + item3.PCountLeg2 + '"' + "," + '"' + item3.PaidLeg1 + '"' + "," + '"' + item3.PaidLeg2 + '"' + "," + '"' + item3.BalanceLeft + '"' + "," + '"' + item3.BalanceRight + '"' + "," + '"' + item3.ProfilePic + '"' + "," + '"' + item3.ActivationDate + '"' + "," + '"' + item3.AllBusinessLeft + '"' + "," + '"' + item3.AllBusinessRight + '"' + "," + '"' + item3.ProductRightBusiness + '"' + "," + '"' + item3.ProductLeftBusiness + '"' + ")' " +
                                                                                        " onmouseout='closePopup(this)' href='#' " + clickOption + ">" +
                                                                                        "<div class='outer-ring " + cssclass + "'><div class='member-img " + cssclass + "'><i class='" + cssclass + "'></i></div></div><span class='name member-name'>" +
                                                                                        " " + item3.LoginId + "</span> <span class='member-join-time'> " + item3.MemberName + "</span>" +
@@ -1205,10 +1215,12 @@
                                                             }
                                                         },
                                                         failure: function (response) {
-                                                            alert("Failed: " + response.d);
+                                                            console.log("Failed1: " + response);
+                                                            console.log(response);
                                                         },
                                                         error: function (response) {
-                                                            alert("Error: " + response.d);
+                                                            console.log("Error1" + response);
+                                                            console.log(response);
                                                         },
                                                         complete: function () {
                                                             $("#firstRow").fadeIn(1000);
@@ -1228,10 +1240,12 @@
                                     $("#firstRow").append(ul);
                                 },
                                 failure: function (response) {
-                                    alert("Failed: " + response.d);
+                                    console.log("Failed2" + response);
+                                    console.log(response);
                                 },
                                 error: function (response) {
-                                    alert("Error: " + response.d);
+                                    console.log("Error2" + response);
+                                    console.log(response);
                                 },
                                 complete: function () {
                                     $("#firstRow").fadeIn(900);
@@ -1257,35 +1271,48 @@
     function GetDataFirst(id, text) {
         $('#divload').show();
         $.ajax({
-            type: "POST",
-            url: "../../../Models/WebService/AgentServices.asmx/GetUserFirst",
-            data: '{memID: ' + id + '}',
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
+            method: "GET",
+            url: window.location.origin + "/AgentServices/GetUserFirst?memID=" + id,
+            //data: '{memID: ' + id + '}',
+            //contentType: "application/json; charset=utf-8",
+            //dataType: "json",
             success: OnSuccess2,
 
             failure: function (response) {
                 $('#divload').hide();
+                console.log('log 2', 'fail ' + response)
                 console.log(response)
-                alert(response.d);
 
             },
             error: function (response) {
                 $('#divload').hide();
+                console.log('log 2', 'error ' + response)
                 console.log(response)
-                alert(response.d);
             }
 
         });
 
         function OnSuccess2(response) {
-
-            var modal = response.d;
+            console.log('log 2', 'pass ' + response)
+            console.log(response)
+            var modal = response;
             $.each(modal, function (i, item) {
 
                 $("#headClass span").text(item.MemberName + "(" + item.LoginId + ")");
                 var status = item.Status;
                 var gender = item.Gender;
+                var cssclaa = '';
+
+                if (status == "T") {
+                    cssclaa = "inactive-member"
+                }
+                else if (status == "P") {
+                    cssclaa = "active-member"
+                }
+                else {
+                    cssclaa = "block-member"
+                }
+
                 if (status == "T") {
                     if (gender == "M") {
                         status = "men-inactive"
@@ -1316,7 +1343,7 @@
 
                 $firstHead.html("<div class='outer-ring " + status + "'><div class='member-img " + status + "'><i class='" + status + " rounded-circle'></i></div></div><span class='name member-name'>" + item.LoginId + "</span><span class='member-join-time'>" + item.MemberName + "</span>");
                 //$firstHead.attr("onmouseover", "openPopup(this,'" + item.Fk_UserId + "','" + item.LoginId + "', '" + item.MemberName + "', '" + item.ParentLoginId + "')");
-                $firstHead.attr("onmouseover", "openPopup(this,'" + item.Fk_UserId + "','" + item.LoginId + "', '" + item.MemberName + "','" + item.Leg + "','" + item.ParentLoginId + "','" + item.JoiningDate + "','" + item.ProductName + "','" + item.AllLeg1 + "','" + item.AllLeg2 + "','" + item.PermanentLeg1 + "','" + item.PermanentLeg2 + "','" + item.InactiveLeft + "','" + item.InactiveRight + "','" + item.PCountLeg1 + "','" + item.PCountLeg2 + "','" + item.PaidLeg1 + "','" + item.PaidLeg2 + "','" + item.BalanceLeft + "','" + item.BalanceRight + "','" + item.ProfilePic + "','" + item.ActivationDate + "'," + '"' + item.AllBusinessLeft + '"' + "," + '"' + item.AllBusinessRight + '"' + "," + '"' + item.ProductRightBusiness + '"' + "," + '"' + item.ProductLeftBusiness + '"' + ")");
+                $firstHead.attr("onmouseover", "openPopup(this,'" + cssclaa + "','" + item.Fk_UserId + "','" + item.LoginId + "', '" + item.MemberName + "','" + item.Leg + "','" + item.ParentLoginId + "','" + item.JoiningDate + "','" + item.ProductName + "','" + item.AllLeg1 + "','" + item.AllLeg2 + "','" + item.PermanentLeg1 + "','" + item.PermanentLeg2 + "','" + item.InactiveLeft + "','" + item.InactiveRight + "','" + item.PCountLeg1 + "','" + item.PCountLeg2 + "','" + item.PaidLeg1 + "','" + item.PaidLeg2 + "','" + item.BalanceLeft + "','" + item.BalanceRight + "','" + item.ProfilePic + "','" + item.ActivationDate + "'," + '"' + item.AllBusinessLeft + '"' + "," + '"' + item.AllBusinessRight + '"' + "," + '"' + item.ProductRightBusiness + '"' + "," + '"' + item.ProductLeftBusiness + '"' + ")");
                 $firstHead.attr("data-toggle", "popover");
 
                 $("#firstHead").attr("onclick", "ClickHere(this;)");
@@ -1341,17 +1368,17 @@
         $("#btnSearch").click(function () {
             if ($("#txtLoginID").val() != "") {
                 $.ajax({
-                    url: '../../../Models/WebService/AgentServices.asmx/SearchCustomersByLoginId2',
-                    data: "{ 'prefix': '" + $("#txtLoginID").val() + "'}",
-                    dataType: "json",
-                    type: "POST",
-                    contentType: "application/json; charset=utf-8",
+                    url: window.location.origin + '/AgentServices/SearchCustomersByLoginId2?prefix=' + $("#txtLoginID").val(),
+                    //data: "{ 'prefix': '" + $("#txtLoginID").val() + "'}",
+                    //dataType: "json",
+                    method: "GET",
+                    //contentType: "application/json; charset=utf-8",
                     success: OnSuccessThis,
                     error: function (response) {
-                        alert(response.responseText);
+                        console.log(response.responseText);
                     },
                     failure: function (response) {
-                        alert(response.responseText);
+                        console.log(response.responseText);
                     },
                     select: function (e, i) {
                         $("[id$=hfCustomerId]").val(i.item.val);
@@ -1363,7 +1390,7 @@
             function OnSuccessThis(data) {
 
                 console.log(data);
-                var r = data.d;
+                var r = data;
                 $(r).each(function () {
                     $("[id$=hfCustomerId]").val(this.split('.')[1]);
                     if ($("#hfCustomerId").val() != "") {

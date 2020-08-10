@@ -2346,6 +2346,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountsController.cs" />
+    <Compile Include="Controllers\AgentServicesController.cs" />
+    <Compile Include="Controllers\UserBaseController.cs" />
     <Compile Include="Controllers\AdminBaseController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\AdminProfileController.cs" />
@@ -2580,6 +2582,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="KYCDocuments\" />
     <Folder Include="RequestImage\" />
+    <Folder Include="Views\AgentServices\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
