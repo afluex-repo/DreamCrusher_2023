@@ -80,6 +80,45 @@ namespace DreamCrusherMLM.Controllers
             return View(model);
         }
 
+
+        [HttpPost]
+        [ActionName("DirectListL2")]
+        [OnAction(ButtonName = "Search")]
+        public ActionResult DirectListBy2(Reports model)
+        {
+
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+            List<Reports> lst = new List<Reports>();
+            model.LoginId = Session["LoginId"].ToString();
+            DataSet ds = model.GetDirectListL2();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Reports obj = new Reports();
+                    obj.Mobile = r["Mobile"].ToString();
+                    obj.Email = r["Email"].ToString();
+                    obj.Leg = r["Leg"].ToString();
+                    obj.JoiningDate = r["JoiningDate"].ToString();
+                    obj.PermanentDate = (r["PermanentDate"].ToString());
+                    obj.Status = (r["Status"].ToString());
+                    obj.SponsorId = (r["LoginId"].ToString());
+                    obj.SponsorName = (r["Name"].ToString());
+                    obj.Package = (r["ProductName"].ToString());
+                    lst.Add(obj);
+                }
+                model.lstassociate = lst;
+
+            }
+            List<SelectListItem> AssociateStatus = Common.AssociateStatus();
+            ViewBag.ddlStatus = AssociateStatus;
+            List<SelectListItem> Leg = Common.Leg();
+            ViewBag.ddlleg = Leg;
+            return View(model);
+        }
+
         [HttpPost]
         [ActionName("DirectList")]
         [OnAction(ButtonName = "Search")]

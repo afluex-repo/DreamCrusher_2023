@@ -16,6 +16,7 @@ namespace DreamCrusherMLM.Models
         public string Result { get; set; }
         public string DisplayName { get; set; }
         public string AddedOn { get; set; }
+        public string Leg1 { get; set; }
         public static string GenerateRandom()
         {
             Random r = new Random();
@@ -296,6 +297,19 @@ namespace DreamCrusherMLM.Models
             int _max = 9999;
             Random _rdm = new Random();
             return _rdm.Next(_min, _max);
+        }
+
+
+        public DataSet GetLegDetails()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@LoginId", ReferBy),
+                                        new SqlParameter("@Leg", Leg1),
+
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("GetLegDetails", para);
+
+            return ds;
         }
     }
 

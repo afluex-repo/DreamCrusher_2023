@@ -112,6 +112,12 @@
                         @* @Html.CheckBoxFor(m => m.condition, new { @class = "form-control"}) &nbsp;<label></label>*@
                     </div>
                 </div>
+               
+              <p id="note" class="bg-warning" style="display:none;padding: 5px 20px; border-left: 5px solid #686868;">
+                    <b class="font-bold"> Note :- </b>To Complete the Registration process please follow below steps.<br />
+                    <b class="font-bold"> Step 1 -</b> Fill all the required information and click on <b class="font-bold">Confirm</b> button to verify all entered data are correct.<br />  
+                    <b class="font-bold"> Step 2 -</b> Click on <b class="font-bold">Regsiter</b> button to complete the registration process.
+                </p>
                 <div class="col-md-6 form-group">
                     <input type="button" id="Confirm" onclick="return confirmregistration();" class="btn btn-success" name="Confirm" value="Confirm">
                     <input type="button" id="Register" onclick="return saveregistration();" class="btn btn-success" style="display: none" name="Register" value="Register">
@@ -119,12 +125,7 @@
                     <br />
 
                 </div>
-                <br />
-                <p class="bg-warning" style="padding: 5px 20px; border-left: 5px solid #686868;">
-                    <b class="font-bold"> Note :- </b>To Complete the Registration process please follow below steps.<br />
-                    <b class="font-bold"> Step 1 -</b> Fill all the required information and click on <b class="font-bold">Confirm</b> button to verify all entered data are correct.<br />  
-                    <b class="font-bold"> Step 2 -</b> Click on <b class="font-bold">Regsiter</b> button to complete the registration process.
-                </p>
+                <br /> 
                 <p style="color: red">@TempData["Registration"] </p>
             </div>
         </div>
@@ -257,6 +258,8 @@
             return false;
         }
 
+        $('#note').show();
+
 
         $("#PaymentMethod").attr("disabled", "disabled");
         $("#Commitment").attr("disabled", "disabled");
@@ -278,6 +281,9 @@
     }
 
     function editregistration() {
+
+        $('#note').hide();
+
         $("#PaymentMethod").attr("disabled", false);
         $("#Commitment").attr("disabled", false);
         $("#MobileNo").attr("disabled", false);
@@ -368,11 +374,20 @@
     function getsponsordetails1(obj) {
         $("#divload").css({ 'display': '' });
         $(".errortext").removeClass("errortext");
+
+
+        var Leg = "";
+        if ($('#left').prop('checked')) {
+            Leg = "L";
+        }
+        else {
+            Leg = "R";
+        }
         $.ajax({
-            url: '/User/GetSponserDetails',
+            url: '/User/GetSponserDetails1',
             type: 'GET',
             dataType: 'JSON',
-            data: { 'ReferBy': $(obj).val() },
+            data: { 'ReferBy': $(obj).val(), Leg: Leg, },
             success: function (response) {
                 if (response.Result == "Yes") {
                     $("#divload").css({ 'display': 'none' });
@@ -384,7 +399,7 @@
                     $('#UnderPlaceName').val('');
                     $('#UnderPlaceId').val('');
                     $('#UnderPlaceId').focus();
-                    alert("Invalid Under Place Id");
+                    alert(response.Result);
                 }
             }
         })
