@@ -235,7 +235,7 @@ namespace DreamCrusherMLM.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB,string AdharNo)
+        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB,string AdharNo, string UnderPlaceId)
 
         {
             Home obj = new Home();
@@ -253,7 +253,8 @@ namespace DreamCrusherMLM.Controllers
                 obj.Gender = Gender;
                 obj.PinCode = PinCode;
                 obj.AdharNo = AdharNo;
-                
+
+                obj.UnderPlaceId = UnderPlaceId;
                 obj.DOB = DOB;
                 obj.DOB = string.IsNullOrEmpty(obj.DOB) ? null : Common.ConvertToSystemDate(obj.DOB, "dd/MM/yyyy");
                 obj.Leg = Leg;
@@ -621,6 +622,44 @@ namespace DreamCrusherMLM.Controllers
             }
 
             return RedirectToAction("BookingRequest");
+        }
+
+        public ActionResult GetSponserDetails1(string ReferBy, string Leg)
+        {
+            Common obj = new Common();
+            obj.ReferBy = ReferBy;
+            obj.Leg1 = Leg;
+            DataSet ds = obj.GetMemberDetails();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+
+                obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
+
+                obj.Result = "Yes";
+
+            }
+            else
+            {
+                obj.Result = "Invalid SponsorId";
+                return Json(obj, JsonRequestBehavior.AllowGet);
+            }
+
+
+            DataSet ds1 = obj.GetLegDetails();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                if (ds1.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                {
+
+                    obj.Result = "Yes";
+                }
+                else
+                {
+                    obj.Result = "Legs are not blank";
+                    return Json(obj, JsonRequestBehavior.AllowGet);
+                }
+            }
+            return Json(obj, JsonRequestBehavior.AllowGet);
         }
     }
 }
