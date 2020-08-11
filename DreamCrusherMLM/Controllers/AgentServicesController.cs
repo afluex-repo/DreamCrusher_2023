@@ -37,6 +37,7 @@ namespace DreamCrusherMLM.Controllers
 
                     PermanentLeg1 = dr["PermanentLeg1"].ToString(),
                     PermanentLeg2 = dr["PermanentLeg2"].ToString(),
+                    SponsorId = dr["Spillby"].ToString(),
 
                     InactiveLeft = dr["InactiveLeft"].ToString(),
                     InactiveRight = dr["InactiveRight"].ToString(),
@@ -96,6 +97,7 @@ namespace DreamCrusherMLM.Controllers
 
                     PermanentLeg1 = dr["PermanentLeg1"].ToString(),
                     PermanentLeg2 = dr["PermanentLeg2"].ToString(),
+                    SponsorId = dr["Spillby"].ToString(),
 
                     InactiveLeft = dr["InactiveLeft"].ToString(),
                     InactiveRight = dr["InactiveRight"].ToString(),
@@ -152,6 +154,7 @@ namespace DreamCrusherMLM.Controllers
 
                 model.PermanentLeg1 = dr["PermanentLeg1"].ToString();
                 model.PermanentLeg2 = dr["PermanentLeg2"].ToString();
+                model.SponsorId = dr["Spillby"].ToString();
 
                 model.InactiveLeft = dr["InactiveLeft"].ToString();
                 model.InactiveRight = dr["InactiveRight"].ToString();
@@ -203,6 +206,7 @@ namespace DreamCrusherMLM.Controllers
 
                 model.PermanentLeg1 = dr["PermanentLeg1"].ToString();
                 model.PermanentLeg2 = dr["PermanentLeg2"].ToString();
+                model.SponsorId = dr["Spillby"].ToString();
 
                 model.InactiveLeft = dr["InactiveLeft"].ToString();
                 model.InactiveRight = dr["InactiveRight"].ToString();

@@ -228,14 +228,14 @@
     }
 
     $('#DOB').datepicker({
-        dateFormat: 'dd/mm/yy', maxDate: 'today',
+        dateFormat: 'dd/mm/yy',  
         changeMonth: true,
         changeYear: true,
-        yearRange: "-60:+0",
-        onSelect: function (dateText) {
-            $sD = new Date(dateText);
-            $("#DOB").datepicker('option', 'maxDate', min);
-        }
+        //yearRange: "-60:+0",
+        //onSelect: function (dateText) {
+        //    $sD = new Date(dateText);
+        //    $("#DOB").datepicker('option', 'maxDate', min);
+        //}
     });
 
 
