@@ -81,6 +81,10 @@ namespace DreamCrusherMLM.Controllers
         {
             return View();
         }
+        public ActionResult LegalDocuments()
+        {
+            return View();
+        }
         public ActionResult Login()
         {
             Session.Abandon();
