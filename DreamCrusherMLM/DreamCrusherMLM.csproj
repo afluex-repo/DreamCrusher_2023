@@ -2151,6 +2151,8 @@
     <Content Include="WebsiteCss\images\icons\signature.png" />
     <Content Include="WebsiteCss\images\icons\tick.png" />
     <Content Include="WebsiteCss\images\icons\waves-shape.png" />
+    <Content Include="WebsiteCss\images\legaldocuments\certificate.jpg" />
+    <Content Include="WebsiteCss\images\legaldocuments\pan-card.jpg" />
     <Content Include="WebsiteCss\images\logo.png" />
     <Content Include="WebsiteCss\images\main-slider\image-1.jpg" />
     <Content Include="WebsiteCss\images\main-slider\image-2.jpg" />
@@ -2571,6 +2573,7 @@
     <Content Include="Views\AdminReports\DirectLevelTwo.cshtml" />
     <Content Include="Views\Downline\DirectListL2.cshtml" />
     <Content Include="Views\User\AcceptanceForm.cshtml" />
+    <Content Include="Views\Home\LegalDocuments.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
