@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace DreamCrusherMLM.Models
@@ -97,7 +95,7 @@ namespace DreamCrusherMLM.Models
             {
                 SqlParameter[] para = {
                                           new SqlParameter("@FormName", FormName) ,
-                                          new SqlParameter("@AdminId", AdminId) 
+                                          new SqlParameter("@AdminId", AdminId)
                                       };
 
                 DataSet ds = DBHelper.ExecuteQuery("PermissionsOfForm", para);
@@ -111,9 +109,9 @@ namespace DreamCrusherMLM.Models
         #endregion
         public DataSet GetMemberDetails()
         {
-            SqlParameter[] para = { 
+            SqlParameter[] para = {
                                       new SqlParameter("@LoginId", ReferBy),
-                                    
+
                                   };
             DataSet ds = DBHelper.ExecuteQuery("GetMemberName", para);
 
@@ -161,11 +159,11 @@ namespace DreamCrusherMLM.Models
         public static List<SelectListItem> BindPaymentModeForList()
         {
             List<SelectListItem> PaymentMode = new List<SelectListItem>();
-            PaymentMode.Add(new SelectListItem { Text = "All", Value = null  });
+            PaymentMode.Add(new SelectListItem { Text = "All", Value = null });
             PaymentMode.Add(new SelectListItem { Text = "Cash", Value = "Cash" });
             PaymentMode.Add(new SelectListItem { Text = "Supplier", Value = "Supplier" });
-          
-            
+
+
             return PaymentMode;
         }
 
@@ -176,7 +174,7 @@ namespace DreamCrusherMLM.Models
             Religion.Add(new SelectListItem { Text = "Hindu", Value = "Hindu" });
             Religion.Add(new SelectListItem { Text = "Muslim", Value = "Muslim" });
             Religion.Add(new SelectListItem { Text = "Christian", Value = "Christian" });
-            
+
             return Religion;
         }
 
@@ -197,7 +195,7 @@ namespace DreamCrusherMLM.Models
             List<SelectListItem> Gender = new List<SelectListItem>();
             Gender.Add(new SelectListItem { Text = "Male", Value = "M" });
             Gender.Add(new SelectListItem { Text = "Female", Value = "F" });
-           
+
             return Gender;
         }
         public static List<SelectListItem> BindPasswordType()
@@ -261,7 +259,7 @@ namespace DreamCrusherMLM.Models
             PaymentMode.Add(new SelectListItem { Text = "S/O", Value = "S/O" });
             PaymentMode.Add(new SelectListItem { Text = "D/O", Value = "D/O" });
             PaymentMode.Add(new SelectListItem { Text = "W/O", Value = "W/O" });
-           
+
             return PaymentMode;
         }
         public static List<SelectListItem> PaidStatus()
@@ -283,9 +281,9 @@ namespace DreamCrusherMLM.Models
 
         public DataSet GetStateCity()
         {
-            SqlParameter[] para = { 
+            SqlParameter[] para = {
                                       new SqlParameter("@PinCode", PinCode),
-                                    
+
                                   };
             DataSet ds = DBHelper.ExecuteQuery("GetStateCity", para);
 
@@ -315,9 +313,9 @@ namespace DreamCrusherMLM.Models
 
     public class SMSCredential
     {
-        public static string UserName = "";
-        public static string Password = "";
-        public static string SenderId = "";
+        public static string UserName = "dreamuser";
+        public static string Password = "jUED8rm9rTJMBPE";
+        public static string SenderId = "DRMCRS";
     }
 
     public class SoftwareDetails

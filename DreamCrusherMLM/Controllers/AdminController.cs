@@ -1,14 +1,13 @@
-﻿using System;
+﻿using BusinessLayer;
+using DreamCrusherMLM.Filter;
+using DreamCrusherMLM.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using BusinessLayer;
-using DreamCrusherMLM.Models;
-using DreamCrusherMLM.Filter;
-using System.Web.UI.WebControls;
 using System.Web.UI;
+using System.Web.UI.WebControls;
 
 namespace DreamCrusherMLM.Controllers
 {
@@ -23,10 +22,10 @@ namespace DreamCrusherMLM.Controllers
             ViewBag.BlockedUsers = Ds.Tables[1].Rows[0]["BlockedUsers"].ToString();
             ViewBag.InactiveUsers = Ds.Tables[1].Rows[0]["InactiveUsers"].ToString();
             ViewBag.ActiveUsers = Ds.Tables[1].Rows[0]["ActiveUsers"].ToString();
-            
+
             #region Messages
 
-            
+
             List<DashBoard> lst1 = new List<DashBoard>();
 
             DataSet ds11 = newdata.GetAllMessages();
@@ -51,7 +50,7 @@ namespace DreamCrusherMLM.Controllers
             #endregion Messages
             return View(newdata);
         }
-        
+
         public ActionResult AssociateListForKYC(Reports model)
         {
             List<SelectListItem> ddlKYCStatus = Common.BindKYCStatus();
@@ -317,7 +316,7 @@ namespace DreamCrusherMLM.Controllers
         public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg)
         {
             Home obj = new Home();
-           
+
 
             try
             {
@@ -342,17 +341,17 @@ namespace DreamCrusherMLM.Controllers
                     {
                         Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
                         Session["DisplayName"] = ds.Tables[0].Rows[0]["Name"].ToString();
-                        Session["PassWord"] =Crypto.Decrypt( ds.Tables[0].Rows[0]["Password"].ToString());
+                        Session["PassWord"] = Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString());
                         Session["Transpassword"] = ds.Tables[0].Rows[0]["Password"].ToString();
                         Session["MobileNo"] = ds.Tables[0].Rows[0]["MobileNo"].ToString();
                         try
                         {
                             string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
-                           // BLSMS.SendSMSNew(MobileNo, str2);
+                            BLSMS.SendSMSNew(MobileNo, str2);
                         }
                         catch { }
                         obj.Response = "1";
-                        
+
 
                     }
                     else
@@ -427,7 +426,7 @@ namespace DreamCrusherMLM.Controllers
             ViewBag.ddlProduct = ddlProduct;
 
             #endregion
-           
+
             return View();
 
         }
@@ -437,7 +436,7 @@ namespace DreamCrusherMLM.Controllers
             try
             {
                 obj.AddedBy = Session["Pk_AdminId"].ToString();
-                
+
                 DataSet ds = obj.CreatePin();
                 if (ds.Tables != null && ds.Tables[0].Rows.Count > 0)
                 {
@@ -465,7 +464,7 @@ namespace DreamCrusherMLM.Controllers
         {
             Wallet objewallet = new Wallet();
 
-           
+
             objewallet.Status = "Unused";
             List<Wallet> lst = new List<Wallet>();
             DataSet ds = objewallet.GetUsedUnUsedPins();
@@ -516,7 +515,7 @@ namespace DreamCrusherMLM.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult UnusedPinsBy(Wallet objewallet)
         {
-           
+
             objewallet.Status = "Unused";
             List<Wallet> lst = new List<Wallet>();
             objewallet.Package = objewallet.Package == "0" ? null : objewallet.Package;
@@ -631,7 +630,7 @@ namespace DreamCrusherMLM.Controllers
         {
             Wallet objewallet = new Wallet();
 
-            
+
             objewallet.Status = "Used";
             List<Wallet> lst = new List<Wallet>();
             DataSet ds = objewallet.GetUsedUnUsedPins();
@@ -681,7 +680,7 @@ namespace DreamCrusherMLM.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult UsedPinsBy(Wallet objewallet)
         {
-          
+
 
 
             objewallet.Status = "Used";
@@ -805,7 +804,7 @@ namespace DreamCrusherMLM.Controllers
             {
                 TempData["Class"] = "alert alert-danger";
                 TempData["Advance"] = ex.Message;
-            } 
+            }
             return RedirectToAction("AdvancePayment");
         }
 
@@ -846,7 +845,7 @@ namespace DreamCrusherMLM.Controllers
         [OnAction(ButtonName = "btnDetails")]
         public ActionResult AdvancePaymentReportSearch(Wallet model)
         {
-           
+
             try
             {
                 model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");

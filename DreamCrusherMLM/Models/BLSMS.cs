@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Net;
 using System.Configuration;
 using System.IO;
+using System.Net;
 
 namespace BusinessLayer
 {
@@ -31,7 +28,7 @@ namespace BusinessLayer
             //string strUrl = "http://smsw.co.in/API/WebSMS/Http/v1.0a/index.php?username=dharaworld&password=123456&sender=DHARAW&to=8052949381&message=" + 
             //    User + "&password=" + password + "&senderid=" + senderid + "&route=2&number=" + Mobile_Number + "&message=" + Message;        // Create a request object  
 
-            string strUrl = "http://smsw.co.in/API/WebSMS/Http/v1.0a/index.php?username=dharaworld&password=123456&sender=DHARAW&to=" + Mobile_Number + "&message=" + Message + "& reqid = 1 & format ={ json}&route_id = 39 & callback =#&unique=0&sendondate='" + DateTime.Now.ToString() + " '";
+            string strUrl = "http://smsw.co.in/API/WebSMS/Http/v1.0a/index.php?username=dreamuser&password=jUED8rm9rTJMBPE&sender=DRMCRS&to=" + Mobile_Number + "&message=" + Message + "& reqid = 1 & format ={ json}&route_id = 39 & callback =#&unique=0&sendondate='" + DateTime.Now.ToString() + " '";
 
             WebRequest request = HttpWebRequest.Create(strUrl);
             // Get the response back  
@@ -57,7 +54,7 @@ namespace BusinessLayer
             Message = Message.Replace("[Member-Name]", MemberName);
             Message = Message.Replace("[LoginId]", LoginId);
             Message = Message.Replace("[Password]", Password);
-           
+
             return Message;
         }
         static public string OTP(string MemberName, string OTP)
@@ -65,10 +62,10 @@ namespace BusinessLayer
             string Message = ConfigurationSettings.AppSettings["OTP"].ToString();
             Message = Message.Replace("[Member-Name]", MemberName);
             Message = Message.Replace("[OTP]", OTP);
-           
+
             return Message;
         }
 
-        
+
     }
 }

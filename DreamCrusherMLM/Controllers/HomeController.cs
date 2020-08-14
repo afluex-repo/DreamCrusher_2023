@@ -1,14 +1,12 @@
-﻿using System;
+﻿using BusinessLayer;
+using DreamCrusherMLM.Filter;
+using DreamCrusherMLM.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
-using BusinessLayer;
-using DreamCrusherMLM.Models;
-
-using System.IO;
-using DreamCrusherMLM.Filter;
 
 namespace DreamCrusherMLM.Controllers
 {
@@ -36,7 +34,7 @@ namespace DreamCrusherMLM.Controllers
                 Session["Count"] = null;
                 return View();
             }
-            
+
         }
         public ActionResult RewardData(Reports obj)
         {
@@ -52,7 +50,7 @@ namespace DreamCrusherMLM.Controllers
 
                     obj1.RewardImage = r["RewardImage"].ToString();
                     obj1.RewardName = r["RewardName"].ToString();
-                   
+
                     lsttop4.Add(obj1);
                 }
                 obj.lstassociate = lsttop4;
@@ -74,7 +72,7 @@ namespace DreamCrusherMLM.Controllers
                 }
                 obj.lsttopupreport = lst;
             }
-            
+
             return View(obj);
         }
         public ActionResult Index2()
@@ -239,7 +237,7 @@ namespace DreamCrusherMLM.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB,string AdharNo, string UnderPlaceId)
+        public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB, string AdharNo, string UnderPlaceId)
 
         {
             Home obj = new Home();
@@ -277,7 +275,7 @@ namespace DreamCrusherMLM.Controllers
                         try
                         {
                             string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
-                           // BLSMS.SendSMSNew(MobileNo, str2);
+                            BLSMS.SendSMSNew(MobileNo, str2);
                         }
                         catch (Exception ex) { }
                         obj.Response = "1";
@@ -540,7 +538,7 @@ namespace DreamCrusherMLM.Controllers
         }
 
         [HttpPost]
-        [OnAction(ButtonName ="request")]
+        [OnAction(ButtonName = "request")]
         [ActionName("BookingRequest")]
         public ActionResult BookRequest(Home model, IEnumerable<HttpPostedFileBase> postedFile3, IEnumerable<HttpPostedFileBase> postedFile2, IEnumerable<HttpPostedFileBase> postedFile1, IEnumerable<HttpPostedFileBase> postedFile4)
         {
@@ -614,7 +612,7 @@ namespace DreamCrusherMLM.Controllers
 
                         TempData["BookingRequest"] = "Request Send Successully";
                     }
-                    else if(ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
+                    else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
                     {
                         TempData["BookingRequest"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                     }

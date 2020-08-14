@@ -535,7 +535,7 @@
                                                         </div>
                                                         <div class="form-group col-md-2">
                                                             <button type="button" id="close">&times;</button>
-                                                            <img src="../../images/treeicon.jpg" id="userimage" style="width: 50px; height: 50px" />
+                                                            <img src="../../images/treeicon.jpg" id="userimage" style="width: 50px; height: 50px" height="50" width="50"/>
                                                         </div>
                                                         <div class="form-group col-md-12 table-responsive">
                                                             <table class="display nowrap table table-hover table-striped table-bordered" style="border:1px solid black">
@@ -744,11 +744,12 @@
             $("#go-top").find('input[type="hidden"]').val(item1);
         }
         $("#loading-image").hide();
+        console.log($("#member-details").html())
         $('#' + obj.id).attr("data-content", $("#member-details").html());
         $('[data-toggle="popover"]').popover({
             container: 'body',
             html: true,
-            placement: 'auto',
+            placement: 'bottom',
             trigger: 'hover',
 
         });
@@ -820,8 +821,7 @@
     var Fk_UserId = "0";
     var clicked = 0;
 
-    function ClickHere(obj) {
-
+    function ClickHere(obj) { 
         //if ($("#" + obj.id + "").find('input[type="hidden"]').val() == "-1") {
         //  return false;
         //}
@@ -1070,7 +1070,7 @@
                                             if (level2 == 2) {
                                                 if (id != '-1') {
                                                     child = " <li id='level" + i + i1 + "'><a data-toggle='popover' id='levelLink" + i + i1 + "' href='" + item2.Href + "' class='from " + cssclass + " rounded-circle' " +
-                                                              " onmouseover='openPopup(this," + '"' + item1.SponsorId + '"' + "," + '"' + cssclaa + '"' + "," + item2.Fk_UserId + "," + '"' + item2.LoginId + '"' + ", " + '"' + item2.MemberName + '"' + "," + '"' + item2.Leg + '"' + "," + '"' + item2.ParentLoginId + '"' + "," + '"' + item2.JoiningDate + '"' + "," + '"' + item2.ProductName + '"' + "," + '"' + item2.AllLeg1 + '"' + "," + '"' + item2.AllLeg2 + '"' + "," + '"' + item2.PermanentLeg1 + '"' + "," + '"' + item2.PermanentLeg2 + '"' + "," + '"' + item2.InactiveLeft + '"' + "," + '"' + item2.InactiveRight + '"' + "," + '"' + item2.PCountLeg1 + '"' + "," + '"' + item2.PCountLeg2 + '"' + "," + '"' + item2.PaidLeg1 + '"' + "," + '"' + item2.PaidLeg2 + '"' + "," + '"' + item2.BalanceLeft + '"' + "," + '"' + item2.BalanceRight + '"' + "," + '"' + item2.ProfilePic + '"' + "," + '"' + item2.ActivationDate + '"' + "," + '"' + item2.AllBusinessLeft + '"' + "," + '"' + item2.AllBusinessRight + '"' + "," + '"' + item2.ProductRightBusiness + '"' + "," + '"' + item2.ProductLeftBusiness + '"' + ")' " +
+                                                              " onmouseover='openPopup(this," + '"' + item2.SponsorId + '"' + "," + '"' + cssclaa + '"' + "," + item2.Fk_UserId + "," + '"' + item2.LoginId + '"' + ", " + '"' + item2.MemberName + '"' + "," + '"' + item2.Leg + '"' + "," + '"' + item2.ParentLoginId + '"' + "," + '"' + item2.JoiningDate + '"' + "," + '"' + item2.ProductName + '"' + "," + '"' + item2.AllLeg1 + '"' + "," + '"' + item2.AllLeg2 + '"' + "," + '"' + item2.PermanentLeg1 + '"' + "," + '"' + item2.PermanentLeg2 + '"' + "," + '"' + item2.InactiveLeft + '"' + "," + '"' + item2.InactiveRight + '"' + "," + '"' + item2.PCountLeg1 + '"' + "," + '"' + item2.PCountLeg2 + '"' + "," + '"' + item2.PaidLeg1 + '"' + "," + '"' + item2.PaidLeg2 + '"' + "," + '"' + item2.BalanceLeft + '"' + "," + '"' + item2.BalanceRight + '"' + "," + '"' + item2.ProfilePic + '"' + "," + '"' + item2.ActivationDate + '"' + "," + '"' + item2.AllBusinessLeft + '"' + "," + '"' + item2.AllBusinessRight + '"' + "," + '"' + item2.ProductRightBusiness + '"' + "," + '"' + item2.ProductLeftBusiness + '"' + ")' " +
                                                               " onmouseout='closePopup(this)' href='#' " + clickOption + ">" +
                                                               "<div class='outer-ring " + cssclass + " rounded-circle'><div class='member-img " + cssclass + " rounded-circle'><i class='" + cssclass + "  rounded-circle'></i></div></div><span class='name member-name'>" +
                                                               " " + item2.LoginId + "</span> <span class='member-join-time'> " + item2.MemberName + "</span>" +
