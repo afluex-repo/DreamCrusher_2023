@@ -210,6 +210,11 @@ namespace DreamCrusherMLM.Models
                                     new SqlParameter("@Fk_ProductId", Package),
                                     new SqlParameter("@TopupDate", TopUpDate),
                                     new SqlParameter("@Amount", Amount),
+									new SqlParameter("@PaymentMode", PaymentMode) ,
+                                      new SqlParameter("@DDChequeNo", DDChequeNo) ,
+                                      new SqlParameter("@DDChequeDate", DDChequeDate) ,
+                                      new SqlParameter("@BankBranch", BankBranch) ,
+									  new SqlParameter("@BankName", BankName),
                                     new SqlParameter("@PlotNumber", PlotNumber),
                                     new SqlParameter("@Description", Description) };
             DataSet ds = DBHelper.ExecuteQuery("TopUpByAdmin", para);
