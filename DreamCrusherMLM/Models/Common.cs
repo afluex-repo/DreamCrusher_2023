@@ -117,11 +117,11 @@ namespace DreamCrusherMLM.Models
 
             return ds;
         }
-		  public DataSet GetMobileNo()
+        public DataSet GetMobileNo()
         {
-            SqlParameter[] para = { 
+            SqlParameter[] para = {
                                       new SqlParameter("@MobileNo", ReferBy),
-                                    
+
                                   };
             DataSet ds = DBHelper.ExecuteQuery("GetMobileNo", para);
 
@@ -162,7 +162,7 @@ namespace DreamCrusherMLM.Models
             PaymentMode.Add(new SelectListItem { Text = "Cash", Value = "Cash" });
             PaymentMode.Add(new SelectListItem { Text = "Cheque", Value = "Cheque" });
             PaymentMode.Add(new SelectListItem { Text = "NEFT", Value = "NEFT" });
-			PaymentMode.Add(new SelectListItem { Text = "UPI", Value = "UPI" });
+            PaymentMode.Add(new SelectListItem { Text = "UPI", Value = "UPI" });
             PaymentMode.Add(new SelectListItem { Text = "RTGS", Value = "RTGS" });
             PaymentMode.Add(new SelectListItem { Text = "Demand Draft", Value = "DD" });
             return PaymentMode;
@@ -336,10 +336,10 @@ namespace DreamCrusherMLM.Models
         public static string Pin1 = "226012";
         public static string State1 = "UP";
         public static string City1 = "Lucknow";
-        public static string ContactNo = "";
+        public static string ContactNo = "7985207220";
         public static string LandLine = "7985207220";
         public static string GSTNO = "09AAHCD3782E1ZJ";
-        public static string Website = "";
+        public static string Website = "www.dreamcrushers.in";
         public static string EmailID = "dreamcrusher@gmail.com";
     }
 

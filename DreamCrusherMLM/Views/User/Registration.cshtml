@@ -81,8 +81,8 @@
                         @Html.TextBoxFor(m => m.PanCard, new { @class = "form-control", @Placeholder = "Pan Card", @Maxlength = "10", @onchange = "return validatepan(event);" })
                     </div>
                     <div class="col-md-4 form-group">
-                        Adhar No
-                        @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Placeholder = "Adhar No", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
+                        Aadhaar No <span style="color: red">*</span>
+                        @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Placeholder = "Aadhaar No", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
                         @Html.ValidationMessageFor(m=>m.AdharNo)
                     </div>
 

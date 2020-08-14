@@ -288,6 +288,7 @@ namespace DreamCrusherMLM.Controllers
                             ViewBag.CompanyName = SoftwareDetails.CompanyName;
                             ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
                             ViewBag.Pin1 = SoftwareDetails.Pin1;
+                            ViewBag.GSTNO = SoftwareDetails.GSTNO;
                             ViewBag.State1 = SoftwareDetails.State1;
                             ViewBag.City1 = SoftwareDetails.City1;
                             ViewBag.ContactNo = SoftwareDetails.ContactNo;
