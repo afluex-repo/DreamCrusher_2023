@@ -32,7 +32,6 @@ namespace DreamCrusherMLM.Controllers
                ViewBag.TotalActive = ds.Tables[0].Rows[0]["TotalActive"].ToString();
                ViewBag.TotalInActive = ds.Tables[0].Rows[0]["TotalInActive"].ToString();
 
-
                ViewBag.PaidBusinessLeft = ds.Tables[2].Rows[0]["PaidBusinessLeft"].ToString();
                ViewBag.PaidBusinessRight = ds.Tables[2].Rows[0]["PaidBusinessRight"].ToString();
                ViewBag.TotalBusinessLeft = ds.Tables[2].Rows[0]["TotalBusinessLeft"].ToString();
@@ -280,7 +279,20 @@ namespace DreamCrusherMLM.Controllers
             else { obj.Result = "Invalid SponsorId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
+		public ActionResult GetMobileNo(string ReferBy)
+        {
+            Common obj = new Common();
+            obj.ReferBy = ReferBy;
+            DataSet ds = obj.GetMobileNo();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
 
+                obj.Result = "Mobile no. already registered!";
+
+            }
+            else { obj.Result = "Yes"; }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB,string AdharNo,string UnderPlaceId)
         {
             Home obj = new Home();

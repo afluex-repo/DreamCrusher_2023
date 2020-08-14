@@ -313,7 +313,20 @@ namespace DreamCrusherMLM.Controllers
             else { obj.Result = "Invalid SponsorId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
+		public ActionResult GetMobileNo(string ReferBy)
+        {
+            Common obj = new Common();
+            obj.ReferBy = ReferBy;
+            DataSet ds = obj.GetMobileNo();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
 
+                obj.Result = "Mobile no. already registered!";
+
+            }
+            else { obj.Result = "Yes"; }
+            return Json(obj, JsonRequestBehavior.AllowGet);
+        }
         public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg)
         {
             Home obj = new Home();
