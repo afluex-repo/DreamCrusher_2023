@@ -422,6 +422,10 @@ namespace DreamCrusherMLM.Controllers
             ViewBag.ddlProduct = ddlProduct;
 
             #endregion
+			 #region ddlpaymentmode
+            List<SelectListItem> ddlpaymentmode = Common.BindPaymentMode();
+            ViewBag.ddlpaymentmode = ddlpaymentmode;
+            #endregion
             Wallet obj = new Wallet();
             obj.Fk_UserId = Session["Pk_UserId"].ToString();
             DataSet ds = obj.GetEwalletBalnce();

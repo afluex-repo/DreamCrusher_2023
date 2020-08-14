@@ -119,6 +119,16 @@ namespace DreamCrusherMLM.Models
 
             return ds;
         }
+		  public DataSet GetMobileNo()
+        {
+            SqlParameter[] para = { 
+                                      new SqlParameter("@MobileNo", ReferBy),
+                                    
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("GetMobileNo", para);
+
+            return ds;
+        }
         public DataSet GetMemberDetailsForSale()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", ReferBy), };
@@ -154,6 +164,7 @@ namespace DreamCrusherMLM.Models
             PaymentMode.Add(new SelectListItem { Text = "Cash", Value = "Cash" });
             PaymentMode.Add(new SelectListItem { Text = "Cheque", Value = "Cheque" });
             PaymentMode.Add(new SelectListItem { Text = "NEFT", Value = "NEFT" });
+			PaymentMode.Add(new SelectListItem { Text = "UPI", Value = "UPI" });
             PaymentMode.Add(new SelectListItem { Text = "RTGS", Value = "RTGS" });
             PaymentMode.Add(new SelectListItem { Text = "Demand Draft", Value = "DD" });
             return PaymentMode;

@@ -64,7 +64,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         Mobile No <span style="color: red">*</span>
-                        @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);" })
+                        @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);", @onchange = "getmobileno(this);" })
                     </div>
                 </div>
                 <div class="row">
@@ -83,7 +83,7 @@
                     <div class="col-md-4 form-group">
                         Adhar No
                         @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Placeholder = "Adhar No", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
-
+                        @Html.ValidationMessageFor(m=>m.AdharNo)
                     </div>
 
                 </div>
@@ -96,6 +96,7 @@
                     <div class="col-md-4 form-group">
                         Pincode
                         @Html.TextBoxFor(m => m.PinCode, new { @class = "form-control", @Placeholder = "PinCode", @onchange = "return getstatecity();" })
+                        @Html.ValidationMessageFor(m=>m.PinCode)
                     </div>
                     <div class="col-md-4 form-group">
                         State
@@ -240,6 +241,16 @@
         if ($('#DOB').val() == '') {
             $("#DOB").addClass('errortext');
             $('#DOB').focus();
+            return false;
+        }
+        if ($('#AdharNo').val() == '') {
+            $("#AdharNo").addClass('errortext');
+            $('#AdharNo').focus();
+            return false;
+        }
+        if ($('#PinCode').val() == '') {
+            $("#PinCode").addClass('errortext');
+            $('#PinCode').focus();
             return false;
         }
         $('#condition').click(function () {
@@ -411,5 +422,27 @@
         changeYear: true,
         yearRange: "-60:+0"
     });
+    function getmobileno(obj) {
+        $("#divload").css({ 'display': '' });
+        $(".errortext").removeClass("errortext");
 
+        $.ajax({
+            url: '/User/GetMobileNo',
+            type: 'GET',
+            dataType: 'JSON',
+            data: { 'ReferBy': $(obj).val()},
+            success: function (response) {
+                if (response.Result == "Yes") {
+                    $("#divload").css({ 'display': 'none' });
+                }
+                else {
+                    $("#divload").css({ 'display': 'none' });
+                    $("#MobileNo").addClass('errortext');
+                    $('#MobileNo').val('');
+                    $('#MobileNo').focus();
+                    alert(response.Result);
+                }
+            }
+        })
+    }
 </script>
