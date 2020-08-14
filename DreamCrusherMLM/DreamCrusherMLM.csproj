@@ -797,7 +797,9 @@
     <Content Include="assets\js\page\vector-map.js" />
     <Content Include="assets\js\page\widget.js" />
     <Content Include="assets\js\scripts.js" />
+    <Content Include="css\bootstrap.min.css" />
     <Content Include="css\menu.css" />
+    <Content Include="css\style.css" />
     <Content Include="css\tree-responsive.css" />
     <Content Include="css\tree.css" />
     <Content Include="Datatablecss\css\amchart\export.css" />
@@ -2078,6 +2080,7 @@
     <Content Include="assets\fonts\webfonts\fa-solid-900.woff" />
     <Content Include="assets\fonts\webfonts\fa-solid-900.woff2" />
     <Content Include="assets\fonts\webfonts\fa-solid-900d41d.eot" />
+    <Content Include="scripts\bootstrap.min.js" />
     <Content Include="WebsiteCss\css\animate.css" />
     <Content Include="WebsiteCss\css\bootstrap.css" />
     <Content Include="WebsiteCss\css\color-switcher-design.css" />
@@ -2598,7 +2601,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58419</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

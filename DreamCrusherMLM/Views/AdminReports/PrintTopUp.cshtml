@@ -12,38 +12,125 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width">
     <title>Tax Invoice</title>
-    <style>
-        table {
-            font-size: 12px;
-            font-family: Calibri;
-        }
-
-            table td {
-                padding: 3px 5px;
-            }
-
-        p {
-            margin: 4px 0;
-        }
-
-        .dark-border td {
-            font-size: 14px;
-        }
-
-        .light-border td {
-            border-bottom: 1px solid #000;
-            font-size: 14px;
-            border-right: 1px solid #000;
-        }
-
-            .light-border td:last-child {
-                border-right: none;
-            }
-    </style>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/style.css" rel="stylesheet" />
+    <script src="~/scripts/bootstrap.min.js"></script>
+     
+    <link type="text/css" rel="stylesheet" href="../../AssociatePanelcss/bower_components/bootstrap/dist/css/bootstrap.min.css" />
 </head>
 
 <body>
-    <form action="https://www.graycinherbal.com/PrintPurchaseTaxInnvoice/PrintSaleTaxInnvoice" id="form1" method="post">
+    <div class="tax-invoice-main">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-sm-12">
+                    <div class="table-responsive">
+                        <table class="table table-bordered zestier">
+                            <thead>
+                                <tr>
+                                    <th style="width:30%"><img src="~/WebsiteCss/images/logo.png" class="img-fluid" alt="logo" style="width:60%;height:50%"> </th>
+                                    <th style="width: 40%;">
+                                        <div class="addres-details text-center">
+                                            <p class="text-center"><strong>@ViewBag.CompanyName</strong></p>
+                                            <p>@ViewBag.CompanyAddress</p>
+                                            <p><strong>E-mail :</strong> @ViewBag.Email</p>
+                                            <p><strong>Contact No.:</strong>@ViewBag.Phone</p>
+                                        </div>
+                                    </th>
+
+                                </tr>
+                            </thead>
+                        </table>
+                        <table class="table table-bordered zestier">
+                            <tbody>
+
+                                <tr class="descript">
+                                    <td colspan="2"><strong>Details</strong></td>
+
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="gstin">
+                                            <p><strong>Name :</strong> @Model.DisplayName</p>
+                                            <p><strong>Login ID :</strong>@Model.LoginId</p>
+                                            <p><strong>From / To Date :</strong>@Model.FromDate - @Model.ToDate</p>
+                                            <p><strong>Payout No :</strong>@Model.PayoutNo</p>
+                                        </div>
+                                    </td>
+
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <table class="table table-bordered zestier">
+                            <tbody>
+                                <tr class="descript">
+                                    <td class="text-center" colspan="2"><strong>Income</strong></td>
+                                    <td colspan="2" class="text-center">Deduction</td>
+                                </tr>
+                                <tr class="descript">
+                                    <td>Description</td>
+                                    <td>Amount</td>
+                                    <td>Description</td>
+                                    <td>Amount</td>
+                                </tr>
+                                <tr class="descript">
+                                    <td><strong>Direct Income</strong></td>
+                                    <td>@Model.DirectIncome</td>
+                                    <td>TDS Amount (@ViewBag.TDSPercent)</td>
+                                    <td>@Model.TDSAmount</td>
+                                </tr>
+                                <tr class="descript">
+                                    <td>Harmony Income</td>
+                                    <td>@Model.BinaryIncome</td>
+                                    <td>Processing Fee (5%)</td>
+                                    <td>@Model.ProcessingFee</td>
+                                </tr>
+                                <tr class="descript">
+                                    <td>Direct Leadership Bonus</td>
+                                    <td>@Model.LeadershipBonus</td>
+                                    <td>Product Wallet (5%)</td>
+                                    <td>@Model.ProductWallet</td>
+                                </tr>
+                                <tr class="descript">
+                                    <td>Gross Income</td>
+                                    <td>@ViewBag.Income</td>
+                                    <td>Gross Deduction</td>
+                                    <td>@ViewBag.Deduction</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                        <table class="table table-bordered zestier">
+                            <tbody>
+                                <tr class="descript">
+                                    <td class="text-center"><strong>Gross Income - Gross Deduction</strong></td>
+                                    <td class="text-center"><strong>Net Amount</strong></td>
+                                </tr>
+                                <tr class="descript">
+                                    <td class="text-center">@ViewBag.Income - @ViewBag.Deduction</td>
+                                    <td class="text-center">@ViewBag.NetIncome</td>
+                                </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+            crossorigin="anonymous"></script>
+
+
+    <form action="" id="form1" method="post">
         <table border="1" style="width:100%">
             <tr>
                 <td colspan="11" style="text-align:center">

@@ -43,6 +43,7 @@ namespace DreamCrusherMLM.Models
         public string Name { get; set; }
         public string FatherName { get; set; }
         public string AdharBackSide { get; set; }
+		[Required(ErrorMessage = "Please Enter Aadhar No.")]
         public string AdharNo { get; set; }
         public string Area { get; set; }
         public string Relation { get; set; }
@@ -170,6 +171,7 @@ namespace DreamCrusherMLM.Models
         public string Gender { get; set; }
         public string PanCard { get; set; }
         public string Address { get; set; }
+		[Required(ErrorMessage = "Please Enter Pin Code")]
         public string PinCode { get; set; }
         public string State { get; set; }
         public string City { get; set; }

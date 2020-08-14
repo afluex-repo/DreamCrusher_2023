@@ -72,7 +72,7 @@
                         </div>
                         <div class="col-md-6 form-group">
                             Mobile No <span style="color: red">*</span>
-                            @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);" })
+                            @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);", @onchange = "getmobileno(this);" })
                             @Html.ValidationMessageFor(m => m.MobileNo)
                         </div>
 
@@ -89,8 +89,9 @@
                             @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @Placeholder = "Address" })
                         </div>
                         <div class="col-md-4 form-group">
-                            Pincode
+                            Pincode<span style="color: red">*</span>
                             @Html.TextBoxFor(m => m.PinCode, new { @class = "form-control", @Placeholder = "PinCode", @onchange = "return getstatecity();" })
+                            @Html.ValidationMessageFor(m => m.PinCode)
                         </div>
                         <div class="col-md-4 form-group">
                             State
@@ -122,6 +123,29 @@
     $(document).ready(function () {
         $("#divload").css({ 'display': 'none' });
     });
+    function getmobileno(obj) {
+        $("#divload").css({ 'display': '' });
+        $(".errortext").removeClass("errortext");
+
+        $.ajax({
+            url: '/Admin/GetMobileNo',
+            type: 'GET',
+            dataType: 'JSON',
+            data: { 'ReferBy': $(obj).val() },
+            success: function (response) {
+                if (response.Result == "Yes") {
+                    $("#divload").css({ 'display': 'none' });
+                }
+                else {
+                    $("#divload").css({ 'display': 'none' });
+                    $("#MobileNo").addClass('errortext');
+                    $('#MobileNo').val('');
+                    $('#MobileNo').focus();
+                    alert(response.Result);
+                }
+            }
+        })
+    }
 
     function getsponsordetails(obj) {
         $("#divload").css({ 'display': '' });
@@ -215,7 +239,11 @@
             $('#MobileNo').focus();
             return false;
         }
-
+        if ($('#PinCode').val() == '') {
+            $("#PinCode").addClass('errortext');
+            $('#PinCode').focus();
+            return false;
+        }
         $("#PaymentMethod").attr("disabled", "disabled");
         $("#Commitment").attr("disabled", "disabled");
         $("#MobileNo").attr("disabled", "disabled");

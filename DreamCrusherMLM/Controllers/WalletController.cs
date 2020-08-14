@@ -1,19 +1,18 @@
-﻿using System;
+﻿using BusinessLayer;
+using DreamCrusherMLM.Filter;
+using DreamCrusherMLM.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using DreamCrusherMLM.Models;
-using DreamCrusherMLM.Filter;
-using BusinessLayer;
 
 namespace DreamCrusherMLM.Controllers
 {
     public class WalletController : BaseController
     {
-        
+
         public ActionResult GetMemberName(string LoginId)
         {
             Common obj = new Common();
@@ -31,7 +30,7 @@ namespace DreamCrusherMLM.Controllers
             else { obj.Result = "No"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-        
+
         #region Ewallet
         public ActionResult EWalletRequest()
         {
@@ -258,7 +257,7 @@ namespace DreamCrusherMLM.Controllers
                     Objload.DrAmount = dr["DrAMount"].ToString();
                     Objload.CrAmount = dr["CrAmount"].ToString();
                     Objload.AddedOn = dr["TransactionDate"].ToString();
-                    Objload.PayoutBalance= dr["Balance"].ToString();
+                    Objload.PayoutBalance = dr["Balance"].ToString();
 
                     lst.Add(Objload);
                 }
@@ -271,7 +270,7 @@ namespace DreamCrusherMLM.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult PayoutLedgerBy(Wallet objewallet)
         {
-          
+
             objewallet.Fk_UserId = Session["Pk_UserId"].ToString();
             objewallet.FromDate = string.IsNullOrEmpty(objewallet.FromDate) ? null : Common.ConvertToSystemDate(objewallet.FromDate, "dd/MM/yyyy");
             objewallet.ToDate = string.IsNullOrEmpty(objewallet.ToDate) ? null : Common.ConvertToSystemDate(objewallet.ToDate, "dd/MM/yyyy");
@@ -422,6 +421,7 @@ namespace DreamCrusherMLM.Controllers
             ViewBag.ddlProduct = ddlProduct;
 
             #endregion
+
             Wallet obj = new Wallet();
             obj.Fk_UserId = Session["Pk_UserId"].ToString();
             DataSet ds = obj.GetEwalletBalnce();
@@ -444,9 +444,9 @@ namespace DreamCrusherMLM.Controllers
         }
 
         public ActionResult TopUpEwallet(Wallet obj)
-        { 
+        {
             try
-            {    
+            {
                 obj.AddedBy = Session["Pk_UserId"].ToString();
 
                 DataSet ds = obj.TopUpIdByEWallet();
@@ -462,8 +462,8 @@ namespace DreamCrusherMLM.Controllers
                         string Product = ds.Tables[0].Rows[0]["ProductName"].ToString();
                         try
                         {
-                            string str = "Dear " + ds.Tables[0].Rows[0]["Name"].ToString() + ", Your login ID  " + ds.Tables[0].Rows[0]["LoginId"].ToString() + "   is top up by e Wallet by product " +ds.Tables[0].Rows[0]["ProductName"].ToString() + ".";
-                        
+                            string str = "Dear " + ds.Tables[0].Rows[0]["Name"].ToString() + ", Your login ID  " + ds.Tables[0].Rows[0]["LoginId"].ToString() + "   is top up by e Wallet by product " + ds.Tables[0].Rows[0]["ProductName"].ToString() + ".";
+
                             BLSMS.SendSMSNew(mob, str);
                         }
                         catch { }
@@ -536,7 +536,7 @@ namespace DreamCrusherMLM.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult UnusedPinsBy(Wallet objewallet)
         {
-           
+
             objewallet.Fk_UserId = Session["Pk_UserId"].ToString();
             objewallet.Package = objewallet.Package == "0" ? null : objewallet.Package;
             objewallet.Status = "Unused";
@@ -583,7 +583,7 @@ namespace DreamCrusherMLM.Controllers
             #endregion
             return View(objewallet);
         }
-        
+
         public ActionResult UsedPins()
         {
             Wallet objewallet = new Wallet();
@@ -636,7 +636,7 @@ namespace DreamCrusherMLM.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult UsedPinsBy(Wallet objewallet)
         {
-              
+
             objewallet.Fk_UserId = Session["Pk_UserId"].ToString();
             objewallet.Package = objewallet.Package == "0" ? null : objewallet.Package;
             objewallet.Status = "Used";
@@ -718,6 +718,6 @@ namespace DreamCrusherMLM.Controllers
             }
             return RedirectToAction("TopUpByPin", "Wallet");
         }
-      
+
     }
 }

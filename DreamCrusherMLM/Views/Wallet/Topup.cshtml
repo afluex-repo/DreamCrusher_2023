@@ -44,11 +44,8 @@
                     Amount <span style="color: red">*</span>
                      @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @placeholder="Topup Amount",@disabled="disabled" })
                 </div>
-                
-
-             
-                
-                 <div class="col-md-6">
+               
+                <div class="col-md-6">
                      <br />
                    <input class="btn btn-success" onclick="return validateform()" type="submit" value="Top Up" />
 
@@ -88,6 +85,7 @@
 
         });
     }
+    
     function validateform() {
         $(".errortext").removeClass("errortext");
         if ($('#LoginId').val() == '') {
@@ -104,8 +102,7 @@
             $("#Amount").addClass('errortext');
             $('#Amount').focus();
             return false;
-        }
-        
+        } 
         return true;
 
     }

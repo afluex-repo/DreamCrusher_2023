@@ -1,10 +1,8 @@
-﻿using System;
+﻿using DreamCrusherMLM.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using DreamCrusherMLM.Models;
 
 namespace DreamCrusherMLM.Controllers
 {
@@ -32,6 +30,10 @@ namespace DreamCrusherMLM.Controllers
 
             ViewBag.ddlProduct = ddlProduct;
 
+            #endregion
+            #region ddlpaymentmode
+            List<SelectListItem> ddlpaymentmode = Common.BindPaymentMode();
+            ViewBag.ddlpaymentmode = ddlpaymentmode;
             #endregion
             return View();
         }
@@ -143,7 +145,7 @@ namespace DreamCrusherMLM.Controllers
                 else { }
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 TempData["ApproveRequest"] = ex.Message;
             }
