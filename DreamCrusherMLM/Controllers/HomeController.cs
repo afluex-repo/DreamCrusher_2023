@@ -83,6 +83,30 @@ namespace DreamCrusherMLM.Controllers
         {
             return View();
         }
+        public ActionResult NewsEvents()
+        {
+            return View();
+        }
+        public ActionResult FAQ()
+        {
+            return View();
+        }
+        public ActionResult DirectSellerTermCondition()
+        {
+            return View();
+        }
+        public ActionResult Downloads()
+        {
+            return View();
+        }
+        public ActionResult Terminations()
+        {
+            return View();
+        }
+        public ActionResult OurBankers()
+        {
+            return View();
+        }
         public ActionResult Login()
         {
             Session.Abandon();
