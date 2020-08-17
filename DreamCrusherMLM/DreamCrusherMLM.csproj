@@ -2577,6 +2577,12 @@
     <Content Include="Views\Downline\DirectListL2.cshtml" />
     <Content Include="Views\User\AcceptanceForm.cshtml" />
     <Content Include="Views\Home\LegalDocuments.cshtml" />
+    <Content Include="Views\Home\NewsEvents.cshtml" />
+    <Content Include="Views\Home\FAQ.cshtml" />
+    <Content Include="Views\Home\DirectSellerTermCondition.cshtml" />
+    <Content Include="Views\Home\Downloads.cshtml" />
+    <Content Include="Views\Home\Terminations.cshtml" />
+    <Content Include="Views\Home\OurBankers.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
