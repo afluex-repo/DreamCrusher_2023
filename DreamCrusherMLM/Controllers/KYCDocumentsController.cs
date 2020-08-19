@@ -24,9 +24,8 @@ namespace DreamCrusherMLM.Controllers
             objKYC.PKUserID = Session["Pk_userId"].ToString();
             KYCDocuments obj = new KYCDocuments();
             DataSet ds = objKYC.GetKYCDocuments();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0 &&ds.Tables[1].Rows.Count>0)
             {
-
                 obj.AdharNumber = ds.Tables[0].Rows[0]["AdharNumber"].ToString();
                 obj.AdharImage = ds.Tables[0].Rows[0]["AdharImage"].ToString();
                 obj.AdharStatus = "Status : " + ds.Tables[0].Rows[0]["AdharStatus"].ToString();
@@ -36,6 +35,10 @@ namespace DreamCrusherMLM.Controllers
                 obj.DocumentNumber = ds.Tables[0].Rows[0]["DocumentNumber"].ToString();
                 obj.DocumentImage = ds.Tables[0].Rows[0]["DocumentImage"].ToString();
                 obj.DocumentStatus = "Status : " + ds.Tables[0].Rows[0]["DocumentStatus"].ToString();
+				obj.MemberAccNo=ds.Tables[1].Rows[0]["MemberAccNo"].ToString();
+				obj.MemberBankName=ds.Tables[1].Rows[0]["MemberBankName"].ToString();
+				obj.IFSCCode=ds.Tables[1].Rows[0]["IFSCCode"].ToString();
+				obj.MemberBranch=ds.Tables[1].Rows[0]["MemberBranch"].ToString();
             }
             return View(obj);
         }

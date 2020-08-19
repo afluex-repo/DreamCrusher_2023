@@ -544,6 +544,239 @@ namespace DreamCrusherMLM.Controllers
             }
             return View(model);
         }
+		  public ActionResult TopupReport()
+        {
+            Reports newdata = new Reports();
+            List<Reports> lst1 = new List<Reports>();
+			string LoginId = Session["LoginId"].ToString();
+            DataSet ds11 = newdata.GetTopupReport();
 
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds11.Tables[0].Rows)
+                {
+                    Reports Obj = new Reports();
+                    Obj.ToLoginID = r["Pk_InvestmentId"].ToString();
+                    Obj.LoginId = r["LoginId"].ToString();
+                    Obj.DisplayName = r["Name"].ToString();
+                    Obj.UpgradtionDate = r["UpgradtionDate"].ToString();
+                    Obj.Package = r["Package"].ToString();
+                    Obj.Amount = r["Amount"].ToString();
+                    Obj.TopupBy = r["TopupBy"].ToString();
+                    Obj.Status = r["Status"].ToString();
+                    Obj.PrintingDate = r["PrintingDate"].ToString();
+                    Obj.PlotNumber = r["PlotNumber"].ToString();
+                    Obj.Description = r["Description"].ToString();
+
+                    lst1.Add(Obj);
+                }
+                newdata.lsttopupreport = lst1;
+            }
+            #region ddlstatus
+            List<SelectListItem> ddlstatus = Common.BindTopupStatus();
+            ViewBag.ddlstatus = ddlstatus;
+            #endregion
+            #region Product Bind
+            Common objcomm = new Common();
+            List<SelectListItem> ddlProduct = new List<SelectListItem>();
+            DataSet ds1 = objcomm.BindProduct();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                int count = 0;
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    if (count == 0)
+                    {
+                        ddlProduct.Add(new SelectListItem { Text = "Select", Value = "0" });
+                    }
+                    ddlProduct.Add(new SelectListItem { Text = r["ProductName"].ToString(), Value = r["Pk_ProductId"].ToString() });
+                    count++;
+                }
+            }
+
+            ViewBag.ddlProduct = ddlProduct;
+
+            #endregion
+            return View(newdata);
+        }
+        [HttpPost]
+        [ActionName("TopupReport")]
+        [OnAction(ButtonName = "Search")]
+        public ActionResult TopupReportBy(Reports newdata)
+        {
+
+            List<Reports> lst1 = new List<Reports>();
+			newdata.LoginId=Session["LoginId"].ToString();
+            newdata.Package = newdata.Package == "0" ? null : newdata.Package;
+            newdata.FromDate = string.IsNullOrEmpty(newdata.FromDate) ? null : Common.ConvertToSystemDate(newdata.FromDate, "dd/MM/yyyy");
+            newdata.ToDate = string.IsNullOrEmpty(newdata.ToDate) ? null : Common.ConvertToSystemDate(newdata.ToDate, "dd/MM/yyyy");
+            DataSet ds11 = newdata.GetTopupReport();
+
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds11.Tables[0].Rows)
+                {
+                    Reports Obj = new Reports();
+                    Obj.ToLoginID = r["Pk_InvestmentId"].ToString();
+                    Obj.LoginId = r["LoginId"].ToString();
+                    Obj.DisplayName = r["Name"].ToString();
+                    Obj.UpgradtionDate = r["UpgradtionDate"].ToString();
+                    Obj.Package = r["Package"].ToString();
+                    Obj.Amount = r["Amount"].ToString();
+                    Obj.TopupBy = r["TopupBy"].ToString();
+                    Obj.Status = r["Status"].ToString();
+                    Obj.PrintingDate = r["PrintingDate"].ToString();
+                    Obj.PlotNumber = r["PlotNumber"].ToString();
+                    Obj.Description = r["Description"].ToString();
+                    lst1.Add(Obj);
+                }
+                newdata.lsttopupreport = lst1;
+            }
+            #region ddlstatus
+            List<SelectListItem> ddlstatus = Common.BindTopupStatus();
+            ViewBag.ddlstatus = ddlstatus;
+            #endregion
+            #region Product Bind
+            Common objcomm = new Common();
+            List<SelectListItem> ddlProduct = new List<SelectListItem>();
+            DataSet ds1 = objcomm.BindProduct();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            {
+                int count = 0;
+                foreach (DataRow r in ds1.Tables[0].Rows)
+                {
+                    if (count == 0)
+                    {
+                        ddlProduct.Add(new SelectListItem { Text = "Select", Value = "0" });
+                    }
+                    ddlProduct.Add(new SelectListItem { Text = r["ProductName"].ToString(), Value = r["Pk_ProductId"].ToString() });
+                    count++;
+                }
+            }
+
+            ViewBag.ddlProduct = ddlProduct;
+
+            #endregion
+
+            return View(newdata);
+        }
+        public ActionResult PrintTopUp(string ToLoginID)
+        {
+            List<Reports> list = new List<Reports>();
+            Reports model = new Reports();
+            if (ToLoginID != null)
+            {
+                model.ToLoginID = ToLoginID;
+                try
+                {
+                    DataSet ds = model.PrintTopUp();
+                    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        foreach (DataRow r in ds.Tables[0].Rows)
+                        {
+                            Reports obj = new Reports();
+
+                            obj.FK_InvestmentID = r["Pk_InvestmentId"].ToString();
+                            //obj.EncryptKey = Crypto.Encrypt(r["Fk_SaleOrderId"].ToString());
+                            //obj.ProductID = r["Fk_ProductId"].ToString();
+                            obj.Quantity = r["Quantity"].ToString();
+                            obj.MRP = r["Amount"].ToString();
+                            obj.IGST = r["IGST"].ToString();
+                            obj.CGST = r["CGST"].ToString();
+                            obj.SGST = r["SGST"].ToString();
+                            obj.FinalAmount = r["Amount"].ToString();
+                            //obj.TaxableAmount = r["TaxableAmount"].ToString();
+                            obj.ProductName = r["ProductName"].ToString();
+                            obj.HSNCode = r["HSNCode"].ToString();
+
+                            ViewBag.OrderNo = r["Pk_InvestmentId"].ToString();
+
+                            ViewBag.TotalFinalAmount = ds.Tables[1].Rows[0]["TotalFinalAmount"].ToString();
+                            ViewBag.TotalFinalAmountWords = ds.Tables[1].Rows[0]["TotalFinalAmountWords"].ToString();
+                            ViewBag.PurchaseDate = ds.Tables[0].Rows[0]["UpgradtionDate"].ToString();
+                            ViewBag.Name = ds.Tables[0].Rows[0]["Name"].ToString();
+                            ViewBag.Loginid = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                            ViewBag.AssociateAddress = ds.Tables[0].Rows[0]["Address"].ToString();
+                            ViewBag.ValueBeforeTax = ds.Tables[1].Rows[0]["Taxable"].ToString();
+                            ViewBag.TaxAdded = ds.Tables[1].Rows[0]["TaxAmount"].ToString();
+
+                            ViewBag.CompanyName = SoftwareDetails.CompanyName;
+                            ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
+                            ViewBag.Pin1 = SoftwareDetails.Pin1;
+                            ViewBag.GSTNO = SoftwareDetails.GSTNO;
+                            ViewBag.State1 = SoftwareDetails.State1;
+                            ViewBag.City1 = SoftwareDetails.City1;
+                            ViewBag.ContactNo = SoftwareDetails.ContactNo;
+                            ViewBag.LandLine = SoftwareDetails.LandLine;
+                            ViewBag.Website = SoftwareDetails.Website;
+                            ViewBag.EmailID = SoftwareDetails.EmailID;
+                            list.Add(obj);
+
+                        }
+                        model.lsttopupreport = list;
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+            return View(model);
+        }
+		public ActionResult DCMIReport()
+		{
+		    Reports model = new Reports();
+            List<Reports> lst1 = new List<Reports>();
+			model.LoginId=Session["LoginId"].ToString();
+            DataSet ds11 = model.GetDCMIReport();
+
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds11.Tables[0].Rows)
+                {
+                    Reports Obj = new Reports();
+                    Obj.LoginId = r["LoginId"].ToString();
+                    Obj.Pk_DCMIId = r["Pk_DCMIId"].ToString();
+                    Obj.Month = r["Month"].ToString();
+                    Obj.TotalMatching = r["TotalMatching"].ToString();
+                    Obj.TransactionDate = r["TransactionDate"].ToString();
+                    Obj.DCMIIncome = r["DCMIIncome"].ToString();
+                    Obj.TotalBV = r["TotalBV"].ToString();
+
+                    lst1.Add(Obj);
+                }
+                model.lstdcmireport = lst1;
+            }
+            return View(model);
+		}
+		[HttpPost]
+        [ActionName("DCMIReport")]
+        [OnAction(ButtonName = "Search")]
+		public ActionResult GetDCMIReport(Reports model)
+		{
+		     
+            List<Reports> lst1 = new List<Reports>();
+			model.LoginId=Session["LoginId"].ToString();
+            DataSet ds11 = model.GetDCMIReport();
+
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds11.Tables[0].Rows)
+                {
+                    Reports Obj = new Reports();
+                    Obj.LoginId = r["LoginId"].ToString();
+                    Obj.Pk_DCMIId = r["Pk_DCMIId"].ToString();
+                    Obj.Month = r["Month"].ToString();
+                    Obj.TotalMatching = r["TotalMatching"].ToString();
+                    Obj.TransactionDate = r["TransactionDate"].ToString();
+                    Obj.DCMIIncome = r["DCMIIncome"].ToString();
+                    Obj.TotalBV = r["TotalBV"].ToString();
+
+                    lst1.Add(Obj);
+                }
+                model.lstdcmireport = lst1;
+            }
+            return View(model);
+		}
     }
 }

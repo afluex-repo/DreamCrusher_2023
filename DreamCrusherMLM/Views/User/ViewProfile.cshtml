@@ -127,7 +127,7 @@
                                     <div class="col-lg-6">
                                         <div class="form-group">
                                             <label>Adhar No</label>
-                                            @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
+                                            @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Maxlength = "12", @onkeypress = "return isNumberKey(event);", @readonly="true" })
                                             @Html.ValidationMessageFor(m => m.AdharNo)
                                             @*<input type ="text"  value="@item1.JoiningDate" disabled="disabled" class="form-control" />*@
                                         </div>

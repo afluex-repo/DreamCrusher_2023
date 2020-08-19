@@ -94,6 +94,7 @@ namespace DreamCrusherMLM.Controllers
                     Obj.Status = r["Status"].ToString();
                     Obj.PrintingDate = r["PrintingDate"].ToString();
                     Obj.PlotNumber = r["PlotNumber"].ToString();
+					Obj.TransactionNo = r["TransactionNo"].ToString();
                     Obj.Description = r["Description"].ToString();
 
                     lst1.Add(Obj);
@@ -154,6 +155,7 @@ namespace DreamCrusherMLM.Controllers
                     Obj.Status = r["Status"].ToString();
                     Obj.PrintingDate = r["PrintingDate"].ToString();
                     Obj.PlotNumber = r["PlotNumber"].ToString();
+					Obj.TransactionNo = r["TransactionNo"].ToString();
                     Obj.Description = r["Description"].ToString();
                     lst1.Add(Obj);
                 }
@@ -340,7 +342,6 @@ namespace DreamCrusherMLM.Controllers
         {
 
             List<Reports> lst1 = new List<Reports>();
-
             DataSet ds11 = newdata.GetTransactionLog();
 
             if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
@@ -1560,6 +1561,57 @@ namespace DreamCrusherMLM.Controllers
             return View(model);
         }
 
+		public ActionResult DCMIReport()
+		{
+		    Reports model = new Reports();
+            List<Reports> lst1 = new List<Reports>();
+            DataSet ds11 = model.GetDCMIReport();
 
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds11.Tables[0].Rows)
+                {
+                    Reports Obj = new Reports();
+                    Obj.LoginId = r["LoginId"].ToString();
+                    Obj.Pk_DCMIId = r["Pk_DCMIId"].ToString();
+                    Obj.Month = r["Month"].ToString();
+                    Obj.TotalMatching = r["TotalMatching"].ToString();
+                    Obj.TransactionDate = r["TransactionDate"].ToString();
+                    Obj.DCMIIncome = r["DCMIIncome"].ToString();
+                    Obj.TotalBV = r["TotalBV"].ToString();
+
+                    lst1.Add(Obj);
+                }
+                model.lstdcmireport = lst1;
+            }
+            return View(model);
+		}
+		[HttpPost]
+        [ActionName("DCMIReport")]
+        [OnAction(ButtonName = "Search")]
+		public ActionResult GetDCMIReport(Reports model)
+		{
+            List<Reports> lst1 = new List<Reports>();
+            DataSet ds11 = model.GetDCMIReport();
+
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds11.Tables[0].Rows)
+                {
+                    Reports Obj = new Reports();
+                    Obj.LoginId = r["LoginId"].ToString();
+                    Obj.Pk_DCMIId = r["Pk_DCMIId"].ToString();
+                    Obj.Month = r["Month"].ToString();
+                    Obj.TotalMatching = r["TotalMatching"].ToString();
+                    Obj.TransactionDate = r["TransactionDate"].ToString();
+                    Obj.DCMIIncome = r["DCMIIncome"].ToString();
+                    Obj.TotalBV = r["TotalBV"].ToString();
+
+                    lst1.Add(Obj);
+                }
+                model.lstdcmireport = lst1;
+            }
+            return View(model);
+		}
     }
 }

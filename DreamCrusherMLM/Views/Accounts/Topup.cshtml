@@ -89,36 +89,57 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            Payment Mode <span style="color: red">*</span>
-                            @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlpaymentmode, "Value", "Text"), new { @class = "form-control", @data_size = "7", @data_style = "select-with-transition", @onchange = "getpaymentdetails();" })
-                            @Html.ValidationMessageFor(m => m.PaymentMode)
+                        <div class="col-md-4">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Payment Mode<span style="color: red">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlpaymentmode, "Value", "Text"), new { @class = "form-control", @data_size = "7", @data_style = "select-with-transition", @onchange = "getpaymentdetails();" })
+                                    @Html.ValidationMessageFor(m => m.PaymentMode)
+                                </div>
+                            </div>
                         </div>
-
-                        <div class="col-md-6" id="bankname" style="display: none">
-                            Bank Name <span style="color: red">*</span>
-                            @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @placeholder = "Bank Name" })
                         </div>
-                        <div class="col-md-6" id="chequeno" style="display: none">
-                            Transaction No <span style="color: red">*</span>
-                            @Html.TextBoxFor(m => m.DDChequeNo, new { @class = "form-control", @placeholder = "Transaction No" })
-                        </div>
-                        <div class="col-md-6" id="chequdate" style="display: none">
-                            Transaction Date <span style="color: red">*</span>
-                            @Html.TextBoxFor(m => m.DDChequeDate, new { @class = "form-control", @placeholder = "Transaction Date" })
-                        </div>
-                        <div class="col-md-6" id="bankbranch" style="display: none">
-                            Branch <span style="color: red">*</span>
-                            @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @placeholder = "Bank Branch" })
-                            <br />
-                        </div>
-                    </div>
                     <div class="row">
-                        <div class="col-md-12 form-group">
-                            <input class="btn btn-success pull-right" onclick="return validateform()" type="submit" value="Top Up" />
+                        <div class="col-md-4" id="chequeno" style="display: none">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Transaction No<span style="color: red">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.DDChequeNo, new { @class = "form-control", @placeholder = "Transaction No" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" id="chequdate" style="display: none">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label"> Transaction Date <span style="color: red">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.DDChequeDate, new { @class = "form-control", @placeholder = "Transaction Date" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" id="bankname" style="display: none">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Bank Name<span style="color: red">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @placeholder = "Bank Name" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4" id="bankbranch" style="display: none">
+                            <div class="form-group row">
+                                <label class="col-sm-3 col-form-label">Branch<span style="color: red">*</span></label>
+                                <div class="col-sm-9">
+                                    @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @placeholder = "Bank Branch" })
+                                    <br />
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                            <div class="row">
+                                <div class="col-md-12 form-group">
+                                    <input class="btn btn-success pull-right" onclick="return validateform()" type="submit" value="Top Up" />
+                                </div>
+                            </div>
+                        </div>
             </div>
         </div>
     </div>
@@ -192,7 +213,7 @@
         else if (paymentmode == "UPI")
         {
             bankname.style.display = "none";
-            chequdate.style.display = "none";
+            chequdate.style.display = "block";
             bankbranch.style.display = "none";
            chequeno.style.display = "block";
         }

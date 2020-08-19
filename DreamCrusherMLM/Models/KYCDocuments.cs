@@ -19,7 +19,10 @@ namespace DreamCrusherMLM.Models
         public string DocumentNumber { get; set; }
         public string DocumentImage { get; set; }
         public string DocumentStatus { get; set; }
-
+		public string MemberAccNo{get;set;}
+		public string IFSCCode {get;set;}
+		public string MemberBankName{get;set;}
+		public string MemberBranch{get;set;}
         public DataSet UploadKYCDocuments()
         {
             SqlParameter[] para = { new SqlParameter("@FK_UserID",PKUserID ) ,
@@ -28,7 +31,11 @@ namespace DreamCrusherMLM.Models
                                       new SqlParameter("@PanNumber", PanNumber),
                                       new SqlParameter("@PanImage", PanImage) ,
                                       new SqlParameter("@DocumentNumber", DocumentNumber) ,
-                                      new SqlParameter("@DocumentImage", DocumentImage)
+                                      new SqlParameter("@DocumentImage", DocumentImage),
+									  new SqlParameter("@AccountNo", MemberAccNo),
+									  new SqlParameter("@IFSCCode",IFSCCode),
+									  new SqlParameter("@BankName",MemberBankName),
+									  new SqlParameter("@BranchName",MemberBranch)
                                   };
             DataSet ds = DBHelper.ExecuteQuery("UploadKYC", para);
             return ds;

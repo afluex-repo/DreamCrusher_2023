@@ -234,7 +234,7 @@ namespace DreamCrusherMLM.Models
             PasswordType.Add(new SelectListItem { Text = "Not Uploaded", Value = "N" });
             PasswordType.Add(new SelectListItem { Text = "Pending", Value = "P" });
             PasswordType.Add(new SelectListItem { Text = "Approved", Value = "A" });
-
+			PasswordType.Add(new SelectListItem { Text = "Rejected", Value = "R" });
             return PasswordType;
         }
         public static List<SelectListItem> AssociateStatus()
