@@ -168,8 +168,8 @@ namespace DreamCrusherMLM.Controllers
             Reports model = new Reports();
             List<Reports> lst = new List<Reports>();
             model.LoginId = Session["LoginId"].ToString();
-            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
-            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+			
+           
             DataSet ds = model.GetDownlineList();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -201,6 +201,8 @@ namespace DreamCrusherMLM.Controllers
 
             List<Reports> lst = new List<Reports>();
             model.LoginId = Session["LoginId"].ToString();
+			model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : string.Format("{0:MMMM dd, yyyy}", model.FromDate);
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : string.Format("{0:MMMM dd, yyyy}", model.ToDate);
             DataSet ds = model.GetDownlineList();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)

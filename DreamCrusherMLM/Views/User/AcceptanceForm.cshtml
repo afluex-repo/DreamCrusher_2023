@@ -19,8 +19,8 @@
 </head>
 
 <body>
-    <button style="display:none" onclick="sd()" id="download">Download Pdf</button>
-
+    @*<button onclick="sd()" id="download">Download Pdf</button>*@
+    <input id="pdf-button" type="button" value="Download PDF" onclick="downloadPDF()" />
     <div class="main-file">
         <div class="container"  id="printableArea">
             <div class="row">
@@ -214,7 +214,7 @@
 
 
 </html>
-<script>
+@*<script>
    function sd() {
         var d_canvas = document.getElementById('#printableArea');
       
@@ -222,13 +222,45 @@
                 onrendered: function (canvas) {
                     var imgData = canvas.toDataURL(
                         'image/png');
-                    var doc = new jsPDF('p', 'mm');
+                    var doc = new jsPDF('p', 'pt','a4');
                     doc.addImage(imgData, 'PNG', 0, 0);
                     doc.save('AcceptanceForm.pdf');
                 }
             });
       
     };
+</script>*@
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
 
+<script>
+    function downloadPDF()
+    {
+        let doc = new jsPDF('p', 'mm', 'a4');
+        doc.addHTML(document.body, function () {
+            doc.save('Acceptance Form.pdf');
+        });
+    }
+ //function downloadPDF() {
+
+ //    var divToPrint = document.getElementById('printableArea');
+
+ //           var newWin = window.open('', 'Print-Window');
+
+ //           newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+
+ //           newWin.document.close();
+
+ //           setTimeout(function () { newWin.close(); }, 10);
+
+ //       }
 </script>
+<style>
+     @@media print {
+        #pdf-button {
+          display: none;
+        }
+      }
+</style>

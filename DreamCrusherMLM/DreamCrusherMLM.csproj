@@ -2583,6 +2583,9 @@
     <Content Include="Views\Home\Downloads.cshtml" />
     <Content Include="Views\Home\Terminations.cshtml" />
     <Content Include="Views\Home\OurBankers.cshtml" />
+    <Content Include="Views\UserReports\TopupReport.cshtml" />
+    <Content Include="Views\AdminReports\DCMIReport.cshtml" />
+    <Content Include="Views\UserReports\DCMIReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

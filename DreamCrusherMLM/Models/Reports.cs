@@ -108,6 +108,7 @@ namespace DreamCrusherMLM.Models
         public List<Reports> lsttopupreport { get; set; }
         public List<Reports> lstAdvancePaymentReport { get; set; }
         public List<Reports> PaidPayoutlist { get; set; }
+		public List<Reports> lstdcmireport { get; set; }
         public string UpgradtionDate { get; set; }
 
         public string Package { get; set; }
@@ -137,6 +138,11 @@ namespace DreamCrusherMLM.Models
         public string BookingAmount { get; set; }
         public string MobileNo { get; set; }
         public string BookingRequestId { get; set; }
+		public string DCMIIncome {get;set;}
+		public string Pk_DCMIId{get;set;}
+		public string Month{get;set;}
+		public string TotalMatching{get;set;}
+		public string TotalBV{get;set;}
 
         public DataSet GetPayoutReport()
         {
@@ -648,6 +654,25 @@ namespace DreamCrusherMLM.Models
                   new SqlParameter("@ToDate",ToDate)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetPaidPayoutDetails", para);
+            return ds;
+        }
+		public DataSet RejectKYC()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginID", LoginId),
+                                      new SqlParameter("@PK_DocumentID", PK_DocumentID),
+                                      new SqlParameter("@DocumentType", DocumentType),
+                                      new SqlParameter("@Status", Status),
+                                      new SqlParameter("@UpdatedBy", AddedBy)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("RejectKYC", para);
+            return ds;
+        }
+		public DataSet GetDCMIReport()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
+                                    new SqlParameter("@TransactionDate", TransactionDate)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("GetDCMIReport", para);
             return ds;
         }
     }
