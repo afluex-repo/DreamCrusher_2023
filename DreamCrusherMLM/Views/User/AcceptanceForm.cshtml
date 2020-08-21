@@ -19,14 +19,14 @@
 </head>
 
 <body>
-    @*<button onclick="sd()" id="download">Download Pdf</button>*@
-    <input id="pdf-button" type="button" value="Download PDF" onclick="downloadPDF()" />
+    <button  id="download" onclick="downloadPDF()">Download Pdf</button>
+
     <div class="main-file">
         <div class="container"  id="printableArea">
             <div class="row">
                 <div class="col-md-3 col-lg-3 col-sm-12">
                     <div class="logod">
-                        <img src="../assets/AcceptanceCSS/images/logo.png" class="img-fluid" alt="logo" />
+                     <img src="../assets/AcceptanceCSS/images/logo.png" class="img-fluid" alt="logo" />
                     </div>
                 </div>
                 <div class="col-md-4 col-lg-4 col-sm-12">
@@ -199,68 +199,46 @@
                 </div>
             </div>
         </div>
+    
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    @*<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
             integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
             crossorigin="anonymous"></script>
-    <script src="../assets/AcceptanceCSS/js/bootstrap.min.js"></script>
+    <script src="../assets/AcceptanceCSS/js/bootstrap.min.js"></script>*@
 </body>
 
 
-</html>
-@*<script>
-   function sd() {
-        var d_canvas = document.getElementById('#printableArea');
-      
-            html2canvas($("#printableArea"), {
-                onrendered: function (canvas) {
-                    var imgData = canvas.toDataURL(
-                        'image/png');
-                    var doc = new jsPDF('p', 'pt','a4');
-                    doc.addImage(imgData, 'PNG', 0, 0);
-                    doc.save('AcceptanceForm.pdf');
-                }
-            });
-      
-    };
-</script>*@
+</html> 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>*@
 <script>
-    function downloadPDF()
-    {
-        let doc = new jsPDF('p', 'mm', 'a4');
-        doc.addHTML(document.body, function () {
-            doc.save('Acceptance Form.pdf');
-        });
-    }
- //function downloadPDF() {
+    //function downloadPDF()
+    //{
+    //    var doc = new jsPDF();
+    //    doc.setFontSize(20);
+    //    doc.addHTML(document.body, function () {
+    //        doc.save('Acceptance Form.pdf');
+    //    });
+    //}
+ function downloadPDF() {
 
- //    var divToPrint = document.getElementById('printableArea');
+     var divToPrint = document.getElementById('printableArea');
 
- //           var newWin = window.open('', 'Print-Window');
+            var newWin = window.open('', 'Print-Window');
 
- //           newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+            newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
 
- //           newWin.document.close();
+            newWin.document.close();
 
- //           setTimeout(function () { newWin.close(); }, 10);
-
- //       }
-</script>
-<style>
-     @@media print {
-        #pdf-button {
-          display: none;
+            setTimeout(function () { newWin.close(); }, 10);
         }
-      }
-</style>
+</script>
+

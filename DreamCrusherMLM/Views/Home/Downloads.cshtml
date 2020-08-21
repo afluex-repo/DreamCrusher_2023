@@ -26,7 +26,8 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12 col-lg-12 col-sm-12">
-            <a class="btn btn-primary btn-lg text-white pull-right" onclick="window.print()">Download</a>
+            <button class="btn btn-primary btn-lg text-white pull-right" onclick="downloadPDF()">Download</button>
+           
         </div>
     </div>
 </div>
@@ -227,6 +228,17 @@
         });
 
     };
+    function downloadPDF() {
+        var divToPrint = document.getElementById('printableArea');
 
+        var newWin = window.open('', 'Print-Window');
+
+        newWin.document.write('<html><body onload="window.print()">' + divToPrint.innerHTML + '</body></html>');
+
+        newWin.document.close();
+
+        setTimeout(function () { newWin.close(); }, 10);
+    }
+   
 
 </script>
