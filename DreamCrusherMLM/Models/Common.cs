@@ -332,15 +332,15 @@ namespace DreamCrusherMLM.Models
     public class SoftwareDetails
     {
         public static string CompanyName = "Dream Crusher";
-        public static string CompanyAddress = "Shop No- THSH 2/5, H-10, CP-4/1 Square 1 Plaza, Ratan Khand, Lucknow-226012 (UP)";
-        public static string Pin1 = "226012";
+        public static string CompanyAddress = "Devkali Bypass Lucknow Road";
+        public static string Pin1 = "224001";
         public static string State1 = "UP";
-        public static string City1 = "Lucknow";
-        public static string ContactNo = "7985207220";
-        public static string LandLine = "7985207220";
+        public static string City1 = "Ayodhya";
+        public static string ContactNo = "7275065834";
+        public static string LandLine = "7275065834";
         public static string GSTNO = "09AAHCD3782E1ZJ";
         public static string Website = "www.dreamcrushers.in";
-        public static string EmailID = "dreamcrusher@gmail.com";
+        public static string EmailID = "support@dreamcrushers.in";
     }
 
 }
