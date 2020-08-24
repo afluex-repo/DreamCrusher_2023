@@ -51,7 +51,7 @@ namespace BusinessLayer
         static public string Registration(string MemberName, string LoginId, string Password)
         {
             string Message = ConfigurationSettings.AppSettings["REGISTRATION"].ToString();
-            Message = Message.Replace("[Member-Name]", MemberName);
+            Message = Message.Replace("[Name]", MemberName);
             Message = Message.Replace("[LoginId]", LoginId);
             Message = Message.Replace("[Password]", Password);
 
