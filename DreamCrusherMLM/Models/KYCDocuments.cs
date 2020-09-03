@@ -9,6 +9,7 @@ namespace DreamCrusherMLM.Models
 {
     public class KYCDocuments
     {
+        public List<KYCDocuments> KycDetailList { get; set; }
         public string PKUserID { get; set; }
         public string AdharNumber { get; set; }
         public string AdharImage { get; set; }
@@ -22,7 +23,8 @@ namespace DreamCrusherMLM.Models
 		public string MemberAccNo{get;set;}
 		public string IFSCCode {get;set;}
 		public string MemberBankName{get;set;}
-		public string MemberBranch{get;set;}
+		public string MemberBranch{get;set; }
+        public string LoginId { get; set; }
         public DataSet UploadKYCDocuments()
         {
             SqlParameter[] para = { new SqlParameter("@FK_UserID",PKUserID ) ,
@@ -45,6 +47,13 @@ namespace DreamCrusherMLM.Models
         {
             SqlParameter[] para = { new SqlParameter("@FK_UserID",PKUserID )};
             DataSet ds = DBHelper.ExecuteQuery("GetKYCDocuments", para);
+            return ds;
+        }
+
+        public DataSet GetKYCDetails()
+        {
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId) };
+            DataSet ds = DBHelper.ExecuteQuery("GetKYCDetails", para);
             return ds;
         }
 

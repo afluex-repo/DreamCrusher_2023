@@ -2594,6 +2594,7 @@
     <Content Include="Views\UserReports\TopupReport.cshtml" />
     <Content Include="Views\AdminReports\DCMIReport.cshtml" />
     <Content Include="Views\UserReports\DCMIReport.cshtml" />
+    <Content Include="Views\AdminReports\KYCDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

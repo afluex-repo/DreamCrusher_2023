@@ -1,9 +1,9 @@
-﻿@model DreamCrusherMLM.Models.Reports
+﻿@model DreamCrusherMLM.Models.KYCDocuments
+
 @{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "KYCDetails";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-
-
 <div class="row">
     <div class="col-sm-12">
 
@@ -11,11 +11,11 @@
             <li>
                 <i class="clip-home-3"></i>
                 <a href="#">
-                    Reports > 
+                    Reports
                 </a>
             </li>
             <li class="active">
-                Product Details and their Personal Payment Slip
+                KYC Details
             </li>
 
         </ol>
@@ -24,39 +24,27 @@
     </div>
 </div>
 <br />
-@using (Html.BeginForm("TopupReport", "UserReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("KYCDetails", "AdminReports", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
 
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    Product Details and their Personal Payment Slip
+                    KYC Details
 
 
-                </div><br />
+                </div>
                 <!-- /.panel-heading -->
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-12 table-responsive">
                             <div class="row">
-                                
                                 <div class="col-lg-3">
-                                    Package
-                                    @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control" })
+                                    Login Id
+                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control" })
                                 </div>
-                                <div class="col-md-3">
-                                    Status
-                                    @Html.DropDownListFor(m => m.Status, new SelectList(ViewBag.ddlstatus, "Value", "Text"), new { @class = "form-control" })
-                                </div>
-                                <div class="col-lg-3">
-                                    From Date
-                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @readonly = "readonly" })
-                                </div>
-                                <div class="col-lg-3">
-                                    To Date
-                                    @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @readonly = "readonly" })
-                                </div>
+
                                 <div class="col-lg-3">
                                     <br />
                                     <input class="btn btn-success" type="submit" value="Search" name="Search" id="btnSearch" />
@@ -67,44 +55,31 @@
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
-                                        <th>Login Id</th>
-                                        <th>Name</th>
-                                        <th>PlotNo</th>
-                                        <th>Description</th>
-                                        <th>Upgradation Date</th>
-                                        <th>Package</th>
-                                        <th>Price</th>
-                                        <th>Calculation Status</th>
-                                        <th>Print</th>
+                                        <th>Account No</th>
+                                        <th>Bank Name</th>
+                                        <th>Branch</th>
+                                        <th>IFSC Code</th>
+                                        <th>Document Number</th>
+                                        <th>Document Status</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @if (Model != null)
                                     {
-                                        if (Model.lsttopupreport != null)
+                                        if (Model.KycDetailList != null)
                                         {
                                             int i = 1;
-                                            foreach (var Item in Model.lsttopupreport)
+                                            foreach (var Item in Model.KycDetailList)
                                             {
-                                        <tr class="text-left">
-                                            <td>@i</td>
-                                            <td>@Item.LoginId</td>
-                                            <td>@Item.DisplayName</td>
-                                            <td>@Item.PlotNumber</td>
-                                            <td>@Item.Description</td>
-                                            <td>@Item.UpgradtionDate</td>
-
-                                            <td>@Item.Package</td>
-
-                                            <td>@Item.Amount</td>
-
-                                            <td>@Item.Status</td>
-
-                                            <td>
-                                                <a href="/UserReports/PrintTopUp?ToLoginID=@Item.ToLoginID" class="btn btn-sm btn-primary" target="_blank">Print </a>
-                                                
-                                            </td>
-                                        </tr>
+                                                <tr class="text-left">
+                                                    <td>@i</td>
+                                                    <td>@Item.MemberAccNo</td>
+                                                    <td>@Item.MemberBankName</td>
+                                                    <td>@Item.MemberBranch</td>
+                                                    <td>@Item.IFSCCode</td>
+                                                    <td>@Item.DocumentNumber</td>
+                                                    <td>@Item.DocumentStatus</td>
+                                                </tr>
                                                 i++;
                                             }
 
