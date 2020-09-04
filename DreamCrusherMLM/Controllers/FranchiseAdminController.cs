@@ -215,7 +215,7 @@ namespace DreamCrusherMLM.Controllers
 
                         try
                         {
-                            string str = "Dear " + model.FranchiseName + ", You have been successfully registered as Dream Crusher Franchise !Your Login ID is " + ds.Tables[0].Rows[0]["LoginID"].ToString() + " and Password is  " + Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString() + ".");
+                            string str = "Dear " + model.FranchiseName + ", You have been successfully registered as Dream Crushers Franchise !Your Login ID is " + ds.Tables[0].Rows[0]["LoginID"].ToString() + " and Password is  " + Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString() + ".");
                             //string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
                             BLSMS.SendSMSNew(mob, str);
                         }

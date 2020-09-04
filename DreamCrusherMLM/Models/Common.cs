@@ -331,7 +331,7 @@ namespace DreamCrusherMLM.Models
 
     public class SoftwareDetails
     {
-        public static string CompanyName = "Dream Crusher";
+        public static string CompanyName = "Dream Crushers";
         public static string CompanyAddress = "Khasra No 937, Patwari ka Purwa, Devkali, Faizabad.";
         public static string Pin1 = "224001";
         public static string State1 = "UP";

@@ -39,6 +39,7 @@ namespace DreamCrusherMLM.Controllers
 				obj.MemberBankName=ds.Tables[1].Rows[0]["MemberBankName"].ToString();
 				obj.IFSCCode=ds.Tables[1].Rows[0]["IFSCCode"].ToString();
 				obj.MemberBranch=ds.Tables[1].Rows[0]["MemberBranch"].ToString();
+                
             }
             return View(obj);
         }

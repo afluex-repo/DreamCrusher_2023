@@ -72,6 +72,11 @@ namespace DreamCrusherMLM.Controllers
                     obj.DocumentType = r["DocumentType"].ToString();
                     obj.DocumentImage = (r["DocumentImage"].ToString());
                     obj.Status = (r["Status"].ToString());
+                    
+                    obj.MemberAccNo = r["MemberAccNo"].ToString();
+                    obj.BankName = r["MemberBankName"].ToString();
+                    obj.BankBranch = r["DocumentNumber"].ToString();
+                    obj.IFSCCode = r["IFSCCode"].ToString();
 
                     lst.Add(obj);
                 }
