@@ -2347,6 +2347,7 @@
     <Content Include="WebsiteCss\fonts\fontawesome-webfonte0a5.ttf" />
     <Content Include="WebsiteCss\fonts\fontawesome-webfonte0a5.woff" />
     <Content Include="WebsiteCss\fonts\fontawesome-webfonte0a5.woff2" />
+    <Content Include="WebsiteCss\images\AcceptanceForm.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApproveKitRequest.aspx.cs">
