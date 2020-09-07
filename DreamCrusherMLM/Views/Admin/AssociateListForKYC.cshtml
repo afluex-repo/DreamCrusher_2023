@@ -50,8 +50,13 @@
                                         <th>Document Number</th>
                                         <th>Account No</th>
                                         <th>IFSC Code</th>
-                                        <th>Document Image</th>
-                                        <th>Document Type</th>
+                                        <th>Adhar card</th>
+                                        <th>Adhar Card No</th>
+                                       
+                                        <th>Pancard Image</th>
+                                        <th>Pancard No</th>
+                                        <th>Passbook Image</th>
+                                        <th>Passbook No</th>
                                         <th>Status</th>
                                         <th></th>
                                     </tr>
@@ -72,9 +77,19 @@
                                                     <td>@Item.MemberAccNo</td>
                                                     <td>@Item.IFSCCode</td>
                                                     <td>
-                                                        <a href="@Item.DocumentImage" target="_blank"><img src="@Item.DocumentImage" height="120" width="180" /></a>
+                                                        <a href="@Item.AdharImage" target="_blank"><img src="@Item.AdharImage" height="120" width="180" /></a>
 </td>
-                                                    <td>@Item.DocumentType</td>
+                                                    <td>@Item.AdharCardNo</td>
+                                                  
+                                                    <td>
+                                                        <a href="@Item.PancardImage" target="_blank"><img src="@Item.PancardImage" height="120" width="180" /></a>
+                                                    </td>
+                                                    <td>@Item.Pancard</td>
+                                                    <td>
+                                                        <a href="@Item.PassportImage" target="_blank"><img src="@Item.PassportImage" height="120" width="180" /></a>
+                                                    </td>
+                                                    <td>@Item.passportNo</td>
+
                                                     <td>@Item.Status</td>
                                                     <td>
                                                         @*@Html.ActionLink("Approve","ApproveKYC","Admin",new{@Item.PK_DocumentID,@Item.DocumentType})*@

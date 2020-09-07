@@ -68,11 +68,17 @@ namespace DreamCrusherMLM.Controllers
                     obj.PK_DocumentID = r["PK_UserDocumentID"].ToString();
                     obj.LoginId = r["LoginId"].ToString();
                     obj.Name = r["FirstName"].ToString();
-                    obj.DocumentNumber = r["DocumentNumber"].ToString();
+                    obj.AdharCardNo = r["AdharNumber"].ToString();
                     obj.DocumentType = r["DocumentType"].ToString();
-                    obj.DocumentImage = (r["DocumentImage"].ToString());
+                    obj.AdharImage = (r["AdharImage"].ToString());
                     obj.Status = (r["Status"].ToString());
-                    
+                    obj.BankName = r["MemberBankName"].ToString();
+                    obj.PancardImage = (r["PanImage"].ToString());
+                    obj.Pancard = r["PanNumber"].ToString();
+
+                    obj.passportNo = r["DocumentNumber"].ToString();
+                    obj.PassportImage = r["DocumentImage"].ToString();
+
                     obj.MemberAccNo = r["MemberAccNo"].ToString();
                     obj.BankName = r["MemberBankName"].ToString();
                     obj.BankBranch = r["DocumentNumber"].ToString();
