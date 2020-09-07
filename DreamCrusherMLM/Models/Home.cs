@@ -36,6 +36,7 @@ namespace DreamCrusherMLM.Models
     }
     public class Home
     {
+        public string GrossAmount { get; set; }
         public string AddedBy { get; set; }
         public int EarnerValue { get; set; }
         public string FK_UserId { get; set; }

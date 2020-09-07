@@ -527,6 +527,7 @@ namespace DreamCrusherMLM.Controllers
                     obj.LoginId = r["LoginId"].ToString();
                     obj.Name = r["Name"].ToString();
                     obj.ProfilePic = r["ProfilePic"].ToString();
+                    obj.GrossAmount = r["GrossAmount"].ToString();
                     list.Add(obj);
                 }
                 model.listhighestearner = list;
