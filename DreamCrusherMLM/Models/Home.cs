@@ -36,6 +36,11 @@ namespace DreamCrusherMLM.Models
     }
     public class Home
     {
+        public string AddedBy { get; set; }
+        public int EarnerValue { get; set; }
+        public string FK_UserId { get; set; }
+        public string ProfilePic { get; set; }
+        public List<Home> listhighestearner { get; set; }
         public string UnderPlaceName { get; set; }
         public string UnderPlaceId { get; set; }
         public string Password { get; set; }
@@ -91,6 +96,27 @@ namespace DreamCrusherMLM.Models
             DataSet ds = DBHelper.ExecuteQuery("Login", para);
             return ds;
         }
+
+        public DataSet GetHighestEarnerList()
+        {
+           
+            DataSet ds = DBHelper.ExecuteQuery("GetHighestEarnerList");
+            return ds;
+        }
+
+
+        public DataSet UpdatingEarnerValue()
+        {
+            SqlParameter[] para ={
+
+                new SqlParameter ("@UpdatedBy",AddedBy),
+                new SqlParameter("@EarnerValue",EarnerValue)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("UpdateEarnerValue", para);
+            return ds;
+        }
+
+
 
         public DataSet FranchiseLogin()
         {

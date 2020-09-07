@@ -1979,6 +1979,7 @@
     <Content Include="images\process.gif" />
     <Content Include="images\ProfilePicture\1b08199b-6889-491b-b0a3-18e5358cfee1.jpg" />
     <Content Include="images\ProfilePicture\1b9c20f2-7485-448f-8d39-4f3b91d07f86.jpg" />
+    <Content Include="images\ProfilePicture\2224cca6-308b-42ab-8f4d-8a443be2b3c5.jpg" />
     <Content Include="images\ProfilePicture\24ea7b20-05f3-4389-a950-029206fcf692.jpg" />
     <Content Include="images\ProfilePicture\68107dd3-ee11-44a2-b9cb-da5cc61c7c44.jpg" />
     <Content Include="images\ProfilePicture\69fa6ced-f4f9-4647-9277-cbd3fc9411f5.jpg" />
@@ -2596,6 +2597,7 @@
     <Content Include="Views\AdminReports\DCMIReport.cshtml" />
     <Content Include="Views\UserReports\DCMIReport.cshtml" />
     <Content Include="Views\AdminReports\KYCDetails.cshtml" />
+    <Content Include="Views\Home\SetEarnerValue.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

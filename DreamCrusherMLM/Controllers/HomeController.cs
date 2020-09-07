@@ -515,7 +515,23 @@ namespace DreamCrusherMLM.Controllers
         }
         public ActionResult HighestEarnerClub()
         {
-            return View();
+            Home model = new Home();
+            List<Home> list = new List<Home>();
+            DataSet ds = model.GetHighestEarnerList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Home obj = new Home();
+                    obj.FK_UserId = r["FK_UserId"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.ProfilePic = r["ProfilePic"].ToString();
+                    list.Add(obj);
+                }
+                model.listhighestearner = list;
+            }
+            return View(model);
         }
 
         public ActionResult Packages()
@@ -697,6 +713,35 @@ namespace DreamCrusherMLM.Controllers
                 }
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult SetEarnerValue(Home model)
+        {
+            return View(model);
+        }
+
+        [HttpPost]
+        [OnAction(ButtonName = "Update")]
+        [ActionName("SetEarnerValue")]
+        public ActionResult UpdateEarnerValue(Home model)
+        {
+
+            Session["Pk_AdminId"]=Session["Pk_AdminId"].ToString();
+            Session["UserTypeName"] = Session["UserTypeName"].ToString();
+            model.AddedBy = Session["Pk_AdminId"].ToString();
+            DataSet ds = model.UpdatingEarnerValue();
+            if(ds!=null && ds.Tables.Count>0 && ds.Tables[0].Rows.Count > 0)
+            {
+                if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                {
+                    TempData["SetEarnerValue"] = "Updated Successfully";
+                }
+                else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
+                {
+                    TempData["SetEarnerValue"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                }
+            }
+            return RedirectToAction("SetEarnerValue");
         }
     }
 }
