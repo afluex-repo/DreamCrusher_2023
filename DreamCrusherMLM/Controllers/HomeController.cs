@@ -523,13 +523,13 @@ namespace DreamCrusherMLM.Controllers
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     Home obj = new Home();
-                    obj.FK_UserId = r["FK_UserId"].ToString();
-                    obj.LoginId = r["LoginId"].ToString();
+                    //obj.FK_UserId = r["FK_UserId"].ToString();
+                  //  obj.LoginId = r["LoginId"].ToString();
                     obj.Name = r["Name"].ToString();
                     obj.ProfilePic = r["ProfilePic"].ToString();
                     obj.GrossAmount = r["GrossAmount"].ToString();
-                    obj.ToDate = r["AddedOn"].ToString();
-                    obj.City = r["City"].ToString();
+                   // obj.ToDate = r["AddedOn"].ToString();
+                    //obj.City = r["City"].ToString();
                     list.Add(obj);
                 }
                 model.listhighestearner = list;
