@@ -37,6 +37,14 @@
                                     Earner Value
                                     @Html.TextBoxFor(m => m.EarnerValue, new { @class = "form-control", @placeholder = "Enter Value", @onkeypress = "return isNumberKey(event);", })
                                 </div>
+                                <div class="col-md-3">
+                                    From Date
+                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @placeholder = "From Date", @readonly = "readonly" })
+                                </div>
+                                <div class="col-md-3">
+                                    Earner Value
+                                    @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @placeholder = "To Date", @readonly = "readonly" })
+                                </div>
 
                                 <div class="col-md-3">
                                     <br />
@@ -72,6 +80,21 @@
 
         return true;
     }
+
+    $('#FromDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-60:+0",
+    });
+
+
+    $('#ToDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-60:+0",
+    });
 
 
     $('#TransactionDate').datepicker({

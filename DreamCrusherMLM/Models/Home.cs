@@ -36,6 +36,8 @@ namespace DreamCrusherMLM.Models
     }
     public class Home
     {
+        public string ToDate { get; set; }
+        public string FromDate { get; set; }
         public string GrossAmount { get; set; }
         public string AddedBy { get; set; }
         public int EarnerValue { get; set; }
@@ -111,6 +113,8 @@ namespace DreamCrusherMLM.Models
             SqlParameter[] para ={
 
                 new SqlParameter ("@UpdatedBy",AddedBy),
+                  new SqlParameter ("@FromDate",FromDate),
+                    new SqlParameter ("@ToDate",ToDate),
                 new SqlParameter("@EarnerValue",EarnerValue)
             };
             DataSet ds = DBHelper.ExecuteQuery("UpdateEarnerValue", para);

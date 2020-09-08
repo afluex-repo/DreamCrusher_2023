@@ -528,6 +528,7 @@ namespace DreamCrusherMLM.Controllers
                     obj.Name = r["Name"].ToString();
                     obj.ProfilePic = r["ProfilePic"].ToString();
                     obj.GrossAmount = r["GrossAmount"].ToString();
+                    obj.ToDate = r["AddedOn"].ToString();
                     list.Add(obj);
                 }
                 model.listhighestearner = list;
@@ -730,6 +731,9 @@ namespace DreamCrusherMLM.Controllers
             Session["Pk_AdminId"]=Session["Pk_AdminId"].ToString();
             Session["UserTypeName"] = Session["UserTypeName"].ToString();
             model.AddedBy = Session["Pk_AdminId"].ToString();
+            model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
+            model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
+
             DataSet ds = model.UpdatingEarnerValue();
             if(ds!=null && ds.Tables.Count>0 && ds.Tables[0].Rows.Count > 0)
             {
