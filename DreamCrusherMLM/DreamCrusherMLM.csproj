@@ -2092,6 +2092,8 @@
     <Content Include="scripts\bootstrap.min.js" />
     <Content Include="WebsiteCss\css\animate.css" />
     <Content Include="WebsiteCss\css\bootstrap.css" />
+    <Content Include="WebsiteCss\css\bootstrap.min-1.css" />
+    <Content Include="WebsiteCss\css\bootstrap.min.css" />
     <Content Include="WebsiteCss\css\color-switcher-design.css" />
     <Content Include="WebsiteCss\css\custom-animate.css" />
     <Content Include="WebsiteCss\css\flaticon.css" />
@@ -2108,6 +2110,7 @@
     <Content Include="WebsiteCss\css\owl.css" />
     <Content Include="WebsiteCss\css\owl.video.play.html" />
     <Content Include="WebsiteCss\css\responsive.css" />
+    <Content Include="WebsiteCss\css\style-2.css" />
     <Content Include="WebsiteCss\css\style.css" />
     <Content Include="WebsiteCss\fonts\flaticon.svg" />
     <Content Include="WebsiteCss\fonts\fontawesome-webfonte0a5.svg" />
@@ -2193,7 +2196,11 @@
     <Content Include="WebsiteCss\images\resource\service-7.jpg" />
     <Content Include="WebsiteCss\images\resource\service-8.jpg" />
     <Content Include="WebsiteCss\images\resource\service-9.jpg" />
+    <Content Include="WebsiteCss\images\user.png" />
+    <Content Include="WebsiteCss\images\usericon.jpg" />
+    <Content Include="WebsiteCss\images\vector.png" />
     <Content Include="WebsiteCss\js\appear.js" />
+    <Content Include="WebsiteCss\js\bootstrap.min-1.js" />
     <Content Include="WebsiteCss\js\bootstrap.min.js" />
     <Content Include="WebsiteCss\js\color-settings.js" />
     <Content Include="WebsiteCss\js\isotope.js" />
