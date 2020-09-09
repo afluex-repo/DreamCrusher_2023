@@ -674,7 +674,16 @@ namespace DreamCrusherMLM.Models
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@TransactionDate", TransactionDate)
                                   };
-            DataSet ds = DBHelper.ExecuteQuery("GetDCMIReport", para);
+            DataSet ds = DBHelper.ExecuteQuery("GetDCMIForAdmin", para);
+            return ds;
+        }
+
+        public DataSet GetDCMIReportForAssociate()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@Fk_userid", Fk_UserId)
+                                  };
+            DataSet ds = DBHelper.ExecuteQuery("GetDCMIForAssociate", para);
             return ds;
         }
     }

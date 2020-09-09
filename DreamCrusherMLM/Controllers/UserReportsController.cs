@@ -723,12 +723,11 @@ namespace DreamCrusherMLM.Controllers
             }
             return View(model);
         }
-		public ActionResult DCMIReport()
-		{
-		    Reports model = new Reports();
+		public ActionResult DCMIReport(Reports model)
+        {
             List<Reports> lst1 = new List<Reports>();
-			model.LoginId=Session["LoginId"].ToString();
-            DataSet ds11 = model.GetDCMIReport();
+            model.Fk_UserId = Session["Pk_userId"].ToString();
+            DataSet ds11 = model.GetDCMIReportForAssociate();
 
             if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
             {

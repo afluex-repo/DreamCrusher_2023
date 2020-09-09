@@ -1561,9 +1561,8 @@ namespace DreamCrusherMLM.Controllers
             return View(model);
         }
 
-		public ActionResult DCMIReport()
+		public ActionResult DCMIReport(Reports model)
 		{
-		    Reports model = new Reports();
             List<Reports> lst1 = new List<Reports>();
             DataSet ds11 = model.GetDCMIReport();
 
@@ -1592,6 +1591,8 @@ namespace DreamCrusherMLM.Controllers
 		public ActionResult GetDCMIReport(Reports model)
 		{
             List<Reports> lst1 = new List<Reports>();
+
+            model.TransactionDate = string.IsNullOrEmpty(model.TransactionDate) ? null : Common.ConvertToSystemDate(model.TransactionDate, "dd/MM/yyyy");
             DataSet ds11 = model.GetDCMIReport();
 
             if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)

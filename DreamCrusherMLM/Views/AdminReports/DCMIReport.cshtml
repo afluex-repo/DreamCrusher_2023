@@ -58,13 +58,14 @@
                                         <th>Sr No.</th>
 
                                         <th>Login Id</th>
+                                        <th>DCMI Income</th>
                                         @*<th>Password</th>*@
                                         <th hidden="hidden">Pk_DCMIId</th>
-                                        <th>Month</th>
+                                        <th hidden="hidden">Month</th>
                                         <th>Total Matching</th>
                                         <th>Total BV</th>
                                         <th>Transaction Date</th>
-                                        <th>DCMI Income</th>
+                                       
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -79,13 +80,14 @@
                                             <td>@i</td>
 
                                             <td>@Item.LoginId</td>
+                                            <td>@Item.DCMIIncome</td>
                                             @*<td>@Item.Password</td>*@
                                             <td hidden="hidden">@Item.Pk_DCMIId</td>
-                                            <td>@Item.Month</td>
+                                            <td  hidden="hidden">@Item.Month</td>
                                             <td>@Item.TotalMatching</td>
                                             <td>@Item.TotalBV</td>
                                             <td>@Item.TransactionDate</td>
-                                            <td >@Item.DCMIIncome</td>
+                                           
 
                                         </tr>
                                                 i++;
@@ -113,9 +115,8 @@
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
 <script>
-
     $('#TransactionDate').datepicker({
-        dateFormat: 'yy-mm-dd',
+        dateFormat: 'dd/mm/yy',
     });
 </script>
 
