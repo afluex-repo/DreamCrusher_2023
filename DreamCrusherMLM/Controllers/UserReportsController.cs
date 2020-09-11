@@ -737,10 +737,14 @@ namespace DreamCrusherMLM.Controllers
                     Obj.LoginId = r["LoginId"].ToString();
                     Obj.Pk_DCMIId = r["Pk_DCMIId"].ToString();
                     Obj.Month = r["Month"].ToString();
+                    Obj.Name = r["Name"].ToString();
                     Obj.TotalMatching = r["TotalMatching"].ToString();
                     Obj.TransactionDate = r["TransactionDate"].ToString();
                     Obj.DCMIIncome = r["DCMIIncome"].ToString();
                     Obj.TotalBV = r["TotalBV"].ToString();
+                    Obj.DCMIGrossIncome = r["DCMIGrossIncome"].ToString();
+                    Obj.TDS = r["TDS"].ToString();
+                    Obj.AdminCharge = r["AdminCharge"].ToString();
 
                     lst1.Add(Obj);
                 }
@@ -766,11 +770,14 @@ namespace DreamCrusherMLM.Controllers
                     Obj.LoginId = r["LoginId"].ToString();
                     Obj.Pk_DCMIId = r["Pk_DCMIId"].ToString();
                     Obj.Month = r["Month"].ToString();
+                    Obj.Name = r["Name"].ToString();
                     Obj.TotalMatching = r["TotalMatching"].ToString();
                     Obj.TransactionDate = r["TransactionDate"].ToString();
                     Obj.DCMIIncome = r["DCMIIncome"].ToString();
                     Obj.TotalBV = r["TotalBV"].ToString();
-
+                    Obj.DCMIGrossIncome = r["DCMIGrossIncome"].ToString();
+                    Obj.TDS = r["TDS"].ToString();
+                    Obj.AdminCharge = r["AdminCharge"].ToString();
                     lst1.Add(Obj);
                 }
                 model.lstdcmireport = lst1;

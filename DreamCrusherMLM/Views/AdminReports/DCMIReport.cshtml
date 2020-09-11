@@ -58,12 +58,15 @@
                                         <th>Sr No.</th>
 
                                         <th>Login Id</th>
-                                        <th>DCMI Income</th>
+                                        <th>Name</th>
                                         @*<th>Password</th>*@
                                         <th hidden="hidden">Pk_DCMIId</th>
-                                        <th hidden="hidden">Month</th>
+                                        <th>Month</th>
                                         <th>Total Matching</th>
-                                        <th>Total BV</th>
+                                        <th>DCMI Gross Income</th>
+                                        <th>TDS</th>
+                                        <th>Admin Charge</th>
+                                        <th>DCMI Income</th>
                                         <th>Transaction Date</th>
                                        
                                     </tr>
@@ -80,12 +83,15 @@
                                             <td>@i</td>
 
                                             <td>@Item.LoginId</td>
-                                            <td>@Item.DCMIIncome</td>
+                                            <td>@Item.Name</td>
                                             @*<td>@Item.Password</td>*@
                                             <td hidden="hidden">@Item.Pk_DCMIId</td>
-                                            <td  hidden="hidden">@Item.Month</td>
+                                            <td>@Item.Month</td>
                                             <td>@Item.TotalMatching</td>
-                                            <td>@Item.TotalBV</td>
+                                            <td>@Item.DCMIGrossIncome</td>
+                                            <td>@Item.TDS</td>
+                                            <td>@Item.AdminCharge</td>
+                                            <td>@Item.DCMIIncome</td>
                                             <td>@Item.TransactionDate</td>
                                            
 

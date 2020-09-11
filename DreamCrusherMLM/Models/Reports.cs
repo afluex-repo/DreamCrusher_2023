@@ -6,6 +6,9 @@ namespace DreamCrusherMLM.Models
 {
     public class Reports : Common
     {
+        public string AdminCharge { get; set; }
+        public string TDS { get; set; }
+        public string DCMIGrossIncome { get; set; }
         public string PassportImage { get; set; }
         public string passportNo { get; set; }
         public string DCMI { get; set; }
