@@ -9,6 +9,9 @@ namespace DreamCrusherMLM.Models
 {
     public class Master : Common
     {
+        public string Image { get; set; }
+        public List<Master> lstGallery1 { get; set; }
+        public string PK_GalleryID { get; set; }
         public string ProductID { get; set; }
         public string ProductName { get; set; }
         public string ProductPrice { get; set; }
@@ -50,6 +53,23 @@ namespace DreamCrusherMLM.Models
         {
             SqlParameter[] para = { new SqlParameter("@ProductID", ProductID) };
             DataSet ds = DBHelper.ExecuteQuery("GetProductList", para);
+            return ds;
+        }
+
+        public DataSet SavingGalleryMaster()
+        {
+            SqlParameter[] para = { new SqlParameter("@AddedBy", AddedBy),
+             new SqlParameter("@Image", Image)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GalleryMaster", para);
+            return ds;
+        }
+
+        public DataSet GetGalleryList()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_GalleryID", PK_GalleryID)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetGalleryImages",para);
             return ds;
         }
 
@@ -118,6 +138,15 @@ namespace DreamCrusherMLM.Models
                                   new SqlParameter("@DeletedBy", AddedBy),};
 
             DataSet ds = DBHelper.ExecuteQuery("DeleteNews", para);
+            return ds;
+        }
+
+        public DataSet DeleteGalleryImages()
+        {
+            SqlParameter[] para = { new SqlParameter("@PK_GalleryID", PK_GalleryID),
+                                  new SqlParameter("@DeletedBy", AddedBy),};
+
+            DataSet ds = DBHelper.ExecuteQuery("DeleteGallery", para);
             return ds;
         }
 

@@ -59,7 +59,7 @@
                                         <div class="gstin">
                                             <p><strong>GSTIN :</strong> @ViewBag.GSTNO</p>
                                             <p><strong>Invoice Serial Number :</strong> @ViewBag.OrderNo</p>
-                                            <p><strong>Invoice Date :</strong> @DateTime.Now.ToString("dd/MM/yyyy")</p>
+                                            <p><strong>Invoice Date :</strong> @ViewBag.UpgradtionDate</p>
                                             @*<p><strong>Distributer ID :</strong> 809596808</p>*@
                                         </div>
                                     </td>
@@ -68,7 +68,7 @@
                                             <h6><b>Shipping Details</b></h6>
                                             To, <br />
                                             @ViewBag.Name (@ViewBag.Loginid)<br />
-                                            @ViewBag.AssociateAddress
+                                            @ViewBag.City,&nbsp; @ViewBag.State,&nbsp; @ViewBag.Pincode
                                             @*<p><strong>Name :</strong> @ViewBag.Name</p>
                                                 <p><strong>Address :</strong> @ViewBag.AssociateAddress</p>*@
 
@@ -182,9 +182,15 @@
                                         <div class="condition">
                                             Terms & Conditions :
                                             <ul>
-                                                <li>All disputes will be subject to Lucknow jurisdiction</li>
-                                                <li>Listed above have been received in order and in saleable condition.</li>
-                                                <li>Payment must be made by Cash/ Demand Draft only in favour of Dream Crusher</li>
+                                               
+                                                
+                                              
+
+                                                <li>Certified that the particulars mentioned above are true and correct .</li>
+                                                <li>Good Once sold will not be taken back .</li>
+                                                <li>Goods can be exchanged only if it is in excellent and resalable condition .</li>
+                                                <li>Buyer must have to report any defect with in 24 hours after receiving the goods ,otherwise no claim will be entertained .</li>
+                                                <li>Any Dispute Subject to faizabad Jurisdiction only .</li>
                                             </ul>
                                         </div>
                                     </td>

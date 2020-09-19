@@ -89,7 +89,7 @@
                 </div>
 
                 <div class="col-md-12 form-group">
-                    Address
+                    Address<span style="color: red"> *</span>
                     @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @Placeholder = "Address" })
                 </div>
                 <div class="row">
@@ -246,6 +246,12 @@
         if ($('#AdharNo').val() == '') {
             $("#AdharNo").addClass('errortext');
             $('#AdharNo').focus();
+            return false;
+        }
+
+        if ($('#Address').val() == '') {
+            $("#Address").addClass('errortext');
+            $('#Address').focus();
             return false;
         }
         if ($('#PinCode').val() == '') {

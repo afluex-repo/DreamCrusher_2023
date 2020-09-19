@@ -277,6 +277,12 @@ namespace DreamCrusherMLM.Controllers
                             obj.HSNCode = r["HSNCode"].ToString();
 
                             ViewBag.OrderNo = r["Pk_InvestmentId"].ToString();
+                            ViewBag.UpgradtionDate = ds.Tables[0].Rows[0]["UpgradtionDate"].ToString();
+
+
+                            ViewBag.Pincode = ds.Tables[0].Rows[0]["PinCode"].ToString();
+                            ViewBag.State = ds.Tables[3].Rows[0]["statename"].ToString();
+                            ViewBag.City = ds.Tables[3].Rows[0]["Districtname"].ToString();
 
                             ViewBag.TotalFinalAmount = ds.Tables[1].Rows[0]["TotalFinalAmount"].ToString();
                             ViewBag.TotalFinalAmountWords = ds.Tables[1].Rows[0]["TotalFinalAmountWords"].ToString();

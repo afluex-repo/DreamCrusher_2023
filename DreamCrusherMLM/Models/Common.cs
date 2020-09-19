@@ -282,6 +282,19 @@ namespace DreamCrusherMLM.Models
 
             return PaidStatus;
         }
+
+        public static List<SelectListItem> KycStatus()
+        {
+            List<SelectListItem> PaidStatus = new List<SelectListItem>();
+            PaidStatus.Add(new SelectListItem { Text = "All", Value = "null" });
+            PaidStatus.Add(new SelectListItem { Text = "Pending", Value = "Pending" });
+            PaidStatus.Add(new SelectListItem { Text = "Approved", Value = "Approved" });
+            PaidStatus.Add(new SelectListItem { Text = "Rejected", Value = "Rejected" });
+            return PaidStatus;
+        }
+
+        
+
         public string Fk_UserId { get; set; }
         public string Address { get; set; }
         public string PinCode { get; set; }

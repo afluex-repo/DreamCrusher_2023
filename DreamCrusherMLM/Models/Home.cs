@@ -36,6 +36,12 @@ namespace DreamCrusherMLM.Models
     }
     public class Home
     {
+        public string ProductDetails { get; set; }
+        public string ProductName { get; set; }
+        public string Image { get; set; }
+        public List<Home> lstGallery { get; set; }
+        public string PK_GalleryID { get; set; }
+
         public string ToDate { get; set; }
         public string FromDate { get; set; }
         public string GrossAmount { get; set; }
@@ -97,6 +103,13 @@ namespace DreamCrusherMLM.Models
             SqlParameter[] para ={new SqlParameter ("@LoginId",LoginId),
                                 new SqlParameter("@Password",Password)};
             DataSet ds = DBHelper.ExecuteQuery("Login", para);
+            return ds;
+        }
+
+        public DataSet GetGalleryList()
+        {
+           
+            DataSet ds = DBHelper.ExecuteQuery("GetGalleryImages");
             return ds;
         }
 

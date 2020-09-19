@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using DreamCrusherMLM.Models;
 using DreamCrusherMLM.Filter;
+using System.IO;
 
 namespace DreamCrusherMLM.Controllers
 {
@@ -337,6 +338,108 @@ namespace DreamCrusherMLM.Controllers
             return RedirectToAction(FormName, Controller);
         }
 
+        #endregion
+
+        #region GalleryMaster
+        
+        public ActionResult GalleryMaster(Master model)
+        {
+            return View(model);
+        }
+
+
+        [HttpPost]
+        [OnAction(ButtonName = "btnSave")]
+        [ActionName("GalleryMaster")]
+        public ActionResult SaveGalleryMaster(Master model, IEnumerable<HttpPostedFileBase> postedFile)
+        {
+            model.AddedBy = Session["Pk_AdminId"].ToString();
+            try
+            {
+                foreach (var file in postedFile)
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+
+                        model.Image = "/images/GalleryImages/" + Guid.NewGuid() + Path.GetExtension(file.FileName);
+                        file.SaveAs(Path.Combine(Server.MapPath(model.Image)));
+                    }
+                }
+
+                DataSet ds = model.SavingGalleryMaster();
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+
+                        TempData["GalleryMaster"] = "Image Saved Successully";
+                    }
+                    else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
+                    {
+                        TempData["GalleryMaster"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                TempData["GalleryMaster"] = ex.Message;
+            }
+            return RedirectToAction("GalleryMaster");
+        }
+
+
+        public ActionResult GalleryMasterList(Master model)
+        {
+            List<Master> list = new List<Master>();
+            DataSet ds = model.GetGalleryList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Master obj = new Master();
+                    obj.PK_GalleryID = r["PK_GalleryID"].ToString();
+                    obj.Image = r["Image"].ToString();
+
+                    list.Add(obj);
+                }
+                model.lstGallery1 = list;
+            }
+            return View(model);
+        }
+
+        public ActionResult DeleteImage(string PK_GalleryID)
+        {
+            string FormName = "";
+            string Controller = "";
+            try
+            {
+                Master obj = new Master();
+                obj.PK_GalleryID = PK_GalleryID;
+                obj.AddedBy = Session["PK_AdminId"].ToString();
+                DataSet ds = obj.DeleteGalleryImages();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        TempData["GalleryMasterList"] = "Image deleted successfully";
+                        FormName = "GalleryMasterList";
+                        Controller = "Master";
+                    }
+                    else
+                    {
+                        TempData["GalleryMasterList"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["GalleryMasterList"] = ex.Message;
+            }
+
+            return RedirectToAction(FormName,Controller);
+        }
         #endregion
     }
 }

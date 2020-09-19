@@ -1,4 +1,6 @@
-﻿@{
+﻿@model DreamCrusherMLM.Models.Home
+
+@{
     ViewBag.Title = "Gallery";
     Layout = "~/Views/Shared/_WebisteLayout.cshtml";
 }
@@ -27,159 +29,28 @@
         <!-- MixitUp Galery -->
         <div class="mixitup-gallery">
             <div class="filter-list row clearfix">
-                <!-- Portfolio Block -->
-                <div class="project-block mix all strategy acilitation col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/1.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                    
-                                    <a href="../WebsiteCss/images/gallery/1.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="row">
+                    @if (Model != null)
+                    {
+                        if (Model.lstGallery != null)
+                        {
+                            int i = 1;
+                            foreach (var Item in Model.lstGallery)
+                            {
+                                <div class="col-sm-4">
 
-                <!-- Portfolio Block -->
-                <div class="project-block mix all strategy relations col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/2.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                    
-                                    <a href="../WebsiteCss/images/gallery/2.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Portfolio Block -->
-                <div class="project-block mix all relations stakeholder col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/3.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                    
-                                    <a href="../WebsiteCss/images/gallery/3.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    <div class="magnific-img">
+                                        <a class="image-popup-vertical-fit" href="@Item.Image" title=" ">
+                                            <img src="@Item.Image" alt="" style="height: 380px; margin-top:5px;margin-bottom:5px;">
 
-                <!-- Portfolio Block -->
-                <div class="project-block mix all strategy stakeholder col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/4.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                   
-                                    <a href="../WebsiteCss/images/gallery/4.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
+                                        </a>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
+                            }
+                        }
+                    }
                 </div>
-
-                <!-- Portfolio Block -->
-                <div class="project-block mix all strategy stakeholder coaching col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/5.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                   
-                                    <a href="../WebsiteCss/images/gallery/5.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Block -->
-                <div class="project-block mix all strategy acilitation col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/6.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                    
-                                    <a href="../WebsiteCss/images/gallery/6.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Block -->
-                <div class="project-block mix all coaching stakeholder col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/7.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                   
-                                    <a href="../WebsiteCss/images/gallery/7.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Block -->
-                <div class="project-block mix all strategy acilitation col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/8.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                    
-                                    <a href="../WebsiteCss/images/gallery/8.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Block -->
-                <div class="project-block mix all coaching acilitation col-lg-4 col-md-6 col-sm-12">
-                    <div class="inner-box">
-                        <div class="image">
-                            <img src="../WebsiteCss/images/gallery/9.jpg" alt="" />
-                            <div class="overlay-box">
-                                <div class="overlay-inner">
-                                    <div class="title">Corporate</div>
-                                    <h4><a href="#">Business Management</a></h4>                                  
-                                    <a href="../WebsiteCss/images/gallery/9.jpg" data-fancybox="gallery" data-caption=""
-                                       class="plus flaticon-plus"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
             </div>
 
 

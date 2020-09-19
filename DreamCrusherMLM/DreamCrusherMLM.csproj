@@ -1968,6 +1968,16 @@
     <Content Include="images\dhara-logo.png" />
     <Content Include="images\edit-icon.png" />
     <Content Include="images\exel.png" />
+    <Content Include="images\GalleryImages\727731da-d0a0-46f8-91ef-f470018eef34.jpg" />
+    <Content Include="images\GalleryImages\81e1a833-65d4-4490-9212-91dedb56c335.png" />
+    <Content Include="images\GalleryImages\974d63ce-29ac-405b-a227-d98509d141ba.jpg" />
+    <Content Include="images\GalleryImages\a29cd5d1-aef0-4136-bab3-4c8b9aaa996b.jpg" />
+    <Content Include="images\GalleryImages\abd88dc9-7119-47bf-a9df-f6122d14b7b7.png" />
+    <Content Include="images\GalleryImages\cc428fc1-34e5-4dc7-abaf-a535f1550188.jpg" />
+    <Content Include="images\GalleryImages\d06b7f5c-8f22-48fd-8cbd-80621c5e4231.jpg" />
+    <Content Include="images\GalleryImages\e1e27cca-79cb-4543-b240-4b5398c6156d.jpg" />
+    <Content Include="images\GalleryImages\e55d1de1-675f-48b1-9990-0213f7b0cfe2.png" />
+    <Content Include="images\GalleryImages\f97a3e91-2846-4c0c-84c1-eb90693dafb5.jpg" />
     <Content Include="images\lock.png" />
     <Content Include="images\loader.gif" />
     <Content Include="images\logo.png" />
@@ -2566,7 +2576,6 @@
     <Content Include="Views\Home\Brochure.cshtml" />
     <Content Include="Views\Home\OnePager.cshtml" />
     <Content Include="Views\Home\Events.cshtml" />
-    <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Home\Ventures.cshtml" />
     <Content Include="Views\Home\News.cshtml" />
     <Content Include="Views\Home\ContactUs.cshtml" />
@@ -2605,6 +2614,9 @@
     <Content Include="Views\UserReports\DCMIReport.cshtml" />
     <Content Include="Views\AdminReports\KYCDetails.cshtml" />
     <Content Include="Views\Home\SetEarnerValue.cshtml" />
+    <Content Include="Views\Home\Gallery.cshtml" />
+    <Content Include="Views\Master\GalleryMaster.cshtml" />
+    <Content Include="Views\Master\GalleryMasterList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

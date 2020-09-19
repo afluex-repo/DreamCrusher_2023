@@ -114,7 +114,7 @@
                                  </div>
                                 <!--Form Group-->
                                 <div class="form-group col-md-12 col-sm-12">
-                                    <label>Address</label>
+                                    <label>Address<sup style="color:red;font-size: 21px;"> *</sup></label>
                                     @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @Placeholder = "Address" })
                                 </div>
                                 <!--Form Group-->
@@ -364,6 +364,11 @@
         if ($('#AdharNo').val() == '') {
             $("#AdharNo").addClass('errortext');
             $('#AdharNo').focus();
+            return false;
+        }
+        if ($('#Address').val() == '') {
+            $("#Address").addClass('errortext');
+            $('#Address').focus();
             return false;
         }
         if ($('#PinCode').val() == '') {

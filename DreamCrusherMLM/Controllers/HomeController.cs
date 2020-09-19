@@ -553,9 +553,24 @@ namespace DreamCrusherMLM.Controllers
         {
             return View();
         }
-        public ActionResult Gallery()
+        public ActionResult Gallery(Home model )
         {
-            return View();
+            List<Home> list = new List<Home>();
+            DataSet ds = model.GetGalleryList();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Home obj = new Home();
+                    obj.PK_GalleryID = r["PK_GalleryID"].ToString();
+                    obj.Image = r["Image"].ToString();
+
+                    list.Add(obj);
+                }
+                model.lstGallery = list;
+            }
+
+            return View(model);
         }
         public ActionResult Ventures()
         {

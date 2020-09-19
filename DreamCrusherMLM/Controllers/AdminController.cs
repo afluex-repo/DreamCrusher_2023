@@ -53,7 +53,7 @@ namespace DreamCrusherMLM.Controllers
 
         public ActionResult AssociateListForKYC(Reports model)
         {
-            List<SelectListItem> ddlKYCStatus = Common.BindKYCStatus();
+            List<SelectListItem> ddlKYCStatus = Common.KycStatus();
             ViewBag.ddlKYCStatus = ddlKYCStatus;
             List<Reports> lst = new List<Reports>();
 
