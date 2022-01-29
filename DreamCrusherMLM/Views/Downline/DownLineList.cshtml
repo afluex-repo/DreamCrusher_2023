@@ -61,7 +61,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                            <table id="dataTables-example" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
@@ -114,6 +114,7 @@
                 <!-- /.col-lg-12 -->
             </div>
             }
+
             <script src="../vendor/jquery/jquery.min.js"></script>
             <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
             <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
@@ -135,7 +136,8 @@
             <script>
                 $(document).ready(function () {
                     $('#dataTables-example').DataTable({
-                        responsive: true
+                        responsive: true,
+                        paging: true
                     });
                 });
             </script>
