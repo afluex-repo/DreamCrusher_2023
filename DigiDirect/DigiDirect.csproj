@@ -2185,11 +2185,15 @@
     <Content Include="WebsiteCss\images\main-slider\pattern-1.jpg" />
     <Content Include="WebsiteCss\images\mission.jpg" />
     <Content Include="WebsiteCss\images\registrationc.png" />
+    <Content Include="WebsiteCss\images\resource\03.jpg" />
     <Content Include="WebsiteCss\images\resource\chart.png" />
     <Content Include="WebsiteCss\images\resource\contact.jpg" />
     <Content Include="WebsiteCss\images\resource\feature-1.jpg" />
     <Content Include="WebsiteCss\images\resource\image-1.jpg" />
     <Content Include="WebsiteCss\images\resource\image-2.jpg" />
+    <Content Include="WebsiteCss\images\resource\04.jpg" />
+    <Content Include="WebsiteCss\images\resource\05.jpg" />
+    <Content Include="WebsiteCss\images\resource\06.jpg" />
     <Content Include="WebsiteCss\images\resource\introduction.jpg" />
     <Content Include="WebsiteCss\images\resource\post-thumb-1.jpg" />
     <Content Include="WebsiteCss\images\resource\post-thumb-2.jpg" />
