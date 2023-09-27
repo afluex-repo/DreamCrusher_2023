@@ -1,0 +1,94 @@
+﻿@model DreamCrusher.Models.Master
+
+
+@{
+    ViewBag.Title = "GalleryMasterList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <ol class="breadcrumb">
+            <li>
+                <i class="clip-home-3"></i>
+                <a href="#">
+                    Master
+                </a>
+            </li>
+            <li class="active">
+                Gallery List
+            </li>
+
+        </ol>
+
+
+    </div>
+</div>
+<br />
+@using (Html.BeginForm("GalleryMasterList", "Master", FormMethod.Post, new { @id = "form1", name = "formKYC" }))
+{
+    <span style="color: red">
+        @TempData["GalleryMasterList"]
+    </span>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    Gallery List
+
+
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-12 table-responsive">
+                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                                <thead>
+                                    <tr>
+                                        <th>S No.</th>
+                                        <th>Image</th>
+
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        if (Model.lstGallery1 != null)
+                                        {
+                                            int i = 1;
+                                            foreach (var Item in Model.lstGallery1)
+                                            {
+                                                <tr class="text-left">
+                                                    <td>@i</td>
+                                                    <td><img width="100" height="100" src="@Item.Image" /></td>
+                                                    <td>
+
+                                                        <a href="/Master/DeleteImage?PK_GalleryID=@Item.PK_GalleryID" class="btn btn-danger btn-sm">Delete</a>
+
+                                                    </td>
+
+                                                </tr>
+
+                                                i++;
+                                            }
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+}
+
+
+
+
