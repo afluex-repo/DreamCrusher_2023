@@ -164,6 +164,5 @@ F:\Sarfraz Ahmad\repository\DreamCrusher_2023\DreamCrusher\bin\Newtonsoft.Json.x
 F:\Sarfraz Ahmad\repository\DreamCrusher_2023\DreamCrusher\bin\System.Net.Http.Formatting.xml
 F:\Sarfraz Ahmad\repository\DreamCrusher_2023\DreamCrusher\bin\System.Web.Http.xml
 F:\Sarfraz Ahmad\repository\DreamCrusher_2023\DreamCrusher\bin\System.Web.Http.WebHost.xml
-F:\Sarfraz Ahmad\repository\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.csprojResolveAssemblyReference.cache
 F:\Sarfraz Ahmad\repository\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.dll
 F:\Sarfraz Ahmad\repository\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.pdb
