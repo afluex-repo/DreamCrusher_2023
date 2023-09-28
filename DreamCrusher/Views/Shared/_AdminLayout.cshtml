@@ -13,6 +13,7 @@
     <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
     <link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <!-- loader-->
+   
     @*<link href="~/assetsAdmin/css/pace.min.css" rel="stylesheet" />*@
     <script src="~/assetsAdmin/js/pace.min.js"></script>
     <!-- Bootstrap CSS -->
@@ -40,7 +41,7 @@
                 </div>
             </div>
             <!--navigation-->
-            <ul class="metismenu" id="menu">
+            @*<ul class="metismenu" id="menu">
                 <li>
                     <a href="javascript:;">
                         <div class="parent-icon">
@@ -62,7 +63,10 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul>*@
+            @{
+                Html.RenderAction("Menu", "Home", new { area = "" });
+            }
             <!--end navigation-->
         </div>
         <!--end sidebar wrapper -->
@@ -129,7 +133,6 @@
                                     </li>
                                 </ul>
                             </li>
-
                             <li class="nav-item dropdown dropdown-app">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown"
                                    href="javascript:;"><i class='bx bx-grid-alt'></i></a>
@@ -357,13 +360,10 @@
                                                     </div>
                                                 </a>
                                             </div>
-
                                         </div><!--end row-->
-
                                     </div>
                                 </div>
                             </li>
-
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
                                    data-bs-toggle="dropdown">
@@ -769,9 +769,6 @@
         <!--end header -->
         <!--start page wrapper -->
         <div class="page-wrapper">
-            @{
-                Html.RenderAction("Menu", "Home", new { area = "" });
-            }
             @RenderBody()
         </div>
         <!--end page wrapper -->
@@ -823,6 +820,3 @@
     <script src="~/assetsAdmin/js/app.js"></script>
 </body>
 </html>
-
-
-
