@@ -44,7 +44,7 @@
                 </div>
             </div>
             <!--navigation-->
-            <ul class="metismenu" id="menu">
+            @*<ul class="metismenu" id="menu">
                 <li>
                     <a href="javascript:;">
                         <div class="parent-icon">
@@ -66,8 +66,13 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul>*@
             <!--end navigation-->
+
+            @{
+                Html.RenderAction("Menu", "Home", new { area = "" });
+            }
+
         </div>
         <!--end sidebar wrapper -->
         <!--start header -->
@@ -367,7 +372,6 @@
                                     </div>
                                 </div>
                             </li>
-
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
                                    data-bs-toggle="dropdown">
@@ -771,20 +775,11 @@
             </div>
         </header>
         <!--end header -->
-
-
         <!--start page wrapper -->
         <div class="page-wrapper">
-            @{
-                Html.RenderAction("Menu", "Home", new { area = "" });
-            }
-
-
             @RenderBody()
         </div>
         <!--end page wrapper -->
-
-
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->
@@ -793,16 +788,10 @@
         </a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2023. All right reserved.</p>
+            <p class="mb-0">© Copyright 2023 Dream Crusher All right reserved.</p>
         </footer>
     </div>
     <!--end wrapper-->
-
-
-
-
-
-
     <!-- Bootstrap JS -->
     <script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->

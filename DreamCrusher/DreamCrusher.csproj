@@ -3663,7 +3663,6 @@
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Master\GalleryMaster.cshtml" />
     <Content Include="Views\Master\GalleryMasterList.cshtml" />
-    <Content Include="Views\Shared\_AdminLayoutTesting.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
