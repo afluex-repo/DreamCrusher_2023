@@ -1,6 +1,5 @@
 ﻿<!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -22,12 +21,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
     <link href="~/assetsAdmin/css/app.css" rel="stylesheet">
     <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
-
-
     <title>@ViewBag.Title</title>
 </head>
-
-
 <body class="bg-theme bg-theme1">
     <!--wrapper-->
     <div class="wrapper">
@@ -772,20 +767,14 @@
             </div>
         </header>
         <!--end header -->
-
-
         <!--start page wrapper -->
         <div class="page-wrapper">
             @{
                 Html.RenderAction("Menu", "Home", new { area = "" });
             }
-
-
             @RenderBody()
         </div>
         <!--end page wrapper -->
-
-
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->
@@ -798,12 +787,6 @@
         </footer>
     </div>
     <!--end wrapper-->
-
-
-
-
-
-
     <!-- Bootstrap JS -->
     <script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
@@ -824,8 +807,6 @@
 		$(function () {
 			$(".knob").knob();
 		});
-
-
         //data table js
 		$(document).ready(function () {
 		    var table = $('#example2').DataTable({
@@ -841,7 +822,6 @@
     <!--app JS-->
     <script src="~/assetsAdmin/js/app.js"></script>
 </body>
-
 </html>
 
 
