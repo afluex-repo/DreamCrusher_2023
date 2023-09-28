@@ -1,6 +1,5 @@
 ﻿<!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -12,7 +11,9 @@
     <link href="~/assetsAdmin/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="~/assetsAdmin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
     <!-- loader-->
+   
     @*<link href="~/assetsAdmin/css/pace.min.css" rel="stylesheet" />*@
     <script src="~/assetsAdmin/js/pace.min.js"></script>
     <!-- Bootstrap CSS -->
@@ -21,12 +22,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
     <link href="~/assetsAdmin/css/app.css" rel="stylesheet">
     <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
-
-
     <title>@ViewBag.Title</title>
 </head>
-
-
 <body class="bg-theme bg-theme1">
     <!--wrapper-->
     <div class="wrapper">
@@ -44,7 +41,7 @@
                 </div>
             </div>
             <!--navigation-->
-            <ul class="metismenu" id="menu">
+            @*<ul class="metismenu" id="menu">
                 <li>
                     <a href="javascript:;">
                         <div class="parent-icon">
@@ -66,7 +63,10 @@
                         </li>
                     </ul>
                 </li>
-            </ul>
+            </ul>*@
+            @{
+                Html.RenderAction("Menu", "Home", new { area = "" });
+            }
             <!--end navigation-->
         </div>
         <!--end sidebar wrapper -->
@@ -133,7 +133,6 @@
                                     </li>
                                 </ul>
                             </li>
-
                             <li class="nav-item dropdown dropdown-app">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" data-bs-toggle="dropdown"
                                    href="javascript:;"><i class='bx bx-grid-alt'></i></a>
@@ -361,13 +360,10 @@
                                                     </div>
                                                 </a>
                                             </div>
-
                                         </div><!--end row-->
-
                                     </div>
                                 </div>
                             </li>
-
                             <li class="nav-item dropdown dropdown-large">
                                 <a class="nav-link dropdown-toggle dropdown-toggle-nocaret position-relative" href="#"
                                    data-bs-toggle="dropdown">
@@ -771,20 +767,11 @@
             </div>
         </header>
         <!--end header -->
-
-
         <!--start page wrapper -->
         <div class="page-wrapper">
-            @{
-                Html.RenderAction("Menu", "Home", new { area = "" });
-            }
-
-
             @RenderBody()
         </div>
         <!--end page wrapper -->
-
-
         <!--start overlay-->
         <div class="overlay toggle-icon"></div>
         <!--end overlay-->
@@ -797,12 +784,6 @@
         </footer>
     </div>
     <!--end wrapper-->
-
-
-
-
-
-
     <!-- Bootstrap JS -->
     <script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>
     <!--plugins-->
@@ -817,17 +798,25 @@
     <script src="~/assetsAdmin/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
     <script src="~/assetsAdmin/plugins/jquery-knob/excanvas.js"></script>
     <script src="~/assetsAdmin/plugins/jquery-knob/jquery.knob.js"></script>
+    <script src="~/assetsAdmin/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/assetsAdmin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
     <script>
 		$(function () {
 			$(".knob").knob();
+		});
+        //data table js
+		$(document).ready(function () {
+		    var table = $('#example2').DataTable({
+		        lengthChange: false,
+		        buttons: ['copy', 'excel', 'pdf', 'print']
+		    });
+
+		    table.buttons().container()
+				.appendTo('#example2_wrapper .col-md-6:eq(0)');
 		});
     </script>
     <script src="~/assetsAdmin/js/index.js"></script>
     <!--app JS-->
     <script src="~/assetsAdmin/js/app.js"></script>
 </body>
-
 </html>
-
-
-
