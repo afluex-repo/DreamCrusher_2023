@@ -3663,6 +3663,9 @@
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Master\GalleryMaster.cshtml" />
     <Content Include="Views\Master\GalleryMasterList.cshtml" />
+    <Content Include="Views\Master\CourseMaster.cshtml" />
+    <Content Include="Views\Master\CourseList.cshtml" />
+    <Content Include="Views\Master\AllotCoursesOnPackage.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3672,6 +3675,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="CourseImages\" />
     <Folder Include="KYCDocuments\" />
     <Folder Include="RequestImage\" />
     <Folder Include="Views\AgentServices\" />
