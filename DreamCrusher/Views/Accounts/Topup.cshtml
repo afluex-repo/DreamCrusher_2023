@@ -5,150 +5,117 @@
 }
 
 
-<div class="row">
-    <div class="col-sm-12">
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>
-                <a href="#">
-                    Accounts
-                </a>
-            </li>
-            <li class="active">
-                Top Up
-            </li>
-        </ol>
-    </div>
-</div>
-
-<br />
 
 @using (Html.BeginForm("TopUpByAdmin", "Accounts", FormMethod.Post, new { @id = "form1" }))
 {
 
-    <span style="color: red">@TempData["Topup"] </span>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Topup
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Login Id <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "Login Id", @onchange = "getmembername(this);" })
-                                    <br />
-                                    <span id="txtname" style="color: blue"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Package <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control", @onchange = "FillAmount();" })
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Amount <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @placeholder = "Topup Amount", @onkeypress= "return isNumberKey(event);" })
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Topup Date <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.TopUpDate, new { @class = "form-control", @Placeholder = "TopUp Date",@readonly="readonly" })
-                                </div>
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Team Direct List</h5>
+                            <span style="color: #fff">@TempData["Topup"] </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Login Id <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "Login Id", @onchange = "getmembername(this);" })
+                                       
+                                        <span id="txtname" style="color: #fff"></span>
+                       
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Description </label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @Placeholder = "Description" })
-                                </div>
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Package <span style="color: red">*</span></label>
+                                        @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control form-select", @onchange = "FillAmount();" })
+                               
                             </div>
-                        </div>
-                        <div class="col-md-4" style="display:none" id="divPlotNumber">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Plot Number <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.PlotNumber, new { @class = "form-control", @Placeholder = "Plot Number" })
-                                </div>
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Amount <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @placeholder = "Topup Amount", @onkeypress = "return isNumberKey(event);" })
                             </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Payment Mode<span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlpaymentmode, "Value", "Text"), new { @class = "form-control", @data_size = "7", @data_style = "select-with-transition", @onchange = "getpaymentdetails();" })
-                                    @Html.ValidationMessageFor(m => m.PaymentMode)
-                                </div>
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Topup Date <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.TopUpDate, new { @class = "form-control", @Placeholder = "TopUp Date", @readonly = "readonly" }) 
                             </div>
-                        </div>
-                        </div>
-                    <div class="row">
-                        <div class="col-md-4" id="chequeno" style="display: none">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Transaction No<span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.DDChequeNo, new { @class = "form-control", @placeholder = "Transaction No" })
-                                </div>
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Description </label>
+                                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @Placeholder = "Description" })
+                              
                             </div>
-                        </div>
-                        <div class="col-md-4" id="chequdate" style="display: none">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label"> Transaction Date <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.DDChequeDate, new { @class = "form-control", @placeholder = "Transaction Date" })
-                                </div>
+                            <div class="col-md-4 mb-3" style="display:none" id="divPlotNumber">
+                             
+                                    <label  class="form-label">Plot Number <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.PlotNumber, new { @class = "form-control", @Placeholder = "Plot Number" })
+                               
                             </div>
-                        </div>
-                        <div class="col-md-4" id="bankname" style="display: none">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Bank Name<span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @placeholder = "Bank Name" })
-                                </div>
+                            <div class="col-md-4 mb-3">
+                             
+                                    <label class="form-label">Payment Mode<span style="color: red">*</span></label>
+                                        @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlpaymentmode, "Value", "Text"), new { @class = "form-control  form-select", @data_size = "7", @data_style = "select-with-transition", @onchange = "getpaymentdetails();" })
+                                        @Html.ValidationMessageFor(m => m.PaymentMode)
+                              
                             </div>
-                        </div>
-                        <div class="col-md-4" id="bankbranch" style="display: none">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Branch<span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @placeholder = "Bank Branch" })
-                                    <br />
-                                </div>
+
+                            <div class="col-md-4 mb-3" id="chequeno" style="display: none">
+                        
+                                    <label  class="form-label">Transaction No<span style="color: red">*</span></label>
+                                  
+                                        @Html.TextBoxFor(m => m.DDChequeNo, new { @class = "form-control", @placeholder = "Transaction No" })
+                              
+                            </div>
+                            <div class="col-md-4 mb-3" id="chequdate" style="display: none">
+                               
+                                    <label  class="form-label"> Transaction Date <span style="color: red">*</span></label>
+                               
+                                        @Html.TextBoxFor(m => m.DDChequeDate, new { @class = "form-control", @placeholder = "Transaction Date" })
+                                   
+                            </div>
+                            <div class="col-md-4 mb-3" id="bankname" style="display: none">
+                               
+                                    <label  class="form-label">Bank Name<span style="color: red">*</span></label>
+                                
+                                        @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @placeholder = "Bank Name" })
+                                 
+                            </div>
+                            <div class="col-md-4 mb-3" id="bankbranch" style="display: none">
+                                    <label  class="form-label">Branch<span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @placeholder = "Bank Branch" })
+                              
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-block">&nbsp;</label>
+                                <input type="submit" class="btn btn-light px-3" onclick="return validateform()" value="Top Up"  />
                             </div>
                         </div>
                     </div>
-                            <div class="row">
-                                <div class="col-md-12 form-group">
-                                    <input class="btn btn-success pull-right" onclick="return validateform()" type="submit" value="Top Up" />
-                                </div>
-                            </div>
-                        </div>
+                </div>
             </div>
         </div>
     </div>
+
+
+
+
+
+   
+    
 }
 
 <style>
     .errortext {
         border: 1px solid red !important;
-        background-color: #fff0f0 !important;
     }
 </style>
 

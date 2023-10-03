@@ -4,97 +4,76 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="row">
-    <div class="col-sm-12">
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>
-                <a href="#">
-                    Reports
-                </a>
-            </li>
-            <li class="active">
-                Associate List
-            </li>
-        </ol>
-    </div>
-</div>
 
-<br />
 @using (Html.BeginForm("AssociateList", "AdminProfile", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
+    <div class="page-content">
 
-    <p style="color:red">
-        @TempData["BlockUnblock"]
-        @TempData["UpdateProfilebyadmin"]
-    </p>
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                   Associate List
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Associate List</h5>
+                            <p style="color:#ffffff">
+                                @TempData["BlockUnblock"]
+                                @TempData["UpdateProfilebyadmin"]
+                            </p>
+                            @*<button class="btn btn-light repeater-add-btn px-4">Add</button>*@
+                        </div>
+                    </div>
                 </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-
-                        <div class="col-md-12 table-responsive">
-                            <div class="row">
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label>Login ID </label>
-                                        @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label>Name </label>
-                                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label>Spill ID</label>
-                                        @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label>Spill Name</label>
-                                        @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label>From Date</label>
-                                        @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @readonly = "readonly" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label>To Date</label>
-                                        @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @readonly = "readonly" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <label>Status</label>
-                                        @Html.DropDownListFor(m => m.Status, new SelectList(ViewBag.ddlstatus, "Value", "Text"), new { @class = "form-control" })
-                                    </div>
-                                </div>
-                                <div class="col-lg-3">
-                                    <div class="form-group">
-                                        <br />
-                                        <input type="submit" id="btnSearch" class="btn btn-success pull-left" name="Search" value="Search" />
-                                    </div>
-                                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="LoginId" class="form-label">Login ID </label>
+                                @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @placeholder = "Login ID" })
                             </div>
-                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+                            <div class="col-md-3">
+                                <label for="Name" class="form-label">Name</label>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="SponsorId" class="form-label">Spill ID</label>
+                                @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control", @placeholder = "Spill Id" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="SponsorName" class="form-label">Spill Name</label>
+                                @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @placeholder = "Sponsor Name" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="FromDate" class="form-label">From Date</label>
+                                @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @readonly = "readonly" ,@placeholder="From Date"})
+                            </div>
+                            <div class="col-md-3">
+                                <label for="ToDate" class="form-label">To Date</label>
+                                @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @readonly = "readonly", @placeholder = "To Date" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Status" class="form-label">Status</label>
+                                @Html.DropDownListFor(m => m.Status, new SelectList(ViewBag.ddlstatus, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+                            <div class="col-12">
+                                <input type="submit" id="btnSearch" class="btn btn-light px-3" name="Search" value="Search" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
-                                        <th> Login Id</th>
+                                        <th>Login Id</th>
                                         <th>Password</th>
                                         <th>Name</th>
                                         <th>Spill Id</th>
@@ -177,12 +156,7 @@
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <!-- partial -->
     </div>
-    <!-- main-panel ends -->
-   
 
 }
 
