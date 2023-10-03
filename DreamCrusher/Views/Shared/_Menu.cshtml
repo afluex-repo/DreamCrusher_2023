@@ -1,20 +1,15 @@
 ﻿@model DreamCrusher.Models.Home
 
-<div class="navbar-content">
-    <!-- start: SIDEBAR -->
-    <div class="main-navigation navbar-collapse collapse">
-
-
-        <!-- start: MAIN NAVIGATION MENU -->
-        <ul class="main-navigation-menu">
-            <li>
-                <!--active open-->
-                <a href="/Admin/AdminDashBoard">
-                    <i class="clip-home-3"></i>
-                    <span class="title"> Dashboard </span><span class="selected"></span>
-                </a>
-            </li>
-            @if (Model != null)
+<ul class="metismenu" id="menu">
+    <li>
+        <a href="/Admin/AdminDashBoard">
+            <div class="parent-icon">
+                <i class='bx bx-home-alt'></i>
+            </div>
+            <div class="menu-title">Dashboard</div>
+        </a>
+    </li>
+    @if (Model != null)
             {
                 if (Model.lstMenu != null)
                 {
@@ -22,39 +17,38 @@
 
                     foreach (var item in Model.lstMenu)
                     {
-                        <li>
-                            <a href="javascript:void(0)">
-                                <i class="@item.Icon"></i>
-                                <span class="title"> @item.MenuName </span><i class="icon-arrow"></i>
-                                <span class="selected"></span>
-                            </a>
-                            @if (item.Url == "#")
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="@item.Icon"></i>
+                        </div>
+                        <div class="menu-title">@item.MenuName</div>
+                    </a>
+                    @if (item.Url == "#")
+                    {
+                        <ul>
+                            @foreach (var item1 in Model.lstsubmenu)
                             {
-                                <ul class="sub-menu">
-                                    @foreach (var item1 in Model.lstsubmenu)
-                                    {
-                                        if (item1.MenuId == item.MenuId)
-                                        {
-                                            <li>
-                                                <a href="@item1.Url">
-                                                    <span class="title"> @item1.SubMenuName </span>
-
-                                                </a>
-                                            </li>
-                                        }
-                                    }
-
-
-                                </ul>
+                                if (item1.MenuId == item.MenuId)
+                                {
+                                    <li>
+                                        <a href="@item1.Url"><i class='bx bx-radio-circle'></i>@item1.SubMenuName</a>
+                                    </li>
+                                }
                             }
-                        </li>
+                        </ul>
                     }
-                }
+                </li>
             }
+        }
+    }
+</ul>
 
 
-        </ul>
-        <!-- end: MAIN NAVIGATION MENU -->
-    </div>
-    <!-- end: SIDEBAR -->
-</div>
+
+
+
+
+
+
+
