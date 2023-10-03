@@ -3828,16 +3828,15 @@
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Master\GalleryMaster.cshtml" />
     <Content Include="Views\Master\GalleryMasterList.cshtml" />
-    <Content Include="Views\Website\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutWebsite.cshtml" />
+    <Content Include="Views\Shared\_AdminLayoutTesting.cshtml" />
     <Content Include="Views\Website\about.cshtml" />
     <Content Include="Views\Website\contact.cshtml" />
-    <Content Include="Views\Website\ProductServies.cshtml" />
-    <Content Include="Views\Website\HighestEarnerClub.cshtml" />
     <Content Include="Views\Website\Gallery.cshtml" />
-    <Content Include="Views\Website\TermCondition.cshtml" />
+    <Content Include="Views\Website\HighestEarnerClub.cshtml" />
+    <Content Include="Views\Website\Index.cshtml" />
     <Content Include="Views\Website\LegalDocuments.cshtml" />
-    <Content Include="Views\Admin\CalculateMonthlySpillBonus.cshtml" />
+    <Content Include="Views\Website\ProductServies.cshtml" />
+    <Content Include="Views\Website\TermCondition.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
