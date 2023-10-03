@@ -40,118 +40,125 @@
                 </div>
             </div>
             <!--navigation-->
+
             <ul class="metismenu" id="menu">
-                    <li>
-                        <div class="sidebar-profile">
-                            @if (Session["ProfilePic"] == "")
-                            {
-                                <div class="siderbar-profile-pic">
-                                    <img src="../assets/img/users/user.png" class="profile-img-circle box-center" alt="User Image">
-                                </div>
-                            }
-                            else
-                            {
-                                <div class="siderbar-profile-pic">
-                                    <img src="@Session["ProfilePic"]" class="profile-img-circle box-center" alt="User Image">
-                                </div>
-                            }
-                            <div class="siderbar-profile-details">
-                                <div class="siderbar-profile-name"> @Session["Name1"] </div>
-                                @*<div class="siderbar-profile-position">Manager </div>*@
-                            </div>
 
+                @if (Session["ProfilePic"] == "")
+            {
+                    <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../assets/img/users/user.png" class="user-img" alt="user avatar" />
+                        <div class="user-info">
                         </div>
-                    </li>
+                    </a>
+                }
+                else
+                {
+                    <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="@Session["ProfilePic"]" class="user-img" alt="user avatar">
+                        <div class="user-info">
+                        </div>
+                    </a>
+                }
 
 
-                    <li>
-                        <a class="nav-link" href="/User/AssociateDashBoard">
-                            <div class="parent-icon">
-                                <i class='bx bx-home-alt'></i>
-                            </div>
-                            <div  class="menu-title">DashBoard</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="nav-link" href="/User/Registration">
-                            <div class="parent-icon">
-                                <i class='bx bx-log-in'></i>
-                            </div>
-                            <div class="menu-title">Sign Up</div>
-                        </a>
-                    </li>
+                <li>
 
+                    <div class="user-info text-center mb-2">
+                        <p class="user-name mb-0">@Session["Name1"]</p>
+                    </div>
+                </li>
 
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon">
-                                <i class="bx bx-category"></i>
-                            </div>
-                            <div class="menu-title">Profile</div>
-                        </a>
-                        <ul>
-                            <li><a href="/User/ViewProfile"><i class='bx bx-radio-circle'></i>View Profile</a></li>
-                            <li><a href="/KYCDocuments/KYCDocuments"><i class='bx bx-radio-circle'></i>Upload KYC</a></li>
-                            <li><a href="/Profile/ChangePassword"><i class='bx bx-radio-circle'></i>Change Password</a></li>
-                            <li><a target="_blank" href="/User/AcceptanceForm"><i class='bx bx-radio-circle'></i>Acceptance Form</a></li>
-                        </ul>
-                    </li>
+                <li>
+                    <a href="/User/AssociateDashBoard">
+                        <div class="parent-icon">
+                            <i class='bx bx-home-alt'></i>
+                        </div>
+                        <div class="menu-title">Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/User/Registration">
+                        <div class="parent-icon">
+                            <i class='bx bx-log-in'></i>
+                        </div>
+                        <div class="menu-title">Sign Up</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="menu-title">Profile</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/User/ViewProfile"><i class='bx bx-radio-circle'></i>View Profile</a>
+                            <a href="/KYCDocuments/KYCDocuments"><i class='bx bx-radio-circle'></i>Upload KYC</a>
+                            <a href="/Profile/ChangePassword"><i class='bx bx-radio-circle'></i>Change Password</a>
+                            <a href="/User/AcceptanceForm"><i class='bx bx-radio-circle'></i>Acceptance Form</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="bx bx-user-plus"></i>
+                        </div>
+                        <div class="menu-title">Team</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/User/BinaryTree"><i class='bx bx-radio-circle'></i>Tree</a>
+                            <a href="/Downline/DirectList"><i class='bx bx-radio-circle'></i>Direct</a>
+                            <a href="/Downline/DirectListL2"><i class='bx bx-radio-circle'></i>Direct L2</a>
+                            <a href="/Downline/DownLineList"><i class='bx bx-radio-circle'></i>Downline</a>
 
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon">
-                                <i class="bx bx-user-plus"></i>
-                            </div>
-                            <div class="menu-title">Team</div>
-                        </a>
-                        <ul>
-                            <li><a href="/User/BinaryTree"><i class='bx bx-radio-circle'></i>Tree</a></li>
-                            <li><a href="/Downline/DirectList"><i class='bx bx-radio-circle'></i>Direct</a></li>
-                            <li><a href="/Downline/DirectListL2"><i class='bx bx-radio-circle'></i>Direct L2</a></li>
-                            <li><a href="/Downline/DownLineList"><i class='bx bx-radio-circle'></i>Downline</a></li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a class="nav-link" href="/User/UserReward">
-                            <div class="parent-icon">
-                                <i class='bx bx-anchor'></i>
-                            </div>
-                            <div class="menu-title">Recognition</div>
-                        </a>
-                    </li>
-
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon">
-                                <i class="bx bx-rupee"></i>
-                            </div>
-                            <div class="menu-title">Payout</div>
-                        </a>
-                        <ul>
-                            <li><a href="/Wallet/PayoutLedger"><i class='bx bx-radio-circle'></i>Payout Wallet Ledger</a></li>
-                            <li><a href="/UserReports/UnPaidIncomes"><i class='bx bx-radio-circle'></i>Unpaid Income</a></li>
-                            <li><a href="/UserReports/PayoutReport"><i class='bx bx-radio-circle'></i>Payout Report</a></li>
-                            <li><a href="/UserReports/BusinessReport"><i class='bx bx-radio-circle'></i>Business Report</a></li>
-                            <li><a href="/UserReports/PaidPayoutDetails"><i class='bx bx-radio-circle'></i>Payout Paid Details</a></li>
-                        </ul>
-                    </li>
-
-
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon">
-                                <i class="bx bx-repost"></i>
-                            </div>
-                            <div class="menu-title">Reports</div>
-                        </a>
-                        <ul>
-                            <li><a href="/UserReports/TopupReport"><i class='bx bx-radio-circle'></i>Product Details</a></li>
-                            <li><a href="/UserReports/DCMIReport"><i class='bx bx-radio-circle'></i>DCMI Reports</a></li>
-                        </ul>
-                    </li>
-
-                </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/User/UserReward">
+                        <div class="parent-icon">
+                            <i class='bx bx-anchor'></i>
+                        </div>
+                        <div class="menu-title">Recognition</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="bx bx-rupee"></i>
+                        </div>
+                        <div class="menu-title">Payout</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Wallet/PayoutLedger"><i class='bx bx-radio-circle'></i>Payout Wallet Ledger</a>
+                            <a href="/UserReports/UnPaidIncomes"><i class='bx bx-radio-circle'></i>Unpaid Income</a>
+                            <a href="/UserReports/PayoutReport"><i class='bx bx-radio-circle'></i>Payout Report</a>
+                            <a href="/UserReports/BusinessReport"><i class='bx bx-radio-circle'></i>Business Report</a>
+                            <a href="/UserReports/PaidPayoutDetails"><i class='bx bx-radio-circle'></i>Payout Paid Details</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="bx bxs-report"></i>
+                        </div>
+                        <div class="menu-title">Reports</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/UserReports/TopupReport"><i class='bx bx-radio-circle'></i>Product Details</a>
+                            <a href="/UserReports/DCMIReport"><i class='bx bx-radio-circle'></i>DCMI Reports</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
             <!--end navigation-->
         </div>
         <!--end sidebar wrapper -->
@@ -828,34 +835,36 @@
                         </ul>
                     </div>
                     <div class="user-box dropdown px-3">
-                          @if (Session["ProfilePic"] == "")
-                          {
-                        <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
-                           href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="../assets/img/users/user.png" class="user-img" alt="user avatar">
-                            @*<div class="user-info">
-                                <p class="user-name mb-0">@Session["FullName"]</p>
-                            </div>*@
-                        </a>
-                          }
-                          else
-                          {
+                        @if (Session["ProfilePic"] == "")
+                        {
+                            <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+                               href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="../assets/img/users/user.png" class="user-img" alt="user avatar">
+                                <div class="user-info">
+                                </div>
+                            </a>
+                        }
+                        else
+                        {
                             <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 <img src="@Session["ProfilePic"]" class="user-img" alt="user avatar">
+                                <div class="user-info">
+                                </div>
                             </a>
-                          }
+                        }
                         <ul class="dropdown-menu dropdown-menu-end">
+
                             <li>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:;">
+                                <a class="dropdown-item d-flex align-items-center" href="#">
                                     <i class="bx bx-user fs-5"></i><span>@Session["Name1"]</span>
                                 </a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="javascript:;">
-                                    <i class="bx bx-calendar-exclamation fs-5"></i><span> Joining -  (@Session["JoiningDate"])</span>
+
+                                <a class="dropdown-item d-flex align-items-center" href="#">
+                                    <i class="bx bx-calendar-exclamation fs-5"></i><span>Joining -  (@Session["JoiningDate"])</span>
                                 </a>
                             </li>
+
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="/User/ViewProfile">
                                     <i class="bx bx-user fs-5"></i><span>Profile</span>
@@ -863,7 +872,7 @@
                             </li>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="/Profile/ChangePassword">
-                                    <i class="bx bx-lock fs-5"></i><span>Change Password</span>
+                                    <i class="bx bx-lock fs-5"></i><span> Change Password</span>
                                 </a>
                             </li>
                             <li>
@@ -890,12 +899,17 @@
         </a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2023. All right reserved.</p>
+            Copyright &copy; 2020 <div class="bullet"></div>
         </footer>
     </div>
     <!--end wrapper-->
     <!-- Bootstrap JS -->
     <script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>
+
+    <!-- apexcharts JS start -->
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
+    <!-- apexcharts JS end -->
     <!--plugins-->
     <script src="~/assetsAdmin/js/jquery.min.js"></script>
     <script src="~/assetsAdmin/plugins/simplebar/js/simplebar.min.js"></script>
@@ -911,18 +925,10 @@
     <script src="~/assetsAdmin/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="~/assetsAdmin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 
-    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
-    <script>
-		$(function () {
-			$(".knob").knob();
-		});
-        //data table js
-		$(document).ready(function () {
-		    var table = $('#example2').DataTable({
-		        lengthChange: false,
-		        buttons: ['copy', 'excel', 'pdf', 'print']
-		    });
+    <script src="~/assetsAdmin/js/index.js"></script>
+    <!--app JS-->
+    <script src="~/assetsAdmin/js/app.js"></script>
+
 
 		    table.buttons().container()
 				.appendTo('#example2_wrapper .col-md-6:eq(0)');
@@ -933,3 +939,5 @@
     <script src="~/assetsAdmin/js/app.js"></script>
 </body>
 </html>
+
+
