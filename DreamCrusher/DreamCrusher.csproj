@@ -3837,6 +3837,7 @@
     <Content Include="Views\Website\LegalDocuments.cshtml" />
     <Content Include="Views\Website\ProductServies.cshtml" />
     <Content Include="Views\Website\TermCondition.cshtml" />
+    <Content Include="Views\AdminReports\MonthlySpillBonusReport.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
