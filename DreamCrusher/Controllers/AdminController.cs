@@ -965,6 +965,7 @@ namespace DreamCrusher.Controllers
                     obj.BankName = (r["MemberBankName"].ToString());
                     obj.Fk_UserId = (r["Pk_UserId"].ToString());
                     obj.Amount = (r["Amount"].ToString());
+                    ViewBag.Total = Convert.ToDecimal(ViewBag.Total) + Convert.ToDecimal(r["Amount"].ToString());
                     lst.Add(obj);
                 }
                 model.lstassociate = lst;
