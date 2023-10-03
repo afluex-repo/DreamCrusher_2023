@@ -38,7 +38,7 @@
                             </div>
 
                             <div class="col-md-4 mt-5">
-                                <input type="submit" id="btnsearch" name="btnsearch" class="btn btn-light px-5" value="Search" onclick="return validateForm();"/>
+                                <input type="submit" id="btnsearch" name="btnsearch" class="btn btn-light px-5" value="Search" onclick="return validate();"/>
                             </div>
 
                           
@@ -68,8 +68,17 @@
                                                             {
                                                                 <tr class="text-left">
 
-                                                                    <td hidden><input type="hidden" id="CourseID_@i" name="CourseID_@i" value="@Item.CourseID" />
-                                                                    <td ><input type="checkbox" name="chkpayment_@i" />&nbsp;&nbsp; @i</td>
+                                                                    <td hidden>
+                                                                <input type="hidden" id="CourseID_@i" name="CourseID_@i" value="@Item.CourseID" />
+                                                                @if (Item.FK_CourseID == null)
+                                                                {
+                                                                <td><input type="checkbox" name="chkpayment_@i"/>&nbsp;&nbsp; @i</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                <td><input type="checkbox" name="chkpayment_@i" checked />&nbsp;&nbsp; @i</td>
+                                                                }
+                                                                    
                                                                     <td><input id="CourseName_@i" name="CourseName_@i" value="@Item.CourseName" style="border:none;background:none"/></td>
                                                                     <td><img width="50" height="50" id="CourseImage_@i" name="CourseImage_@i" src="@Item.CourseImage" /></td>
                                                                 </tr>
@@ -100,6 +109,11 @@
 
 }
 
+
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
 <style>
     .errortext {
         border: 1px solid red !important;
@@ -107,6 +121,7 @@
 </style>
 <script>
     function checkAll(ele) {
+        debugger;
         var checkboxes = document.getElementsByTagName('input');
         if (ele.checked) {
             for (var i = 0; i < checkboxes.length; i++) {
@@ -124,6 +139,18 @@
         }
     }
 
+    function validate() {
+        $(".errortext").removeClass("errortext");
+        debugger;
+
+        if ($('#Package').val() == '0') {
+            $("#Package").addClass('errortext');
+            $('#Package').focus();
+            return false;
+        }
+    }
+
+
     function validateForm() {
         $(".errortext").removeClass("errortext");
         debugger;
@@ -133,11 +160,13 @@
             $('#Package').focus();
             return false;
         }
-        $('#IsDownline').click(function () {
-            if ($(this).attr('checked') == true) {
-                $('#IsDownline').attr("checked", "true");
-            }
-        });
+
+        if ($('input[type=checkbox]:checked').length == 0) {
+            alert("ERROR! Please select at least one checkbox");
+            return false;
+        }
+        $("#divload").css({ 'display': '' });
+        return true;
     }
 </script>
 

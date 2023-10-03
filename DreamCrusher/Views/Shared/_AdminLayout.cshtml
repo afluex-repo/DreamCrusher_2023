@@ -780,12 +780,18 @@
         </a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2023. All right reserved.</p>
+            <p class="mb-0">© Copyright 2023 Dream Crusher All right reserved.</p>
         </footer>
     </div>
     <!--end wrapper-->
     <!-- Bootstrap JS -->
     <script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>
+
+    <!-- apexcharts JS start -->
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
+    <!-- apexcharts JS end -->
+
     <!--plugins-->
     <script src="~/assetsAdmin/js/jquery.min.js"></script>
     <script src="~/assetsAdmin/plugins/simplebar/js/simplebar.min.js"></script>
@@ -818,5 +824,138 @@
     <script src="~/assetsAdmin/js/index.js"></script>
     <!--app JS-->
     <script src="~/assetsAdmin/js/app.js"></script>
+
 </body>
 </html>
+
+
+<script>
+    // chart 8
+    var options = {
+        series: [{
+            data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+        }],
+        chart: {
+            foreColor: 'rgba(255, 255, 255, 0.65)',
+            type: 'bar',
+            height: 350
+        },
+        colors: ["#fff"],
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            }
+        },
+        grid: {
+            show: true,
+            borderColor: 'rgba(255, 255, 255, 0.12)',
+            strokeDashArray: 4,
+        },
+        tooltip: {
+            theme: 'dark',
+            y: {
+                formatter: function (val) {
+                    return "$ " + val + " thousands"
+                }
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan', 'United States', 'China', 'Germany'],
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#chart8"), options);
+    chart.render();
+
+    // chart 822
+    var options = {
+        series: [{
+            data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
+        }],
+        chart: {
+            foreColor: 'rgba(255, 255, 255, 0.65)',
+            type: 'bar',
+            height: 350
+        },
+        colors: ["#fff"],
+        plotOptions: {
+            bar: {
+                horizontal: true,
+            }
+        },
+        grid: {
+            show: true,
+            borderColor: 'rgba(255, 255, 255, 0.12)',
+            strokeDashArray: 4,
+        },
+        tooltip: {
+            theme: 'dark',
+            y: {
+                formatter: function (val) {
+                    return "$ " + val + " thousands"
+                }
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        xaxis: {
+            categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan', 'United States', 'China', 'Germany'],
+        }
+    };
+    var chart = new ApexCharts(document.querySelector("#chart822"), options);
+    chart.render();
+
+
+    // chart 11
+    var options = {
+        series: [44, 55, 13, 43, 22],
+        chart: {
+            foreColor: 'rgba(255, 255, 255, 0.65)',
+            height: 380,
+            type: 'pie',
+        },
+        colors: ["#673ab7", "#32ab13", "#f02769", "#ffc107", "#198fed"],
+        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    height: 360
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#chart11"), options);
+    chart.render();
+
+
+    // chart 12
+    var options = {
+        series: [44, 55, 41, 17, 15],
+        chart: {
+            foreColor: 'rgba(255, 255, 255, 0.65)',
+            height: 380,
+            type: 'donut',
+        },
+        colors: ["#673ab7", "#32ab13", "#f02769", "#ffc107", "#198fed"],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    height: 320
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var chart = new ApexCharts(document.querySelector("#chart12"), options);
+    chart.render();
+</script>

@@ -658,7 +658,7 @@ namespace DreamCrusher.Controllers
         [HttpPost]
         [ActionName("AllotCoursesOnPackage")]
         [OnAction(ButtonName = "btnsearch")]
-        public ActionResult AllotCoursesOnPackage(Master model, string Package)
+        public ActionResult AllotCoursesOnPackage(Master model, string CourseID, string Package)
         {
             #region ddlPackage
             Master obj = new Master();
@@ -681,7 +681,8 @@ namespace DreamCrusher.Controllers
             #endregion
 
             List<Master> lst = new List<Master>();
-            model.Fk_PackageId = Package;
+            model.CourseID = CourseID;
+            model.Package = Package;
             DataSet ds = model.CourseList();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -690,6 +691,7 @@ namespace DreamCrusher.Controllers
                 {
                     Master obj1 = new Master();
                     obj1.CourseID = r["Pk_CourseId"].ToString();
+                    obj1.FK_CourseID = r["FK_CourseID"].ToString();
                     obj1.CourseName = r["CourseName"].ToString();
                     obj1.CourseImage = r["CourseImage"].ToString();
                     obj1.CourseDate = r["CourseDate"].ToString();
@@ -735,8 +737,8 @@ namespace DreamCrusher.Controllers
                         //dtpayment.Rows.Add(Id, CourseID, CourseName, CourseImage);
                         dtpayment.Rows.Add(Id, CourseID, CourseName);
                     }
-                }
-                model.dtTable = dtpayment;
+                } 
+                model.dtTable = dtpayment; 
                 model.AddedBy = Session["PK_AdminId"].ToString();
                 DataSet ds = model.SaveAllotCoursesOnPackage();
                 if (ds != null && ds.Tables.Count > 0)
@@ -744,21 +746,19 @@ namespace DreamCrusher.Controllers
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
                         TempData["Course"] = "Courses On Package Alloted Successfully !!";
-                        FormName = "AllotCoursesOnPackage";
-                        Controller = "Master";
                     }
                     else
                     {
                         TempData["ErrCourse"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-                        FormName = "AllotCoursesOnPackage";
-                        Controller = "Master";
                     }
-                }
-            }
-            catch (Exception)
+                  }
+               }
+            catch (Exception ex)
             {
-                throw;
+                TempData["ErrCourse"] = ex.Message;
             }
+            FormName = "AllotCoursesOnPackage";
+            Controller = "Master";
             return RedirectToAction(FormName, Controller);
         }
 

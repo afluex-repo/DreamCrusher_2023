@@ -32,6 +32,7 @@ namespace DreamCrusher.Models
 
         public List<Master> lstCourse { get; set; }
         public string CourseID { get; set; }
+        public string FK_CourseID { get; set; }
         public string CourseName { get; set; }
         public string CoursePrice { get; set; }
         public string CourseImage { get; set; }
@@ -179,7 +180,8 @@ namespace DreamCrusher.Models
 
         public DataSet CourseList()
         {
-            SqlParameter[] para = { new SqlParameter("@Fk_PackageId", Fk_PackageId) };
+            SqlParameter[] para = { new SqlParameter("@FK_PackageId", Package),
+                                    new SqlParameter("@PK_CourseID", CourseID)};
             DataSet ds = DBHelper.ExecuteQuery("GetCourseList", para);
             return ds;
         }

@@ -167,6 +167,7 @@ D:\Devendra\DreamCrusher_2023\DreamCrusher\bin\System.Web.Http.WebHost.xml
 D:\Devendra\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.dll
 D:\Devendra\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.pdb
 D:\Devendra\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.csprojResolveAssemblyReference.cache
+E:\Repository\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.csprojResolveAssemblyReference.cache
 F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\bin\ApplicationInsights.config
 F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\bin\roslyn\csc.exe
 F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll

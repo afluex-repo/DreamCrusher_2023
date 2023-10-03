@@ -23,6 +23,12 @@ namespace DreamCrusher.Controllers
             ViewBag.InactiveUsers = Ds.Tables[1].Rows[0]["InactiveUsers"].ToString();
             ViewBag.ActiveUsers = Ds.Tables[1].Rows[0]["ActiveUsers"].ToString();
 
+
+            ViewBag.TotalIncome = Ds.Tables[5].Rows[0]["TotalIncome"].ToString();
+            ViewBag.TodayIncome = Ds.Tables[6].Rows[0]["TodayIncome"].ToString();
+            ViewBag.LastSevenDaysIncome = Ds.Tables[7].Rows[0]["LastSevenDaysIncome"].ToString();
+            ViewBag.LastThirtyDaysIncome = Ds.Tables[8].Rows[0]["LastThirtyDaysIncome"].ToString();
+
             #region Messages
 
 
