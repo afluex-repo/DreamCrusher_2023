@@ -780,12 +780,18 @@
         </a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">Copyright © 2023. All right reserved.</p>
+            <p class="mb-0">© Copyright 2023 Dream Crusher All right reserved.</p>
         </footer>
     </div>
     <!--end wrapper-->
     <!-- Bootstrap JS -->
     <script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>
+
+    <!-- apexcharts JS start -->
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
+    <!-- apexcharts JS end -->
+
     <!--plugins-->
     <script src="~/assetsAdmin/js/jquery.min.js"></script>
     <script src="~/assetsAdmin/plugins/simplebar/js/simplebar.min.js"></script>
@@ -800,6 +806,9 @@
     <script src="~/assetsAdmin/plugins/jquery-knob/jquery.knob.js"></script>
     <script src="~/assetsAdmin/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="~/assetsAdmin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+   
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
     <script>
 		$(function () {
 			$(".knob").knob();
@@ -808,6 +817,7 @@
 		$(document).ready(function () {
 		    var table = $('#example2').DataTable({
 		        lengthChange: false,
+		        "pageLength": 50,
 		        buttons: ['copy', 'excel', 'pdf', 'print']
 		    });
 
@@ -818,5 +828,204 @@
     <script src="~/assetsAdmin/js/index.js"></script>
     <!--app JS-->
     <script src="~/assetsAdmin/js/app.js"></script>
+
 </body>
 </html>
+
+
+
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(bindusers);
+
+    function bindusers() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/Admin/GetUserDetails',
+            data: JSON.stringify(),
+            success:
+            function (response) {
+                var datare = response;
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Status');
+                data.addColumn('number', 'Total');
+                for (var i = 0; i < datare.length; i++) {
+                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
+                }
+
+                var chart = new google.visualization.PieChart(document.getElementById('divusers'));
+                var options = {
+                    pieSliceText: 'value-and-percentage',
+                    format: 'decimal',
+                    is3D: true,
+                    legend: { position: 'bottom' },
+                    animation: {
+                        startup: true,
+                        duration: 1000,
+                        easing: 'out',
+                    }, chartArea: { width: "100%", height: "80%" }
+                };
+
+                chart.draw(data, options);
+
+
+
+
+            },
+            error: function () {
+            }
+        });
+    }
+
+</script>
+
+
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(bindrecharegedetails);
+
+    function bindrecharegedetails() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/Admin/GetPayoutStatus',
+            data: JSON.stringify(),
+            success:
+            function (response) {
+                var datare = response;
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Status');
+                data.addColumn('number', 'Total');
+                for (var i = 0; i < datare.length; i++) {
+                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
+                }
+
+                var chart = new google.visualization.PieChart(document.getElementById('divpayout'));
+                var options = {
+                    pieSliceText: 'value-and-percentage',
+                    format: 'decimal',
+                    is3D: true,
+                    legend: { position: 'bottom' },
+                    animation: {
+                        startup: true,
+                        duration: 1000,
+                        easing: 'out',
+                    }, chartArea: { width: "100%", height: "80%" }
+                };
+
+                chart.draw(data, options);
+
+
+
+
+            },
+            error: function () {
+            }
+        });
+    }
+
+</script>
+
+
+<script type="text/javascript">
+
+        google.charts.load("current", { packages: ["imagebarchart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: '/Admin/GetInvestmentDetails',
+                data: JSON.stringify(),
+                success:
+                function (response) {
+                    var datare = response;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'Month');
+                    data.addColumn('number', 'Investment');
+                    for (var i = 0; i < datare.length; i++) {
+                        data.addRow([datare[i].Month, parseInt(datare[i].Amount)]);
+                    }
+
+                    var chart = new google.visualization.ImageBarChart(document.getElementById('divinvestment'));
+                    var options = {
+                        pieSliceText: 'value-and-percentage',
+                        format: 'decimal',
+                        is3D: true,
+                        legend: { position: 'bottom' },
+                        animation: {
+                            startup: true,
+                            duration: 1000,
+                            easing: 'out',
+                        }, chartArea: { width: "100%", height: "80%" }
+                    };
+                    chart.draw(data, options);
+                },
+                error: function () {
+                }
+            });
+        }
+
+</script>
+
+
+<script type="text/javascript">
+
+        google.charts.load("current", { packages: ["imagebarchart"] });
+        google.charts.setOnLoadCallback(joiningdata);
+
+        function joiningdata() {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: '/Admin/GetJoiningDeatils',
+                data: JSON.stringify(),
+                success:
+                function (response) {
+                    var datare = response;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'Month');
+                    data.addColumn('number', 'Total Users');
+                    for (var i = 0; i < datare.length; i++) {
+                        data.addRow([datare[i].Month, parseInt(datare[i].Total)]);
+                    }
+
+                    var chart = new google.visualization.ImageBarChart(document.getElementById('divjoining'));
+                    var options = {
+                        pieSliceText: 'value-and-percentage',
+                        format: 'decimal',
+                        is3D: true,
+                        legend: { position: 'bottom' },
+                        animation: {
+                            startup: true,
+                            duration: 1000,
+                            easing: 'out',
+                        }, chartArea: { width: "100%", height: "80%" }
+                    };
+
+                    chart.draw(data, options);
+
+
+
+
+                },
+                error: function () {
+                }
+            });
+        }
+
+</script>
+
+

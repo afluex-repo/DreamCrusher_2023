@@ -6,49 +6,32 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<div class="row">
-    <div class="col-sm-12">
 
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>
-                <a href="#">
-                    Master
-                </a>
-            </li>
-            <li class="active">
-                Gallery List
-            </li>
-
-        </ol>
-
-
-    </div>
-</div>
-<br />
 @using (Html.BeginForm("GalleryMasterList", "Master", FormMethod.Post, new { @id = "form1", name = "formKYC" }))
 {
-    <span style="color: red">
-        @TempData["GalleryMasterList"]
-    </span>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Gallery List
-
-
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Gallery List</h5>
+                        </div>
+                        <p style="color: white;display: block; margin-bottom:0px; text-align:center">
+                            @TempData["GalleryMasterList"]
+                        </p>
+                    </div>
                 </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 table-responsive">
-                            <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>S No.</th>
                                         <th>Image</th>
-
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -68,15 +51,11 @@
                                                         <a href="/Master/DeleteImage?PK_GalleryID=@Item.PK_GalleryID" class="btn btn-danger btn-sm">Delete</a>
 
                                                     </td>
-
                                                 </tr>
-
                                                 i++;
                                             }
                                         }
                                     }
-
-
                                 </tbody>
                             </table>
                         </div>
@@ -84,9 +63,7 @@
                 </div>
             </div>
         </div>
-
     </div>
-
 }
 
 

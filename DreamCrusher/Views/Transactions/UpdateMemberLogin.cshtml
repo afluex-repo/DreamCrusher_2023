@@ -5,86 +5,54 @@
 }
 
 
-<div class="row">
-    <div class="col-sm-12">
-
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>
-                <a href="#">
-                    Transaction
-                </a>
-            </li>
-            <li class="active">
-                Update Member Login
-            </li>
-
-        </ol>
-
-
-    </div>
-</div>
-<br />
-
-<!-- /.row -->
 @using (Html.BeginForm("UpdateMemberLogin", "Transactions", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
-    <span style="color: red">
-        @TempData["UpdateMemberLogin"]
-    </span>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Update Member Login
-
-
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Login Id <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.LoginID, new { @id = "txtLoginID", @required = "required", @class = "form-control", @onchange = "getMemberDetails(this);" })
-
-                                </div>
-                            </div>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Update Member Login</h5>
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Name <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.MemberName, new { @id = "txtMemberName", @class = "form-control", @disabled = "disabled" })
-                                    @Html.HiddenFor(m => m.PK_UserID)
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">New Login Id <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.NewLoginID, new { @id = "txtNewLoginID", @class = "form-control", @required = "required" })
-                                </div>
-                            </div>
-                        </div>
+                        <p style="color: white;;display: block; margin-bottom:0px; text-align:center">
+                            @TempData["UpdateMemberLogin"]
+                        </p>
                     </div>
-                    <div class="row">
-                        <div class="col-md-4">
-                            <input type="submit" id="btnUpdate" class="btn btn-success" name="btnUpdate" value="Update" onclick="return validateForm();" />
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="col-sm-3 col-form-label">Login Id <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.LoginID, new { @id = "txtLoginID", @required = "required", @class = "form-control", @onchange = "getMemberDetails(this);" })
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-3 col-form-label">Name <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.MemberName, new { @id = "txtMemberName", @class = "form-control", @disabled = "disabled" })
+                                @Html.HiddenFor(m => m.PK_UserID)
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-3 col-form-label">New Login Id <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.NewLoginID, new { @id = "txtNewLoginID", @class = "form-control", @required = "required" })
+                            </div>
+
+                            <div class="col-12">
+                                <input type="submit" id="btnUpdate" class="btn btn-light px-3" name="btnUpdate" value="Update" onclick="return validateForm();" />
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 }
 <style>
     .errortext {
         border: 1px solid red !important;
-        background-color: #fff0f0 !important;
+        /*background-color: #fff0f0 !important;*/
     }
 </style>
 

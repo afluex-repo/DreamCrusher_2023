@@ -1151,5 +1151,41 @@ namespace DreamCrusher.Controllers
             }
             return RedirectToAction(FormName, Controller);
         }
+        public ActionResult CalculateMonthlySpillBonus()
+        {
+            return View();
+        }
+        [HttpPost]
+        [OnAction(ButtonName = "Save")]
+        [ActionName("CalculateMonthlySpillBonus")]
+        public ActionResult Save(Reports model)
+        {
+
+            try
+            {
+                model.AddedBy = Session["Pk_AdminId"].ToString();
+                model.PaymentDate = string.IsNullOrEmpty(model.PaymentDate) ? null : Common.ConvertToSystemDate(model.PaymentDate, "dd/MM/yyyy");
+                DataSet ds = model.CalculateSpillBusiness();
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+
+                        TempData["FProduct"] = "Calculation Successully";
+                    }
+                    else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
+                    {
+                        TempData["FProduct"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                TempData["FProduct"] = ex.Message;
+            }
+            return RedirectToAction("CalculateMonthlySpillBonus");
+        }
     }
 }

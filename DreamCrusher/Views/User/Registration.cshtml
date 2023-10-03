@@ -8,194 +8,135 @@
 
 
 
-<div class="col-12 col-lg-12 col-xl-12">
-    <div class="card">
-        <div class="card-body">
-            <div class="row g-3">
-                <div class="col-md-4">
-                    <label for="inputFirstName" class="form-label">First Name</label>
-                    <input type="email" class="form-control" id="inputFirstName">
-                </div>
-                <div class="col-md-4">
-                    <label for="inputLastName" class="form-label">Last Name</label>
-                    <input type="password" class="form-control" id="inputLastName">
-                </div>
-                <div class="col-md-4">
-                    <label for="inputEmail" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="inputEmail">
-                </div>
-                <div class="col-md-4">
-                    <label for="" class="form-label">Mobile</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-4">
-                    <label for="inputPassword" class="form-label">Fathers Name</label>
-                    <input type="text" class="form-control">
-                </div>
-                <div class="col-md-4">
-                    <label for="inputPassword" class="form-label">Name</label>
-                    <input type="text" class="form-control" id="inputPassword">
-                </div>
-                <div class="col-12">
-                    <button type="submit" class="btn btn-light px-5">Submit</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="section-header">
+<div class="page-content">
     <div class="row">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-            <div class="section-header-breadcrumb-content">
-                <h1>Sign Up</h1>
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h5 class="mb-0">Sign Up</h5>
+                        <p style="color: #fff">@TempData["Registration"] </p>
+                    </div>
+                </div>
             </div>
         </div>
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Spill Id <span style="color: red">*</span></label>
+                            @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control", @onchange = "getsponsordetails(this);" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label"> Spill Name <span style="color: red">*</span></label>
+                            @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @readonly = "readonly" })
 
-    </div>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        <div class="panel panel-default">
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label d-block">Leg <span style="color: red">*</span></label>
+                            <input type="radio" value="Left" checked="checked" id="left" name="Leg" />
+                            Left &nbsp;&nbsp;
+                            <input type="radio" value="Right" id="right" name="Leg" />
+                            Right
+                        </div>
 
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        Spill Id <span style="color: red">*</span>
-                        @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control", @onchange = "getsponsordetails(this);" })
-                    </div>
-                    <div class="col-md-6 form-group">
-                        Spill Name <span style="color: red">*</span>
-                        @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @readonly = "readonly" })
-                    </div>
-                </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label"> Under Place Id</label>
+                            @Html.TextBoxFor(m => m.UnderPlaceId, new { @class = "form-control", @Placeholder = "Under Place Id", @onchange = "getsponsordetails1(this);" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label"> Under Place Name </label>
+                            @Html.TextBoxFor(m => m.UnderPlaceName, new { @class = "form-control", @Placeholder = "Name" })
 
-                <div class="col-md-12 form-group">
-                    Leg <span style="color: red">*</span> &nbsp;&nbsp;
-                    <input type="radio" value="Left" checked="checked" id="left" name="Leg" />
-                    Left &nbsp;&nbsp;
-                    <input type="radio" value="Right" id="right" name="Leg" />
-                    Right
-                </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        Under Place Id
-                        @Html.TextBoxFor(m => m.UnderPlaceId, new { @class = "form-control", @Placeholder = "Under Place Id", @onchange = "getsponsordetails1(this);" })
-                    </div>
-                    <div class="col-md-6 form-group">
-                        Under Place Name
-                        @Html.TextBoxFor(m => m.UnderPlaceName, new { @class = "form-control", @Placeholder = "Name" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        First Name <span style="color: red">*</span>
-                        @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @Placeholder = "First Name" })
-                    </div>
-                    <div class="col-md-6 form-group">
-                        Last Name
-                        @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @Placeholder = "Last Name" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 form-group">
-                        Email Id
-                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email id" })
-                    </div>
-                    <div class="col-md-6 form-group">
-                        Mobile No <span style="color: red">*</span>
-                        @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);", @onchange = "getmobileno(this);" })
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4 form-group">
-                        Gender
-                        @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.ddlgender, "Value", "Text"), new { @class = "form-control" })
-                    </div>
-                    <div class="col-md-4 form-group">
-                        Date of Birth <span style="color: red">*</span>
-                        @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @readonly = "readonly", @Placeholder = "Date Of Birth" })
-                    </div>
-                    <div class="col-md-4 form-group">
-                        Pan Card
-                        @Html.TextBoxFor(m => m.PanCard, new { @class = "form-control", @Placeholder = "Pan Card", @Maxlength = "10", @onchange = "return validatepan(event);" })
-                    </div>
-                    <div class="col-md-4 form-group">
-                        Aadhaar No <span style="color: red">*</span>
-                        @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Placeholder = "Aadhaar No", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
-                        @Html.ValidationMessageFor(m=>m.AdharNo)
-                    </div>
+                        </div>
 
-                </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">First Name <span style="color: red">*</span></label>
+                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @Placeholder = "First Name" })
 
-                <div class="col-md-12 form-group">
-                    Address<span style="color: red"> *</span>
-                    @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @Placeholder = "Address" })
-                </div>
-                <div class="row">
-                    <div class="col-md-4 form-group">
-                        Pincode
-                        @Html.TextBoxFor(m => m.PinCode, new { @class = "form-control", @Placeholder = "PinCode", @onchange = "return getstatecity();" })
-                        @Html.ValidationMessageFor(m=>m.PinCode)
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label"> Last Name</label>
+                            @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @Placeholder = "Last Name" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label"> Email Id</label>
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email id" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Mobile No <span style="color: red">*</span></label>
+                            @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);", @onchange = "getmobileno(this);" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">Gender</label>
+                            @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.ddlgender, "Value", "Text"), new { @class = "form-control" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">   Date of Birth <span style="color: red">*</span></label>
+                            @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @readonly = "readonly", @Placeholder = "Date Of Birth" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">     Pan Card</label>
+                            @Html.TextBoxFor(m => m.PanCard, new { @class = "form-control", @Placeholder = "Pan Card", @Maxlength = "10", @onchange = "return validatepan(event);" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">   Aadhaar No <span style="color: red">*</span></label>
+                            @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Placeholder = "Aadhaar No", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
+                            @Html.ValidationMessageFor(m => m.AdharNo)
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">    Address<span style="color: red"> *</span></label>
+                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @Placeholder = "Address" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label"> Pincode</label>
+                            @Html.TextBoxFor(m => m.PinCode, new { @class = "form-control", @Placeholder = "PinCode", @onchange = "return getstatecity();" })
+                            @Html.ValidationMessageFor(m => m.PinCode)
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label"> State</label>
+                            @Html.TextBoxFor(m => m.State, new { @class = "form-control", @Placeholder = "State", @Disabled = "disabled" })
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label class="form-label">   City</label>
+                            @Html.TextBoxFor(m => m.City, new { @class = "form-control", @Placeholder = "City", @Disabled = "disabled" })
+                        </div>
+                        <div class="col-md-12 mb-3">
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="condition">
+                                <label class="form-check-label" for="condition">I read carefully and accept all terms & conditions.</label>
+                            </div>
+                        </div>
+                        <div id="note" class="col-md-12 mb-3" style="display:none;">
+                            <p class="bg-warning" style="padding: 5px 20px; border-left: 5px solid #686868;">
+                                <b class="font-bold"> Note :- </b>To Complete the Registration process please follow below steps.<br />
+                                <b class="font-bold"> Step 1 -</b> Fill all the required information and click on <b class="font-bold">Confirm</b> button to verify all entered data are correct.<br />
+                                <b class="font-bold"> Step 2 -</b> Click on <b class="font-bold">Regsiter</b> button to complete the registration process.
+                            </p>
+                        </div>
+                        <div id="note" class="col-md-12 mb-3" style="display:none;">
+                            <p class="bg-warning" style="padding: 5px 20px; border-left: 5px solid #686868;">
+                                <b class="font-bold"> Note :- </b>To Complete the Registration process please follow below steps.<br />
+                                <b class="font-bold"> Step 1 -</b> Fill all the required information and click on <b class="font-bold">Confirm</b> button to verify all entered data are correct.<br />
+                                <b class="font-bold"> Step 2 -</b> Click on <b class="font-bold">Regsiter</b> button to complete the registration process.
+                            </p>
+                        </div>
+                       
+                        <div class="col-md-4 mb-3">
+                            <input type="button" id="Confirm" onclick="return confirmregistration();" class="btn btn-light px-3" name="Confirm" value="Confirm">
+                            <input type="button" id="Register" onclick="return saveregistration();" class="btn btn-light px-3" style="display: none" name="Register" value="Register">
+                            <input type="button" id="Edit" onclick="editregistration();" style="display: none" class="btn btn-light px-3" name="Edit" value="Edit">
+                        </div>
                     </div>
-                    <div class="col-md-4 form-group">
-                        State
-                        @Html.TextBoxFor(m => m.State, new { @class = "form-control", @Placeholder = "State", @Disabled = "disabled" })
-                    </div>
-                    <div class="col-md-4 form-group">
-                        City
-                        @Html.TextBoxFor(m => m.City, new { @class = "form-control", @Placeholder = "City", @Disabled = "disabled" })
-                    </div>
                 </div>
-                <div class="row" style="margin-left:5px;margin-right:300px;margin-bottom:14px;margin-top:14px">
-                    <div class="col-md-12">
-                        <input type="checkbox" id="condition" style="height:20px;width:20px;" />  &nbsp;I read carefully and accept all terms & conditions.
-                        @* @Html.CheckBoxFor(m => m.condition, new { @class = "form-control"}) &nbsp;<label></label>*@
-                    </div>
-                </div>
-               
-              <p id="note" class="bg-warning" style="display:none;padding: 5px 20px; border-left: 5px solid #686868;">
-                    <b class="font-bold"> Note :- </b>To Complete the Registration process please follow below steps.<br />
-                    <b class="font-bold"> Step 1 -</b> Fill all the required information and click on <b class="font-bold">Confirm</b> button to verify all entered data are correct.<br />  
-                    <b class="font-bold"> Step 2 -</b> Click on <b class="font-bold">Regsiter</b> button to complete the registration process.
-                </p>
-                <div class="col-md-6 form-group">
-                    <input type="button" id="Confirm" onclick="return confirmregistration();" class="btn btn-success" name="Confirm" value="Confirm">
-                    <input type="button" id="Register" onclick="return saveregistration();" class="btn btn-success" style="display: none" name="Register" value="Register">
-                    <input type="button" id="Edit" onclick="editregistration();" style="display: none" class="btn btn-info" name="Edit" value="Edit">
-                    <br />
-
-                </div>
-                <br /> 
-                <p style="color: red">@TempData["Registration"] </p>
             </div>
         </div>
     </div>
 </div>
-
 
 <script src="../../vendor/jquery/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>

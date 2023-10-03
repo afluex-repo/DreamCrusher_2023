@@ -4,228 +4,212 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="section-header">
+<div class="page-content">
     <div class="row">
-        <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-            <div class="section-header-breadcrumb-content">
-                <h1>Dashboard</h1>
-            </div>
-        </div>
-
-    </div>
-</div>
-<div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        Login Id : <h6>@ViewBag.LoginId</h6>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-       Name : <h6>@ViewBag.DisplayName</h6>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        Date of Joining : <h6>@ViewBag.JoiningDate</h6>
-    </div>
-  
-</div>
-<br />
-<div class="row">
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card card-sales-widget card-bg-blue-gradient">
-            <div class="card-icon shadow-primary bg-blue">
-                <i class="fas fa-user-plus"></i>
-            </div>
-            <div class="card-wrap pull-right">
-                <div class="card-header">
-                    <h3>@ViewBag.TotalDownline</h3>
-                    <h4>Total Team</h4>
-                </div>
-            </div>
-            <div class="card-chart">
-                <div id="chart-1"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card card-sales-widget card-bg-yellow-gradient">
-            <div class="card-icon shadow-primary bg-warning">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="card-wrap pull-right">
-                <div class="card-header">
-                    <h3>@ViewBag.TotalDirects</h3>
-                    <h4>Direct</h4>
-                </div>
-            </div>
-            <div class="card-chart">
-                <div id="chart-2"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card card-sales-widget card-bg-orange-gradient">
-            <div class="card-icon shadow-primary bg-hibiscus">
-                <i class="fas fa-user"></i>
-            </div>
-            <div class="card-wrap pull-right">
-                <div class="card-header">
-                    <h3>@ViewBag.TotalActive</h3>
-                    <h4>Active Ids</h4>
-                </div>
-            </div>
-            <div class="card-chart">
-                <div id="chart-3"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="card card-sales-widget card-bg-green-gradient">
-                <div class="card-icon shadow-primary bg-green">
-                    <i class="fas fa-rupee-sign"></i>
-                </div>
-                <div class="card-wrap pull-right">
-                    <div class="card-header">
-                        <h3>@ViewBag.TotalPayout</h3>
-                        <h4>Total Payout</h4>
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h4 class="mb-0">Dashboard</h4>
                     </div>
                 </div>
-                <div class="card-chart">
-                    <div id="chart-4"></div>
+            </div>
+        </div>
+
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <span class="mb-0 text-white">Login Id : </span><span class="h6">@ViewBag.LoginId</span>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <span class="mb-0 text-white">  Name : </span><span class="h6">@ViewBag.DisplayName</span>
+                        </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12">
+                            <span class="mb-0 text-white">Date of Joining : </span>  <span class="h6">@ViewBag.JoiningDate</span>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    <div class="col-lg-3 col-md-6 col-sm-12">
-        <div class="card card-sales-widget card-bg-cyan-gradient">
-            <div class="card-icon shadow-primary bg-cyan">
-                <i class="fas fa-tag"></i>
-            </div>
-            <div class="card-wrap pull-right">
-                <div class="card-header">
-                    <h3>@ViewBag.Recognition</h3>
-                    <h4>Recognition</h4>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white">Total Team</p>
+                                <h4 class="my-1 text-white">@ViewBag.TotalDownline</h4>
+                            </div>
+                            <div class="widgets-icons bg-light-transparent text-white ms-auto">
+                                <i class="bx bxs-group"></i>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="card-chart">
-                <div id="chart-5"></div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <p class="mb-0 text-white">Direct</p>
+                                <h4 class="my-1 text-white">@ViewBag.TotalDirects</h4>
+                            </div>
+                            <div class="widgets-icons bg-light-transparent text-white ms-auto">
+                                <i class="bx bxs-down-arrow-alt"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <p class="mb-0 text-white">Active Ids</p>
+                                <h4 class="my-1 text-white">@ViewBag.TotalActive</h4>
+                            </div>
+                            <div class="widgets-icons bg-light-transparent text-white">
+                                <i class="bx bxs-group"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <p class="mb-0 text-white">Total Payout</p>
+                                <h4 class="my-1 text-white">@ViewBag.TotalPayout</h4>
+                            </div>
+                            <div class="widgets-icons bg-light-transparent text-white">
+                                <i class="lni lni-rupee"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div>
+                                <p class="mb-0 text-white">Recognition</p>
+                                <h4 class="my-1 text-white">@ViewBag.Recognition</h4>
+                            </div>
+                            <div class="widgets-icons bg-light-transparent text-white">
+                                <i class='bx bx-anchor'></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-lg-6 col-md-12 col-12 col-sm-12">
-        <div class="card">
-            <div class="card-header">
-                <h4>Product Details</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example22" class="display nowrap table table-hover table-striped table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Sr No.</th>
-                                <th>Product Name</th>
-                                <th>Amount</th>
-                                <th>Status</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if (Model != null)
-                            {
-                                if (Model.lstinvestment != null)
-                                {
-                                    int i = 1;
-                                    foreach (var Item in Model.lstinvestment)
-                                    {
-                                        <tr class="text-left">
-                                            <td>@i</td>
-                                            <td>@Item.ProductName</td>
-                                            <td>@Item.Amount</td>
-                                            <td>@Item.Status</td>
-
-
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="mb-2">Product Details</h5>
+                            <div class="table-responsive">
+                                <table id="example2" class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Sr No.</th>
+                                            <th>Product Name</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
                                         </tr>
-                                        i++;
-                                    }
+                                    </thead>
+                                    <tbody>
+                                        @if (Model != null)
+                                        {
+                                            if (Model.lstinvestment != null)
+                                            {
+                                                int i = 1;
+                                                foreach (var Item in Model.lstinvestment)
+                                                {
+                                                    <tr class="text-left">
+                                                        <td>@i</td>
+                                                        <td>@Item.ProductName</td>
+                                                        <td>@Item.Amount</td>
+                                                        <td>@Item.Status</td>
+                                                    </tr>
+                                                    i++;
+                                                }
 
-                                }
-                            }
-
-                        </tbody>
-
-
-                    </table>
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="mb-2">Business Details</h5>
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Team</th>
+                                        <th>Total</th>
+                                        <th>Paid</th>
+                                        <th>C/F</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="text-left">
+                                        <td>Left</td>
+                                        <td>@ViewBag.TotalBusinessLeft</td>
+                                        <td>@ViewBag.PaidBusinessLeft</td>
+                                        <td>@ViewBag.CarryLeft</td>
+                                    </tr>
+                                    <tr class="text-left">
+                                        <td>Right</td>
+                                        <td>@ViewBag.TotalBusinessRight</td>
+                                        <td>@ViewBag.PaidBusinessRight</td>
+                                        <td>@ViewBag.CarryRight</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-lg-6 col-md-12 col-12 col-sm-12">
-        <div class="card">
-            <div class="card-header">
-                <h4>Business Details</h4>
-            </div>
-            <div class="card-body">
-                <div class="table-responsive">
-                    <table id="example22" class="display nowrap table table-hover table-striped table-bordered">
-
-                        <thead>
-                            <tr>
-                                <th>Team</th>
-                                <th>Total</th>
-                                <th>Paid</th>
-                                <th>C/F</th>
-
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="text-left">
-                                <td>Left</td>
-                                <td>@ViewBag.TotalBusinessLeft</td>
-                                <td>@ViewBag.PaidBusinessLeft</td>
-                                <td>@ViewBag.CarryLeft</td>
-
-
-                            </tr>
-                            <tr class="text-left">
-                                <td>Right</td>
-                                <td>@ViewBag.TotalBusinessRight</td>
-                                <td>@ViewBag.PaidBusinessRight</td>
-                                <td>@ViewBag.CarryRight</td>
-
-
-                            </tr>
-
-                        </tbody>
-
-                    </table>
+    <div class="modal fade" id="myModal" role="dialog" style="display: none">
+        <div class="modal-dialog">
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
+                    <h4 class="modal-title" style="color: red">NOTICE</h4>
+                </div>
+                <div class="modal-body" style="color: black">
+                    <p>
+                        Dear Associates,
+                        5% of your Payout Balance will be deducted for Product Wallet.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal();">Close</button>
                 </div>
             </div>
         </div>
     </div>
-
 </div>
-<div class="modal fade" id="myModal" role="dialog" style="display: none">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">
-                @*<button type="button" class="close" data-dismiss="modal">&times;</button>*@
-                <h4 class="modal-title" style="color: red">NOTICE</h4>
-            </div>
-            <div class="modal-body" style="color: black">
-                <p>
-                    Dear Associates,
-                    5% of your Payout Balance will be deducted for Product Wallet.
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal" onclick="closeModal();">Close</button>
-            </div>
-        </div>
-
-    </div>
-</div>
-
 <script src="../../vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
@@ -238,9 +222,7 @@
         $('.modal-backdrop').remove();
     }
 </script>
-
 <script>
-
     function savemessage() {
         $(".errortext").removeClass("errortext");
         if ($('#txtmessage').val() == '') {
@@ -262,14 +244,9 @@
                     alert(data.Result);
                     // window.location.href = '@Url.Action("Registration", "Home")';
                 }
-
-
             }
-
         });
     }
-
-
 </script>
 <style>
     .modal-backdrop.show {

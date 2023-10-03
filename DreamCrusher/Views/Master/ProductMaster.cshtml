@@ -4,151 +4,85 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-<div class="row">
-    <div class="col-sm-12">
-
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>
-                <a href="#">
-                    Master
-                </a>
-            </li>
-            <li class="active">
-                Product Master
-            </li>
-
-        </ol>
-
-
-    </div>
-</div>
-<br />
-<!-- /.row -->
 @using (Html.BeginForm("ProductMaster", "Master", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
 {
-    <span style="color: red">
-        @TempData["Product"]
-    </span>
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Product Master
-
-
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Product Master</h5>
+                        </div>
+                        <p style="color: white;;display: block; margin-bottom:0px; text-align:center">
+                            @TempData["Product"]
+                        </p>
+                    </div>
                 </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Product Name <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.ProductName, new { @placeholder = "Product Name", @class = "form-control" })
-                                    @Html.HiddenFor(m => m.ProductID)
-                                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Product Name <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.ProductName, new { @placeholder = "Product Name", @class = "form-control" })
+                                @Html.HiddenFor(m => m.ProductID)
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group row">
+                            <div class="col-md-4">
                                 <label class="col-sm-3 col-form-label">Product Price <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.ProductPrice, new { @placeholder = "Product Price", @class = "form-control", @onkeypress = "return isNumberKey(event)" })
-                                </div>
+                                @Html.TextBoxFor(m => m.ProductPrice, new { @placeholder = "Product Price", @class = "form-control", @onkeypress = "return isNumberKey(event)" })
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group row">
+                            <div class="col-md-4">
                                 <label class="col-sm-3 col-form-label">IGST <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.IGST, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
-                                </div>
+                                @Html.TextBoxFor(m => m.IGST, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group row">
+                            <div class="col-md-4">
                                 <label class="col-sm-3 col-form-label">CGST <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.CGST, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
-                                </div>
+                                @Html.TextBoxFor(m => m.CGST, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
                             </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group row">
+                            <div class="col-md-4">
                                 <label class="col-sm-3 col-form-label">SGST <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.SGST, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
-                                </div>
+                                @Html.TextBoxFor(m => m.SGST, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <div class="form-group row">
-                                <label class="col-sm-3 col-form-label">Binary Perc(%)<span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.BinaryPercent, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
-                                </div>
-                            </div>
-                        </div>
-                        @*<div class="col-md-3">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">Direct Perc(%) <span style="color: red">*</span></label>
-                                    <div class="col-sm-9">
-                                        @Html.TextBoxFor(m => m.DirectPercent, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3">
-                                <div class="form-group row">
-                                    <label class="col-sm-3 col-form-label">ROI Per(%) <span style="color: red">*</span></label>
-                                    <div class="col-sm-9">
-                                        @Html.TextBoxFor(m => m.ROIPercent, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
-                                    </div>
-                                </div>
-                            </div>*@
 
-                    </div>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <div class="form-group row">
+
+                            <div class="col-md-4">
+                                <label class="form-label">Binary Perc(%)<span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.BinaryPercent, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
+                            </div>
+
+                            <div class="col-md-4">
                                 <label class="col-sm-3 col-form-label">BV <span style="color: red">*</span></label>
-                                <div class="col-sm-9">
-                                    @Html.TextBoxFor(m => m.BV, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
-                                </div>
+                                @Html.TextBoxFor(m => m.BV, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
                             </div>
-                        </div>
-                        <div class="col-md-6">
+                            <div class="col-12">
 
-                            @if (Model == null)
+                                @if (Model == null)
                                 {
-                            <input type="submit" id="btnSaveProduct" class="btn btn-success" name="btnSaveProduct" value="Save" onclick="return saveProduct();" />
+                                    <input type="submit" id="btnSaveProduct" class="btn btn-light px-5" name="btnSaveProduct" value="Save" onclick="return saveProduct();" />
                                 }
                                 else
                                 {
-                            @*<input type="submit" id="btnUpdateProduct" class="btn btn-success pull-right" name="btnUpdateProduct" value="Update" onclick="return updateProduct();" />*@
-                            <a type="submit" id="btnUpdateProduct" class="btn btn-success" name="btnUpdateProduct" value="Update" onclick="return updateProduct();" href="/Master/ProductList">Update</a>
+                                    @*<input type="submit" id="btnUpdateProduct" class="btn btn-success pull-right" name="btnUpdateProduct" value="Update" onclick="return updateProduct();" />*@
+                                    <a type="submit" id="btnUpdateProduct" class="btn btn-light px-3" name="btnUpdateProduct" value="Update" onclick="return updateProduct();" href="/Master/ProductList">Update</a>
                                 }
 
-                            <a class="btn btn-primary" href="/Master/ProductList">Back To List</a>
+                                <a class="btn btn-light px-3" href="/Master/ProductList">Back To List</a>
 
-
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
-            <!-- /.panel -->
         </div>
     </div>
+
 }
 <style>
     .errortext {
         border: 1px solid red !important;
-        background-color: #fff0f0 !important;
+        /*background-color: #fff0f0 !important;*/
     }
 </style>
 <script>
