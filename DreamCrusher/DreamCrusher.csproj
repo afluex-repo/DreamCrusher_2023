@@ -3837,6 +3837,8 @@
     <Content Include="Views\Website\LegalDocuments.cshtml" />
     <Content Include="Views\Website\ProductServies.cshtml" />
     <Content Include="Views\Website\TermCondition.cshtml" />
+    <Content Include="Views\Website\OurBankers.cshtml" />
+    <Content Include="Views\Master\CourseView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3865,7 +3867,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58419</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58419/</IISUrl>
+          <IISUrl>http://localhost:58418/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -441,5 +441,10 @@ namespace DreamCrusher.Controllers
             return RedirectToAction(FormName,Controller);
         }
         #endregion
+
+        public ActionResult CourseView()
+        {
+            return View();
+        }
     }
 }
