@@ -11,344 +11,238 @@
     <title>_AdminLayoutTesting</title>
 </head>
 <body>
-   
 
 
 
 
 
-    @model DreamCrusherMLM.Models.DashBoard
-    @{
-        ViewBag.Title = "AdminDashBoard";
-        Layout = "~/Views/Shared/_AdminLayout.cshtml";
-    }
+    <!DOCTYPE html>
+    <title>@ViewBag.Title</title>
+    <html lang="en">
 
 
-    <div class="row">
-        <div class="col-sm-12">
+    <!-- Mirrored from radixtouch.in/templates/snkthemes/grexsan/source/light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jul 2020 11:30:35 GMT -->
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
+        <title>Digi Direct</title>
+        <!-- General CSS Files -->
+        <link rel="stylesheet" href="../assets/css/app.min.css">
+        <!-- Template CSS -->
+        <link rel="stylesheet" href="../assets/css/style.css">
+        <link rel="stylesheet" href="../assets/css/components.css">
+        <link rel="stylesheet" href="../assets/bundles/bootstrap-social/bootstrap-social.css">
+        <link rel="stylesheet" href="../assets/bundles/flag-icon-css/css/flag-icon.min.css">
+        <!-- Custom style CSS -->
 
-            <ol class="breadcrumb">
-                <li>
-                    <i class="clip-home-3"></i>
-                    <a href="#">
-                        Home
-                    </a>
-                </li>
-                <li class="active">
-                    Dashboard
-                </li>
+        <link rel='shortcut icon' type='image/x-icon' href='../WebsiteCss/images/favicon.png' />
 
-            </ol>
+    </head>
+
+    <body>
+        <div class="loader"></div>
+        <div class="main-wrapper main-wrapper-1">
+            <div class="navbar-bg"></div>
+            <nav class="navbar navbar-expand-lg main-navbar">
+                <div class="form-inline mr-auto">
+                    <ul class="navbar-nav mr-3">
+                        <li>
+                            <a href="#" data-toggle="sidebar" class="nav-link nav-link-lg collapse-btn">
+                                <i class="fas fa-bars"></i>
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+                <ul class="navbar-nav navbar-right">
 
 
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="row space12">
-                <ul class="mini-stats col-sm-12">
-                    <li class="col-sm-3">
+                    <li class="dropdown">
+                        @if (Session["ProfilePic"] == "")
+                        {
+                            <a href="#" data-toggle="dropdown"
+                               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <img alt="image" src="../assets/img/users/user.png" class="user-img-radious-style">
+                                <span class="d-sm-none d-lg-inline-block"></span>
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="#" data-toggle="dropdown"
+                               class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                <img alt="image" src="@Session["ProfilePic"]" class="user-img-radious-style">
+                                <span class="d-sm-none d-lg-inline-block"></span>
+                            </a>
+                        }
 
-                        <div class="values">
-                            <strong>@ViewBag.TotalUsers</strong> Total Associates
+                        <div class="dropdown-menu dropdown-menu-right">
+                            <div class="dropdown-title">@Session["Name1"] </div>
+                            <div class="dropdown-title">  Joining -  (@Session["JoiningDate"])</div>
+                            <a href="/User/ViewProfile" class="dropdown-item has-icon">
+                                <i class="far fa-user"></i> Profile
+                            </a>
+
+                            <a href="/Profile/ChangePassword" class="dropdown-item has-icon">
+                                <i class="fas fa-key"></i> Change Password
+                            </a>
+                            @*<a href="#" class="dropdown-item has-icon">
+                                    <i class="fas fa-cog"></i> Settings
+                                </a>*@
+                            <div class="dropdown-divider"></div>
+                            <a href="/Home/Login" class="dropdown-item has-icon text-danger">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </a>
                         </div>
-                    </li>
-                    <li class="col-sm-3">
 
-                        <div class="values">
-                            <strong>@ViewBag.ActiveUsers</strong> Active Users
-                        </div>
-                    </li>
-                    @*<li class="col-sm-3">
-
-                            <div class="values">
-                                <strong>@ViewBag.InactiveUsers</strong> Inactive Users
-                            </div>
-                        </li>*@
-                    <li class="col-sm-3">
-
-                        <div class="values">
-                            <strong>@ViewBag.BlockedUsers</strong> Blocked Users
-                        </div>
                     </li>
                 </ul>
+            </nav>
+            <div class="main-sidebar sidebar-style-2">
+                <aside id="sidebar-wrapper">
+                    <div class="sidebar-brand">
+                        <a href="../../User/AssociateDashBoard">
+                            <img alt="image" src="../WebsiteCss/images/favicon.png" class="header-logo" />
+                            <span class="logo-name">Digi Direct</span>
+                        </a>
+                    </div>
+                    <ul class="sidebar-menu">
+                        <li class="dropdown active" style="display: block;">
+                            <div class="sidebar-profile">
+                                @if (Session["ProfilePic"] == "")
+                                {
+                                    <div class="siderbar-profile-pic">
+                                        <img src="../assets/img/users/user.png" class="profile-img-circle box-center" alt="User Image">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="siderbar-profile-pic">
+                                        <img src="@Session["ProfilePic"]" class="profile-img-circle box-center" alt="User Image">
+                                    </div>
+                                }
+
+
+
+
+                                <div class="siderbar-profile-details">
+                                    <div class="siderbar-profile-name"> @Session["Name1"] </div>
+                                    @*<div class="siderbar-profile-position">Manager </div>*@
+                                </div>
+
+                            </div>
+                        </li>
+                        @*<li class="menu-header">Main</li>*@
+
+
+                        <li><a class="nav-link" href="/User/AssociateDashBoard"><i class="fas fa-boxes"></i><span>DashBoard</span></a></li>
+
+                        <li><a class="nav-link" href="/User/Registration"><i class="fas fa-boxes"></i><span>Sign Up</span></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="fab fa-atlassian"></i><span>Profile</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="/User/ViewProfile">View Profile</a></li>
+                                <li><a class="nav-link" href="/KYCDocuments/KYCDocuments">Upload KYC</a></li>
+                                <li><a class="nav-link" href="/Profile/ChangePassword">Change Password</a></li>
+                                <li><a class="nav-link" target="_blank" href="/User/AcceptanceForm">Acceptance Form</a></li>
+                            </ul>
+                        </li>
+
+
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown"><i class="fas fa-envelope-open-text"></i><span>Team</span></a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="/User/BinaryTree">Tree</a></li>
+                                <li><a class="nav-link" href="/Downline/DirectList">Direct</a></li>
+                                <li><a class="nav-link" href="/Downline/DirectListL2">Direct L2</a></li>
+                                <li><a class="nav-link" href="/Downline/DownLineList">Downline</a></li>
+                            </ul>
+                        </li>
+
+                        <li><a class="nav-link" href="/User/UserReward"><i class="fas fa-boxes"></i><span>Recognition</span></a></li>
+
+
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown">
+                                <i class="fas fa-shopping-bag"></i><span>
+                                    Payout
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="/Wallet/PayoutLedger">Payout Wallet Ledger</a></li>
+                                <li><a class="nav-link" href="/UserReports/UnPaidIncomes">Unpaid Income</a></li>
+                                <li><a class="nav-link" href="/UserReports/PayoutReport">Payout Report</a></li>
+                                <li><a class="nav-link" href="/UserReports/BusinessReport">Business Report</a></li>
+                                <li><a class="nav-link" href="/UserReports/PaidPayoutDetails">Payout Paid Details</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="nav-link has-dropdown">
+                                <i class="fas fa-file"></i><span>
+                                    Reports
+                                </span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="nav-link" href="/UserReports/TopupReport">Product Details</a></li>
+                                <li><a class="nav-link" href="/UserReports/DCMIReport">DCMI Reports</a></li>
+
+                            </ul>
+                        </li>
+                        @*<li class="dropdown">
+                                <a href="#" class="nav-link has-dropdown">
+                                    <i class="fas fa-shopping-bag"></i><span>
+                                        Product Payout
+                                    </span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="nav-link" href="/UserReports/UnPaidProductIncomes">Unpaid Income</a></li>
+                                    <li><a class="nav-link" href="/UserReports/ProductPayoutReport">Payout Report</a></li>
+                                    <li><a class="nav-link" href="/UserReports/ProductBusinessReport">Business Report</a></li>
+
+                                </ul>
+                            </li>*@
+
+
+
+
+                    </ul>
+                </aside>
             </div>
-        </div>
-
-    </div>
-
-
-
-    <!-- /.row -->
-    <div class="row">
-        <div class="col-lg-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Associate Details
-
-
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="card">
+                    <div class="card-body">
+                        @RenderBody()
+                    </div>
                 </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div id="divusers"></div>
-                </div>
-                <!-- /.panel-body -->
             </div>
-            <!-- /.panel -->
-            <!-- /.panel -->
+
+            <footer class="main-footer">
+                <div class="footer-left">
+                    Copyright &copy; 2020 <div class="bullet"></div>
+                </div>
+                <div class="footer-right">
+                </div>
+            </footer>
         </div>
+        <!-- General JS Scripts -->
+        <script src="../assets/js/app.min.js"></script>
+        <!-- JS Libraies -->
+        <script src="../assets/bundles/echart/echarts.js"></script>
 
-        <div class="col-lg-3">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Payout Status
+        <script src="../assets/bundles/chartjs/chart.min.js"></script>
+        <script src="../assets/bundles/apexcharts/apexcharts.min.js"></script>
+        <!-- Page Specific JS File -->
+        <script src="../assets/js/page/index.js"></script>
+        <!-- Template JS File -->
+        <script src="../assets/js/scripts.js"></script>
+        <script src="../assets/bundles/jquery.sparkline.min.js"></script>
 
-
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div id="divpayout"></div>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-            <!-- /.panel -->
-        </div>
-
-        <div class="col-lg-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Business Details
+    </body>
 
 
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div id="divinvestment"></div>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-            <!-- /.panel -->
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Joining Details
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div id="divjoining"></div>
-                </div>
-                <!-- /.panel-body -->
-            </div>
-            <!-- /.panel -->
-            <!-- /.panel -->
-        </div>
-    </div>
-
-    <script src="../vendor/jquery/jquery.min.js"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-
-    <script type="text/javascript">
-
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(bindusers);
-
-    function bindusers() {
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: '/Admin/GetUserDetails',
-            data: JSON.stringify(),
-            success:
-            function (response) {
-                var datare = response;
-                var data = new google.visualization.DataTable();
-
-                data.addColumn('string', 'Status');
-                data.addColumn('number', 'Total');
-                for (var i = 0; i < datare.length; i++) {
-                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
-                }
-
-                var chart = new google.visualization.PieChart(document.getElementById('divusers'));
-                var options = {
-                    pieSliceText: 'value-and-percentage',
-                    format: 'decimal',
-                    is3D: true,
-                    legend: { position: 'bottom' },
-                    animation: {
-                        startup: true,
-                        duration: 1000,
-                        easing: 'out',
-                    }, chartArea: { width: "100%", height: "80%" }
-                };
-
-                chart.draw(data, options);
-
-
-
-
-            },
-            error: function () {
-            }
-        });
-    }
-
-    </script>
-
-
-    <script type="text/javascript">
-
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(bindrecharegedetails);
-
-    function bindrecharegedetails() {
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: '/Admin/GetPayoutStatus',
-            data: JSON.stringify(),
-            success:
-            function (response) {
-                var datare = response;
-                var data = new google.visualization.DataTable();
-
-                data.addColumn('string', 'Status');
-                data.addColumn('number', 'Total');
-                for (var i = 0; i < datare.length; i++) {
-                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
-                }
-
-                var chart = new google.visualization.PieChart(document.getElementById('divpayout'));
-                var options = {
-                    pieSliceText: 'value-and-percentage',
-                    format: 'decimal',
-                    is3D: true,
-                    legend: { position: 'bottom' },
-                    animation: {
-                        startup: true,
-                        duration: 1000,
-                        easing: 'out',
-                    }, chartArea: { width: "100%", height: "80%" }
-                };
-
-                chart.draw(data, options);
-
-
-
-
-            },
-            error: function () {
-            }
-        });
-    }
-
-    </script>
-
-
-    <script type="text/javascript">
-
-        google.charts.load("current", { packages: ["imagebarchart"] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
-                url: '/Admin/GetInvestmentDetails',
-                data: JSON.stringify(),
-                success:
-                function (response) {
-                    var datare = response;
-                    var data = new google.visualization.DataTable();
-
-                    data.addColumn('string', 'Month');
-                    data.addColumn('number', 'Investment');
-                    for (var i = 0; i < datare.length; i++) {
-                        data.addRow([datare[i].Month, parseInt(datare[i].Amount)]);
-                    }
-
-                    var chart = new google.visualization.ImageBarChart(document.getElementById('divinvestment'));
-                    var options = {
-                        pieSliceText: 'value-and-percentage',
-                        format: 'decimal',
-                        is3D: true,
-                        legend: { position: 'bottom' },
-                        animation: {
-                            startup: true,
-                            duration: 1000,
-                            easing: 'out',
-                        }, chartArea: { width: "100%", height: "80%" }
-                    };
-                    chart.draw(data, options);
-                },
-                error: function () {
-                }
-            });
-        }
-
-    </script>
-
-
-    <script type="text/javascript">
-
-        google.charts.load("current", { packages: ["imagebarchart"] });
-        google.charts.setOnLoadCallback(joiningdata);
-
-        function joiningdata() {
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
-                url: '/Admin/GetJoiningDeatils',
-                data: JSON.stringify(),
-                success:
-                function (response) {
-                    var datare = response;
-                    var data = new google.visualization.DataTable();
-
-                    data.addColumn('string', 'Month');
-                    data.addColumn('number', 'Total Users');
-                    for (var i = 0; i < datare.length; i++) {
-                        data.addRow([datare[i].Month, parseInt(datare[i].Total)]);
-                    }
-
-                    var chart = new google.visualization.ImageBarChart(document.getElementById('divjoining'));
-                    var options = {
-                        pieSliceText: 'value-and-percentage',
-                        format: 'decimal',
-                        is3D: true,
-                        legend: { position: 'bottom' },
-                        animation: {
-                            startup: true,
-                            duration: 1000,
-                            easing: 'out',
-                        }, chartArea: { width: "100%", height: "80%" }
-                    };
-
-                    chart.draw(data, options);
-
-
-
-
-                },
-                error: function () {
-                }
-            });
-        }
-
-    </script>
-
-
-
+    <!-- Mirrored from radixtouch.in/templates/snkthemes/grexsan/source/light/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Jul 2020 11:32:43 GMT -->
+</html>
 
 
 

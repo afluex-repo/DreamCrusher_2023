@@ -806,6 +806,9 @@
     <script src="~/assetsAdmin/plugins/jquery-knob/jquery.knob.js"></script>
     <script src="~/assetsAdmin/plugins/datatable/js/jquery.dataTables.min.js"></script>
     <script src="~/assetsAdmin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+   
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
     <script>
 		$(function () {
 			$(".knob").knob();
@@ -830,133 +833,199 @@
 </html>
 
 
-<script>
-    // chart 8
-    var options = {
-        series: [{
-            data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
-        }],
-        chart: {
-            foreColor: 'rgba(255, 255, 255, 0.65)',
-            type: 'bar',
-            height: 350
-        },
-        colors: ["#fff"],
-        plotOptions: {
-            bar: {
-                horizontal: true,
-            }
-        },
-        grid: {
-            show: true,
-            borderColor: 'rgba(255, 255, 255, 0.12)',
-            strokeDashArray: 4,
-        },
-        tooltip: {
-            theme: 'dark',
-            y: {
-                formatter: function (val) {
-                    return "$ " + val + " thousands"
+
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(bindusers);
+
+    function bindusers() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/Admin/GetUserDetails',
+            data: JSON.stringify(),
+            success:
+            function (response) {
+                var datare = response;
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Status');
+                data.addColumn('number', 'Total');
+                for (var i = 0; i < datare.length; i++) {
+                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
                 }
-            }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        xaxis: {
-            categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan', 'United States', 'China', 'Germany'],
-        }
-    };
-    var chart = new ApexCharts(document.querySelector("#chart8"), options);
-    chart.render();
 
-    // chart 822
-    var options = {
-        series: [{
-            data: [400, 430, 448, 470, 540, 580, 690, 1100, 1200, 1380]
-        }],
-        chart: {
-            foreColor: 'rgba(255, 255, 255, 0.65)',
-            type: 'bar',
-            height: 350
-        },
-        colors: ["#fff"],
-        plotOptions: {
-            bar: {
-                horizontal: true,
-            }
-        },
-        grid: {
-            show: true,
-            borderColor: 'rgba(255, 255, 255, 0.12)',
-            strokeDashArray: 4,
-        },
-        tooltip: {
-            theme: 'dark',
-            y: {
-                formatter: function (val) {
-                    return "$ " + val + " thousands"
-                }
-            }
-        },
-        dataLabels: {
-            enabled: false
-        },
-        xaxis: {
-            categories: ['South Korea', 'Canada', 'United Kingdom', 'Netherlands', 'Italy', 'France', 'Japan', 'United States', 'China', 'Germany'],
-        }
-    };
-    var chart = new ApexCharts(document.querySelector("#chart822"), options);
-    chart.render();
+                var chart = new google.visualization.PieChart(document.getElementById('divusers'));
+                var options = {
+                    pieSliceText: 'value-and-percentage',
+                    format: 'decimal',
+                    is3D: true,
+                    legend: { position: 'bottom' },
+                    animation: {
+                        startup: true,
+                        duration: 1000,
+                        easing: 'out',
+                    }, chartArea: { width: "100%", height: "80%" }
+                };
+
+                chart.draw(data, options);
 
 
-    // chart 11
-    var options = {
-        series: [44, 55, 13, 43, 22],
-        chart: {
-            foreColor: 'rgba(255, 255, 255, 0.65)',
-            height: 380,
-            type: 'pie',
-        },
-        colors: ["#673ab7", "#32ab13", "#f02769", "#ffc107", "#198fed"],
-        labels: ['Team A', 'Team B', 'Team C', 'Team D', 'Team E'],
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    height: 360
-                },
-                legend: {
-                    position: 'bottom'
-                }
-            }
-        }]
-    };
-    var chart = new ApexCharts(document.querySelector("#chart11"), options);
-    chart.render();
 
 
-    // chart 12
-    var options = {
-        series: [44, 55, 41, 17, 15],
-        chart: {
-            foreColor: 'rgba(255, 255, 255, 0.65)',
-            height: 380,
-            type: 'donut',
-        },
-        colors: ["#673ab7", "#32ab13", "#f02769", "#ffc107", "#198fed"],
-        responsive: [{
-            breakpoint: 480,
-            options: {
-                chart: {
-                    height: 320
-                },
-                legend: {
-                    position: 'bottom'
-                }
+            },
+            error: function () {
             }
-        }]
-    };
-    var chart = new ApexCharts(document.querySelector("#chart12"), options);
-    chart.render();
+        });
+    }
+
 </script>
+
+
+<script type="text/javascript">
+
+    google.charts.load('current', { 'packages': ['corechart'] });
+    google.charts.setOnLoadCallback(bindrecharegedetails);
+
+    function bindrecharegedetails() {
+        $.ajax({
+            type: 'POST',
+            dataType: 'json',
+            contentType: 'application/json',
+            url: '/Admin/GetPayoutStatus',
+            data: JSON.stringify(),
+            success:
+            function (response) {
+                var datare = response;
+                var data = new google.visualization.DataTable();
+
+                data.addColumn('string', 'Status');
+                data.addColumn('number', 'Total');
+                for (var i = 0; i < datare.length; i++) {
+                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
+                }
+
+                var chart = new google.visualization.PieChart(document.getElementById('divpayout'));
+                var options = {
+                    pieSliceText: 'value-and-percentage',
+                    format: 'decimal',
+                    is3D: true,
+                    legend: { position: 'bottom' },
+                    animation: {
+                        startup: true,
+                        duration: 1000,
+                        easing: 'out',
+                    }, chartArea: { width: "100%", height: "80%" }
+                };
+
+                chart.draw(data, options);
+
+
+
+
+            },
+            error: function () {
+            }
+        });
+    }
+
+</script>
+
+
+<script type="text/javascript">
+
+        google.charts.load("current", { packages: ["imagebarchart"] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: '/Admin/GetInvestmentDetails',
+                data: JSON.stringify(),
+                success:
+                function (response) {
+                    var datare = response;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'Month');
+                    data.addColumn('number', 'Investment');
+                    for (var i = 0; i < datare.length; i++) {
+                        data.addRow([datare[i].Month, parseInt(datare[i].Amount)]);
+                    }
+
+                    var chart = new google.visualization.ImageBarChart(document.getElementById('divinvestment'));
+                    var options = {
+                        pieSliceText: 'value-and-percentage',
+                        format: 'decimal',
+                        is3D: true,
+                        legend: { position: 'bottom' },
+                        animation: {
+                            startup: true,
+                            duration: 1000,
+                            easing: 'out',
+                        }, chartArea: { width: "100%", height: "80%" }
+                    };
+                    chart.draw(data, options);
+                },
+                error: function () {
+                }
+            });
+        }
+
+</script>
+
+
+<script type="text/javascript">
+
+        google.charts.load("current", { packages: ["imagebarchart"] });
+        google.charts.setOnLoadCallback(joiningdata);
+
+        function joiningdata() {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                contentType: 'application/json',
+                url: '/Admin/GetJoiningDeatils',
+                data: JSON.stringify(),
+                success:
+                function (response) {
+                    var datare = response;
+                    var data = new google.visualization.DataTable();
+
+                    data.addColumn('string', 'Month');
+                    data.addColumn('number', 'Total Users');
+                    for (var i = 0; i < datare.length; i++) {
+                        data.addRow([datare[i].Month, parseInt(datare[i].Total)]);
+                    }
+
+                    var chart = new google.visualization.ImageBarChart(document.getElementById('divjoining'));
+                    var options = {
+                        pieSliceText: 'value-and-percentage',
+                        format: 'decimal',
+                        is3D: true,
+                        legend: { position: 'bottom' },
+                        animation: {
+                            startup: true,
+                            duration: 1000,
+                            easing: 'out',
+                        }, chartArea: { width: "100%", height: "80%" }
+                    };
+
+                    chart.draw(data, options);
+
+
+
+
+                },
+                error: function () {
+                }
+            });
+        }
+
+</script>
+
+
