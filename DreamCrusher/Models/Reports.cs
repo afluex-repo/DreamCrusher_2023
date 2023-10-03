@@ -689,6 +689,13 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetDCMIForAssociate", para);
             return ds;
         }
+        public DataSet CalculateSpillBusiness()
+        {
+            SqlParameter[] para = { new SqlParameter("@Datetime", PaymentDate)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("CalculateMonthlySpillBonus", para);
+            return ds;
+        }
     }
 }
 
