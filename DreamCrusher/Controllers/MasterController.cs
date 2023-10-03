@@ -55,7 +55,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        TempData["Product"] = "Product deleted successfully";
+                        TempData["Product"] = "Product Deleted successfully";
                         FormName = "ProductList";
                         Controller = "Master";
                     }
@@ -135,7 +135,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        obj.Result = "Product saved successfully";
+                        obj.Result = "Product Saved Successfully";
                     }
                     else
                     {
@@ -172,7 +172,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        obj.Result = "Product updated successfully";
+                        obj.Result = "Product Updated Successfully";
                     }
                     else
                     {
@@ -235,7 +235,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        obj.Result = "News saved successfully";
+                        obj.Result = "News Saved Successfully";
                     }
                     else
                     {
@@ -265,7 +265,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        obj.Result = "News updated successfully";
+                        obj.Result = "News Updated Successfully";
                     }
                     else
                     {
@@ -316,7 +316,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        TempData["Product"] = "News deleted successfully";
+                        TempData["Product"] = "News Deleted Successfully";
                         FormName = "NewsList";
                         Controller = "Master";
                     }
@@ -423,7 +423,7 @@ namespace DreamCrusher.Controllers
                 {
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
-                        TempData["GalleryMasterList"] = "Image deleted successfully";
+                        TempData["GalleryMasterList"] = "Image Deleted Successfully";
                         FormName = "GalleryMasterList";
                         Controller = "Master";
                     }
