@@ -3664,6 +3664,7 @@
     <Content Include="Views\Master\GalleryMaster.cshtml" />
     <Content Include="Views\Master\GalleryMasterList.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutTesting.cshtml" />
+    <Content Include="Views\Shared\_LayoutTesting.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
