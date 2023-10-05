@@ -1,6 +1,10 @@
 ﻿<!doctype html>
 <html lang="en">
 <head>
+    <title>DreamCrusher</title>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="../assets/css/app.min.css">
+    @*===============================================================================================================================*@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -72,6 +76,7 @@
         <!--start header -->
         <header>
             <div class="topbar d-flex align-items-center">
+                @*----------------------------old---------------------------*@
                 <nav class="navbar navbar-expand gap-3 justify-content-end">
                     <div class="mobile-toggle-menu">
                         <i class='bx bx-menu'></i>
@@ -741,28 +746,62 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="user-box dropdown px-3">
-                        <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
-                           href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="@Session["Profile"]" class="user-img" alt="user avatar">
-                            <div class="user-info">
-                                <p class="user-name mb-0">@Session["FullName"]</p>
-                            </div>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            @*<li>
+                    @*<div class="user-box dropdown px-3">
+                            <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+                               href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <img src="@Session["Profile"]" class="user-img" alt="user avatar">
+                                <div class="user-info">
+                                    <p class="user-name mb-0">@Session["FullName"]</p>
+                                </div>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end">
+                                <li>
                                     <a class="dropdown-item d-flex align-items-center" href="javascript:;">
                                         <i class="bx bx-user fs-5"></i><span>Profile</span>
                                     </a>
-                                </li>*@
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="/Home/Login">
-                                    <i class="bx bx-log-out-circle"></i><span>Logout</span>
-                                </a>
-                            </li>
-                        </ul>
+                                </li>
+                                <li>
+                                    <a class="dropdown-item d-flex align-items-center" href="/Home/Login">
+                                        <i class="bx bx-log-out-circle"></i><span>Logout</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>*@
+                    @*-----------------------------------------------------------------------*@
+                    <div class="main-wrapper main-wrapper-1">
+                        <div class="navbar-bg"></div>
+                        <nav class="navbar navbar-expand-lg main-navbar">
+                            <ul class="navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    @if (Session["ProfilePic"] == "")
+                                    {
+                                        <a href="#" data-toggle="dropdown"
+                                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                            <img alt="image" src="../assets/img/users/user.png" class="user-img-radious-style">
+                                            <span class="d-sm-none d-lg-inline-block"></span>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#" data-toggle="dropdown"
+                                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                            <img alt="image" src="@Session[" ProfilePic"]" class="user-img-radious-style">
+                                            <span class="d-sm-none d-lg-inline-block"></span>
+                                        </a>
+                                    }
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        @*<div class="dropdown-divider"></div>*@
+                                        <a href="/Home/Login" class="dropdown-item has-icon text-white">
+                                            <i class="bx bx-log-out-circle"></i> Logout
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
+                    @*----------------------------------------------------------------------*@
                 </nav>
+                @*-----------------------old--------------------*@
             </div>
         </header>
         <!--end header -->
@@ -782,15 +821,29 @@
             <p class="mb-0">© Copyright 2023 Dream Crusher All right reserved.</p>
         </footer>
     </div>
+    <!-- General JS Scripts -->
+    <script src="../assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <script src="../assets/bundles/echart/echarts.js"></script>
+
+    <script src="../assets/bundles/chartjs/chart.min.js"></script>
+    <script src="../assets/bundles/apexcharts/apexcharts.min.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="../assets/js/page/index.js"></script>
+    <!-- Template JS File -->
+    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/bundles/jquery.sparkline.min.js"></script>
+    @*=====================================================================================================================================*@
     <!--end wrapper-->
     <!-- Bootstrap JS -->
-    <script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>*@
+
     <!-- apexcharts JS start -->
     <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
     <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
     <!-- apexcharts JS end -->
     <!--plugins-->
-    <script src="~/assetsAdmin/js/jquery.min.js"></script>
+    @*<script src="~/assetsAdmin/js/jquery.min.js"></script>*@
     <script src="~/assetsAdmin/plugins/simplebar/js/simplebar.min.js"></script>
     <script src="~/assetsAdmin/plugins/metismenu/js/metisMenu.min.js"></script>
     <script src="~/assetsAdmin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
@@ -806,20 +859,20 @@
     <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
     <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
     <script>
-        $(function () {
-            $(".knob").knob();
-        });
+		$(function () {
+			$(".knob").knob();
+		});
         //data table js
-        $(document).ready(function () {
-            var table = $('#example2').DataTable({
-                lengthChange: false,
-                "pageLength": 50,
-                buttons: ['copy', 'excel', 'pdf', 'print']
-            });
+		$(document).ready(function () {
+		    var table = $('#example2').DataTable({
+		        lengthChange: false,
+		        "pageLength": 50,
+		        buttons: ['copy', 'excel', 'pdf', 'print']
+		    });
 
-            table.buttons().container()
+		    table.buttons().container()
 				.appendTo('#example2_wrapper .col-md-6:eq(0)');
-        });
+		});
     </script>
     <script src="~/assetsAdmin/js/index.js"></script>
     <!--app JS-->
@@ -827,8 +880,10 @@
 </body>
 </html>
 <script type="text/javascript">
+
     google.charts.load('current', { 'packages': ['corechart'] });
     google.charts.setOnLoadCallback(bindusers);
+
     function bindusers() {
         $.ajax({
             type: 'POST',
@@ -859,6 +914,7 @@
                         easing: 'out',
                     }, chartArea: { width: "100%", height: "80%" }
                 };
+
                 chart.draw(data, options);
             },
             error: function () {

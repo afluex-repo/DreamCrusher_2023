@@ -1,7 +1,10 @@
-﻿@{
-    ViewBag.Title = "BinaryTree";
-    Layout = "~/Views/Shared/_LayoutForTree.cshtml";
+﻿
+@{
+    ViewBag.Title = "BinaryTrees";
+    Layout = "~/Views/Shared/_AdminLayoutTesting.cshtml";
 }
+
+
 
 <link href="../../css/tree-responsive.css" rel="stylesheet" />
 <link href="../../css/tree.css" rel="stylesheet" />
@@ -152,17 +155,10 @@
         right: 0;
     }
 
-    .popover-content {
-        color: #29292b;
-        font-size: 13px;
-        /*background: #fffdea;
-            border: 1px solid #f3f0d6;*/
-        border: 1px solid #3d3d3f !important;
-    }
 
     .popover {
-        background: #fff !important;
-        max-width: 300px;
+        background: #f5f5f5 !important;
+        max-width: 400px;
         webkit-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.45);
         -moz-box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.45);
         box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.45);
@@ -172,31 +168,32 @@
         display: none !important;
     }
 
-    .popover.bottom .arrow:after {
-        border-bottom-color: #29292b !important;
-    }
+
 
     .popover-content {
         float: left;
         width: 100%;
+        color: #29292b;
+        font-size: 13px;
+        background: #f5f5f5 !important;
     }
 
-        .popover-content .table {
+
+
+        .popover-content .table td, .popover-content .table th {
+            font-size: 11px;
             border: 1px solid black;
+            border-left: 1px solid black;
+            word-wrap: break-word !important;
+            padding: 2px 2px;
+            word-break: break-all;
+            background: #f5f5f5 !important;
         }
 
-            .popover-content .table td, .popover-content .table th {
-                font-size: 11px;
-                border: 1px solid black;
-                border-left: 1px solid black;
-                word-wrap: break-word !important;
-                padding: 2px 2px;
-                word-break: break-all;
-            }
-
-            .popover-content .table th {
-                color: black;
-            }
+        .popover-content .table th {
+            background: #f5f5f5 !important;
+            color: black;
+        }
 
     #member-details {
         position: absolute;
@@ -462,23 +459,35 @@
     }
 </style>
 
-<div class="page-content">
+<div class="loader" id="divload"></div>
+
+<div class="row">
+    <div class="col-sm-12">
+
+        <ol class="breadcrumb">
+            <li>
+                <i class="clip-home-3"></i>
+                <a href="#">
+                    Team
+                </a>
+            </li>
+            <li class="active">
+                Binary Tree
+            </li>
+
+        </ol>
+
+
+    </div>
+</div>
+<br />
+<div class="container-fluid">
     <div class="row">
-        <div class="col-12 col-lg-12 col-xl-12">
+        <div class="col-12">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="mb-0">Tree</h4>
-                </div>
-            </div>
-        </div>
-
-
-        @*---------------------------------------*@
-        <div class="col-12 col-lg-12 col-xl-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row g-3">
-                        <div class="col-md-3"></div>
+                    <div class="form-row">
+                        <div class="col-md-2"></div>
 
                         <div class="col-md-4">
                             <input name="txtLoginID" type="text" maxlength="10" id="txtLoginID" class="form-control" placeholder="Search By Login ID" autocomplete="off">
@@ -486,135 +495,164 @@
                         <div class="col-md-4">
                             <input type="hidden" name="hfCustomerId" id="hfCustomerId">
                             <input type="hidden" name="HiddenField1" id="HiddenField1">
-                            <button type="button" id="btnSearch" class="btn btn-light px-3">Search</button>
-                            <a id="linkGoUp" class="btn btn-light px-3">
+                            <button type="button" id="btnSearch" class="btn btn-success m-b-10 m-l-5">Search</button>
+                            <a id="linkGoUp" class="btn btn-info m-b-10 m-l-5">
                                 <input type="hidden" id="lblRequest" />Go Up
                             </a>
-                            <a id="btnRoot" class="btn btn-light px-3">Root</a>
+                            <a id="btnRoot" class="btn btn-primary m-b-10 m-l-5">Root</a>
+
+
+
+
                         </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="col-md-2"></div>
-        <div class="form-group col-md-12">
-            <div class="col-sm-12 col-md-12" id="chart">
-                <div class="tree family-tree clearfix">
-                    <ul>
-                        <li id="firstRow">
-                            <a href="" id="firstHead"></a>
-                            <span id="rptRow1_lblFooter"></span>
-                        </li>
-                    </ul>
-                </div>
-                <div class="container-fluid" id="member-details" style="background-color: white">
-        <div class="row">
-        <div class="col-md-12">
-        <div class="card">
-        <div class="card-body">
-        <div class="form-row">
-        <div class="form-group col-md-10">
-        <button type="button" class="next-tree" onclick='ClickHere(this)'>      <a style="width: 100%; height: 50%; background-color: white;" title="Go Down" class="clip-tree"></a>
+                        <div class="form-group col-md-12">
+                            <div class="col-sm-12 col-md-12" id="chart">
+                                <div class="tree family-tree clearfix">
+                                    <ul>
+                                        <li id="firstRow">
+                                            <a href="" id="firstHead"></a>
+                                            <span id="rptRow1_lblFooter"></span>
 
-        </button>
-        <div class="media-body">
-        <h3 class="mb-0" id="lblDisplayName" style="text-align: center;color:black">@ViewBag.Fk_UserId</h3>
-        <p class="mb-0" id="lblMemberId" style="text-align: center;color:black"></p>               <p class="mb-0" id="lblSpillby" style="text-align: center; color: black"></p>
-        <p class="mb-0" id="lblJoiningDate" style="text-align: center;color:black"></p>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="container-fluid" id="member-details" style="background-color: white">
 
-        <p class="mb-0" id="lblstatus" style="text-align: center;color:black"></p>
-        </div>                                            </div>
-        <div class="form-group col-md-2">            <button type="button" id="close">&times;</button>
-        <img src="../../images/treeicon.jpg" id="userimage" style="width: 50px; height: 50px" height="50" width="50" />
-        </div>          <div class="form-group col-md-12 table-responsive">
-        <table class="display nowrap table table-hover table-striped table-bordered" style="border:1px solid black">
-        <tr>
-        <td style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Topup Amount</td>
-        <th id="lblProductName" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">: </th>                                      <th id="lblFk_UserId" style="display: none">: 0</th>
-        </tr>
-        <tr>
-        <td style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Activation Date</td>
-                           <th id="lblupgradedate" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">: </th>
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    <div class="form-row">
+                                                        <div class="form-group col-md-9">
+                                                            <button type="button" class="next-tree" onclick='ClickHere(this)'>
+                                                                <a style="width: 100%; height: 50%; background-color: white;" title="Go Down" class="clip-tree"></a>
+
+                                                            </button>
+                                                            <div class="media-body">
+                                                                <h3 class="mb-0" id="lblDisplayName" style="text-align: center;color:black">@ViewBag.Fk_UserId</h3>
+                                                                <p class="mb-0" id="lblMemberId" style="text-align: center;color:black"></p>
+                                                                <p class="mb-0" id="lblSpillby" style="text-align: center;color:black"></p>
+                                                                <p class="mb-0" id="lblJoiningDate" style="text-align: center;color:black"></p>
+                                                                <p class="mb-0" id="lblstatus" style="text-align: center;color:black"></p>
+                                                            </div>
+
+
+                                                        </div>
+                                                        <div class="form-group col-md-3">
+                                                            <br />
+                                                            <button type="button" id="close">&times;</button>
+                                                            <img src="../../images/treeicon.jpg" id="userimage" style="width: 50px; height: 50px;border:1px solid" />
+                                                        </div>
+                                                        <div class="form-group col-md-12 table-responsive">
+                                                            <table class="display nowrap table table-hover table-striped table-bordered" style="border:1px solid black">
+                                                                <tr>
+                                                                    <td style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Topup Amount</td>
+                                                                    <th id="lblProductName" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">: </th>
+                                                                    <th id="lblFk_UserId" style="display: none">: 0</th>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Activation Date</td>
+                                                                    <th id="lblupgradedate" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">: </th>
 
                                                                 </tr>
                                                                 <tr>
-    <td style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">Spill Details</td>
-                                                                    <th id="lblParnetId" style="font-size: 13px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b" ">: </th>                          </tr>
+                                                                    <td style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Spill Details</td>
+                                                                    <th id="lblParnetId" style="font-size: 13px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b" ">: </th>
+                                                                </tr>
 
-        </table>
-        </div>
-        <div class="form-group col-md-12 table-responsive">
-                                                            <table class="display nowrap table table-hover table-striped table-bordered" style="border:1px solid black">         <thead>
+                                                            </table>
+                                                        </div>
+                                                        <div class="form-group col-md-12 table-responsive">
+                                                            <table class="display nowrap table table-hover table-striped table-bordered" style="border:1px solid black">
+                                                                <thead>
                                                                     <tr>
-        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;"><b>Type</b></th>
-        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;"><b>Left</b></th>
-                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;"><b>Right</b></th>       <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;"><b>Total</b></th>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;"><b>Type</b></th>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;"><b>Left</b></th>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;"><b>Right</b></th>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;"><b>Total</b></th>
                                                                     </tr>
-        </thead>
-        <tbody>
-        <tr>
-        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Active</th>
-        <td data-title="ID" class="ActiveLeft" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
-        <td data-title="ID" class="ActiveRight" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">0</td>
-                                                                        <td data-title="ID" class="ActiveTotal" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">0</td>
-
-                                                                    </tr>
-        <tr>               <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">InActive</th>
-        <td data-title="ID" class="NonActiveLeft" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">0</td>
-        <td data-title="ID" class="NonActiveRight" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
-        <td data-title="ID" class="NonActiveTotal" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>                                                        </tr>
+                                                                </thead>
+                                                                <tbody>
                                                                     <tr>
-                 <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color: #29292b">Total</th>
-                                                                        <td data-title="ID" class="TotalMemberLeft" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>                       <td class="TotalMemberRight" data-title="ID" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">0</td>
-        <td data-title="ID" class="TotalMemberTotal" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Active</th>
+                                                                        <td data-title="ID" class="ActiveLeft" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td data-title="ID" class="ActiveRight" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td data-title="ID" class="ActiveTotal" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
 
-        </tr>
-        @*<tr>
-        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Total Business</th>
-                                                            <td data-title="ID" class="LeftBusinessvol" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
-        <td class="RightBusinessvol" data-title="ID" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
- <td data-title="ID" class="TotalBusinessvol" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">InActive</th>
+                                                                        <td data-title="ID" class="NonActiveLeft" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td data-title="ID" class="NonActiveRight" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td data-title="ID" class="NonActiveTotal" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
 
-                                                        </tr>*@
-        <tr>         <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">Business Volume</th>
-        <td data-title="ID" class="LeftBusiness" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>                  <td class="RightBusiness" data-title="ID" style="font-size: 12px; border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">0</td>
-        <td data-title="ID" class="TotalBusiness" style="font-size: 12px; border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b; ">0</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Total</th>
+                                                                        <td data-title="ID" class="TotalMemberLeft" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td class="TotalMemberRight" data-title="ID" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td data-title="ID" class="TotalMemberTotal" style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Total Business</th>
+                                                                        <td data-title="ID" class="LeftBusinessvol" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td class="RightBusinessvol" data-title="ID" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td data-title="ID" class="TotalBusinessvol" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Business Volume</th>
+                                                                        <td data-title="ID" class="LeftBusiness" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td class="RightBusiness" data-title="ID" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td data-title="ID" class="TotalBusiness" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
 
 
-        </tr>
-        <tr>                                          <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b">Product Business</th>
-        <td data-title="ID" class="ProductLeftBusiness" style="font-size: 12px; border-bottom: 1px solid #29166f; border-top: 1px solid #29166f; color: #29292b; ">0</td>
-                                                        <td class="ProductRightBusiness" data-title="ID" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
-                                                        <td data-title="ID" class="ProductTotalBusiness" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                    </tr>
+                                                                    <tr>
+                                                                        <th style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Product Business</th>
+                                                                        <td data-title="ID" class="ProductLeftBusiness" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td class="ProductRightBusiness" data-title="ID" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
+                                                                        <td data-title="ID" class="ProductTotalBusiness" style="font-size: 12px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">0</td>
 
 
-                                                    </tr>
-                                                </tbody>
-                                            </table>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+
+
+
+
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
-            </div>
-            </div>
-            </div>
-            </div>
-            </div>
-
-            @*---------------------------*@
+        </div>
     </div>
 </div>
 
 
-  
+
+
+
+
+
+
+
 <input type="hidden" id="firtsMemberID" value="@ViewBag.Fk_UserId" />
 
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-
+<script src="../../vendor/jquery/jquery.min.js"></script>
 <script type="text/javascript">
     var winHeight = $(window).height();
     var winWidth = $(window).width();
@@ -634,18 +672,16 @@
         $('#lblParnetId').text(item5);
         $('#lblDisplayName').text(item3);
 
-        if (sponsorid!='') {
-            $("#lblSpillby").html('Spill by - '+sponsorid);
+        if (sponsorid != '') {
+            $("#lblSpillby").html('Spill by - ' + sponsorid);
         }
         else {
             $("#lblSpillby").html('Spill by - N/A');
         }
         $(".LoginId").html(item5);
-
         $("#lblJoiningDate").html(JoiningDate);
         $("#lblProductName").html(ProductName);
         $("#lblupgradedate").html(ActivationDate);
-
 
         if (cssclaa == "active-member") {
             $("#lblstatus").html('Status - Active');
@@ -656,7 +692,7 @@
         else if (cssclaa == "inactive-member") {
             $("#lblstatus").html('Status - InActive');
         }
-        //if (ProductName == "No Package") {
+        //if (ProductName == "No Package (0)") {
         //    $("#lblstatus").html('Status - InActive');
         //}
         //else {
@@ -689,7 +725,6 @@
 
         $(".ProductTotalBusiness").html(parseFloat(ProductLeftBusiness) + parseFloat(ProductRightBusiness));
 
-
         $(".PaidLeg1").html(PaidLeg1);
         $(".PaidLeg2").html(PaidLeg2);
 
@@ -711,12 +746,11 @@
             $("#go-top").find('input[type="hidden"]').val(item1);
         }
         $("#loading-image").hide();
-        console.log($("#member-details").html())
         $('#' + obj.id).attr("data-content", $("#member-details").html());
         $('[data-toggle="popover"]').popover({
             container: 'body',
             html: true,
-            placement: 'bottom',
+            placement: 'auto',
             trigger: 'hover',
 
         });
@@ -789,6 +823,7 @@
     var clicked = 0;
 
     function ClickHere(obj) {
+
         //if ($("#" + obj.id + "").find('input[type="hidden"]').val() == "-1") {
         //  return false;
         //}
@@ -803,16 +838,7 @@
     $("#close").click(function () {
         $("#member-details").removeClass('active');
     });
-    $(document).ready(function () {
 
-        if (clicked != 1) {
-
-            Fk_UserId = $("#firtsMemberID").val();
-            GetDataFirst(Fk_UserId, null);
-            //GetData(Fk_UserId);
-
-        }
-    });
 </script>
 
 <script type="text/javascript">
@@ -820,10 +846,8 @@
     var winHeight = $(window).height();
     var winWidth = $(window).width();
     var clickOption = "";
-    debugger;
     if (winWidth < 980) {
         //clickOption = "";
-        debugger;
         clickOption = "";
     }
     else {
@@ -835,8 +859,10 @@
     $(window).on("load", function () {
 
         var id = $("#firtsMemberID").val();
-        GetDataFirst(id);
-        GetData(id);
+
+        GetDataFirst(id, "clicked");
+
+        //GetData(id);
 
     });
 
@@ -844,7 +870,7 @@
         //
         $.ajax({
             method: "GET",
-            url: window.location.origin + "/AgentServices/GetGeneology?memID=" + id,
+            url: window.location.origin + "/AgentServices/GetGeneologyForAdmin?memID=" + id,
             //data: '{memID: ' + id + '}',
             //contentType: "application/json; charset=utf-8",
             //dataType: "json",
@@ -861,8 +887,7 @@
 
 
         function OnSuccess(response) {
-            console.log(response)
-            //debugger;
+
             var ul = $("<ul></ul>");
             var freeBlock = "";
             var freeBlockL = "";
@@ -882,8 +907,12 @@
                         $('#alertbox .alert').slideUp(500);
                     });
                 }, 2000);
+
             }
             else {
+
+
+
                 var $child = "";
                 var level = 0;
                 $.each(response, function (i, k) {
@@ -949,7 +978,7 @@
                     else {
                         if (id != '-1') {
                             child = " <li id='level" + i + "'><a data-toggle='popover' id='levelLink" + i + "' href='" + item1.Href + "' class='from " + cssclass + " rounded-circle' " +
-                                                      " onmouseover='openPopup(this," + '"' + item1.SponsorId + '"' + "," + '"' + cssclaa + '"' + "," + item1.Fk_UserId + "," + '"' + item1.LoginId + '"' + ", " + '"' + item1.MemberName + '"' + "," + '"' + item1.Leg + '"' + "," + '"' + item1.ParentLoginId + '"' + "," + '"' + item1.JoiningDate + '"' + "," + '"' + item1.ProductName + '"' + "," + '"' + item1.AllLeg1 + '"' + "," + '"' + item1.AllLeg2 + '"' + "," + '"' + item1.PermanentLeg1 + '"' + "," + '"' + item1.PermanentLeg2 + '"' + "," + '"' + item1.InactiveLeft + '"' + "," + '"' + item1.InactiveRight + '"' + "," + '"' + item1.PCountLeg1 + '"' + "," + '"' + item1.PCountLeg2 + '"' + "," + '"' + item1.PaidLeg1 + '"' + "," + '"' + item1.PaidLeg2 + '"' + "," + '"' + item1.BalanceLeft + '"' + "," + '"' + item1.BalanceRight + '"' + "," + '"' + item1.ProfilePic + '"' + "," + '"' + item1.ActivationDate + '"' + "," + '"' + item1.AllBusinessLeft + '"' + "," + '"' + item1.AllBusinessRight + '"' + "," + '"' + item1.ProductRightBusiness + '"' + "," + '"' + item1.ProductLeftBusiness + '"' + ")' " +
+                                                      " onmouseover='openPopup(this," + '"' + item1.SponsorId + '"' + "," + '"' + cssclaa + '"' + "," + item1.Fk_UserId + "," + '"' + item1.LoginId + '"' + ", " + '"' + item1.MemberName + '"' + "," + '"' + item1.Leg + '"' + "," + '"' + item1.ParentLoginId + '"' + "," + '"' + item1.JoiningDate + '"' + "," + '"' + item1.ProductName + '"' + "," + '"' + item1.AllLeg1 + '"' + "," + '"' + item1.AllLeg2 + '"' + "," + '"' + item1.PermanentLeg1 + '"' + "," + '"' + item1.PermanentLeg2 + '"' + "," + '"' + item1.InactiveLeft + '"' + "," + '"' + item1.InactiveRight + '"' + "," + '"' + item1.PCountLeg1 + '"' + "," + '"' + item1.PCountLeg2 + '"' + "," + '"' + item1.PaidLeg1 + '"' + "," + '"' + item1.PaidLeg2 + '"' + "," + '"' + item1.BalanceLeft + '"' + "," + '"' + item1.BalanceRight + '"' + "," + '"' + item1.ProfilePic + '"' + "," + '"' + item1.ActivationDate + '"' + "," + '"' + item1.AllBusinessLeft + '"' + "," + '"' + item1.AllBusinessRight + '"' + ",," + '"' + item1.ProductRightBusiness + '"' + "," + '"' + item1.ProductLeftBusiness + '"' + ")' " +
                                                       " onmouseout='closePopup(this)' href='#' " + clickOption + " >" +
                                                       "<div class='outer-ring " + cssclass + " rounded-circle'><div class='member-img " + cssclass + " rounded-circle'><i class='" + cssclass + " rounded-circle'></i></div></div><span class='name member-name'>" +
                                                       " " + item1.LoginId + "</span> <span class='member-join-time'> " + item1.MemberName + "</span>" +
@@ -977,7 +1006,7 @@
                         if (id != null) {
                             $.ajax({
                                 method: "GET",
-                                url: window.location.origin + "/AgentServices/GetGeneology?memID=" + id,
+                                url: window.location.origin + "/AgentServices/GetGeneologyForAdmin?memID=" + id,
                                 //data: '{memID: ' + id + '}',
                                 //contentType: "application/json; charset=utf-8",
                                 //dataType: "json",
@@ -1084,7 +1113,7 @@
                                                 if (id != null) {
                                                     $.ajax({
                                                         method: "GET",
-                                                        url: window.location.origin + "/AgentServices/GetGeneology?memID=" + id,
+                                                        url: window.location.origin + "/AgentServices/GetGeneologyForAdmin?memID=" + id,
                                                         //data: '{memID: ' + id + '}',
                                                         //contentType: "application/json; charset=utf-8",
                                                         //dataType: "json",
@@ -1163,7 +1192,7 @@
                                                                     else {
                                                                         if (id != '-1') {
                                                                             child = " <li id='level" + i + i1 + i2 + "'><a data-toggle='popover' id='levelLink" + i + i1 + i2 + "' href='" + item3.Href + "' class='from " + cssclass + "' " +
-                                                                                        " onmouseover='openPopup(this," + '"' + item3.SponsorId + '"' + "," + '"' + cssclaa + '"' + "','" + item3.Fk_UserId + "','" + '"' + item3.LoginId + '"' + ", " + '"' + item3.MemberName + '"' + "," + '"' + item3.Leg + '"' + "," + '"' + item3.ParentLoginId + '"' + "," + '"' + item3.JoiningDate + '"' + "," + '"' + item3.ProductName + '"' + "," + '"' + item3.AllLeg1 + '"' + "," + '"' + item3.AllLeg2 + '"' + "," + '"' + item3.PermanentLeg1 + '"' + "," + '"' + item3.PermanentLeg2 + '"' + "," + '"' + item3.InactiveLeft + '"' + "," + '"' + item3.InactiveRight + '"' + "," + '"' + item3.PCountLeg1 + '"' + "," + '"' + item3.PCountLeg2 + '"' + "," + '"' + item3.PaidLeg1 + '"' + "," + '"' + item3.PaidLeg2 + '"' + "," + '"' + item3.BalanceLeft + '"' + "," + '"' + item3.BalanceRight + '"' + "," + '"' + item3.ProfilePic + '"' + "," + '"' + item3.ActivationDate + '"' + "," + '"' + item3.AllBusinessLeft + '"' + "," + '"' + item3.AllBusinessRight + '"' + "," + '"' + item3.ProductRightBusiness + '"' + "," + '"' + item3.ProductLeftBusiness + '"' + ")' " +
+                                                                                        " onmouseover='openPopup(this," + '"' + item3.SponsorId + '"' + "," + '"' + cssclaa + '"' + "," + item3.Fk_UserId + "," + '"' + item3.LoginId + '"' + ", " + '"' + item3.MemberName + '"' + "," + '"' + item3.Leg + '"' + "," + '"' + item3.ParentLoginId + '"' + "," + '"' + item3.JoiningDate + '"' + "," + '"' + item3.ProductName + '"' + "," + '"' + item3.AllLeg1 + '"' + "," + '"' + item3.AllLeg2 + '"' + "," + '"' + item3.PermanentLeg1 + '"' + "," + '"' + item3.PermanentLeg2 + '"' + "," + '"' + item3.InactiveLeft + '"' + "," + '"' + item3.InactiveRight + '"' + "," + '"' + item3.PCountLeg1 + '"' + "," + '"' + item3.PCountLeg2 + '"' + "," + '"' + item3.PaidLeg1 + '"' + "," + '"' + item3.PaidLeg2 + '"' + "," + '"' + item3.BalanceLeft + '"' + "," + '"' + item3.BalanceRight + '"' + "," + '"' + item3.ProfilePic + '"' + "," + '"' + item3.ActivationDate + '"' + "," + '"' + item3.AllBusinessLeft + '"' + "," + '"' + item3.AllBusinessRight + '"' + "," + '"' + item3.ProductRightBusiness + '"' + "," + '"' + item3.ProductLeftBusiness + '"' + ")' " +
                                                                                        " onmouseout='closePopup(this)' href='#' " + clickOption + ">" +
                                                                                        "<div class='outer-ring " + cssclass + "'><div class='member-img " + cssclass + "'><i class='" + cssclass + "'></i></div></div><span class='name member-name'>" +
                                                                                        " " + item3.LoginId + "</span> <span class='member-join-time'> " + item3.MemberName + "</span>" +
@@ -1191,7 +1220,7 @@
                                                             }
                                                         },
                                                         failure: function (response) {
-                                                            console.log("Failed1: " + response);
+                                                            console.log("Failed1" + response);
                                                             console.log(response);
                                                         },
                                                         error: function (response) {
@@ -1245,11 +1274,10 @@
     }
 
     function GetDataFirst(id, text) {
-        debugger;
         $('#divload').show();
         $.ajax({
-            method: "GET",
-            url: window.location.origin + "/AgentServices/GetUserFirst?memID=" + id,
+            "method": "GET",
+            url: window.location.origin + "/AgentServices/GetUserFirstForAdmin?memID=" + id,
             //data: '{memID: ' + id + '}',
             //contentType: "application/json; charset=utf-8",
             //dataType: "json",
@@ -1257,27 +1285,25 @@
 
             failure: function (response) {
                 $('#divload').hide();
-                console.log('log 2', 'fail ' + response)
-                console.log(response)
+
 
             },
             error: function (response) {
                 $('#divload').hide();
-                console.log('log 2', 'error ' + response)
-                console.log(response)
+
             }
 
         });
 
         function OnSuccess2(response) {
-            console.log('log 2', 'pass ' + response)
-            console.log(response)
+
             var modal = response;
             $.each(modal, function (i, item) {
 
                 $("#headClass span").text(item.MemberName + "(" + item.LoginId + ")");
                 var status = item.Status;
                 var gender = item.Gender;
+
                 var cssclaa = '';
 
                 if (status == "T") {
@@ -1320,12 +1346,10 @@
 
                 $firstHead.html("<div class='outer-ring " + status + "'><div class='member-img " + status + "'><i class='" + status + " rounded-circle'></i></div></div><span class='name member-name'>" + item.LoginId + "</span><span class='member-join-time'>" + item.MemberName + "</span>");
                 //$firstHead.attr("onmouseover", "openPopup(this,'" + item.Fk_UserId + "','" + item.LoginId + "', '" + item.MemberName + "', '" + item.ParentLoginId + "')");
-
-                debugger; 
                 $firstHead.attr("onmouseover", "openPopup(this,'" + item.SponsorId + "','" + cssclaa + "','" + item.Fk_UserId + "','" + item.LoginId + "', '" + item.MemberName + "','" + item.Leg + "','" + item.ParentLoginId + "','" + item.JoiningDate + "','" + item.ProductName + "','" + item.AllLeg1 + "','" + item.AllLeg2 + "','" + item.PermanentLeg1 + "','" + item.PermanentLeg2 + "','" + item.InactiveLeft + "','" + item.InactiveRight + "','" + item.PCountLeg1 + "','" + item.PCountLeg2 + "','" + item.PaidLeg1 + "','" + item.PaidLeg2 + "','" + item.BalanceLeft + "','" + item.BalanceRight + "','" + item.ProfilePic + "','" + item.ActivationDate + "'," + '"' + item.AllBusinessLeft + '"' + "," + '"' + item.AllBusinessRight + '"' + "," + '"' + item.ProductRightBusiness + '"' + "," + '"' + item.ProductLeftBusiness + '"' + ")");
                 $firstHead.attr("data-toggle", "popover");
 
-                $("#firstHead").attr("onclick", "ClickHere(this;)");
+                // $("#firstHead").attr("onclick", "ClickHere(this;)");
                 $("#firstHead").attr("class", status);
                 $("#firstHead").attr("style", "opacity: 1;");
                 $("#firstHead").attr("href", "#");
@@ -1419,4 +1443,16 @@
     //        minLength: 2
     //    });
     //});
+
+    //$(document).ready(function () {
+    //    var settings = {
+    //        "url": "http://panel.moonliteagro.com/apiv1/AgentServices/GetUserFirstForAdmin?memID=1",
+    //        "method": "GET",
+    //        "timeout": 0,
+    //    };
+
+    //    $.ajax(settings).done(function (response) {
+    //        console.log(response);
+    //    });
+    //})
 </script>

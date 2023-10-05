@@ -42,19 +42,19 @@
                 <li class="dropdown">
                     @if (Session["ProfilePic"] == "")
                     {
-                        <a href="#" data-toggle="dropdown"
-                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="../assets/img/users/user.png" class="user-img-radious-style">
-                            <span class="d-sm-none d-lg-inline-block"></span>
-                        </a>
+                    <a href="#" data-toggle="dropdown"
+                       class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                        <img alt="image" src="../assets/img/users/user.png" class="user-img-radious-style">
+                        <span class="d-sm-none d-lg-inline-block"></span>
+                    </a>
                     }
                     else
                     {
-                        <a href="#" data-toggle="dropdown"
-                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                            <img alt="image" src="@Session["ProfilePic"]" class="user-img-radious-style">
-                            <span class="d-sm-none d-lg-inline-block"></span>
-                        </a>
+                    <a href="#" data-toggle="dropdown"
+                       class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                        <img alt="image" src="@Session[" ProfilePic"]" class="user-img-radious-style">
+                        <span class="d-sm-none d-lg-inline-block"></span>
+                    </a>
                     }
 
                     <div class="dropdown-menu dropdown-menu-right">
@@ -68,8 +68,8 @@
                             <i class="fas fa-key"></i> Change Password
                         </a>
                         @*<a href="#" class="dropdown-item has-icon">
-                                <i class="fas fa-cog"></i> Settings
-                            </a>*@
+                            <i class="fas fa-cog"></i> Settings
+                        </a>*@
                         <div class="dropdown-divider"></div>
                         <a href="/Home/Login" class="dropdown-item has-icon text-danger">
                             <i class="fas fa-sign-out-alt"></i> Logout
@@ -92,15 +92,15 @@
                         <div class="sidebar-profile">
                             @if (Session["ProfilePic"] == "")
                             {
-                                <div class="siderbar-profile-pic">
-                                    <img src="../assets/img/users/user.png" class="profile-img-circle box-center" alt="User Image">
-                                </div>
+                            <div class="siderbar-profile-pic">
+                                <img src="../assets/img/users/user.png" class="profile-img-circle box-center" alt="User Image">
+                            </div>
                             }
                             else
                             {
-                                <div class="siderbar-profile-pic">
-                                    <img src="@Session["ProfilePic"]" class="profile-img-circle box-center" alt="User Image">
-                                </div>
+                            <div class="siderbar-profile-pic">
+                                <img src="@Session[" ProfilePic"]" class="profile-img-circle box-center" alt="User Image">
+                            </div>
                             }
 
 
@@ -113,7 +113,8 @@
 
                         </div>
                     </li>
-                    @*<li class="menu-header">Main</li>*@
+                    @*
+                    <li class="menu-header">Main</li>*@
 
 
                     <li><a class="nav-link" href="/User/AssociateDashBoard"><i class="fas fa-boxes"></i><span>DashBoard</span></a></li>
@@ -170,19 +171,20 @@
 
                         </ul>
                     </li>
-                    @*<li class="dropdown">
-                            <a href="#" class="nav-link has-dropdown">
-                                <i class="fas fa-shopping-bag"></i><span>
-                                    Product Payout
-                                </span>
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="/UserReports/UnPaidProductIncomes">Unpaid Income</a></li>
-                                <li><a class="nav-link" href="/UserReports/ProductPayoutReport">Payout Report</a></li>
-                                <li><a class="nav-link" href="/UserReports/ProductBusinessReport">Business Report</a></li>
+                    @*
+                    <li class="dropdown">
+                        <a href="#" class="nav-link has-dropdown">
+                            <i class="fas fa-shopping-bag"></i><span>
+                                Product Payout
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="nav-link" href="/UserReports/UnPaidProductIncomes">Unpaid Income</a></li>
+                            <li><a class="nav-link" href="/UserReports/ProductPayoutReport">Payout Report</a></li>
+                            <li><a class="nav-link" href="/UserReports/ProductBusinessReport">Business Report</a></li>
 
-                            </ul>
-                        </li>*@
+                        </ul>
+                    </li>*@
 
 
 
