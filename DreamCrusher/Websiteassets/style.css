@@ -945,7 +945,7 @@ blockquote cite:before {
 .readon.consultant.lets-talk {
   padding: 8px 22px;
   font-size: 14px;
-  background: #fd4a36;
+  background: #bb0b0b;
 }
 .readon.consultant.get-quote {
   font-size: 14px;
@@ -8150,8 +8150,9 @@ body .search-modal .close:hover {
 .rs-contact.home3-contact-style .contact-wrap input[type=submit]:hover {
   opacity: .9;
 }
+
 .rs-contact.home3-contact-style .icon-box-wraper {
-  background-image: url(assets/images/contact/con-home3.jpg);
+  background-image: url(../Websiteassets/images/contact/con-home3.jpg);
   background-position: top left;
   background-size: cover;
   padding: 240px 55px 33px 50px;
@@ -8397,7 +8398,7 @@ body .search-modal .close:hover {
 .rs-footer.style1.footer-home4-style .footer-top p input[type="submit"],
 .rs-footer.style1.footer-home4-style .footer-top .footer-social li a i:hover,
 .rs-footer.style1.footer-home4-style .footer-top .footer-title:after {
-  background: #fd4a36;
+  background: #bb0b0b;
 }
 .rs-footer.style1.footer-home4-style .footer-top .address-widget li .desc a:hover,
 .rs-footer.style1.footer-home4-style .footer-bottom .copy-right-menu li a:hover,
@@ -8606,7 +8607,7 @@ body .search-modal .close:hover {
   opacity: 0.8;
 }
 #scrollUp.orange2-color i {
-  background: #fd4a36;
+  background: #bb0b0b;
 }
 #scrollUp.orange2-color i:hover {
   opacity: 0.8;
