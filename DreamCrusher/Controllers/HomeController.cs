@@ -764,5 +764,31 @@ namespace DreamCrusher.Controllers
             }
             return RedirectToAction("SetEarnerValue");
         }
+        
+        public virtual ActionResult Menu1()
+        {
+            Home Menu = null;
+
+            if (Session["_Menu1"] != null)
+            {
+                Menu = (Home)Session["_Menu1"];
+            }
+            else
+            {
+
+                Menu = Home.GetMenus(Session["Pk_AdminId"].ToString(), Session["UserTypeName"].ToString()); // pass employee id here
+                Session["_Menu1"] = Menu;
+            }
+            return PartialView("_Menu1", Menu);
+        }
+
+
+
+
+
+
+
+
+
     }
 }

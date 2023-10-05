@@ -1,6 +1,18 @@
 ﻿<!doctype html>
 <html lang="en">
 <head>
+    @*<meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">*@
+    <title>DreamCrusher</title>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="../assets/css/app.min.css">
+    <!-- Template CSS -->
+    @*<link rel="stylesheet" href="../assets/css/style.css">*@
+    @*<link rel="stylesheet" href="../assets/css/components.css">*@
+    @*<link rel="stylesheet" href="../assets/bundles/bootstrap-social/bootstrap-social.css">*@
+    @*<link rel="stylesheet" href="../assets/bundles/flag-icon-css/css/flag-icon.min.css">*@
+    <!-- Custom style CSS -->
+    @*=====================================================================================================================================*@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -40,32 +52,119 @@
                 </div>
             </div>
             <!--navigation-->
-            @*<ul class="metismenu" id="menu">
-                    <li>
-                        <a href="javascript:;">
-                            <div class="parent-icon">
-                                <i class='bx bx-home-alt'></i>
-                            </div>
-                            <div class="menu-title">Dashboard</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon">
-                                <i class="bx bx-category"></i>
-                            </div>
-                            <div class="menu-title">Application</div>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="#!"><i class='bx bx-radio-circle'></i>Email</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>*@
-            @{
-                Html.RenderAction("Menu", "Home", new { area = "" });
-            }
+            <ul class="metismenu" id="menu">
+                @if (Session["ProfilePic"] == "")
+            {
+                    <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="../assets/img/users/user.png" class="user-img" alt="user avatar" />
+                        <div class="user-info">
+                        </div>
+                    </a>
+                }
+                else
+                {
+                    <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+                       href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img src="@Session["ProfilePic"]" class="user-img" alt="user avatar">
+                        <div class="user-info">
+                        </div>
+                    </a>
+                }
+                <li>
+                    <div class="user-info text-center mb-2">
+                        <p class="user-name mb-0">@Session["Name1"]</p>
+                    </div>
+                </li>
+                <li>
+                    <a href="/User/AssociateDashBoard">
+                        <div class="parent-icon">
+                            <i class='bx bx-home-alt'></i>
+                        </div>
+                        <div class="menu-title">Dashboard</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="/User/Registration">
+                        <div class="parent-icon">
+                            <i class='bx bx-log-in'></i>
+                        </div>
+                        <div class="menu-title">Sign Up</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="bx bx-user"></i>
+                        </div>
+                        <div class="menu-title">Profile</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/User/ViewProfile"><i class='bx bx-radio-circle'></i>View Profile</a>
+                            <a href="/KYCDocuments/KYCDocuments"><i class='bx bx-radio-circle'></i>Upload KYC</a>
+                            <a href="/Profile/ChangePassword"><i class='bx bx-radio-circle'></i>Change Password</a>
+                            <a href="/User/AcceptanceForm"><i class='bx bx-radio-circle'></i>Acceptance Form</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="bx bx-user-plus"></i>
+                        </div>
+                        <div class="menu-title">Team</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/User/BinaryTree"><i class='bx bx-radio-circle'></i>Tree</a>
+                            <a href="/Downline/DirectList"><i class='bx bx-radio-circle'></i>Direct</a>
+                            <a href="/Downline/DirectListL2"><i class='bx bx-radio-circle'></i>Direct L2</a>
+                            <a href="/Downline/DownLineList"><i class='bx bx-radio-circle'></i>Downline</a>
+
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="/User/UserReward">
+                        <div class="parent-icon">
+                            <i class='bx bx-anchor'></i>
+                        </div>
+                        <div class="menu-title">Recognition</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="bx bx-rupee"></i>
+                        </div>
+                        <div class="menu-title">Payout</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/Wallet/PayoutLedger"><i class='bx bx-radio-circle'></i>Payout Wallet Ledger</a>
+                            <a href="/UserReports/UnPaidIncomes"><i class='bx bx-radio-circle'></i>Unpaid Income</a>
+                            <a href="/UserReports/PayoutReport"><i class='bx bx-radio-circle'></i>Payout Report</a>
+                            <a href="/UserReports/BusinessReport"><i class='bx bx-radio-circle'></i>Business Report</a>
+                            <a href="/UserReports/PaidPayoutDetails"><i class='bx bx-radio-circle'></i>Payout Paid Details</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript:;" class="has-arrow">
+                        <div class="parent-icon">
+                            <i class="bx bxs-report"></i>
+                        </div>
+                        <div class="menu-title">Reports</div>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="/UserReports/TopupReport"><i class='bx bx-radio-circle'></i>Product Details</a>
+                            <a href="/UserReports/DCMIReport"><i class='bx bx-radio-circle'></i>DCMI Reports</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
             <!--end navigation-->
         </div>
         <!--end sidebar wrapper -->
@@ -741,27 +840,51 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="user-box dropdown px-3">
-                        <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
-                           href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img src="@Session["Profile"]" class="user-img" alt="user avatar">
-                            <div class="user-info">
-                                <p class="user-name mb-0">@Session["FullName"]</p>
-                            </div>
-                        </a>
-                        <ul class="dropdown-menu dropdown-menu-end">
-                            @*<li>
-                                    <a class="dropdown-item d-flex align-items-center" href="javascript:;">
-                                        <i class="bx bx-user fs-5"></i><span>Profile</span>
-                                    </a>
-                                </li>*@
-                            <li>
-                                <a class="dropdown-item d-flex align-items-center" href="/Home/Login">
-                                    <i class="bx bx-log-out-circle"></i><span>Logout</span>
-                                </a>
-                            </li>
-                        </ul>
+                    @*=================================================================================================================*@
+                    <div class="main-wrapper main-wrapper-1">
+                        <div class="navbar-bg"></div>
+                        <nav class="navbar navbar-expand-lg main-navbar">
+                            <ul class="navbar-nav navbar-right">
+                                <li class="dropdown">
+                                    @if (Session["ProfilePic"] == "")
+                                    {
+                                        <a href="#" data-toggle="dropdown"
+                                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                            <img alt="image" src="../assets/img/users/user.png" class="user-img-radious-style">
+                                            <span class="d-sm-none d-lg-inline-block"></span>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                        <a href="#" data-toggle="dropdown"
+                                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
+                                            <img alt="image" src="@Session[" ProfilePic"]" class="user-img-radious-style">
+                                            <span class="d-sm-none d-lg-inline-block"></span>
+                                        </a>
+                                    }
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        @*<div class="dropdown-divider"></div>*@
+                                        <a href="#" class="dropdown-item has-icon text-white">
+                                            <i class="bx bx-user fs-5"></i> <span>@Session["Name1"]</span>
+                                        </a>
+                                        <a href="#" class="dropdown-item has-icon text-white">
+                                            <i class="bx bx-calendar-alt fs-5"></i> <span>Joining -  (@Session["JoiningDate"])</span>
+                                        </a>
+                                        <a href="/User/ViewProfile" class="dropdown-item has-icon text-white">
+                                            <i class="bx bx-user fs-5"></i> <span>Profile</span>
+                                        </a>
+                                        <a href="/Profile/ChangePassword" class="dropdown-item has-icon text-white">
+                                            <i class="bx bx-lock fs-5"></i> <span> Change Password</span>
+                                        </a>
+                                        <a href="/Home/Login" class="dropdown-item has-icon text-white">
+                                            <i class="bx bx-log-out-circle"></i><span> Logout</span>
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
+                    @*==================================================================================================================*@
                 </nav>
             </div>
         </header>
@@ -779,20 +902,34 @@
         </a>
         <!--End Back To Top Button-->
         <footer class="page-footer">
-            <p class="mb-0">© Copyright 2023 Dream Crusher All right reserved.</p>
+            Copyright &copy; 2020 <div class="bullet"></div>
         </footer>
     </div>
+    <!-- General JS Scripts -->
+    <script src="../assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <script src="../assets/bundles/echart/echarts.js"></script>
+    <script src="../assets/bundles/chartjs/chart.min.js"></script>
+    <script src="../assets/bundles/apexcharts/apexcharts.min.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="../assets/js/page/index.js"></script>
+    <!-- Template JS File -->
+    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/bundles/jquery.sparkline.min.js"></script>
+    @*=====================================================================================================================================*@
     <!--end wrapper-->
     <!-- Bootstrap JS -->
-    <script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>
+    @*<script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>*@
     <!-- apexcharts JS start -->
     <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
     <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
     <!-- apexcharts JS end -->
     <!--plugins-->
-    <script src="~/assetsAdmin/js/jquery.min.js"></script>
+    @*<script src="~/assetsAdmin/js/jquery.min.js"></script>*@
     <script src="~/assetsAdmin/plugins/simplebar/js/simplebar.min.js"></script>
+    @*-------------------------------------------------------------------------------*@
     <script src="~/assetsAdmin/plugins/metismenu/js/metisMenu.min.js"></script>
+    @*-------------------------------------------------------------------------------*@
     <script src="~/assetsAdmin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
     <script src="~/assetsAdmin/plugins/chartjs/chart.min.js"></script>
     <script src="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
@@ -826,184 +963,3 @@
     <script src="~/assetsAdmin/js/app.js"></script>
 </body>
 </html>
-<script type="text/javascript">
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(bindusers);
-    function bindusers() {
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: '/Admin/GetUserDetails',
-            data: JSON.stringify(),
-            success:
-            function (response) {
-                var datare = response;
-                var data = new google.visualization.DataTable();
-
-                data.addColumn('string', 'Status');
-                data.addColumn('number', 'Total');
-                for (var i = 0; i < datare.length; i++) {
-                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
-                }
-
-                var chart = new google.visualization.PieChart(document.getElementById('divusers'));
-                var options = {
-                    pieSliceText: 'value-and-percentage',
-                    format: 'decimal',
-                    is3D: true,
-                    legend: { position: 'bottom' },
-                    animation: {
-                        startup: true,
-                        duration: 1000,
-                        easing: 'out',
-                    }, chartArea: { width: "100%", height: "80%" }
-                };
-                chart.draw(data, options);
-            },
-            error: function () {
-            }
-        });
-    }
-</script>
-<script type="text/javascript">
-
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(bindrecharegedetails);
-
-    function bindrecharegedetails() {
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: '/Admin/GetPayoutStatus',
-            data: JSON.stringify(),
-            success:
-            function (response) {
-                var datare = response;
-                var data = new google.visualization.DataTable();
-
-                data.addColumn('string', 'Status');
-                data.addColumn('number', 'Total');
-                for (var i = 0; i < datare.length; i++) {
-                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
-                }
-
-                var chart = new google.visualization.PieChart(document.getElementById('divpayout'));
-                var options = {
-                    pieSliceText: 'value-and-percentage',
-                    format: 'decimal',
-                    is3D: true,
-                    legend: { position: 'bottom' },
-                    animation: {
-                        startup: true,
-                        duration: 1000,
-                        easing: 'out',
-                    }, chartArea: { width: "100%", height: "80%" }
-                };
-
-                chart.draw(data, options);
-
-
-
-
-            },
-            error: function () {
-            }
-        });
-    }
-
-</script>
-<script type="text/javascript">
-
-        google.charts.load("current", { packages: ["imagebarchart"] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
-                url: '/Admin/GetInvestmentDetails',
-                data: JSON.stringify(),
-                success:
-                function (response) {
-                    var datare = response;
-                    var data = new google.visualization.DataTable();
-
-                    data.addColumn('string', 'Month');
-                    data.addColumn('number', 'Investment');
-                    for (var i = 0; i < datare.length; i++) {
-                        data.addRow([datare[i].Month, parseInt(datare[i].Amount)]);
-                    }
-
-                    var chart = new google.visualization.ImageBarChart(document.getElementById('divinvestment'));
-                    var options = {
-                        pieSliceText: 'value-and-percentage',
-                        format: 'decimal',
-                        is3D: true,
-                        legend: { position: 'bottom' },
-                        animation: {
-                            startup: true,
-                            duration: 1000,
-                            easing: 'out',
-                        }, chartArea: { width: "100%", height: "80%" }
-                    };
-                    chart.draw(data, options);
-                },
-                error: function () {
-                }
-            });
-        }
-
-</script>
-<script type="text/javascript">
-
-        google.charts.load("current", { packages: ["imagebarchart"] });
-        google.charts.setOnLoadCallback(joiningdata);
-
-        function joiningdata() {
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
-                url: '/Admin/GetJoiningDeatils',
-                data: JSON.stringify(),
-                success:
-                function (response) {
-                    var datare = response;
-                    var data = new google.visualization.DataTable();
-
-                    data.addColumn('string', 'Month');
-                    data.addColumn('number', 'Total Users');
-                    for (var i = 0; i < datare.length; i++) {
-                        data.addRow([datare[i].Month, parseInt(datare[i].Total)]);
-                    }
-
-                    var chart = new google.visualization.ImageBarChart(document.getElementById('divjoining'));
-                    var options = {
-                        pieSliceText: 'value-and-percentage',
-                        format: 'decimal',
-                        is3D: true,
-                        legend: { position: 'bottom' },
-                        animation: {
-                            startup: true,
-                            duration: 1000,
-                            easing: 'out',
-                        }, chartArea: { width: "100%", height: "80%" }
-                    };
-
-                    chart.draw(data, options);
-
-
-
-
-                },
-                error: function () {
-                }
-            });
-        }
-
-</script>
-
-
