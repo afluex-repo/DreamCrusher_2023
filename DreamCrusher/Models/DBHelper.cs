@@ -16,9 +16,8 @@ namespace DreamCrusher.Models
         {
             try
             {
-                //connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=dreamcrusher;User Id=dreamuser;Password=Dre@m*_;Integrated Security=false;";
-                connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=dreamcrusherdbtest;User Id=dreamuser;Password=Dre@m*_;Integrated Security=false;";
-                //connectionString = "Data Source=23.111.171.42;Initial Catalog=dharaworlddb;User Id=dharaworlduser;Password=dharaworld123!@#;Integrated Security=false;"; 
+                connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=dreamcrusher;User Id=dreamuser;Password=Dre@m*_;Integrated Security=false;";
+                //connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=dreamcrusherdbtest;User Id=dreamuser;Password=Dre@m*_;Integrated Security=false;";
 
             }
             catch (Exception)
