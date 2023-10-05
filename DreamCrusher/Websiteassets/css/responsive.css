@@ -1,16 +1,5 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 
-/**
-*
-* -----------------------------------------------------------------------------
-*
-* Template : Bizup  Consulting Business HTML Template
-* Author : reacthemes
-* Author URI : https://reactheme.com/ 
-*
-* -----------------------------------------------------------------------------
-*
-**/
 @media only screen and (min-width: 1300px) {
     .container {
         max-width: 1200px;
@@ -877,7 +866,7 @@
         margin: 0px 0px 40px 0px;
     }
     .full-width-header .rs-header .menu-area .logo-area img {
-        max-height: 27px;
+        max-height: 40px;
     }
     .rs-services.chooseus-style .services-item {
         padding: 25px 13px 25px 13px;
