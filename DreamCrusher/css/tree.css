@@ -36,7 +36,7 @@
                 position: absolute;
                 top: 0;
                 right: 50%;
-                border-top: 1px solid #3d3d3f;
+                border-top: 1px solid #fff;
                 width: 50%;
                 height: 20px;
             }
@@ -44,7 +44,7 @@
             .tree li::after {
                 right: auto;
                 left: 50%;
-                border-left: 1px solid #3d3d3f;
+                border-left: 1px solid #fff;
             }
 
             /*We need to remove left-right connectors from elements without 
@@ -65,7 +65,7 @@ right connector from last child*/
             }
             /*Adding back the vertical connector to the last nodes*/
             .tree li:last-child::before {
-                border-right: 1px solid #3d3d3f;
+                border-right: 1px solid #fff;
                 border-radius: 0;
                 -webkit-border-radius:0;
                 -moz-border-radius: 0;
@@ -83,7 +83,7 @@ right connector from last child*/
             position: absolute;
             top: 0;
             left: 50%;
-            border-left: 1px solid #3d3d3f;
+            border-left: 1px solid #fff;
             width: 0;
             height: 20px;
         }
@@ -113,7 +113,7 @@ right connector from last child*/
                 .tree li a:hover + ul li::before,
                 .tree li a:hover + ul::before,
                 .tree li a:hover + ul ul::before {
-                    border-color: #3d3d3f;
+                    border-color: #fff;
                 }
 
         /*Thats all. I hope you enjoyed it.
