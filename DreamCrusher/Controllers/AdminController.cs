@@ -971,6 +971,7 @@ namespace DreamCrusher.Controllers
                     obj.BankName = (r["MemberBankName"].ToString());
                     obj.Fk_UserId = (r["Pk_UserId"].ToString());
                     obj.Amount = (r["Amount"].ToString());
+                    ViewBag.Total = Convert.ToDecimal(ViewBag.Total) + Convert.ToDecimal(r["Amount"].ToString());
                     lst.Add(obj);
                 }
                 model.lstassociate = lst;
@@ -1155,6 +1156,42 @@ namespace DreamCrusher.Controllers
                 Controller = "Admin";
             }
             return RedirectToAction(FormName, Controller);
+        }
+        public ActionResult CalculateMonthlySpillBonus()
+        {
+            return View();
+        }
+        [HttpPost]
+        [OnAction(ButtonName = "Save")]
+        [ActionName("CalculateMonthlySpillBonus")]
+        public ActionResult Save(Reports model)
+        {
+
+            try
+            {
+                model.AddedBy = Session["Pk_AdminId"].ToString();
+                model.PaymentDate = string.IsNullOrEmpty(model.PaymentDate) ? null : Common.ConvertToSystemDate(model.PaymentDate, "dd/MM/yyyy");
+                DataSet ds = model.CalculateSpillBusiness();
+                if (ds != null && ds.Tables[0].Rows.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
+                    {
+
+                        TempData["FProduct"] = "Calculation Successully";
+                    }
+                    else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
+                    {
+                        TempData["FProduct"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    }
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                TempData["FProduct"] = ex.Message;
+            }
+            return RedirectToAction("CalculateMonthlySpillBonus");
         }
     }
 }

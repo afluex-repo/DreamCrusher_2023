@@ -51,8 +51,8 @@
                                                     <tr>
                                                         <th hidden></th>
                                                         <th class="d-flex" style="width:100px">
-                                                            <INPUT type="checkbox" onchange="checkAll(this)" name="chk[]" />
-                                                            &nbsp;&nbsp;Select All
+                                                            <input type="checkbox" onchange="checkAll(this)" name="chk[]" />
+                                                            <label class="form-check-label" style="padding-left:8px;"> Select All</label>
                                                         </th>
                                                         <th>Course Name</th>
                                                         <th>Course Image</th>
@@ -69,17 +69,34 @@
                                                                 <tr class="text-left">
 
                                                                     <td hidden>
-                                                                <input type="hidden" id="CourseID_@i" name="CourseID_@i" value="@Item.CourseID" />
-                                                                @if (Item.FK_CourseID == null)
+                                                                <input type="hidden" id="CourseID_@i" name="CourseID_@i" value="@Item.CourseID"/>
+                                                                <input type="hidden" id="FK_CourseID_@i" name="FK_CourseID_@i" value="@Item.FK_CourseID" />
+
+                                                                @if(Model.Package == Item.Fk_PackageId){
+                                                                if (Item.CourseID != Item.FK_CourseID)
                                                                 {
                                                                 <td><input type="checkbox" name="chkpayment_@i"/>&nbsp;&nbsp; @i</td>
                                                                 }
                                                                 else
                                                                 {
-                                                                <td><input type="checkbox" name="chkpayment_@i" checked />&nbsp;&nbsp; @i</td>
+                                                                <td>
+                                                                    @*<input type="checkbox" name="chkpayment_@i" checked disabled/>                                      <label class="form-check-label">@i</label>*@
+
+
+
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="chkpayment_@i" checked disabled="">
+                                                                        <label class="form-check-label" for="inlineCheckbox3">@i</label>
+                                                                    </div>
+                                                                  </td>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td><input type="checkbox" name="chkpayment_@i" />&nbsp;&nbsp; @i</td>
                                                                 }
                                                                     
-                                                                    <td><input id="CourseName_@i" name="CourseName_@i" value="@Item.CourseName" style="border:none;background:none"/></td>
+                                                                    <td><input id="CourseName_@i" name="CourseName_@i" value="@Item.CourseName" style="border:none;background:none;color:white"/></td>
                                                                     <td><img width="50" height="50" id="CourseImage_@i" name="CourseImage_@i" src="@Item.CourseImage" /></td>
                                                                 </tr>
                                                                 i++;
@@ -94,7 +111,7 @@
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col-md-3 d-flex justify-content-evenly offset-4">
-                                                <input type="submit" id="btnsave" name="btnsave"  class="btn btn-light px-5" value="Submit" onclick="return validateForm();"/>
+                                                <input type="submit" id="btnsave" name="btnsave"  class="btn btn-light px-5 sub" value="Submit" onclick="return validateForm();"/>
                                             </div>
                                         </div>
                                     </div>
@@ -120,6 +137,20 @@
     }
 </style>
 <script>
+    $(document).ready(function () {
+        $("#divload").css({ 'display': 'none' });
+        if ($('#Package').val() == '0') {
+            //$("#Package").addClass('errortext');
+            //$('#Package').focus();
+
+            $(".sub").hide();
+            return false;
+        }
+        else {
+            $(".sub").show();
+        }
+    })
+
     function checkAll(ele) {
         debugger;
         var checkboxes = document.getElementsByTagName('input');
@@ -142,6 +173,7 @@
     function validate() {
         $(".errortext").removeClass("errortext");
         debugger;
+        //$(".sub").show();
 
         if ($('#Package').val() == '0') {
             $("#Package").addClass('errortext');

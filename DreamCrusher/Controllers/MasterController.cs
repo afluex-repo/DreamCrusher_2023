@@ -55,7 +55,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        TempData["Product"] = "Product deleted successfully";
+                        TempData["Product"] = "Product Deleted successfully";
                         FormName = "ProductList";
                         Controller = "Master";
                     }
@@ -135,7 +135,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        obj.Result = "Product saved successfully";
+                        obj.Result = "Product Saved Successfully";
                     }
                     else
                     {
@@ -172,7 +172,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        obj.Result = "Product updated successfully";
+                        obj.Result = "Product Updated Successfully";
                     }
                     else
                     {
@@ -235,7 +235,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        obj.Result = "News saved successfully";
+                        obj.Result = "News Saved Successfully";
                     }
                     else
                     {
@@ -265,7 +265,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        obj.Result = "News updated successfully";
+                        obj.Result = "News Updated Successfully";
                     }
                     else
                     {
@@ -316,7 +316,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        TempData["Product"] = "News deleted successfully";
+                        TempData["Product"] = "News Deleted Successfully";
                         FormName = "NewsList";
                         Controller = "Master";
                     }
@@ -423,7 +423,7 @@ namespace DreamCrusher.Controllers
                 {
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
-                        TempData["GalleryMasterList"] = "Image deleted successfully";
+                        TempData["GalleryMasterList"] = "Image Deleted Successfully";
                         FormName = "GalleryMasterList";
                         Controller = "Master";
                     }
@@ -636,7 +636,7 @@ namespace DreamCrusher.Controllers
             #endregion
 
             List<Master> lst = new List<Master>();
-            DataSet ds = model.CourseList();
+            DataSet ds = model.GetCourseListForAllotCourses();
 
             //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             //{
@@ -658,7 +658,7 @@ namespace DreamCrusher.Controllers
         [HttpPost]
         [ActionName("AllotCoursesOnPackage")]
         [OnAction(ButtonName = "btnsearch")]
-        public ActionResult AllotCoursesOnPackage(Master model, string CourseID, string Package)
+        public ActionResult AllotCoursesOnPackage(Master model,string Package)
         {
             #region ddlPackage
             Master obj = new Master();
@@ -681,9 +681,8 @@ namespace DreamCrusher.Controllers
             #endregion
 
             List<Master> lst = new List<Master>();
-            model.CourseID = CourseID;
             model.Package = Package;
-            DataSet ds = model.CourseList();
+            DataSet ds = model.GetCourseListForAllotCourses();
 
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -696,10 +695,12 @@ namespace DreamCrusher.Controllers
                     obj1.CourseImage = r["CourseImage"].ToString();
                     obj1.CourseDate = r["CourseDate"].ToString();
                     obj1.CourseLink = r["CourseLink"].ToString();
+                    obj1.Fk_PackageId = r["Fk_PackageId"].ToString();
                     lst.Add(obj1);
                 }
                 model.lstCourse = lst;
             }
+
             return View(model);
         }
 
@@ -728,6 +729,7 @@ namespace DreamCrusher.Controllers
                 for (int i = 1; i < int.Parse(ctrRowCount); i++)
                 {
                     chk = Request["chkpayment_" + i];
+                    
                     if (chk == "on")
                     {
                         Id = dtpayment.Rows.Count + 1;
@@ -737,8 +739,17 @@ namespace DreamCrusher.Controllers
                         //dtpayment.Rows.Add(Id, CourseID, CourseName, CourseImage);
                         dtpayment.Rows.Add(Id, CourseID, CourseName);
                     }
-                } 
-                model.dtTable = dtpayment; 
+                }
+                model.dtTable = dtpayment;
+                if (dtpayment.Rows.Count == 0 )
+                {
+                    TempData["ErrCourse"] = "In This Package This Course Already Exist Please Select Another Course !!";
+                    FormName = "AllotCoursesOnPackage";
+                    Controller = "Master";
+                    return RedirectToAction(FormName, Controller);
+                }
+                else
+                {
                 model.AddedBy = Session["PK_AdminId"].ToString();
                 DataSet ds = model.SaveAllotCoursesOnPackage();
                 if (ds != null && ds.Tables.Count > 0)
@@ -751,8 +762,9 @@ namespace DreamCrusher.Controllers
                     {
                         TempData["ErrCourse"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                     }
-                  }
-               }
+                    }
+                }
+            }
             catch (Exception ex)
             {
                 TempData["ErrCourse"] = ex.Message;
@@ -763,5 +775,27 @@ namespace DreamCrusher.Controllers
         }
 
         #endregion
+
+        public ActionResult CourseView(Master model)
+        {
+            List<Master> lst = new List<Master>();
+            DataSet ds = model.GetCourseListForAllotCourses();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Master obj = new Master();
+                    obj.CourseID = r["Pk_CourseId"].ToString();
+                    obj.CourseName = r["CourseName"].ToString();
+                    obj.CourseImage = r["CourseImage"].ToString();
+                    obj.CourseDate = r["CourseDate"].ToString();
+                    obj.CourseLink = r["CourseLink"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstCourse = lst;
+            }
+            return View(model);
+        }
     }
 }

@@ -4,63 +4,53 @@
     ViewBag.Title = "SetEarnerValue";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<div class="row">
-    <div class="col-sm-12">
-        <ol class="breadcrumb">
-            <li>
-                <i class="clip-home-3"></i>
-                <a href="#">
-                    Payout
-                </a>
-            </li>
-            <li class="active">
-                Set Earner Value
-            </li>
-        </ol>
-    </div>
-</div>
+
 <br />
 @using (Html.BeginForm("SetEarnerValue", "Home", FormMethod.Post, new { @id = "form1" }))
 {
     <div class="row">
-        <div class="col-lg-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    Set Earner Value
-                </div>
-                <!-- /.panel-heading -->
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-12 table-responsive">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    Earner Value
-                                    @Html.TextBoxFor(m => m.EarnerValue, new { @class = "form-control", @placeholder = "Enter Value", @onkeypress = "return isNumberKey(event);", })
-                                </div>
-                                <div class="col-md-3">
-                                    From Date
-                                    @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @placeholder = "From Date", @readonly = "readonly" })
-                                </div>
-                                <div class="col-md-3">
-                                    Earner Value
-                                    @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @placeholder = "To Date", @readonly = "readonly" })
-                                </div>
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h5 class="mb-0">Set Earner Value</h5>
 
-                                <div class="col-md-3">
-                                    <br />
-                                    <input type="submit" class="btn btn-success" value="Update" name="Update" />
-                                    <p style="color:red">@TempData["SetEarnerValue"]</p>
-                                </div>
-                            </div>
-                        </div>
+                        <p style="color:white">
+                        @TempData["SetEarnerValue"]
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- content-wrapper ends -->
-        <!-- partial:../../partials/_footer.html -->
-        <!-- partial -->
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row g-3">
+
+                        <div class="col-md-3">
+                            <label for="EarnerValue" class="form-label"> Earner Value</label>
+                            @Html.TextBoxFor(m => m.EarnerValue, new { @class = "form-control", @placeholder = "Enter Value", @onkeypress = "return isNumberKey(event);", })
+                        </div>
+                        <div class="col-md-3">
+                            <label for="FromDate" class="form-label">From Date</label>
+                           @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @placeholder = "From Date", @readonly = "readonly" })
+                        </div>
+                        <div class="col-md-3">
+                            <label for="ToDate" class="form-label">To Date</label>
+                            @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @placeholder = "To Date", @readonly = "readonly" })
+                        </div>
+
+                        <div class="col-md-3">
+                            <br />
+                            <input type="submit" class="btn btn-light px-3" value="Update" name="Update" />
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 
 }
 
@@ -101,6 +91,11 @@
         dateFormat: 'yy-mm-dd',
     });
 </script>
+<style>
+    .btn {
+        margin-top: 8px;
+    }
+</style>
 
 
 

@@ -4,11 +4,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-
-
 <div class="page-content">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
-
         <div class="col">
             <div class="card radius-10">
                 <div class="card-body">
@@ -115,42 +112,43 @@
             </div>
         </div>
     </div>
-
     <div class="row">
-        <div class="col-12 col-lg-4 col-xl-4 d-flex align-items-center">
+        <div class="col-12 col-lg-4 col-xl-3 d-flex align-items-center">
             <div class="card radius-10 overflow-hidden w-100">
                 <div class="card-body">
-                    <div id="chart11"></div>
+                    <p class="mb-0 text-white">Associate Details</p>
+                    <div id="divusers"></div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4 col-xl-4 d-flex align-items-center">
+        <div class="col-12 col-lg-4 col-xl-3 d-flex align-items-center">
             <div class="card radius-10 overflow-hidden w-100">
                 <div class="card-body">
-                    <div id="chart12"></div>
+                    <p class="mb-0 text-white">Payout Status</p>
+                    <div id="divpayout"></div>
                 </div>
             </div>
         </div>
-
-
-        <div class="col-12 col-lg-4 col-xl-4 d-flex align-items-center">
+        <div class="col-12 col-lg-4 col-xl-6 d-flex align-items-center">
             <div class="card radius-10 overflow-hidden w-100">
                 <div class="card-body">
-                    <div id="chart8"></div>
+                    <p class="mb-0 text-white">Business Details</p>
+                    <div id="divinvestment"></div>
                 </div>
             </div>
         </div>
-        <div class="col-12 col-lg-4 col-xl-4 d-flex align-items-center">
+        <div class="col-12 col-lg-4 col-xl-6 d-flex align-items-center">
             <div class="card radius-10 overflow-hidden w-100">
                 <div class="card-body">
-                    <div id="chart822"></div>
+                    <p class="mb-0 text-white">Joining Details</p>
+                    <div id="divjoining"></div>
                 </div>
             </div>
         </div>
     </div>
     <!--End Row-->
 </div>
-
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
 
 

@@ -180,8 +180,7 @@ namespace DreamCrusher.Models
 
         public DataSet CourseList()
         {
-            SqlParameter[] para = { new SqlParameter("@FK_PackageId", Package),
-                                    new SqlParameter("@PK_CourseID", CourseID)};
+            SqlParameter[] para = {new SqlParameter("@PK_CourseID", CourseID)};
             DataSet ds = DBHelper.ExecuteQuery("GetCourseList", para);
             return ds;
         }
@@ -224,6 +223,13 @@ namespace DreamCrusher.Models
                 new SqlParameter("@AddedBy",AddedBy)
             };
             DataSet ds = DBHelper.ExecuteQuery("SaveAllotCoursesOnPackage", para);
+            return ds;
+        }
+
+        public DataSet GetCourseListForAllotCourses()
+        {
+            SqlParameter[] para = { new SqlParameter("@FK_PackageId", Package)};
+            DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCourses", para);
             return ds;
         }
     }
