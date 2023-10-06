@@ -3828,7 +3828,6 @@
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Master\GalleryMaster.cshtml" />
     <Content Include="Views\Master\GalleryMasterList.cshtml" />
-    <Content Include="Views\Shared\_AdminLayoutTesting.cshtml" />
     <Content Include="Views\Website\about.cshtml" />
     <Content Include="Views\Website\contact.cshtml" />
     <Content Include="Views\Website\Gallery.cshtml" />
@@ -3838,10 +3837,13 @@
     <Content Include="Views\Website\ProductServies.cshtml" />
     <Content Include="Views\Website\TermCondition.cshtml" />
     <Content Include="Views\AdminReports\MonthlySpillBonusReport.cshtml" />
-    <Content Include="Views\Master\AllotCoursesOnPackage.cshtml" />
-    <Content Include="Views\Master\CourseList.cshtml" />
-    <Content Include="Views\Master\CourseMaster.cshtml" />
-    <Content Include="Views\Master\CourseView.cshtml" />
+    <Content Include="Views\User\BinaryTrees.cshtml" />
+    <Content Include="Views\Admin\BinaryTrees.cshtml" />
+    <Content Include="Views\Home\_Menu1.cshtml" />
+    <Content Include="Views\Shared\_LayoutTesting.cshtml" />
+    <Content Include="Views\Shared\_LayoutWebsite.cshtml" />
+    <Content Include="Views\Shared\_LayoutForTree.cshtml" />
+    <Content Include="Views\Shared\_AdminLayoutForTree.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3870,7 +3872,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58419</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58418/</IISUrl>
+          <IISUrl>http://localhost:58412/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

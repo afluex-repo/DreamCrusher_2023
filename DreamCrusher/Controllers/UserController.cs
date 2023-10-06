@@ -861,5 +861,21 @@ namespace DreamCrusher.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
+
+
+
+
+
+
+
+
+        public ActionResult BinaryTrees()
+        {
+            ViewBag.Fk_UserId = Session["Pk_UserId"].ToString();
+            return View();
+        }
+
+
+
     }
 }
