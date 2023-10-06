@@ -1664,6 +1664,37 @@ namespace DreamCrusher.Controllers
 
             return View(objKYC);
         }
+       public ActionResult MonthlySpillBonusReport()
+       {
+            return View();
+       }
+        [HttpPost]
+        [OnAction(ButtonName = "Search")]
+        [ActionName("MonthlySpillBonusReport")]
+        public ActionResult MonthlySpillBonusReportAction(Reports model)
+        {
+
+            List<Reports> list = new List<Reports>();
+            model.Month = model.Month == "0" ? null : model.Month;
+            DataSet ds = model.GetmonthlySpillBonusReport();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Reports obj = new Reports();
+                    obj.Month = r["Month"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
+                    obj.Name = r["Name"].ToString();
+                    obj.LeftBV = r["LeftBV"].ToString();
+                    obj.RightBV = r["RightBV"].ToString();
+                    obj.TDS = r["Income"].ToString();
+
+                    list.Add(obj);
+                }
+                model.lstdcmireport = list;
+            }
+            return View(model);
+        }
 
     }
 }

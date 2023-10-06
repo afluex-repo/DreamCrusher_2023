@@ -7,7 +7,8 @@
     <WebStackScaffolding_IsLayoutPageSelected>False</WebStackScaffolding_IsLayoutPageSelected>
     <WebStackScaffolding_IsPartialViewSelected>False</WebStackScaffolding_IsPartialViewSelected>
     <WebStackScaffolding_IsReferencingScriptLibrariesSelected>False</WebStackScaffolding_IsReferencingScriptLibrariesSelected>
-    <WebStackScaffolding_LayoutPageFile />
+    <WebStackScaffolding_LayoutPageFile>
+    </WebStackScaffolding_LayoutPageFile>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
@@ -22,7 +23,7 @@
           <SQLDebugging>False</SQLDebugging>
           <ExternalProgram>
           </ExternalProgram>
-          <StartExternalURL>http://localhost:58419/</StartExternalURL>
+          <StartExternalURL>http://localhost:58412/</StartExternalURL>
           <StartCmdLineArguments>
           </StartCmdLineArguments>
           <StartWorkingDirectory>

@@ -148,6 +148,8 @@ namespace DreamCrusher.Models
 		public string Month{get;set;}
 		public string TotalMatching{get;set;}
 		public string TotalBV{get;set;}
+        public string LeftBV { get; set; }
+        public string RightBV { get; set; }
 
         public DataSet GetPayoutReport()
         {
@@ -694,6 +696,15 @@ namespace DreamCrusher.Models
             SqlParameter[] para = { new SqlParameter("@Datetime", PaymentDate)
             };
             DataSet ds = DBHelper.ExecuteQuery("CalculateMonthlySpillBonus", para);
+            return ds;
+        }
+        public DataSet GetmonthlySpillBonusReport()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+                 new SqlParameter("@Month", Month)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetmonthlySpillBonusReport", para);
             return ds;
         }
     }
