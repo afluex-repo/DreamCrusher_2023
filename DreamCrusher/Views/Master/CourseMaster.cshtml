@@ -1,0 +1,98 @@
+﻿@model DreamCrusher.Models.Master
+
+@{
+    ViewBag.Title = "CourseMaster";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("CourseMaster", "Master", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+{
+<div class="page-content">
+    <div class="row">
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <h5 class="mb-0">/ Master / Course Master</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-lg-12 col-xl-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-header">
+                        <p style="color: forestgreen">
+                            @TempData["Course"]
+                        </p>
+                        <p style="color: red">
+                            @TempData["ErrCourse"]
+                        </p>
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label for="inputFirstName" class="form-label">Course Name <span style="color: red">*</span></label>
+                           @Html.TextBoxFor(m => m.CourseName, new { @placeholder = "Course Name", @class = "form-control" })
+                        @Html.HiddenFor(m => m.CourseID)
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="inputFirstName" class="form-label">Course Image <span style="color: red">*</span></label>
+                            <input type="file" id="CourseImage" name="CourseImage" class="form-control" />
+                        </div>
+
+                        <div class="col-md-4">
+                            <label for="inputFirstName" class="form-label">Course Link<span style="color: red">*</span></label>
+                            @Html.TextBoxFor(m => m.CourseLink, new { @placeholder = "Course Link", @class = "form-control" })
+                        </div>
+
+                        <div class="col-12">
+                            @if (Model == null)
+                            {
+                                <input type="submit" id="btnSaveCourse" class="btn btn-light px-5" name="btnSaveCourse" value="Save" onclick="return validateForm();" />
+                            }
+                            else
+                            {
+                                <input type="submit" id="btnUpdateCourse" class="btn btn-light px-5" name="btnUpdateCourse" value="Update"  />
+                            }
+
+                            <a class="btn btn-light px-5" href="/Master/CourseList">Back To List</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+
+<style>
+    .errortext {
+        border: 1px solid red !important;
+        /*background-color: blue !important;*/
+    }
+</style>
+<script>
+    function validateForm() {
+        $(".errortext").removeClass("errortext");
+        debugger;
+
+        if ($('#CourseName').val() == '') {
+            $("#CourseName").addClass('errortext');
+            $('#CourseName').focus();
+            return false;
+        }
+        if ($('#CourseImage').val() == '') {
+            $("#CourseImage").addClass('errortext');
+            $('#CourseImage').focus();
+            return false;
+        }
+        if ($('#CourseLink').val() == '') {
+            $("#CourseLink").addClass('errortext');
+            $('#CourseLink').focus();
+            return false;
+        }
+    }
+</script>
