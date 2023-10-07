@@ -75,52 +75,49 @@
                                     <div class="row">
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
                                             @*<label>Spill Id<sup style="color:red;font-size: 21px;">*</sup></label>*@
-                                            @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control", @Placeholder = "Refer By", @onchange = "getsponsordetails(this);" })
+                                            @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control", @Placeholder = "Refer By*", @onchange = "getsponsordetails(this);" })
                                             @Html.ValidationMessageFor(m => m.LoginId)
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                            @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @Disabled = "true",@placeholder="Sponsor Name" })
+                                            @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @Disabled = "true", @Placeholder = "Spill Name" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                       id="inlineRadio1" value="option1">
-
-                                                <label class="form-check-label" for="inlineRadio1">Left</label>
-
+                                                <label class="form-check-label text-black" for="inlineRadio1"> Leg <strong>:</strong></label>
+                                                &nbsp;
+                                                <label class="form-check-label text-black" for="inlineRadio1"> Left </label>
+                                                <input type="radio" value="Left" @ViewBag.LeftChecked id="left" name="Leg" />
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                       id="inlineRadio2" value="option2">
-                                                <label class="form-check-label" for="inlineRadio2">Right</label>
+                                                <label class="form-check-label text-black" for="inlineRadio2">Right</label>
+                                                <input type="radio" value="Right" id="right" name="Leg" @ViewBag.RightChecked />
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
+                                        @*<div class="col-lg-4 col-md-6 col-sm-6 mb-10">
                                             <input class="from-control" placeholder="User Id*" required="">
+                                        </div>*@
+                                        <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
+                                            @Html.TextBoxFor(m => m.UnderPlaceId, new { @class = "form-control", @Placeholder = "Under Place Id*", @onchange = "getsponsordetails1(this);" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                           @Html.TextBoxFor(m => m.UnderPlaceId, new { @class = "form-control", @Placeholder = "Under Place Id", @onchange = "getsponsordetails1(this);" })
+                                            @Html.TextBoxFor(m => m.UnderPlaceName, new { @class = "form-control", @Placeholder = "Under Place Name" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                           @Html.TextBoxFor(m => m.UnderPlaceName, new { @class = "form-control", @Placeholder = "Name" })
-                                        </div>
-                                        <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @Placeholder = "First Name" })
+                                            @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @Placeholder = "First Name*" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
                                             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @Placeholder = "Last Name" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                          @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email id" })
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email id" })
                                             @Html.ValidationMessageFor(m => m.Email)
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                           @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No", @Maxlength = "10", @onkeypress = "return isNumberKey(event);", @onchange = "getmobileno(this);" })
-                                        @Html.ValidationMessageFor(m => m.MobileNo)
+                                            @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @Placeholder = "Mobile No*", @Maxlength = "10", @onkeypress = "return isNumberKey(event);", @onchange = "getmobileno(this);" })
+                                            @Html.ValidationMessageFor(m => m.MobileNo)
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                            @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @placeholder = "Date of Birth", @readonly = "readonly" })
+                                            @Html.TextBoxFor(m => m.DOB, new { @class = "form-control", @placeholder = "Date of Birth*", @readonly = "readonly" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
                                             <!-- <input class="from-control" type="date" placeholder="Gender" required=""> -->
@@ -134,36 +131,43 @@
                                                 <option value="Insurance Strategy">Insurance Strategy</option>
                                                 <option value="Manage Investment">Manage Investment</option>
                                             </select>*@
-                                            @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.ddlgender, "Value", "Text"), new { @class = "form-control wpcf7-form-control" })
+                                            @Html.DropDownListFor(m => m.Gender, new SelectList(ViewBag.ddlgender, "Value", "Text"), new { @class = "form-control form-select" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
                                             @Html.TextBoxFor(m => m.PanCard, new { @class = "form-control", @Placeholder = "Pan Card", @Maxlength = "10", @onchange = "return validatepan(event);" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                           @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Placeholder = "Adhar No", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
-                                        @Html.ValidationMessageFor(m => m.AdharNo)
+                                            @Html.TextBoxFor(m => m.AdharNo, new { @class = "form-control", @Placeholder = "Adhar No*", @Maxlength = "12", @onkeypress = "return isNumberKey(event);" })
+                                            @Html.ValidationMessageFor(m => m.AdharNo)
                                         </div>
+                                        
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                            @Html.TextBoxFor(m => m.PinCode, new { @class = "form-control", @Placeholder = "PinCode", @onchange = "return getstatecity();" })
+                                            @Html.TextBoxFor(m => m.PinCode, new { @class = "form-control", @Placeholder = "PinCode*", @onchange = "return getstatecity();" })
                                             @Html.ValidationMessageFor(m => m.PinCode)
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
                                             @Html.TextBoxFor(m => m.State, new { @class = "form-control", @Placeholder = "State", @Disabled = "disabled" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                         @Html.TextBoxFor(m => m.City, new { @class = "form-control", @Placeholder = "City", @Disabled = "disabled" })
+                                            @Html.TextBoxFor(m => m.City, new { @class = "form-control", @Placeholder = "City", @Disabled = "disabled" })
                                         </div>
-                                        <div class="col-lg-12 mb-35">
-                                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @Placeholder = "Address" })
+                                        <div class="col-lg-12 col-md-12 col-sm-12 mb-10">
+                                            @Html.TextAreaFor(m => m.Address, new { @class = "form-control", @Placeholder = "Address*" })
                                         </div>
                                         <div class="col-lg-12 col-md-12 col-sm-12 mb-20">
                                             <div class="mb-3 form-check">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label" for="exampleCheck1">
-                                                    I read carefully
-                                                    and accept all terms & conditions.
+                                                <input type="checkbox" class="form-check-input" id="condition">
+                                                <label class="form-check-label" for="condition">
+                                                    I read carefully and accept all terms & conditions.
                                                 </label>
                                             </div>
+                                        </div>
+                                        <div class="col-lg-12 col-md-12 col-sm-12 mb-10">
+                                            <p id="note" style="display:none" class="mb-3">
+                                                Note :- To Complete the Registration process please follow below steps.<br />
+                                                Step 1 - Fill all the required information and click on <b>Confirm</b> button to verify all entered data are correct.<br />
+                                                Step 2 - Click on <b>Regsiter</b> button to complete the registration process.
+                                            </p>
                                         </div>
                                         <div class="d-flex loginBtn">
                                             <div class="form-group mb-0">
@@ -251,7 +255,14 @@
     <link rel="stylesheet" href="/resources/demos/style.css">
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-    <script>
+   
+</body>
+
+
+
+
+</html>
+<script>
 
     $(document).ready(function () {
         $("#divload").css({ 'display': 'none' });
@@ -420,14 +431,15 @@
             $('#AdharNo').focus();
             return false;
         }
-        if ($('#Address').val() == '') {
-            $("#Address").addClass('errortext');
-            $('#Address').focus();
-            return false;
-        }
+     
         if ($('#PinCode').val() == '') {
             $("#PinCode").addClass('errortext');
             $('#PinCode').focus();
+            return false;
+        }
+        if ($('#Address').val() == '') {
+            $("#Address").addClass('errortext');
+            $('#Address').focus();
             return false;
         }
 
@@ -564,18 +576,10 @@
 
         return true;
     }
-    </script>
-</body>
-
-
-
-
-</html>
+</script>
 <style>
     .errortext {
         border: 2px solid red !important;
-        background-color: #c18888 !important;
     }
 </style>
-
 
