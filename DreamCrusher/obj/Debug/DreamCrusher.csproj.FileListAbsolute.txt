@@ -335,6 +335,5 @@ F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\bin\Newtonsoft.Json.
 F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\bin\System.Net.Http.Formatting.xml
 F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\bin\System.Web.Http.xml
 F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\bin\System.Web.Http.WebHost.xml
-F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.csprojResolveAssemblyReference.cache
 F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.dll
 F:\Ashwani Afluex\repository\DreamCrusher_2023\DreamCrusher\obj\Debug\DreamCrusher.pdb
