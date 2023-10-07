@@ -5,6 +5,21 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
+<style>
+    #videoBox .coursesImg{
+           height: 154px;
+           width: 100%;
+    }
+      #videoBox .courseLink{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+</style>
+
 <div class="page-content">
     <div class="row">
         <div class="col-12 col-lg-12 col-xl-12">
@@ -28,19 +43,19 @@
                 int i = 1;
                 foreach (var Item in Model.lstCourse)
                 {
-                    <div class="col-12 col-lg-12 col-xl-4">
+                    <div class="col-12 col-lg-12 col-xl-3">
                         <div class="card">
-                            <div class="card-body">
-                                <h5> <i class="bx bx-book-reader"></i> @Item.CourseName</h5>
-                                <img src="@Item.CourseImage" class="img-fluid rounded mb-3" />
+                            <div class="card-body" id="videoBox">
+                                <h5 class="mb-3"> <i class="bx bx-book-reader"></i> @Item.CourseName</h5>
+                                <img src="@Item.CourseImage" class="img-fluid rounded mb-3 coursesImg" />
                                 <div type="button" class="btn btn-light mb-2 position-relative">
                                     <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="img-fluid w-25 position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#@Item.CourseID" />
-                                    <iframe width="350px" height="100%" src="@Item.CourseLink" title="YouTube video player" frameborder="0"></iframe>
+                                    <iframe width="100%" height="100%" src="@Item.CourseLink" title="YouTube video player" frameborder="0"></iframe>
                                 </div>
                                 <ul class="list-group list-group-flush">
                                     <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                         @*<span class="text-white" target="_blank" style="cursor:pointer">@Item.CourseLink</span>*@
-                                        <a href="@Item.CourseLink" class="text-white" target="_blank" style="cursor:pointer">@Item.CourseLink</a>
+                                        <a href="@Item.CourseLink" class="text-white courseLink" target="_blank" >@Item.CourseLink</a>
                                     </li>
                                 </ul>
 
