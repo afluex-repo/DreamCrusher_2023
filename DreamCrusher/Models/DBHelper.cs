@@ -30,6 +30,10 @@ namespace DreamCrusher.Models
         {
             int k = 0;
             try
+
+
+
+
             {
                 using (var connection = new SqlConnection(connectionString))
                 using (var command = new SqlCommand(commandText, connection))
