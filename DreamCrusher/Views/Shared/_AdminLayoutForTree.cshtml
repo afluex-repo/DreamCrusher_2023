@@ -771,32 +771,38 @@
                     <div class="main-wrapper main-wrapper-1">
                         <div class="navbar-bg"></div>
                         <nav class="navbar navbar-expand-lg main-navbar">
+                          
                             <ul class="navbar-nav navbar-right">
                                 <li class="dropdown">
-                                    @if (Session["ProfilePic"] == "")
+                                    @if (Session["Profile"] == "")
                                     {
                                         <a href="#" data-toggle="dropdown"
-                                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                            <img  src="../assets/img/users/user.png" class="user-img" alt="user avatar">
-                                            <span class="d-sm-none d-lg-inline-block"></span>
+                                          >
+                                            <img  src="../assets/img/users/user.png" class="user-img" alt="Image">
+                                            @*<span class="d-sm-none d-lg-inline-block"></span>*@
                                         </a>
                                     }
                                     else
                                     {
                                         <a href="#" data-toggle="dropdown"
-                                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                            <img src="@Session[" ProfilePic"]" class="user-img" alt="user avatar">
-                                            <span class="d-sm-none d-lg-inline-block"></span>
+                                         >
+                                            <img src="@Session["Profile"]" class="user-img" alt="Image">
+                                            @*<span class="d-sm-none d-lg-inline-block"></span>*@
                                         </a>
                                     }
                                     <div class="dropdown-menu dropdown-menu-right">
+
                                         @*<div class="dropdown-divider"></div>*@
                                         <a href="/Home/Login" class="dropdown-item has-icon text-white">
                                             <i class="bx bx-log-out-circle"></i> Logout
                                         </a>
                                     </div>
                                 </li>
+                                
                             </ul>
+                            <div class="user-info">
+                                <p class="user-name mb-0"> @Session["Name"]</p>
+                            </div>
                         </nav>
                     </div>
                     @*----------------------------------------------------------------------*@

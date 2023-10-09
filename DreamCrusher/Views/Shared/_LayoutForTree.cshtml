@@ -53,11 +53,11 @@
             </div>
             <!--navigation-->
             <ul class="metismenu" id="menu">
-                @if (Session["ProfilePic"] == "")
+                @if (Session["Profile"] == "")
             {
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../assets/img/users/user.png" class="user-img" alt="user avatar" />
+                        <img src="../assets/img/users/user.png" class="user-img" alt="Image" style="width:40px;" />
                         <div class="user-info">
                         </div>
                     </a>
@@ -66,14 +66,14 @@
                 {
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="@Session["ProfilePic"]" class="user-img" alt="user avatar">
+                        <img src="@Session["Profile"]" class="user-img" alt="Image" style="width:40px;">
                         <div class="user-info">
                         </div>
                     </a>
                 }
                 <li>
                     <div class="user-info text-center mb-2">
-                        <p class="user-name mb-0">@Session["Name1"]</p>
+                        <p class="user-name mb-0">@Session["FullName"]</p>
                     </div>
                 </li>
                 <li>
@@ -846,26 +846,25 @@
                         <nav class="navbar navbar-expand-lg main-navbar">
                             <ul class="navbar-nav navbar-right">
                                 <li class="dropdown">
-                                    @if (Session["ProfilePic"] == "")
+                                    @if (Session["Profile"] == "")
                                     {
-                                        <a href="#" data-toggle="dropdown"
-                                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                            <img alt="image" src="../assets/img/users/user.png" class="user-img-radious-style">
-                                            <span class="d-sm-none d-lg-inline-block"></span>
+                                        <a href="#" data-toggle="dropdown">
+                                            <img alt="Image" src="../assets/img/users/user.png" class="rounded-circle"  style="width:40px;">
+                                            @*<span class="d-sm-none d-lg-inline-block"></span>*@
                                         </a>
                                     }
                                     else
                                     {
                                         <a href="#" data-toggle="dropdown"
-                                           class="nav-link dropdown-toggle nav-link-lg nav-link-user">
-                                            <img alt="image" src="@Session[" ProfilePic"]" class="user-img-radious-style">
-                                            <span class="d-sm-none d-lg-inline-block"></span>
+                                           >
+                                            <img alt="Image" src="@Session["Profile"]" class="rounded-circle"  style="width:40px;">
+                                            @*<span class="d-sm-none d-lg-inline-block"></span>*@
                                         </a>
                                     }
                                     <div class="dropdown-menu dropdown-menu-right">
                                         @*<div class="dropdown-divider"></div>*@
                                         <a href="#" class="dropdown-item has-icon text-white">
-                                            <i class="bx bx-user fs-5"></i> <span>@Session["Name1"]</span>
+                                            <i class="bx bx-user fs-5"></i> <span>@Session["FullName"]</span>
                                         </a>
                                         <a href="#" class="dropdown-item has-icon text-white">
                                             <i class="bx bx-calendar-alt fs-5"></i> <span>Joining -  (@Session["JoiningDate"])</span>
