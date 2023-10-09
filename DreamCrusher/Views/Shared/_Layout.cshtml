@@ -42,11 +42,11 @@
             </div>
             <!--navigation-->
             <ul class="metismenu" id="menu">
-                @if (Session["ProfilePic"] == "")
+                @if (Session["Profile"] == "")
             {
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../assets/img/users/user.png" class="user-img" alt="user avatar" />
+                        <img src="../assets/img/users/user.png" class="user-img" alt="Image" style="width:40px;"/>
                         <div class="user-info">
                         </div>
                     </a>
@@ -55,14 +55,14 @@
                 {
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="@Session["ProfilePic"]" class="user-img" alt="user avatar">
+                        <img src="@Session["Profile"]" class="user-img" alt="Image" style="width:40px;">
                         <div class="user-info">
                         </div>
                     </a>
                 }
                 <li>
                     <div class="user-info text-center mb-2">
-                        <p class="user-name mb-0">@Session["Name1"]</p>
+                        <p class="user-name mb-0">@Session["FullName"]</p>
                     </div>
                 </li>
                 <li>
@@ -829,12 +829,12 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="user-box dropdown px-3">
-                        @if (Session["ProfilePic"] == "")
+                    <div class="user-boxssss dropdown px-3">
+                        @if (Session["Profile"] == "")
                         {
                             <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/img/users/user.png" class="user-img" alt="user avatar">
+                                <img src="../assets/img/users/user.png" alt="Image" style="width:40px;" class="rounded-circle">
                                 <div class="user-info">
                                 </div>
                             </a>
@@ -843,7 +843,7 @@
                         {
                             <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="@Session["ProfilePic"]" class="user-img" alt="user avatar">
+                                <img src="@Session["Profile"]" class="rounded-circle" alt="Image" style="width:40px;">
                                 <div class="user-info">
                                 </div>
                             </a>
@@ -852,7 +852,7 @@
 
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="#">
-                                    <i class="bx bx-user fs-5"></i><span>@Session["Name1"]</span>
+                                    <i class="bx bx-user fs-5"></i><span>@Session["FullName"]</span>
                                 </a>
 
                                 <a class="dropdown-item d-flex align-items-center" href="#">
