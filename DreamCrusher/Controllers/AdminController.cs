@@ -244,20 +244,14 @@ namespace DreamCrusher.Controllers
                 foreach (DataRow dr in Ds.Tables[4].Rows)
                 {
                     DashBoard details = new DashBoard();
-
-
                     details.Total = (dr["Total"].ToString());
                     details.Month = (dr["Month"].ToString());
-
-
                     dataList.Add(details);
-
                     count++;
                 }
             }
             return Json(dataList, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult BinaryTree()
         {
             ViewBag.Fk_UserId = "1";
@@ -320,11 +314,8 @@ namespace DreamCrusher.Controllers
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-
                 obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
-
                 obj.Result = "Yes";
-
             }
             else { obj.Result = "Invalid SponsorId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -336,9 +327,7 @@ namespace DreamCrusher.Controllers
             DataSet ds = obj.GetMobileNo();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0 && Convert.ToInt32(ds.Tables[0].Rows[0][0]) > 0)
             {
-
                 obj.Result = "Mobile no. already registered!";
-
             }
             else { obj.Result = "Yes"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -346,11 +335,8 @@ namespace DreamCrusher.Controllers
         public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg)
         {
             Home obj = new Home();
-
-
             try
             {
-
                 obj.SponsorId = SponsorId;
                 obj.FirstName = FirstName;
                 obj.LastName = LastName;
@@ -381,8 +367,6 @@ namespace DreamCrusher.Controllers
                         }
                         catch { }
                         obj.Response = "1";
-
-
                     }
                     else
                     {
@@ -396,12 +380,10 @@ namespace DreamCrusher.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult ConfirmRegistration()
         {
             return View();
         }
-
         public ActionResult GetStateCity(string PinCode)
         {
             Common obj = new Common();
@@ -419,7 +401,6 @@ namespace DreamCrusher.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult OTP(string FirstName, string MobileNo)
         {
             Home obj = new Home();
