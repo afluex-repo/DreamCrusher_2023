@@ -1,0 +1,178 @@
+﻿@model DreamCrusher.Models.Reports
+@{
+    ViewBag.Title = "AssociateList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("AssociateList", "AdminProfile", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+{
+    <div class="page-content">
+
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Associate List</h5>
+                            <p style="color:#ffffff">
+                                @TempData["BlockUnblock"]
+                                @TempData["UpdateProfilebyadmin"]
+                            </p>
+                            @*<button class="btn btn-light repeater-add-btn px-4">Add</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="LoginId" class="form-label">Login ID </label>
+                                @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @placeholder = "Login ID" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Name" class="form-label">Name</label>
+                                @Html.TextBoxFor(m => m.Name, new { @class = "form-control", @placeholder = "Name" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="SponsorId" class="form-label">Spill ID</label>
+                                @Html.TextBoxFor(m => m.SponsorId, new { @class = "form-control", @placeholder = "Spill Id" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="SponsorName" class="form-label">Spill Name</label>
+                                @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @placeholder = "Sponsor Name" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="FromDate" class="form-label">From Date</label>
+                                @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @readonly = "readonly" ,@placeholder="From Date"})
+                            </div>
+                            <div class="col-md-3">
+                                <label for="ToDate" class="form-label">To Date</label>
+                                @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @readonly = "readonly", @placeholder = "To Date" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="Status" class="form-label">Status</label>
+                                @Html.DropDownListFor(m => m.Status, new SelectList(ViewBag.ddlstatus, "Value", "Text"), new { @class = "form-control" })
+                            </div>
+                            <div class="col-12">
+                                <input type="submit" id="btnSearch" class="btn btn-light px-3" name="Search" value="Search" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No.</th>
+                                        <th>Login Id</th>
+                                        <th>Password</th>
+                                        <th>Name</th>
+                                        <th>Spill Id</th>
+                                        <th>Spill Name</th>
+                                        <th>Joining Date</th>
+                                        <th>Mobile No</th>
+                                        <th>Email Id</th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        if (Model.lstassociate != null)
+                                        {
+                                            int i = 1;
+                                            foreach (var Item in Model.lstassociate)
+                                            {
+                                                <tr class="text-left">
+                                                    <td>@i</td>
+                                                    <td>@Item.LoginId</td>
+                                                    <td>@Item.Password</td>
+                                                    <td>@Item.Name</td>
+                                                    <td>@Item.SponsorId</td>
+                                                    <td>@Item.SponsorName</td>
+                                                    <td>@Item.JoiningDate</td>
+                                                    <td>@Item.Mobile</td>
+                                                    <td>@Item.Email</td>
+                                                    <td>
+                                                        <a href="/AdminProfile/UpdateAssociateProfile?LoginID=@Item.LoginId" class="btn btn-info">
+                                                            Edit
+                                                        </a>
+                                                    </td>
+                                                    <td>
+                                                        @if (Item.isBlocked == "False")
+                                                        {
+                                                            <a href="/AdminProfile/BlockAssociate?LoginID=@Item.LoginId" class="btn btn-danger">
+                                                                Block
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="/AdminProfile/UnblockAssociate?LoginID=@Item.LoginId" class="btn btn-success">
+                                                                Unblock
+                                                            </a>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @if (Item.Status == "Inactive")
+                                                        {
+                                                            <a href="/AdminProfile/ActivateUser?FK_UserID=@Item.Fk_UserId" class="btn btn-success" onclick="return confirm('Sure you want to activate this User ?')">
+                                                                Activate
+                                                            </a>
+                                                        }
+                                                        else
+                                                        {
+                                                            <a href="/AdminProfile/DeactivateUser?lid=@Item.LoginId" class="btn btn-danger" onclick="return confirm('Sure you want to deactivate this User ?')">
+                                                                Deactivate
+                                                            </a>
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        <a href="/AdminProfile/WelcomeLetter?LoginID=@Item.LoginId" class="btn btn-info">
+                                                            Print
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                i++;
+                                            }
+
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+<script>
+
+    $('#FromDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeYear: true,
+        changeMonth: true
+    });
+    $('#ToDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeYear: true,
+        changeMonth: true
+    });
+</script>

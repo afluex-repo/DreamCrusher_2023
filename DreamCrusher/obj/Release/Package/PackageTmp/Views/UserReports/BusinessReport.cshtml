@@ -1,0 +1,146 @@
+﻿@model DreamCrusher.Models.Reports
+
+@{
+    ViewBag.Title = "BusinessReport";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("BusinessReport", "UserReports", FormMethod.Post, new { @id = "form1" }))
+{
+    
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Business Report</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">   From Date </label>
+                                @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @placeholder = "From  Date", @readonly = "read" })
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label"> To Date </label>
+                                @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @placeholder = "To  Date", @readonly = "read" })
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <label class="form-label">  Leg </label>
+                                @Html.DropDownListFor(m => m.Leg, new SelectList(ViewBag.Leg, "Value", "Text"), new { @class = "form-control form-select" })
+                            </div>
+                            <div class="col-md-1 mb-3">
+                                <label class="form-label d-block">  IsDownline </label>
+                                @Html.CheckBoxFor(m => m.IsDownline, new { @class = "form-check-input" })
+                                
+                            </div>
+                            <div class="col-md-2 mb-3">
+                                <label class="form-label d-block">&nbsp;  </label>
+                                <input class="btn btn-light px-3" type="submit" value="Get Details" name="GetDetails" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No.</th>
+                                        <th>LoginId</th>
+                                        <th>Name</th>
+
+                                        <th>Topup Date</th>
+                                        <th style="text-align:right">Amount</th>
+                                        <th style="text-align:right">BV</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        if (Model.lstassociate != null)
+                                        {
+                                            int i = 1;
+                                            foreach (var Item in Model.lstassociate)
+                                            {
+                                                <tr class="text-left">
+                                                    <td>@i</td>
+                                                    <td>@Item.LoginId</td>
+                                                    <td>@Item.DisplayName</td>
+
+                                                    <td>@Item.ClosingDate</td>
+                                                    <td style="text-align:right">@Item.NetAmount</td>
+                                                    <td style="text-align:right">@Item.LeadershipBonus</td>
+                                                </tr>
+                                                i++;
+                                            }
+
+                                        }
+                                    }
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>Total</td>
+                                        <td style="text-align:right"><b style="color:blue;text-align:right">@ViewBag.TotalNetAmount</b></td>
+                                        <td style="text-align:right"> <b style="color:blue;text-align:right">@ViewBag.TotalBV</b></td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+
+
+
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
+
+            <script>
+
+
+                $('#FromDate').datepicker({
+                    dateFormat: 'dd/mm/yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-60:+0"
+                });
+                $('#ToDate').datepicker({
+                    dateFormat: 'dd/mm/yy',
+                    changeMonth: true,
+                    changeYear: true,
+                    yearRange: "-60:+0"
+                });
+                function isNumberOrDecimal(evt) {
+                    var charCode = (evt.which) ? evt.which : evt.keyCode;
+                    if (charCode != 46 && charCode > 31
+                      && (charCode < 48 || charCode > 57))
+                        return false;
+
+                    return true;
+                }
+
+            </script>
+
