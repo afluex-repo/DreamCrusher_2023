@@ -3844,6 +3844,10 @@
     <Content Include="Views\Shared\_LayoutWebsite.cshtml" />
     <Content Include="Views\Shared\_LayoutForTree.cshtml" />
     <Content Include="Views\Shared\_AdminLayoutForTree.cshtml" />
+    <Content Include="Views\Master\AllotCoursesOnPackage.cshtml" />
+    <Content Include="Views\Master\CourseList.cshtml" />
+    <Content Include="Views\Master\CourseMaster.cshtml" />
+    <Content Include="Views\Master\CourseView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
