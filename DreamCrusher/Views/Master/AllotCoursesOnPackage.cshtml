@@ -36,9 +36,12 @@
                                 <label for="inputFirstName" class="form-label">Package <span style="color: red">*</span></label>
                                 @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlPackage, "Value", "Text"), new { @class = "form-control form-select" })
                             </div>
+
                             <div class="col-md-4 mt-5">
-                                <input type="submit" id="btnsearch" name="btnsearch" class="btn btn-light px-5" value="Search" onclick="return validate();" />
+                                <input type="submit" id="btnsearch" name="btnsearch" class="btn btn-light px-5" value="Search" onclick="return validate();"/>
                             </div>
+
+                          
                             <div class="col-12 col-lg-12 col-xl-12">
                                 <div class="card">
                                     <div class="card-body">
@@ -48,40 +51,49 @@
                                                     <tr>
                                                         <th hidden></th>
                                                         <th class="d-flex" style="width:100px">
-                                                            <input class="chhhhhh" type="checkbox" onchange="checkAll(this)" name="chk[]" />
+                                                            <input type="checkbox" onchange="checkAll(this)" name="chk[]" />
                                                             <label class="form-check-label" style="padding-left:8px;"> Select All</label>
                                                         </th>
                                                         <th>Course Name</th>
                                                         <th>Course Image</th>
-                                                        @*<th>status</th>*@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     @if (Model != null)
                                                     {
-                                                        if (Model.lstCourses != null)
+                                                        if (Model.lstCourse != null)
                                                         {
                                                             int i = 1;
-                                                            foreach (var Item in Model.lstCourses)
+                                                            foreach (var Item in Model.lstCourse)
                                                             {
                                                                 <tr class="text-left">
 
                                                                     <td hidden>
-                                                                        <input type="hidden" id="CourseID_@i" name="CourseID_@i" value="@Item.CourseID" />
-                                                                        <input type="hidden" id="FK_CourseID_@i" name="FK_CourseID_@i" value="@Item.FK_CourseID" />
-                                                                    </td>
-                                                                    @if (Item.status == "1")
-                                                                    {
-                                         <td><input class="chhhhhh" type="checkbox" name="chkpayment_@i" checked /></td>
-                                                                    }
-                                                                    else
-                                                                    {
-                                         <td><input class="chhhhhh" type="checkbox" name="chkpayment_@i" /></td>
-                                                                    }
+                                                                <input type="hidden" id="CourseID_@i" name="CourseID_@i" value="@Item.CourseID"/>
+                                                                <input type="hidden" id="FK_CourseID_@i" name="FK_CourseID_@i" value="@Item.FK_CourseID" />
 
-                                                                    <td><input id="CourseName_@i" name="CourseName_@i" value="@Item.CourseName" style="border:none;background:none;color:white" /></td>
+                                                                @if(Model.Package == Item.Fk_PackageId){
+                                                                if (Item.CourseID != Item.FK_CourseID)
+                                                                {
+                                                                <td><input type="checkbox" name="chkpayment_@i"/>&nbsp;&nbsp; @i</td>
+                                                                }
+                                                                else
+                                                                {
+                                                                <td>
+                                                                    <div class="form-check form-check-inline">
+                                                                        <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name="chkpayment_@i" checked disabled="">
+                                                                        <label class="form-check-label" for="inlineCheckbox3">@i</label>
+                                                                    </div>
+                                                                  </td>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <td><input type="checkbox" name="chkpayment_@i" />&nbsp;&nbsp; @i</td>
+                                                                }
+                                                                    
+                                                                    <td><input id="CourseName_@i" name="CourseName_@i" value="@Item.CourseName" style="border:none;background:none;color:white"/></td>
                                                                     <td><img width="50" height="50" id="CourseImage_@i" name="CourseImage_@i" src="@Item.CourseImage" /></td>
-                                                                    @*<td>@Item.status</td>*@
                                                                 </tr>
                                                                 i++;
                                                             }
@@ -95,7 +107,7 @@
                                         </div>
                                         <div class="row mt-3">
                                             <div class="col-md-3 d-flex justify-content-evenly offset-4">
-                                                <input type="submit" id="btnsave" name="btnsave" class="btn btn-light px-5 sub" value="Submit" onclick="return validateForm();" />
+                                                <input type="submit" id="btnsave" name="btnsave"  class="btn btn-light px-5 sub" value="Submit" onclick="return validateForm();"/>
                                             </div>
                                         </div>
                                     </div>
@@ -118,12 +130,6 @@
 <style>
     .errortext {
         border: 1px solid red !important;
-    }
-
-
-    .chhhhhh {
-        height: 15px;
-        width: 15px;
     }
 </style>
 <script>
