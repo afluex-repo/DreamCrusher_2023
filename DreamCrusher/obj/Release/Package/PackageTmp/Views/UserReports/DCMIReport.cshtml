@@ -1,0 +1,95 @@
+﻿@model DreamCrusher.Models.Reports
+@{
+ ViewBag.Title = "DCMI Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+
+@using (Html.BeginForm("DCMIReport", "UserReports", FormMethod.Post, new { @id = "form1" }))
+{
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">DCMI Report</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Sr No.</th>
+                                        <th>Login Id</th>
+                                        <th>Name</th>
+                                        @*<th>Password</th>*@
+                                        <th hidden="hidden">Pk_DCMIId</th>
+                                        <th>Month</th>
+                                        <th>Total Matching</th>
+                                        <th>DCMI Gross Income</th>
+                                        <th>TDS</th>
+                                        <th>Admin Charge</th>
+                                        <th>DCMI Income</th>
+                                        <th>Transaction Date</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        if (Model.lstdcmireport != null)
+                                        {
+                                            int i = 1;
+                                            foreach (var Item in Model.lstdcmireport)
+                                            {
+                                                <tr class="text-left">
+                                                    <td>@i</td>
+
+                                                    <td>@Item.LoginId</td>
+                                                    <td>@Item.Name</td>
+                                                    @*<td>@Item.Password</td>*@
+                                                    <td hidden="hidden">@Item.Pk_DCMIId</td>
+                                                    <td>@Item.Month</td>
+                                                    <td>@Item.TotalMatching</td>
+                                                    <td>@Item.DCMIGrossIncome</td>
+                                                    <td>@Item.TDS</td>
+                                                    <td>@Item.AdminCharge</td>
+                                                    <td>@Item.DCMIIncome</td>
+                                                    <td>@Item.TransactionDate</td>
+                                                </tr>
+                                                i++;
+                                            }
+
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+<script src="../vendor/jquery/jquery.min.js"></script>
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+<script>
+
+    $('#TransactionDate').datepicker({
+        dateFormat: 'yy-mm-dd',
+    });
+</script>
+
+

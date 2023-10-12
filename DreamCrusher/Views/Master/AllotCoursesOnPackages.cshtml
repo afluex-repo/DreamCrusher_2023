@@ -1,0 +1,196 @@
+﻿@model DreamCrusher.Models.Master
+
+@{
+    ViewBag.Title = "AllotCoursesOnPackages";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("AllotCoursesOnPackages", "Master", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+{
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">/ Master / Allot Courses On Package</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-header">
+                            <p style="color: forestgreen">
+                                @TempData["Course"]
+                            </p>
+                            <p style="color: red">
+                                @TempData["ErrCourse"]
+                            </p>
+                        </div>
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label for="inputFirstName" class="form-label">Package <span style="color: red">*</span></label>
+                                @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlPackage, "Value", "Text"), new { @class = "form-control form-select" })
+                            </div>
+
+                            <div class="col-md-4 mt-5">
+                                <input type="submit" id="btnsearch" name="btnsearch" class="btn btn-light px-5" value="Search" onclick="return validate();" />
+                            </div>
+
+
+                            <div class="col-12 col-lg-12 col-xl-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="table-responsive">
+                                            <table id="example2" class="table table-striped table-bordered" style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th hidden></th>
+                                                        <th class="d-flex" style="width:100px">
+                                                            <input type="checkbox" onchange="checkAll(this)" name="chk[]" />
+                                                            <label class="form-check-label" style="padding-left:8px;"> Select All</label>
+                                                        </th>
+                                                        <th>Course Name</th>
+                                                        <th>Course Image</th>
+                                                        <th>status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    @if (Model != null)
+                                                    {
+                                                        if (Model.lstCourses != null)
+                                                        {
+                                                            int i = 1;
+                                                            foreach (var Item in Model.lstCourses)
+                                                            {
+                                                                <tr class="text-left">
+
+                                                                    <td hidden>
+                                                                        <input type="hidden" id="CourseID_@i" name="CourseID_@i" value="@Item.CourseID" />
+                                                                        <input type="hidden" id="FK_CourseID_@i" name="FK_CourseID_@i" value="@Item.FK_CourseID" />
+                                                                    </td>
+                                                                    @if (Item.status == "1")
+                                                                    {
+                                                                        <td><input type="checkbox" name="chkpayment_@i" checked/>&nbsp;&nbsp; @i</td>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <td><input type="checkbox" name="chkpayment_@i" />&nbsp;&nbsp; @i</td>
+                                                                    }
+
+                                                                    <td><input id="CourseName_@i" name="CourseName_@i" value="@Item.CourseName" style="border:none;background:none;color:white" /></td>
+                                                                    <td><img width="50" height="50" id="CourseImage_@i" name="CourseImage_@i" src="@Item.CourseImage" /></td>
+
+
+                                                                    <td>@Item.status</td>
+
+                                                                </tr>
+                                                                i++;
+
+
+                                                            }
+                                                            <lable style="display:none"><input type="text" id="hdRows" name="hdRows" value="@i" /></lable>
+                                                        }
+                                                    }
+                                                </tbody>
+                                            </table>
+                                            <input type="hidden" id="UserType" value="@Session["UserType"]" />
+                                            <input type="hidden" id="UserTypeName" value="@Session["UserTypeName"]" />
+                                        </div>
+                                        <div class="row mt-3">
+                                            <div class="col-md-3 d-flex justify-content-evenly offset-4">
+                                                <input type="submit" id="btnsave" name="btnsave" class="btn btn-light px-5 sub" value="Submit" onclick="return validateForm();" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
+<style>
+    .errortext {
+        border: 1px solid red !important;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $("#divload").css({ 'display': 'none' });
+        if ($('#Package').val() == '0') {
+            //$("#Package").addClass('errortext');
+            //$('#Package').focus();
+
+            $(".sub").hide();
+            return false;
+        }
+        else {
+            $(".sub").show();
+        }
+    })
+
+    function checkAll(ele) {
+        debugger;
+        var checkboxes = document.getElementsByTagName('input');
+        if (ele.checked) {
+            for (var i = 0; i < checkboxes.length; i++) {
+                if (checkboxes[i].type == 'checkbox') {
+                    checkboxes[i].checked = true;
+                }
+            }
+        } else {
+            for (var i = 0; i < checkboxes.length; i++) {
+                console.log(i)
+                if (checkboxes[i].type == 'checkbox') {
+                    checkboxes[i].checked = false;
+                }
+            }
+        }
+    }
+
+    function validate() {
+        $(".errortext").removeClass("errortext");
+        debugger;
+        //$(".sub").show();
+
+        if ($('#Package').val() == '0') {
+            $("#Package").addClass('errortext');
+            $('#Package').focus();
+            return false;
+        }
+    }
+
+
+    function validateForm() {
+        $(".errortext").removeClass("errortext");
+        debugger;
+
+        if ($('#Package').val() == '0') {
+            $("#Package").addClass('errortext');
+            $('#Package').focus();
+            return false;
+        }
+
+        if ($('input[type=checkbox]:checked').length == 0) {
+            alert("ERROR! Please select at least one checkbox");
+            return false;
+        }
+        $("#divload").css({ 'display': '' });
+        return true;
+    }
+</script>
+
