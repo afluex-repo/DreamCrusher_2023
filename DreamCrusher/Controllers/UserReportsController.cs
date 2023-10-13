@@ -9,7 +9,7 @@ using DreamCrusher.Filter;
 
 namespace DreamCrusher.Controllers
 {
-    public class UserReportsController : Controller
+    public class UserReportsController : BaseController
     {
 
         public ActionResult UnPaidIncomes(Reports objreports)
@@ -784,5 +784,33 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
 		}
+        
+        
+        public ActionResult CourseView(Reports model)
+        {
+            model.LoginId = Session["LoginId"].ToString();
+            model.Package = Session["FK_ProductId"].ToString();
+            List<Reports> lst = new List<Reports>();
+            DataSet ds = model.GetCourseListForAllotCourses();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Reports obj = new Reports();
+                    obj.CourseID = r["Pk_CourseId"].ToString();
+                    obj.CourseName = r["CourseName"].ToString();
+                    obj.CourseImage = r["CourseImage"].ToString();
+                    obj.CourseDate = r["CourseDate"].ToString();
+                    obj.CourseLink = r["CourseLink"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstCourse = lst;
+            }
+            return View(model);
+        }
+
+
+
+
     }
 }

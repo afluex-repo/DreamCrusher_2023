@@ -134,6 +134,7 @@ namespace DreamCrusher.Controllers
                             Session["Password"] = ds.Tables[0].Rows[0]["Password"].ToString();
                             Session["TransPassword"] = ds.Tables[0].Rows[0]["TransPassword"].ToString();
                             Session["Profile"] = ds.Tables[0].Rows[0]["Profile"].ToString();
+                            Session["FK_ProductId"] = ds.Tables[0].Rows[0]["FK_ProductId"].ToString();
                             FormName = "AssociateDashBoard";
                             Controller = "User";
                         }
