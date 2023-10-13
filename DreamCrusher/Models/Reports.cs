@@ -150,7 +150,14 @@ namespace DreamCrusher.Models
 		public string TotalBV{get;set;}
         public string LeftBV { get; set; }
         public string RightBV { get; set; }
-
+        public List<Reports> lstCourse { get; set; }
+        
+        public string CourseID { get; set; }
+        public string CourseName { get; set; }
+        public string CourseImage { get; set; }
+        public string CourseDate { get; set; }
+        public string CourseLink { get; set; }
+        
         public DataSet GetPayoutReport()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
@@ -707,6 +714,22 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetmonthlySpillBonusReport", para);
             return ds;
         }
+
+
+
+
+        public DataSet GetCourseListForAllotCourses()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@FK_PackageId", Package),
+                new SqlParameter("@loginid", LoginId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCoursesForUser", para);
+            return ds;
+        }
+
+
+
     }
 }
 

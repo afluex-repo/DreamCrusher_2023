@@ -3846,6 +3846,7 @@
     <Content Include="Views\Master\CourseList.cshtml" />
     <Content Include="Views\Master\CourseMaster.cshtml" />
     <Content Include="Views\Master\CourseView.cshtml" />
+    <Content Include="Views\UserReports\CourseView.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
