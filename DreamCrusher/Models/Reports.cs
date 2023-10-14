@@ -714,10 +714,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetmonthlySpillBonusReport", para);
             return ds;
         }
-
-
-
-
         public DataSet GetCourseListForAllotCourses()
         {
             SqlParameter[] para = {
@@ -727,9 +723,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCoursesForUser", para);
             return ds;
         }
-
-
-
     }
 }
 
