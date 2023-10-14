@@ -3110,6 +3110,7 @@
     <Content Include="assets\fonts\webfonts\fa-solid-900.woff2" />
     <Content Include="assets\fonts\webfonts\fa-solid-900d41d.eot" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="Views\User\IDCard.cshtml" />
     <Content Include="Websiteassets\css\animate.css" />
     <Content Include="Websiteassets\css\bootstrap.min.css" />
     <Content Include="Websiteassets\css\font-awesome.min.css" />

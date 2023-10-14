@@ -1,0 +1,307 @@
+﻿
+@{
+    ViewBag.Title = "IDCard";
+    Layout = null;
+}
+
+<meta charset="utf-8">
+<title>Digi Direct | Homepage</title>
+<!-- Stylesheets -->
+<link href="../WebsiteCss/css/bootstrap.css" rel="stylesheet">
+<link href="../WebsiteCss/css/style.css" rel="stylesheet">
+<link href="../WebsiteCss/css/responsive.css" rel="stylesheet">
+<!-- Color Switcher Mockup -->
+<link href="../WebsiteCss/css/color-switcher-design.css" rel="stylesheet">
+<link rel="shortcut icon" href="../WebsiteCss/images/favicon.png" type="image/x-icon">
+<link rel="icon" href="../WebsiteCss/images/favicon.png" type="image/x-icon">
+<!-- Responsive -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--[if lt IE 9]><script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script><![endif]-->
+<!--[if lt IE 9]><script src="js/respond.js"></script><![endif]-->
+<style>
+    /* Design */
+
+    .main {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    h1 {
+        font-size: 24px;
+        font-weight: 400;
+        text-align: center;
+    }
+
+    img {
+        height: 130px;
+        max-width: 100%;
+        vertical-align: middle;
+    }
+
+    .btn {
+        color: #ffffff;
+        padding: 0.8rem;
+        font-size: 14px;
+        text-transform: uppercase;
+        border-radius: 4px;
+        font-weight: 400;
+        display: block;
+        width: 100%;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: transparent;
+    }
+
+        .btn:hover {
+            background-color: rgba(255, 255, 255, 0.12);
+        }
+
+    .cards {
+        display: flex;
+        flex-wrap: wrap;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .cards_item {
+        display: flex;
+        padding: 1rem;
+    }
+
+    @@media (min-width: 40rem) {
+        .cards_item {
+            width: 50%;
+        }
+    }
+
+    @@media (min-width: 56rem) {
+        .cards_item {
+            width: 33.3333%;
+        }
+    }
+
+    .card {
+        background-color: white;
+        border-radius: 0.25rem;
+        box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+
+    .card_content {
+        padding: 1rem;
+        /*background: linear-gradient(to bottom left, #EF8D9C 40%, #FFC39E 100%);*/
+    }
+
+    .card_title {
+        color: #000;
+        font-size: 1.1rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+        margin: 0px;
+    }
+
+    .card_text {
+        color: #000;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        margin-bottom: 1.25rem;
+        font-weight: 400;
+    }
+
+    .made_by {
+        font-weight: 400;
+        font-size: 13px;
+        margin-top: 35px;
+        text-align: center;
+    }
+
+    li.cards_item.dream {
+        border: 1px solid #ebe8e8;
+        box-shadow: 4px 5px 6px #ebe8e8;
+        width: 558px;
+    }
+
+    .profile-pic {
+        position: relative;
+        margin-bottom: 40px;
+    }
+
+    img.profile-img {
+        position: absolute;
+        top: -30px;
+        left: 20px;
+        height: 90px;
+        width: 90px;
+        border-radius: 10px;
+        border: 4px solid #ffffff;
+    }
+
+    img.qr {
+        width: 50px;
+        height: 50px;
+    }
+
+    .detail {
+        white-space: nowrap;
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        left: auto;
+        right: auto;
+        bottom: auto;
+    }
+
+    img.img-logo {
+        width: 132px;
+        height: 75px;
+        margin-top: 28px;
+    }
+
+    .user_name {
+        position: absolute;
+        left: 150px;
+        top: -30px;
+    }
+
+    .row.mt-2.detail {
+        padding: 22px 5px 0px 5px;
+    }
+
+    span.level {
+        font-weight: 500;
+        color: #000000;
+    }
+
+    .qr-level {
+        font-size: 12px;
+        font-weight: 200;
+        color: #000000;
+    }
+
+    span.detail {
+        color: #000000;
+    }
+
+    p.id-detail {
+        margin: 0;
+    }
+
+    .print {
+        position: absolute;
+        top: 0;
+        right: 15;
+        color: #ef262c;
+    }
+
+    @@media print {
+        #printPageButton {
+            display: none;
+        }
+    }
+</style>
+<!--Page Title-->
+<div class="col-xl-2 col-lg-2  col-md-2 col-sm-12 float-right">
+    <div class="btn d-print-flex">
+        <input type="button" onclick="printmethod();" value="Print" class="btn btn-primary" />
+    </div>
+</div>
+<div class="main">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+
+            <ul class="cards justify-content-center p-5">
+                <li class="cards_item dream" style="position: relative; padding-top: 40px;">
+                    @*cards_item dream*@
+                    @*<div class="print"><a href="#" id="printpagebutton" onclick="printpage()"><i class="fa fa-print"></i></a></div>*@
+                    <div class="print">
+                        <button id="printPageButton" onClick="window.print();" class="btn btn print"><i class="fa fa-print"></i></button>
+                    </div>
+                    <div class="card" style="width: 100%;">
+                        <div class="card_image">
+                            <img src="~/WebsiteCss/images/resource/id-bg.jpg" width="100%" />
+                            <div class="d-flex justify-content-center align-i logo-area">
+                                <div class="logo">
+                                    <img src="~/assets/AcceptanceCSS/images/logo.png" class="img-logo" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="profile-pic">
+                            <img src="@ViewBag.profilepic" class="profile-img" />
+                            @*<img src="~/WebsiteCss/images/resource/feature-1.jpg"  class="profile-img" />*@
+                        </div>
+                        <div class="card_content" style="position: relative;">
+                            <div class="user_name">
+                                <h2 class="card_title">@ViewBag.fullname</h2>
+                                <p class="card_text">@ViewBag.LoginId</p>
+
+                            </div>
+                            <div class="row mt-2 detail">
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <p class="id-detail">
+                                                <span class="level">Login ID</span><br />
+                                                <span class="detail">@ViewBag.LoginId</span>
+                                            </p>
+                                            <p class="id-detail">
+                                                <span class="level">Mobile No.</span><br />
+                                                <span class="detail">@ViewBag.Mobile</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p class="id-detail">
+                                                <span class="level">Recognition</span><br />
+                                                <span class="detail">@ViewBag.Recognition</span>
+                                            </p>
+                                            <p class="id-detail">
+                                                <span class="level">Address</span><br />
+                                                <span class="detail">@ViewBag.Address</span>
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <p class="id-detail">
+                                                <span class="level">Email</span><br />
+                                                <span class="detail">@ViewBag.Email</span>
+                                            </p>
+                                            @*<p class="id-detail">
+                                                    <span class="level">Phone</span><br />
+                                                    <span class="detail">00-00-00000</span>
+                                                </p>*@
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    @*<table class="qr-img mt-5" style="float: right;">
+                                            <tr>
+                                                <td class="d-flex justify-content-center">Your Sincerely@*<img src="~/WebsiteCss/images/resource/feature-1.jpg" class="qr" /></td>
+                                            </tr>
+                                            <tr>
+                                                <td><p class="qr-level">@ViewBag.FirstName</p></td>
+                                            </tr>
+                                        </table>*@
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
+<script>
+    function printpage() {
+        var printButton = document.getElementById("printpagebutton");
+        printButton.style.visibility = 'hidden';
+        window.print()
+        printButton.style.visibility = 'visible';
+    }
+</script>

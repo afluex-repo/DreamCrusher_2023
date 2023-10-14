@@ -723,6 +723,18 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCoursesForUser", para);
             return ds;
         }
+
+        public DataSet IDCard()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@FK_UserID", Fk_UserId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("IDCard", para);
+            return ds;
+        }
+
+        
+
     }
 }
 

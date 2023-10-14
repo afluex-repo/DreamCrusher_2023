@@ -154,10 +154,12 @@ namespace DreamCrusher.Controllers
                 {
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
+                        Session["Profile"] = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
                         TempData["UpdateProfile"] = "Profile updated successfully..";
                         FormName = "ViewProfile";
                         Controller = "User";
                         //return View();
+                        
                     }
                     else
                     {
@@ -861,13 +863,7 @@ namespace DreamCrusher.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
-
-
-
-
-
-
+        
 
         public ActionResult BinaryTrees()
         {
@@ -876,6 +872,24 @@ namespace DreamCrusher.Controllers
         }
 
 
+        public ActionResult IDCard(Reports model)
+        {
+            model.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds = model.IDCard();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.Recognition = ds.Tables[0].Rows[0]["Recognition"].ToString();
+                ViewBag.profilepic = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+                ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                ViewBag.fullname = ds.Tables[0].Rows[0]["Fullname"].ToString();
+                ViewBag.Mobile = ds.Tables[0].Rows[0]["Mobile"].ToString();
+                ViewBag.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                ViewBag.Address = ds.Tables[0].Rows[0]["FullAddress"].ToString();
+            }
+            return View(model);
+        }
+
+        
 
     }
 }
