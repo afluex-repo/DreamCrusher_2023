@@ -784,8 +784,6 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
 		}
-        
-        
         public ActionResult CourseView(Reports model)
         {
             model.LoginId = Session["LoginId"].ToString();
@@ -808,9 +806,5 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
-
-
-
-
     }
 }
