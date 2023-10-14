@@ -26,32 +26,24 @@
                         <div class="row">
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">First Name <span style="color:red">*</span></label>
-
                                 @if (Model.LastName != "")
                                 {
-
-
                                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control", @disabled = "disabled" })
                                 }
                                 else
                                 {
-
                                     @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.FirstName)
                                 }
                             </div>
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">Last Name</label>
-
                                 @if (Model.LastName != "")
                                 {
-
                                     @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @disabled = "disabled" })
                                 }
                                 else
                                 {
-
-
                                     @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.LastName)
                                 }
@@ -62,7 +54,7 @@
                                 @Html.ValidationMessageFor(m => m.Mobile)
                             </div>
                             <div class="col-md-4 mb-3">
-                                <img src="@Model.ProfilePicture" height="80" width="80" />
+                                <img src="@Model.ProfilePicture" height="75" width="75" />
                                 <input type="file" name="fileProfilePicture" id="Image" />
                             </div>
                             <div class="col-md-4 mb-3">
@@ -75,7 +67,6 @@
                                 @Html.TextBoxFor(m => m.SponsorName, new { @class = "form-control", @disabled = "disabled" })
                                 @Html.ValidationMessageFor(m => m.SponsorName)
                             </div>
-
                             <div class="col-md-4 mb-3">
                                 <label class="form-label">Email Id</label>
                                 @Html.TextBoxFor(m => m.EmailId, new { @class = "form-control" })
@@ -109,9 +100,6 @@
                                     @Html.TextBoxFor(m => m.AccountNumber, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.AccountNumber)
                                 }
-
-
-
                                 @*<input type ="text" id="txtEmail"  value="@item1.EmailId" disabled="disabled" class="form-control" />*@
 
                             </div>
@@ -127,7 +115,6 @@
                                     @Html.TextBoxFor(m => m.IFSC, new { @class = "form-control" })
                                     @Html.ValidationMessageFor(m => m.IFSC)
                                 }
-
                                 @*<input type ="text"  value="@item1.JoiningDate" disabled="disabled" class="form-control" />*@
 
                             </div>
@@ -223,8 +210,6 @@
         }
         return true;
     }
-
-
     function isNumberKey(evt) {
 
         var charCode = (evt.which) ? evt.which : event.keyCode;
