@@ -4,7 +4,6 @@
     ViewBag.Title = "CourseView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <style>
     #videoBox .coursesImg {
         height: 154px;
@@ -20,7 +19,6 @@
         -webkit-box-orient: vertical;
     }
 </style>
-
 <div class="page-content">
     <div class="row">
         <div class="col-12 col-lg-12 col-xl-12">
@@ -34,8 +32,6 @@
             </div>
         </div>
     </div>
-
-
     <div class="row">
         @if (Model != null)
         {
@@ -58,8 +54,6 @@
                                             <a href="@Item.CourseLink" class="text-white courseLink" target="_blank" >@Item.CourseLink</a>
                                         </li>
                                     </ul>*@
-
-
                                 @* modal video *@
                                 <div class="col">
                                     <!-- Modal -->

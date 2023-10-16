@@ -483,10 +483,7 @@ namespace DreamCrusher.Controllers
         }
 
         #endregion
-
-
-
-
+        
         public ActionResult PaidPayoutDetails(Reports model)
         {
             List<Reports> lst1 = new List<Reports>();
@@ -512,8 +509,7 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
-
-
+        
         [HttpPost]
         [ActionName("PaidPayoutDetails")]
         [OnAction(ButtonName = "btnDetails")]
@@ -675,7 +671,6 @@ namespace DreamCrusher.Controllers
                         foreach (DataRow r in ds.Tables[0].Rows)
                         {
                             Reports obj = new Reports();
-
                             obj.FK_InvestmentID = r["Pk_InvestmentId"].ToString();
                             //obj.EncryptKey = Crypto.Encrypt(r["Fk_SaleOrderId"].ToString());
                             //obj.ProductID = r["Fk_ProductId"].ToString();
@@ -688,9 +683,7 @@ namespace DreamCrusher.Controllers
                             //obj.TaxableAmount = r["TaxableAmount"].ToString();
                             obj.ProductName = r["ProductName"].ToString();
                             obj.HSNCode = r["HSNCode"].ToString();
-
                             ViewBag.OrderNo = r["Pk_InvestmentId"].ToString();
-
                             ViewBag.TotalFinalAmount = ds.Tables[1].Rows[0]["TotalFinalAmount"].ToString();
                             ViewBag.TotalFinalAmountWords = ds.Tables[1].Rows[0]["TotalFinalAmountWords"].ToString();
                             ViewBag.PurchaseDate = ds.Tables[0].Rows[0]["UpgradtionDate"].ToString();
@@ -699,7 +692,6 @@ namespace DreamCrusher.Controllers
                             ViewBag.AssociateAddress = ds.Tables[0].Rows[0]["Address"].ToString();
                             ViewBag.ValueBeforeTax = ds.Tables[1].Rows[0]["Taxable"].ToString();
                             ViewBag.TaxAdded = ds.Tables[1].Rows[0]["TaxAmount"].ToString();
-
                             ViewBag.CompanyName = SoftwareDetails.CompanyName;
                             ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
                             ViewBag.Pin1 = SoftwareDetails.Pin1;
@@ -711,11 +703,9 @@ namespace DreamCrusher.Controllers
                             ViewBag.Website = SoftwareDetails.Website;
                             ViewBag.EmailID = SoftwareDetails.EmailID;
                             list.Add(obj);
-
                         }
                         model.lsttopupreport = list;
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -728,7 +718,6 @@ namespace DreamCrusher.Controllers
             List<Reports> lst1 = new List<Reports>();
             model.Fk_UserId = Session["Pk_userId"].ToString();
             DataSet ds11 = model.GetDCMIReportForAssociate();
-
             if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds11.Tables[0].Rows)
@@ -745,7 +734,6 @@ namespace DreamCrusher.Controllers
                     Obj.DCMIGrossIncome = r["DCMIGrossIncome"].ToString();
                     Obj.TDS = r["TDS"].ToString();
                     Obj.AdminCharge = r["AdminCharge"].ToString();
-
                     lst1.Add(Obj);
                 }
                 model.lstdcmireport = lst1;
@@ -757,7 +745,6 @@ namespace DreamCrusher.Controllers
         [OnAction(ButtonName = "Search")]
 		public ActionResult GetDCMIReport(Reports model)
 		{
-		     
             List<Reports> lst1 = new List<Reports>();
 			model.LoginId=Session["LoginId"].ToString();
             DataSet ds11 = model.GetDCMIReport();

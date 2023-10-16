@@ -461,7 +461,6 @@ namespace DreamCrusher.Controllers
 
         public ActionResult UserReward(Reports model)
         {
-
             model.Fk_UserId = Session["Pk_UserId"].ToString();
             model.RewardID = "1";
 
@@ -485,7 +484,6 @@ namespace DreamCrusher.Controllers
                 }
                 model.lsttopupreport = lst;
             }
-
             return View(model);
         }
 
@@ -673,7 +671,6 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
-
         public ActionResult ProductTopupList()
         {
             Reports model = new Reports();
@@ -824,8 +821,7 @@ namespace DreamCrusher.Controllers
            // return File(stream.ToArray(), "application/pdf", "AcceptanceForm.pdf");
         //  }
     //}
-
-
+    
         public ActionResult GetSponserDetails1(string ReferBy, string Leg)
         {
             Common obj = new Common();
@@ -834,19 +830,14 @@ namespace DreamCrusher.Controllers
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-
                 obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
-
                 obj.Result = "Yes";
-
             }
             else
             {
                 obj.Result = "Invalid SponsorId";
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
-
-
             DataSet ds1 = obj.GetLegDetails();
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
             {
@@ -863,15 +854,11 @@ namespace DreamCrusher.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-        
-
         public ActionResult BinaryTrees()
         {
             ViewBag.Fk_UserId = Session["Pk_UserId"].ToString();
             return View();
         }
-
-
         public ActionResult IDCard(Reports model)
         {
             model.Fk_UserId = Session["Pk_UserId"].ToString();
@@ -888,8 +875,5 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
-
-        
-
     }
 }
