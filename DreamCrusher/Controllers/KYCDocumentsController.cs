@@ -15,11 +15,9 @@ namespace DreamCrusher.Controllers
     {
         //
         // GET: /KYCDocuments/
-
         public ActionResult KYCDocuments()
         {
             KYCDocuments objKYC = new KYCDocuments();
-
             //List<Profile> lstprofile = new List<Profile>();
             objKYC.PKUserID = Session["Pk_userId"].ToString();
             KYCDocuments obj = new KYCDocuments();
@@ -39,11 +37,9 @@ namespace DreamCrusher.Controllers
 				obj.MemberBankName=ds.Tables[1].Rows[0]["MemberBankName"].ToString();
 				obj.IFSCCode=ds.Tables[1].Rows[0]["IFSCCode"].ToString();
 				obj.MemberBranch=ds.Tables[1].Rows[0]["MemberBranch"].ToString();
-                
             }
             return View(obj);
         }
-
         [HttpPost]
         [ActionName("KYCDocuments")]
         [OnAction(ButtonName = "btnUpdate")]
@@ -91,13 +87,10 @@ namespace DreamCrusher.Controllers
                         //    obj.DocumentImage = "/KYCDocuments/" + Guid.NewGuid() + Path.GetExtension(file.FileName);
                         //    file.SaveAs(Path.Combine(Server.MapPath(obj.DocumentImage)));
                         //}
-
                     }
                     count++;
                 }
-                
                 obj.PKUserID = Session["Pk_userId"].ToString();
-                
                 DataSet ds = obj.UploadKYCDocuments();
                 if (ds != null && ds.Tables.Count > 0)
                 {

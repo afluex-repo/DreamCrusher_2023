@@ -12,7 +12,6 @@ namespace DreamCrusher.Controllers
 {
     public class HomeController : Controller
     {
-
         public ActionResult Index(Reports obj)
         {
             if (Session["Count"] == null)
@@ -34,7 +33,6 @@ namespace DreamCrusher.Controllers
                 Session["Count"] = null;
                 return View();
             }
-
         }
         public ActionResult RewardData(Reports obj)
         {
@@ -50,15 +48,12 @@ namespace DreamCrusher.Controllers
 
                     obj1.RewardImage = r["RewardImage"].ToString();
                     obj1.RewardName = r["RewardName"].ToString();
-
                     lsttop4.Add(obj1);
                 }
                 obj.lstassociate = lsttop4;
-
                 foreach (DataRow r in ds.Tables[1].Rows)
                 {
                     Reports obj1 = new Reports();
-
                     obj1.PK_RewardItemId = r["PK_UserProdRewardID"].ToString();
                     obj1.RewardID = r["FK_RewardId"].ToString();
                     obj1.Status = r["Status"].ToString();
@@ -67,12 +62,10 @@ namespace DreamCrusher.Controllers
                     obj1.RewardName = r["RewardName"].ToString();
                     obj1.Name = r["FirstName"].ToString();
                     obj1.RewardImage = r["RewardImage"].ToString();
-
                     lst.Add(obj1);
                 }
                 obj.lsttopupreport = lst;
             }
-
             return View(obj);
         }
         public ActionResult Index2()
@@ -112,7 +105,6 @@ namespace DreamCrusher.Controllers
             Session.Abandon();
             return View();
         }
-
         public ActionResult LoginAction(Home obj)
         {
             string FormName = "";
@@ -143,7 +135,6 @@ namespace DreamCrusher.Controllers
                             TempData["Login"] = "Incorrect Password";
                             FormName = "Login";
                             Controller = "Home";
-
                         }
                     }
                     else if (ds.Tables[0].Rows[0]["UserType"].ToString() == "Admin")
@@ -153,7 +144,6 @@ namespace DreamCrusher.Controllers
                         Session["UsertypeName"] = ds.Tables[0].Rows[0]["UsertypeName"].ToString();
                         Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
                         Session["Profile"] = ds.Tables[0].Rows[0]["Profile"].ToString();
-
                         if (ds.Tables[0].Rows[0]["isFranchiseAdmin"].ToString() == "True")
                         {
                             Session["FranchiseAdminID"] = ds.Tables[0].Rows[0]["Pk_adminId"].ToString();
@@ -172,15 +162,12 @@ namespace DreamCrusher.Controllers
                         FormName = "Login";
                         Controller = "Home";
                     }
-
                 }
-
                 else
                 {
                     TempData["Login"] = "Incorrect LoginId Or Password";
                     FormName = "Login";
                     Controller = "Home";
-
                 }
             }
             catch (Exception ex)
@@ -189,13 +176,8 @@ namespace DreamCrusher.Controllers
                 FormName = "Login";
                 Controller = "Home";
             }
-
             return RedirectToAction(FormName, Controller);
-
-
-
         }
-
         public ActionResult Registration()
         {
             Home obj = new Home();
@@ -225,11 +207,7 @@ namespace DreamCrusher.Controllers
                 DataSet ds = objcomm.GetMemberDetails();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-
                     obj.SponsorName = ds.Tables[0].Rows[0]["FullName"].ToString();
-
-
-
                 }
             }
             else
@@ -238,14 +216,12 @@ namespace DreamCrusher.Controllers
                 ViewBag.LeftChecked = "checked";
             }
             #endregion ForQueryString
-
             #region ddlgender
             List<SelectListItem> ddlgender = Common.BindGender();
             ViewBag.ddlgender = ddlgender;
             #endregion ddlgender
             return View(obj);
         }
-
         public ActionResult GetSponserDetails(string ReferBy)
         {
             Common obj = new Common();
@@ -253,11 +229,8 @@ namespace DreamCrusher.Controllers
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-
                 obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
-
                 obj.Result = "Yes";
-
             }
             else { obj.Result = "Invalid SponsorId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -270,7 +243,6 @@ namespace DreamCrusher.Controllers
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0 && Convert.ToInt32(ds.Tables[0].Rows[0][0]) > 0)
             {
                 obj.Result = "Mobile no. already registered!";
-
             }
             else { obj.Result = "Yes"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
@@ -278,7 +250,6 @@ namespace DreamCrusher.Controllers
         public ActionResult RegistrationAction(string SponsorId, string FirstName, string LastName, string Email, string MobileNo, string PanCard, string Address, string Gender, string OTP, string PinCode, string Leg, string DOB, string AdharNo, string UnderPlaceId)
         {
             Home obj = new Home();
-
             try
             {
                 obj.SponsorId = SponsorId;
@@ -292,7 +263,6 @@ namespace DreamCrusher.Controllers
                 obj.Gender = Gender;
                 obj.PinCode = PinCode;
                 obj.AdharNo = AdharNo;
-
                 obj.UnderPlaceId = UnderPlaceId;
                 obj.DOB = DOB;
                 obj.DOB = string.IsNullOrEmpty(obj.DOB) ? null : Common.ConvertToSystemDate(obj.DOB, "dd/MM/yyyy");
@@ -316,7 +286,6 @@ namespace DreamCrusher.Controllers
                         }
                         catch (Exception ex) { }
                         obj.Response = "1";
-
                     }
                     else
                     {
@@ -330,12 +299,10 @@ namespace DreamCrusher.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult ConfirmRegistration()
         {
             return View();
         }
-
         public ActionResult GetStateCity(string PinCode)
         {
             Common obj = new Common();
@@ -353,12 +320,10 @@ namespace DreamCrusher.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult Decrypt()
         {
             return View();
         }
-
         //[HttpPost]
         //[ActionName("Decrypt")]
         //[OnAction(ButtonName = "btndecript")]
@@ -367,46 +332,36 @@ namespace DreamCrusher.Controllers
         //    obj.DecriptPass = Crypto.Decrypt(obj.Password);
         //    return View(obj);
         //}
-
         public ActionResult GetName(Common obj)
         {
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-
                 obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
-
                 obj.Result = "Yes";
-
             }
             else { obj.Result = "Invalid LoginId"; }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult GeneratePlotPin(PlotPin obj)
         {
             DataSet ds = obj.GeneratePin();
-
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public virtual ActionResult Menu()
         {
             Home Menu = null;
-
             if (Session["_Menu"] != null)
             {
                 Menu = (Home)Session["_Menu"];
             }
             else
             {
-
                 Menu = Home.GetMenus(Session["Pk_AdminId"].ToString(), Session["UserTypeName"].ToString()); // pass employee id here
                 Session["_Menu"] = Menu;
             }
             return PartialView("_Menu", Menu);
         }
-
         #region FranchiseLogin
         public ActionResult FranchiseLogin()
         {
@@ -465,7 +420,6 @@ namespace DreamCrusher.Controllers
                     TempData["Login"] = "Incorrect LoginId Or Password";
                     FormName = "FranchiseLogin";
                     Controller = "Home";
-
                 }
             }
             catch (Exception ex)
@@ -538,7 +492,6 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
-
         public ActionResult Packages()
         {
             return View();
@@ -566,12 +519,10 @@ namespace DreamCrusher.Controllers
                     Home obj = new Home();
                     obj.PK_GalleryID = r["PK_GalleryID"].ToString();
                     obj.Image = r["Image"].ToString();
-
                     list.Add(obj);
                 }
                 model.lstGallery = list;
             }
-
             return View(model);
         }
         public ActionResult Ventures()
@@ -587,22 +538,18 @@ namespace DreamCrusher.Controllers
             return View();
         }
         #endregion Website
-
         public ActionResult BookingRequest(Home model)
         {
             List<SelectListItem> ddlReligion = Common.BindReligion();
             ViewBag.ddlReligion = ddlReligion;
-
             #region ddlpaymentmode
             List<SelectListItem> ddlpaymentmode = Common.BindPaymentMode();
             ViewBag.ddlpaymentmode = ddlpaymentmode;
             #endregion
-
             #region ddlgender
             List<SelectListItem> ddlgender = Common.BindGender();
             ViewBag.ddlgender = ddlgender;
             #endregion ddlgender
-
             List<SelectListItem> ddlcategory = Common.BindCategory();
             ViewBag.ddlcategory = ddlcategory;
             return View(model);
@@ -615,72 +562,56 @@ namespace DreamCrusher.Controllers
         {
             List<SelectListItem> ddlReligion = Common.BindReligion();
             ViewBag.ddlReligion = ddlReligion;
-
-
             #region ddlgender
             List<SelectListItem> ddlgender = Common.BindGender();
             ViewBag.ddlgender = ddlgender;
             #endregion ddlgender
-
             #region ddlpaymentmode
             List<SelectListItem> ddlpaymentmode = Common.BindPaymentMode();
             ViewBag.ddlpaymentmode = ddlpaymentmode;
             #endregion
-
             List<SelectListItem> ddlcategory = Common.BindCategory();
             ViewBag.ddlcategory = ddlcategory;
-
             try
             {
-
                 foreach (var file in postedFile3)
                 {
                     if (file != null && file.ContentLength > 0)
                     {
-
                         model.BankPhoto = "/images/BankPhoto/" + Guid.NewGuid() + Path.GetExtension(file.FileName);
                         file.SaveAs(Path.Combine(Server.MapPath(model.BankPhoto)));
                     }
                 }
-
-
                 foreach (var file in postedFile2)
                 {
                     if (file != null && file.ContentLength > 0)
                     {
-
                         model.PanCardPhoto = "/images/PanCardPhoto/" + Guid.NewGuid() + Path.GetExtension(file.FileName);
                         file.SaveAs(Path.Combine(Server.MapPath(model.PanCardPhoto)));
                     }
                 }
-
                 foreach (var file in postedFile4)
                 {
                     if (file != null && file.ContentLength > 0)
                     {
-
                         model.AdharBackSide = "/images/AdharCard/" + Guid.NewGuid() + Path.GetExtension(file.FileName);
                         file.SaveAs(Path.Combine(Server.MapPath(model.AdharBackSide)));
                     }
                 }
-
                 foreach (var file in postedFile1)
                 {
                     if (file != null && file.ContentLength > 0)
                     {
-
                         model.AdharCardPhoto = "/images/AdharCard/" + Guid.NewGuid() + Path.GetExtension(file.FileName);
                         file.SaveAs(Path.Combine(Server.MapPath(model.AdharCardPhoto)));
                     }
                 }
                 model.DDChequeDate = string.IsNullOrEmpty(model.DDChequeDate) ? null : Common.ConvertToSystemDate(model.DDChequeDate, "dd/MM/yyyy");
-
                 DataSet ds = model.BookingRequest();
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
                     if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
                     {
-
                         TempData["BookingRequest"] = "Request Send Successully";
                     }
                     else if (ds.Tables[0].Rows[0]["Msg"].ToString() == "0")
@@ -693,10 +624,8 @@ namespace DreamCrusher.Controllers
             {
                 TempData["BookingRequest"] = ex.Message;
             }
-
             return RedirectToAction("BookingRequest");
         }
-
         public ActionResult GetSponserDetails1(string ReferBy, string Leg)
         {
             Common obj = new Common();
@@ -705,25 +634,19 @@ namespace DreamCrusher.Controllers
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-
                 obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
-
                 obj.Result = "Yes";
-
             }
             else
             {
                 obj.Result = "Invalid SponsorId";
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
-
-
             DataSet ds1 = obj.GetLegDetails();
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
             {
                 if (ds1.Tables[0].Rows[0]["Msg"].ToString() == "1")
                 {
-
                     obj.Result = "Yes";
                 }
                 else
@@ -734,24 +657,20 @@ namespace DreamCrusher.Controllers
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
-
         public ActionResult SetEarnerValue(Home model)
         {
             return View(model);
         }
-
         [HttpPost]
         [OnAction(ButtonName = "Update")]
         [ActionName("SetEarnerValue")]
         public ActionResult UpdateEarnerValue(Home model)
         {
-
             Session["Pk_AdminId"]=Session["Pk_AdminId"].ToString();
             Session["UserTypeName"] = Session["UserTypeName"].ToString();
             model.AddedBy = Session["Pk_AdminId"].ToString();
             model.FromDate = string.IsNullOrEmpty(model.FromDate) ? null : Common.ConvertToSystemDate(model.FromDate, "dd/MM/yyyy");
             model.ToDate = string.IsNullOrEmpty(model.ToDate) ? null : Common.ConvertToSystemDate(model.ToDate, "dd/MM/yyyy");
-
             DataSet ds = model.UpdatingEarnerValue();
             if(ds!=null && ds.Tables.Count>0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -766,31 +685,19 @@ namespace DreamCrusher.Controllers
             }
             return RedirectToAction("SetEarnerValue");
         }
-        
         public virtual ActionResult Menu1()
         {
             Home Menu = null;
-
             if (Session["_Menu1"] != null)
             {
                 Menu = (Home)Session["_Menu1"];
             }
             else
             {
-
                 Menu = Home.GetMenus(Session["Pk_AdminId"].ToString(), Session["UserTypeName"].ToString()); // pass employee id here
                 Session["_Menu1"] = Menu;
             }
             return PartialView("_Menu1", Menu);
         }
-
-
-
-
-
-
-
-
-
     }
 }
