@@ -40,6 +40,8 @@ namespace DreamCrusher.Controllers
             }
             return View(obj);
         }
+
+
         [HttpPost]
         [ActionName("KYCDocuments")]
         [OnAction(ButtonName = "btnUpdate")]
@@ -90,6 +92,7 @@ namespace DreamCrusher.Controllers
                     }
                     count++;
                 }
+
                 obj.PKUserID = Session["Pk_userId"].ToString();
                 DataSet ds = obj.UploadKYCDocuments();
                 if (ds != null && ds.Tables.Count > 0)
@@ -108,6 +111,7 @@ namespace DreamCrusher.Controllers
                     }
                 }
             }
+
             catch (Exception ex)
             {
                 TempData["DocumentUpload"] = ex.Message;
@@ -116,6 +120,9 @@ namespace DreamCrusher.Controllers
             }
             return RedirectToAction(FormName, Controller);
         }
+
+
+
 
     }
 }
