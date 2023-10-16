@@ -656,6 +656,8 @@ namespace DreamCrusher.Controllers
 
             return View(newdata);
         }
+
+
         public ActionResult PrintTopUp(string ToLoginID)
         {
             List<Reports> list = new List<Reports>();
@@ -713,6 +715,11 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
+
+
+
+
+
 		public ActionResult DCMIReport(Reports model)
         {
             List<Reports> lst1 = new List<Reports>();
@@ -740,6 +747,11 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
 		}
+
+
+
+
+
 		[HttpPost]
         [ActionName("DCMIReport")]
         [OnAction(ButtonName = "Search")]
@@ -771,6 +783,11 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
 		}
+
+
+
+
+
         public ActionResult CourseView(Reports model)
         {
             model.LoginId = Session["LoginId"].ToString();
