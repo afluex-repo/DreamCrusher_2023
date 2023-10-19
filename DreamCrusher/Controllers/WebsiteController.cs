@@ -23,6 +23,49 @@ namespace DreamCrusher.Controllers
         {
             return View();
         }
+        public ActionResult Savecontactus(Website obj)
+        {
+            string FormName = "";
+            string Controller = "";
+            try
+            {
+                DataSet ds = obj.Savecontactus();
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    {
+                        TempData["Savecontactus"] = "Your contact has been submitted successfully..";
+                        FormName = "contact";
+                        Controller = "Website";
+                    }
+                    else if(ds.Tables[0].Rows[0][0].ToString() == "0")
+                    {
+                        TempData["Errcontactus"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        FormName = "contact";
+                        Controller = "Website";
+                    }
+                    else
+                    {
+                        TempData["Errcontactus"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        FormName = "contact";
+                        Controller = "Website";
+                    }
+                }
+                else
+                {
+                    TempData["Errcontactus"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                    FormName = "contact";
+                    Controller = "Website";
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["Errcontactus"] = ex.Message;
+                FormName = "contact";
+                Controller = "Website";
+            }
+            return RedirectToAction(FormName, Controller);
+        }
         public ActionResult ProductServies()
         {
             return View();

@@ -1695,6 +1695,27 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
+        public ActionResult ContactUsDetails(Reports model)
+        {
+            List<Reports> lst = new List<Reports>();
+            DataSet ds11 = model.GetContactUsDetails();
+            if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds11.Tables[0].Rows)
+                {
+                    Reports Obj = new Reports();
+                    Obj.ContactId = r["PK_ContactId"].ToString();
+                    Obj.Name = r["Name"].ToString();
+                    Obj.Email = r["Email"].ToString();
+                    Obj.Mobile = r["Mobile"].ToString();
+                    Obj.Subject = r["Subject"].ToString();
+                    Obj.Message = r["Message"].ToString();
+                    lst.Add(Obj);
+                }
+                model.lstcontactus = lst;
+            }
+            return View(model);
+        }
 
     }
 }
