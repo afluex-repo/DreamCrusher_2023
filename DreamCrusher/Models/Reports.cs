@@ -13,7 +13,6 @@ namespace DreamCrusher.Models
         public string passportNo { get; set; }
         public string DCMI { get; set; }
         public string AdharCardPhoto { get; set; }
-
         public string AssociateName { get; set; }
         public string PaymentMode { get; set; }
         public string DDChequeNo { get; set; }
@@ -22,9 +21,7 @@ namespace DreamCrusher.Models
         public string PanCardPhoto { get; set; }
         public string BankPhoto { get; set; }
         public string Area { get; set; }
-
         public string EncryptPayoutNo { get; set; }
-
         public string AdharBackSide { get; set; }
         public string BatchNo { get; set; }
         public string CGST { get; set; }
@@ -52,70 +49,44 @@ namespace DreamCrusher.Models
         public string PAN { get; set; }
         public string Leg { get; set; }
         public string LoginId { get; set; }
-
         public string Name { get; set; }
-
         public string JoiningDate { get; set; }
-
         public string Mobile { get; set; }
-
         public string Email { get; set; }
         public string CssClass { get; set; }
         public string SponsorId { get; set; }
         public string PayoutNo { get; set; }
         public string SponsorName { get; set; }
         public List<Reports> lstassociate { get; set; }
-
         public string PermanentDate { get; set; }
-
         public string Status { get; set; }
         public string FromLoginId { get; set; }
-
         public string FromUserName { get; set; }
-
         public string IncomeType { get; set; }
-
         public string Date { get; set; }
-
         public List<Reports> lstunpaidincomes { get; set; }
         public List<Reports> lstRequestlist { get; set; }
         public string TransactionDate { get; set; }
-
         public string FromName { get; set; }
-
         public string ToName { get; set; }
-
         public string ToLoginID { get; set; }
-
         public string ClosingDate { get; set; }
-
         public string BinaryIncome { get; set; }
-
         public string GrossAmount { get; set; }
-
         public string TDSAmount { get; set; }
-
         public string ProcessingFee { get; set; }
-
         public string NetAmount { get; set; }
         public string Password { get; set; }
-
         public string isBlocked { get; set; }
-
         public string PK_DocumentID { get; set; }
-
         public string DocumentNumber { get; set; }
-
         public string DocumentType { get; set; }
-
         public string DocumentImage { get; set; }
-
         public List<Reports> lsttopupreport { get; set; }
         public List<Reports> lstAdvancePaymentReport { get; set; }
         public List<Reports> PaidPayoutlist { get; set; }
 		public List<Reports> lstdcmireport { get; set; }
         public string UpgradtionDate { get; set; }
-
         public string Package { get; set; }
         public string PaymentDate { get; set; }
         public string Quantity { get; set; }
@@ -126,12 +97,9 @@ namespace DreamCrusher.Models
         public string AdharImage { get; set; }
         public string Pancard { get; set; }
         public string PancardImage { get; set; }
-
         public string TopupBy { get; set; }
-
         public string FromDate { get; set; }
         public string ToDate { get; set; }
-
         public string CustomerId { get; set; }
         public string FatherName { get; set; }
         public string DOB { get; set; }
@@ -150,7 +118,12 @@ namespace DreamCrusher.Models
 		public string TotalBV{get;set;}
         public string LeftBV { get; set; }
         public string RightBV { get; set; }
-
+        public List<Reports> lstCourse { get; set; }
+        public string CourseID { get; set; }
+        public string CourseName { get; set; }
+        public string CourseImage { get; set; }
+        public string CourseDate { get; set; }
+        public string CourseLink { get; set; }
         public DataSet GetPayoutReport()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
@@ -223,10 +196,8 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetAgentListForKYC", para);
             return ds;
         }
-
         public DataSet GetDirectList()
         {
-
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@Name", Name),
                                     new SqlParameter("@FromDate", FromDate),
@@ -239,7 +210,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetDirectList", para);
             return ds;
         }
-
         public DataSet GetDirectListL2()
         {
 
@@ -255,7 +225,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetDirectListL2", para);
             return ds;
         }
-
         public DataSet GetDownlineList()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
@@ -278,7 +247,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("ApproveKYC", para);
             return ds;
         }
-
         public DataSet GetTopupReport()
         {
             SqlParameter[] para = {   new SqlParameter("@LoginID", LoginId),
@@ -317,13 +285,10 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetTopupreportByKit", para);
             return ds;
         }
-
         public List<Reports> lsttransactionlog { get; set; }
         public List<Reports> lstVoucherLedger { get; set; }
         public string Action { get; set; }
-
         public string Remarks { get; set; }
-
         public DataSet GetTransactionLog()
         {
             SqlParameter[] para = {     new SqlParameter("@Action", Action),
@@ -333,7 +298,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetTransactionLog", para);
             return ds;
         }
-
         public DataSet GetUnPaidIncomes()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId) };
@@ -367,14 +331,10 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetPrintData", para);
             return ds;
         }
-
         public string PrintingDate { get; set; }
         public string PlotNumber { get; set; }
-
         public string ProductName { get; set; }
         public string HSNCode { get; set; }
-
-
         public DataSet GetBoosterAchieverCurrent()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
@@ -393,7 +353,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetPayBoosterAchieverCurrent", para);
             return ds;
         }
-
         public DataSet PayBooster()
         {
             SqlParameter[] para = {
@@ -462,7 +421,6 @@ namespace DreamCrusher.Models
         public string RewardName { get; set; }
         public string Contact { get; set; }
         public string PK_RewardItemId { get; set; }
-
         public DataSet RewardList()
         {
             SqlParameter[] para = {
@@ -481,7 +439,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("ClaimReward", para);
             return ds;
         }
-
         public DataSet GetTDSReport()
         {
             SqlParameter[] para = { new SqlParameter("@PanNumber", PAN) ,
@@ -491,7 +448,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetTDSReport", para);
             return ds;
         }
-
         public DataSet GetTDSReportByLoginID()
         {
             SqlParameter[] para = { new SqlParameter("@PanNumber", PAN) ,
@@ -509,7 +465,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetPinTransferReport", para);
             return ds;
         }
-
         #region PayPayout
         public DataSet GetPayPayout()
         {
@@ -537,7 +492,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("PrintTopUpReport", para);
             return ds;
         }
-
         public DataSet AdvancePaymentReport()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
@@ -590,7 +544,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("ClaimProductReward", para);
             return ds;
         }
-
         #region productbooster
         public DataSet ProductBoosterAchieverDetails()
         {
@@ -639,20 +592,16 @@ namespace DreamCrusher.Models
                                     new SqlParameter("@TxnDate", TransactionDate),
                                     new SqlParameter("@PaidDate", PaymentDate),
                                     new SqlParameter("@AddedBy", AddedBy),
-
-
             }
                                     ;
             DataSet ds = DBHelper.ExecuteQuery("ApproveReward", para);
             return ds;
         }
-
         public DataSet GetBookingRequestList()
         {
             DataSet ds = DBHelper.ExecuteQuery("BookingRequestList");
             return ds;
         }
-
         public DataSet PaidPayoutDetailsList()
         {
             SqlParameter[] para = {
@@ -682,7 +631,6 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetDCMIForAdmin", para);
             return ds;
         }
-
         public DataSet GetDCMIReportForAssociate()
         {
             SqlParameter[] para = {
@@ -705,6 +653,23 @@ namespace DreamCrusher.Models
                  new SqlParameter("@Month", Month)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetmonthlySpillBonusReport", para);
+            return ds;
+        }
+        public DataSet GetCourseListForAllotCourses()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@FK_PackageId", Package),
+                new SqlParameter("@loginid", LoginId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCoursesForUser", para);
+            return ds;
+        }
+        public DataSet IDCard()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@FK_UserID", Fk_UserId)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("IDCard", para);
             return ds;
         }
     }

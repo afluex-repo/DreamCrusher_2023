@@ -31,6 +31,7 @@ namespace DreamCrusher.Models
         public List<Master> lstNews { get; set; }
 
         public List<Master> lstCourse { get; set; }
+        public List<Master> lstCourses { get; set; }
         public string CourseID { get; set; }
         public string FK_CourseID { get; set; }
         public string CourseName { get; set; }
@@ -38,6 +39,9 @@ namespace DreamCrusher.Models
         public string CourseImage { get; set; }
         public string CourseLink { get; set; }
         public string CourseDate { get; set; }
+        public string status { get; set; }
+
+
 
         public string Package { get; set; }
         public string Fk_PackageId { get; set; }
@@ -230,6 +234,27 @@ namespace DreamCrusher.Models
         {
             SqlParameter[] para = { new SqlParameter("@FK_PackageId", Package)};
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCourses", para);
+            return ds;
+        }
+
+
+        public DataSet ActiveProduct()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@ProductID", ProductID),
+                                      new SqlParameter("@ApprovedBy", AddedBy)
+                                     };
+            DataSet ds = DBHelper.ExecuteQuery("ActiveProduct", para);
+            return ds;
+        }
+
+        public DataSet InactiveProduct()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@ProductID", ProductID),
+                                      new SqlParameter("@RejectedBy", AddedBy)
+                                     };
+            DataSet ds = DBHelper.ExecuteQuery("InactiveProduct", para);
             return ds;
         }
     }
