@@ -1,0 +1,97 @@
+﻿@model DreamCrusher.Models.Transactions
+@{
+    ViewBag.Title = "UpdateMemberLogin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("UpdateMemberLogin", "Transactions", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+{
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Update Member Login</h5>
+                        </div>
+                        <p style="color: white;;display: block; margin-bottom:0px; text-align:center">
+                            @TempData["UpdateMemberLogin"]
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="col-sm-3 col-form-label">Login Id <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.LoginID, new { @id = "txtLoginID", @required = "required", @class = "form-control", @onchange = "getMemberDetails(this);" })
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-3 col-form-label">Name <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.MemberName, new { @id = "txtMemberName", @class = "form-control", @disabled = "disabled" })
+                                @Html.HiddenFor(m => m.PK_UserID)
+                            </div>
+                            <div class="col-md-4">
+                                <label class="col-sm-3 col-form-label">New Login Id <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.NewLoginID, new { @id = "txtNewLoginID", @class = "form-control", @required = "required" })
+                            </div>
+
+                            <div class="col-12">
+                                <input type="submit" id="btnUpdate" class="btn btn-light px-3" name="btnUpdate" value="Update" onclick="return validateForm();" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<style>
+    .errortext {
+        border: 1px solid red !important;
+        /*background-color: #fff0f0 !important;*/
+    }
+</style>
+
+<script>
+    function getMemberDetails(obj) {
+
+        $.ajax({
+            url: '/Transactions/GetMemberDetails',
+            type: 'GET',
+            dataType: 'JSON',
+            data: { 'LoginID': $(obj).val() },
+            success: function (response) {
+                if (response.Result == "Yes") {
+
+                    $('#txtMemberName').val(response.DisplayName);
+                }
+                else {
+
+                    $('#txtLoginID').val('');
+                    $('#txtMemberName').val('');
+                    alert(response.Result);
+                }
+            }
+        })
+    }
+
+    function validateForm() {
+        $(".errortext").removeClass("errortext");
+        if ($('#txtLoginID').val() == '') {
+            $("#txtLoginID").addClass('errortext');
+            $('#txtLoginID').focus();
+            return false;
+        }
+        if ($('#txtNewLoginID').val() == '') {
+            $("#txtNewLoginID").addClass('errortext');
+            $('#txtNewLoginID').focus();
+            return false;
+        }
+
+    }
+
+</script>

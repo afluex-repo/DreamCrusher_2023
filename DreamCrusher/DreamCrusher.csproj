@@ -2977,7 +2977,6 @@
     <Content Include="images\BankPhoto\4c378d2b-6647-4df8-a7e8-3dca14b88796.jpg" />
     <Content Include="images\BankPhoto\987177c6-132b-4ebf-b4c1-41a6ba0cae48.jpg" />
     <Content Include="images\delete-icon.png" />
-    <Content Include="images\dhara-logo.png" />
     <Content Include="images\edit-icon.png" />
     <Content Include="images\exel.png" />
     <Content Include="images\GalleryImages\727731da-d0a0-46f8-91ef-f470018eef34.jpg" />
@@ -2992,7 +2991,6 @@
     <Content Include="images\GalleryImages\f97a3e91-2846-4c0c-84c1-eb90693dafb5.jpg" />
     <Content Include="images\lock.png" />
     <Content Include="images\loader.gif" />
-    <Content Include="images\logo.png" />
     <Content Include="images\mail.png" />
     <Content Include="images\PanCardPhoto\06e83d0f-9ca8-47c1-85fe-f06b5ce06046.jpg" />
     <Content Include="images\PanCardPhoto\362e5919-0b4e-4815-aa41-cdc1ccf56270.jpg" />
@@ -3112,6 +3110,7 @@
     <Content Include="assets\fonts\webfonts\fa-solid-900.woff2" />
     <Content Include="assets\fonts\webfonts\fa-solid-900d41d.eot" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="Views\User\IDCard.cshtml" />
     <Content Include="Websiteassets\css\animate.css" />
     <Content Include="Websiteassets\css\bootstrap.min.css" />
     <Content Include="Websiteassets\css\font-awesome.min.css" />
@@ -3209,7 +3208,6 @@
     <Content Include="Websiteassets\images\icons\head.svg" />
     <Content Include="Websiteassets\images\icons\risks.svg" />
     <Content Include="Websiteassets\images\login_logo.jpg" />
-    <Content Include="Websiteassets\images\logo-orange-white.png" />
     <Content Include="Websiteassets\images\logo-orange.jpeg" />
     <Content Include="Websiteassets\images\logo-orange.png" />
     <Content Include="Websiteassets\images\partner\main-home\1.png" />
@@ -3425,6 +3423,7 @@
     <Content Include="AssociatePanelcss\bower_components\summernote\dist\font\summernotef534.ttf" />
     <Content Include="AssociatePanelcss\bower_components\summernote\dist\font\summernotef534.woff" />
     <None Include="Properties\PublishProfiles\DigiDirect.pubxml" />
+    <None Include="Properties\PublishProfiles\DreamCrusher.pubxml" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
@@ -3828,7 +3827,6 @@
     <Content Include="Views\Home\Gallery.cshtml" />
     <Content Include="Views\Master\GalleryMaster.cshtml" />
     <Content Include="Views\Master\GalleryMasterList.cshtml" />
-    <Content Include="Views\Shared\_AdminLayoutTesting.cshtml" />
     <Content Include="Views\Website\about.cshtml" />
     <Content Include="Views\Website\contact.cshtml" />
     <Content Include="Views\Website\Gallery.cshtml" />
@@ -3838,6 +3836,19 @@
     <Content Include="Views\Website\ProductServies.cshtml" />
     <Content Include="Views\Website\TermCondition.cshtml" />
     <Content Include="Views\AdminReports\MonthlySpillBonusReport.cshtml" />
+    <Content Include="Views\User\BinaryTrees.cshtml" />
+    <Content Include="Views\Admin\BinaryTrees.cshtml" />
+    <Content Include="Views\Home\_Menu1.cshtml" />
+    <Content Include="Views\Shared\_LayoutTesting.cshtml" />
+    <Content Include="Views\Shared\_LayoutWebsite.cshtml" />
+    <Content Include="Views\Shared\_LayoutForTree.cshtml" />
+    <Content Include="Views\Shared\_AdminLayoutForTree.cshtml" />
+    <Content Include="Views\Master\AllotCoursesOnPackage.cshtml" />
+    <Content Include="Views\Master\CourseList.cshtml" />
+    <Content Include="Views\Master\CourseMaster.cshtml" />
+    <Content Include="Views\Master\CourseView.cshtml" />
+    <Content Include="Views\UserReports\CourseView.cshtml" />
+    <Content Include="Views\AdminReports\ContactUsDetails.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -3866,7 +3877,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>58419</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:58418/</IISUrl>
+          <IISUrl>http://localhost:58412/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

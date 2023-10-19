@@ -35,15 +35,12 @@ namespace DreamCrusher.Controllers
                 ViewBag.TotalActive = ds.Tables[0].Rows[0]["TotalActive"].ToString();
                 ViewBag.TotalInActive = ds.Tables[0].Rows[0]["TotalInActive"].ToString();
                 ViewBag.Recognition = ds.Tables[0].Rows[0]["Recoginition"].ToString();
-
                 ViewBag.PaidBusinessLeft = ds.Tables[2].Rows[0]["PaidBusinessLeft"].ToString();
                 ViewBag.PaidBusinessRight = ds.Tables[2].Rows[0]["PaidBusinessRight"].ToString();
                 ViewBag.TotalBusinessLeft = ds.Tables[2].Rows[0]["TotalBusinessLeft"].ToString();
                 ViewBag.TotalBusinessRight = ds.Tables[2].Rows[0]["TotalBusinessRight"].ToString();
                 ViewBag.CarryLeft = ds.Tables[2].Rows[0]["CarryLeft"].ToString();
                 ViewBag.CarryRight = ds.Tables[2].Rows[0]["CarryRight"].ToString();
-
-
                 ViewBag.LoginId = ds.Tables[3].Rows[0]["LoginId"].ToString();
                 ViewBag.DisplayName = ds.Tables[3].Rows[0]["Name"].ToString();
                 ViewBag.JoiningDate = ds.Tables[3].Rows[0]["JoiningDate"].ToString();
@@ -51,7 +48,6 @@ namespace DreamCrusher.Controllers
                 Session["Name"] = ds.Tables[3].Rows[0]["Name"].ToString();
                 Session["Name1"] = ds.Tables[3].Rows[0]["Name"].ToString();
                 Session["JoiningDate"] = ds.Tables[3].Rows[0]["JoiningDate"].ToString();
-
                 //ViewBag.ProductPaidBusinessLeft = ds.Tables[3].Rows[0]["PaidBusinessLeft"].ToString();
                 //ViewBag.ProductPaidBusinessRight = ds.Tables[3].Rows[0]["PaidBusinessRight"].ToString();
                 //ViewBag.ProductTotalBusinessLeft = ds.Tables[3].Rows[0]["TotalBusinessLeft"].ToString();
@@ -102,18 +98,15 @@ namespace DreamCrusher.Controllers
             #endregion Investment
             return View(model);
         }
-
         public ActionResult ViewProfile()
         {
             Profile objprofile = new Profile();
-
             List<Profile> lstprofile = new List<Profile>();
             objprofile.LoginId = Session["LoginId"].ToString();
             Profile obj = new Profile();
             DataSet ds = objprofile.GetUserProfile();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-
                 obj.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
                 obj.FirstName = ds.Tables[0].Rows[0]["FirstName"].ToString();
                 obj.LastName = ds.Tables[0].Rows[0]["LastName"].ToString();
@@ -131,7 +124,6 @@ namespace DreamCrusher.Controllers
             }
             return View(obj);
         }
-
         [HttpPost]
         [ActionName("ViewProfile")]
         [OnAction(ButtonName = "btnUpdate")]
@@ -146,7 +138,6 @@ namespace DreamCrusher.Controllers
                     obj.ProfilePicture = "/images/ProfilePicture/" + Guid.NewGuid() + Path.GetExtension(fileProfilePicture.FileName);
                     fileProfilePicture.SaveAs(Path.Combine(Server.MapPath(obj.ProfilePicture)));
                 }
-
                 //Profile objProfile = new Profile();
                 obj.PK_UserID = Session["Pk_userId"].ToString();
                 DataSet ds = obj.UpdateProfile();
@@ -154,6 +145,7 @@ namespace DreamCrusher.Controllers
                 {
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
+                        Session["Profile"] = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
                         TempData["UpdateProfile"] = "Profile updated successfully..";
                         FormName = "ViewProfile";
                         Controller = "User";
@@ -175,7 +167,6 @@ namespace DreamCrusher.Controllers
             }
             return RedirectToAction(FormName, Controller);
         }
-
         public ActionResult SaveMessages(string Message, string MessageBy)
         {
             DashBoard obj = new DashBoard();
@@ -328,7 +319,6 @@ namespace DreamCrusher.Controllers
                         Session["LoginId"] = ds.Tables[0].Rows[0]["LoginId"].ToString();
                         Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
                         Session["PassWord"] = Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString());
-
                         Session["MobileNo"] = ds.Tables[0].Rows[0]["MobileNo"].ToString();
                         try
                         {
@@ -337,7 +327,6 @@ namespace DreamCrusher.Controllers
                         }
                         catch { }
                         obj.Response = "1";
-
                     }
                     else
                     {
@@ -356,7 +345,6 @@ namespace DreamCrusher.Controllers
         {
             return View();
         }
-
         public ActionResult GetStateCity(string PinCode)
         {
             Common obj = new Common();
@@ -386,7 +374,6 @@ namespace DreamCrusher.Controllers
             {
                 MobileNo = "8299051766";
             }
-
             string str = BLSMS.SendSMS2(SMSCredential.UserName, SMSCredential.Password, SMSCredential.SenderId, MobileNo, str2);
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
@@ -395,7 +382,6 @@ namespace DreamCrusher.Controllers
         {
             return View();
         }
-
         //public ActionResult Registration()
         //{
         //    Home model = new Home();
@@ -459,7 +445,6 @@ namespace DreamCrusher.Controllers
 
         public ActionResult UserReward(Reports model)
         {
-
             model.Fk_UserId = Session["Pk_UserId"].ToString();
             model.RewardID = "1";
 
@@ -483,7 +468,6 @@ namespace DreamCrusher.Controllers
                 }
                 model.lsttopupreport = lst;
             }
-
             return View(model);
         }
 
@@ -533,7 +517,6 @@ namespace DreamCrusher.Controllers
                     else
                     {
                         TempData["Rewardmsg"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
-
                     }
                 }
             }
@@ -604,7 +587,6 @@ namespace DreamCrusher.Controllers
             }
             catch (Exception ex)
             {
-
             }
             return View(model);
         }
@@ -624,7 +606,6 @@ namespace DreamCrusher.Controllers
                         foreach (DataRow r in ds.Tables[0].Rows)
                         {
                             Reports obj = new Reports();
-
                             obj.FK_InvestmentID = r["Pk_InvestmentId"].ToString();
                             //obj.EncryptKey = Crypto.Encrypt(r["Fk_SaleOrderId"].ToString());
                             //obj.ProductID = r["Fk_ProductId"].ToString();
@@ -637,9 +618,7 @@ namespace DreamCrusher.Controllers
                             //obj.TaxableAmount = r["TaxableAmount"].ToString();
                             obj.ProductName = r["ProductName"].ToString();
                             obj.HSNCode = r["HSNCode"].ToString();
-
                             ViewBag.OrderNo = r["Pk_InvestmentId"].ToString();
-
                             ViewBag.TotalFinalAmount = ds.Tables[1].Rows[0]["TotalFinalAmount"].ToString();
                             ViewBag.TotalFinalAmountWords = ds.Tables[1].Rows[0]["TotalFinalAmountWords"].ToString();
                             ViewBag.PurchaseDate = ds.Tables[0].Rows[0]["UpgradtionDate"].ToString();
@@ -648,7 +627,6 @@ namespace DreamCrusher.Controllers
                             ViewBag.AssociateAddress = ds.Tables[0].Rows[0]["Address"].ToString();
                             ViewBag.ValueBeforeTax = ds.Tables[1].Rows[0]["Taxable"].ToString();
                             ViewBag.TaxAdded = ds.Tables[1].Rows[0]["TaxAmount"].ToString();
-
                             ViewBag.CompanyName = SoftwareDetails.CompanyName;
                             ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
                             ViewBag.Pin1 = SoftwareDetails.Pin1;
@@ -659,11 +637,9 @@ namespace DreamCrusher.Controllers
                             ViewBag.Website = SoftwareDetails.Website;
                             ViewBag.EmailID = SoftwareDetails.EmailID;
                             list.Add(obj);
-
                         }
                         model.lsttopupreport = list;
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -671,7 +647,6 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
-
         public ActionResult ProductTopupList()
         {
             Reports model = new Reports();
@@ -698,11 +673,9 @@ namespace DreamCrusher.Controllers
             }
             catch (Exception ex)
             {
-
             }
             return View(model);
         }
-
         #region ProductReward
 
         public ActionResult UserProductReward(Reports model)
@@ -793,7 +766,6 @@ namespace DreamCrusher.Controllers
             return RedirectToAction("UserProductReward");
         }
         #endregion
-
         public ActionResult AcceptanceForm(DashBoard model)
         {
             model.Fk_UserId = Session["Pk_UserId"].ToString();
@@ -807,22 +779,21 @@ namespace DreamCrusher.Controllers
             ViewBag.Mobile = ds.Tables[3].Rows[0]["Mobile"].ToString();
             return View(model);
         }
-		//[HttpPost]
-      // [ValidateInput(false)]
-      // public FileResult Export(string GridHtml)
-       // {
-       // using (MemoryStream stream = new System.IO.MemoryStream())
-          // {
-           // StringReader sr = new StringReader(GridHtml);
-           // Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
-           // PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);              
-           // pdfDoc.Open();
-          //  XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
+        //[HttpPost]
+        // [ValidateInput(false)]
+        // public FileResult Export(string GridHtml)
+        // {
+        // using (MemoryStream stream = new System.IO.MemoryStream())
+        // {
+        // StringReader sr = new StringReader(GridHtml);
+        // Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 100f, 0f);
+        // PdfWriter writer = PdfWriter.GetInstance(pdfDoc, stream);              
+        // pdfDoc.Open();
+        //  XMLWorkerHelper.GetInstance().ParseXHtml(writer, pdfDoc, sr);
         //    pdfDoc.Close();
-           // return File(stream.ToArray(), "application/pdf", "AcceptanceForm.pdf");
+        // return File(stream.ToArray(), "application/pdf", "AcceptanceForm.pdf");
         //  }
-    //}
-
+        //}
 
         public ActionResult GetSponserDetails1(string ReferBy, string Leg)
         {
@@ -832,19 +803,14 @@ namespace DreamCrusher.Controllers
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
-
                 obj.DisplayName = ds.Tables[0].Rows[0]["FullName"].ToString();
-
                 obj.Result = "Yes";
-
             }
             else
             {
                 obj.Result = "Invalid SponsorId";
                 return Json(obj, JsonRequestBehavior.AllowGet);
             }
-
-
             DataSet ds1 = obj.GetLegDetails();
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
             {
@@ -860,6 +826,27 @@ namespace DreamCrusher.Controllers
                 }
             }
             return Json(obj, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult BinaryTrees()
+        {
+            ViewBag.Fk_UserId = Session["Pk_UserId"].ToString();
+            return View();
+        }
+        public ActionResult IDCard(Reports model)
+        {
+            model.Fk_UserId = Session["Pk_UserId"].ToString();
+            DataSet ds = model.IDCard();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                ViewBag.Recognition = ds.Tables[0].Rows[0]["Recognition"].ToString();
+                ViewBag.profilepic = ds.Tables[0].Rows[0]["ProfilePic"].ToString();
+                ViewBag.LoginId = ds.Tables[0].Rows[0]["LoginId"].ToString();
+                ViewBag.fullname = ds.Tables[0].Rows[0]["Fullname"].ToString();
+                ViewBag.Mobile = ds.Tables[0].Rows[0]["Mobile"].ToString();
+                ViewBag.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+                ViewBag.Address = ds.Tables[0].Rows[0]["FullAddress"].ToString();
+            }
+            return View(model);
         }
     }
 }
