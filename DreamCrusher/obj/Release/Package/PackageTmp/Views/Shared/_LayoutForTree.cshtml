@@ -57,7 +57,7 @@
             {
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="../assets/img/users/user.png" class="user-img" alt="Image" style="width:40px;" />
+                        <img src="../assets/img/users/user.png" class="user-img" alt="Image"  style="height:42px;width:42px;" />
                         <div class="user-info">
                         </div>
                     </a>
@@ -66,7 +66,7 @@
                 {
                     <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="@Session["Profile"]" class="user-img" alt="Image" style="width:40px;">
+                        <img src="@Session["Profile"]" class="user-img" alt="Image"  style="height:42px;width:42px;">
                         <div class="user-info">
                         </div>
                     </a>
@@ -849,15 +849,14 @@
                                     @if (Session["Profile"] == "")
                                     {
                                         <a href="#" data-toggle="dropdown">
-                                            <img alt="Image" src="../assets/img/users/user.png" class="rounded-circle"  style="width:40px;">
+                                            <img alt="Image" src="../assets/img/users/user.png" class="rounded-circle"   style="height:42px;width:42px;">
                                             @*<span class="d-sm-none d-lg-inline-block"></span>*@
                                         </a>
                                     }
                                     else
                                     {
-                                        <a href="#" data-toggle="dropdown"
-                                           >
-                                            <img alt="Image" src="@Session["Profile"]" class="rounded-circle"  style="width:40px;">
+                                        <a href="#" data-toggle="dropdown">
+                                            <img alt="Image" src="@Session["Profile"]" class="rounded-circle"   style="height:42px;width:42px;">
                                             @*<span class="d-sm-none d-lg-inline-block"></span>*@
                                         </a>
                                     }

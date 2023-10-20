@@ -38,7 +38,7 @@
                                 <div class="head">
                                     <h3>@i</h3>
                                 </div>
-                                @if (Item.ProfilePic == "")
+                                @if (Item.ProfilePic == "" || Item.ProfilePic == null)
                                 {
 
                                     <img src="../WebsiteCss/images/usericon.jpg" class="img-fluid rounded-circle" alt="reward" style="height:200px; width:200px;">
