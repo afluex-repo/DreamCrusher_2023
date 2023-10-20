@@ -42,7 +42,7 @@ namespace DreamCrusher.Models
         public string status { get; set; }
 
 
-        
+
         public string Package { get; set; }
         public string Fk_PackageId { get; set; }
         public DataTable dtTable { get; set; }
@@ -234,6 +234,27 @@ namespace DreamCrusher.Models
         {
             SqlParameter[] para = { new SqlParameter("@FK_PackageId", Package)};
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCourses", para);
+            return ds;
+        }
+
+
+        public DataSet ActiveProduct()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@ProductID", ProductID),
+                                      new SqlParameter("@ApprovedBy", AddedBy)
+                                     };
+            DataSet ds = DBHelper.ExecuteQuery("ActiveProduct", para);
+            return ds;
+        }
+
+        public DataSet InactiveProduct()
+        {
+            SqlParameter[] para = {
+                                      new SqlParameter("@ProductID", ProductID),
+                                      new SqlParameter("@RejectedBy", AddedBy)
+                                     };
+            DataSet ds = DBHelper.ExecuteQuery("InactiveProduct", para);
             return ds;
         }
     }

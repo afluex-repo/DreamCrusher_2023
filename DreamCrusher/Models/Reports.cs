@@ -128,6 +128,7 @@ namespace DreamCrusher.Models
         public string Message { get; set; }
         public string Subject { get; set; }
         public string ContactId { get; set; }
+        public string ContactDate { get; set; }
 
 
         public DataSet GetPayoutReport()
