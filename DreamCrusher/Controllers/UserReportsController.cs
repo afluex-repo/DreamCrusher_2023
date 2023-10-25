@@ -9,15 +9,13 @@ using DreamCrusher.Filter;
 
 namespace DreamCrusher.Controllers
 {
-    public class UserReportsController : Controller
+    public class UserReportsController : BaseController
     {
-
         public ActionResult UnPaidIncomes(Reports objreports)
         {
             List<Reports> lst = new List<Reports>();
             objreports.LoginId = Session["LoginId"].ToString();
             DataSet ds = objreports.GetUnPaidIncomes();
-
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
@@ -26,20 +24,14 @@ namespace DreamCrusher.Controllers
                     obj.FromLoginId = r["FromLoginId"].ToString();
                     obj.FromUserName = r["FromUserName"].ToString();
                     obj.Amount = r["Amount"].ToString();
-
                     obj.IncomeType = (r["IncomeType"].ToString());
                     obj.Date = (r["CurrentDate"].ToString());
-                   
-
                     lst.Add(obj);
                 }
                 objreports.lstunpaidincomes = lst;
-
-
             }
             return View(objreports);
         }
-
         public ActionResult PayoutReport()
         {
             Profile payoutDetail = new Profile();
@@ -109,7 +101,6 @@ namespace DreamCrusher.Controllers
             }
             return View(payoutDetail);
         }
-
         #region BoosterLedger
 
         public ActionResult BoosterLedger()
@@ -145,16 +136,13 @@ namespace DreamCrusher.Controllers
         }
 
         #endregion
-
         #region BoosterAchiever
-
         public ActionResult BoosterAchiever()
         {
             Reports model = new Reports();
             List<Reports> lst1 = new List<Reports>();
             model.LoginId = Session["LoginId"].ToString();
             DataSet ds = model.GetBoosterAchieverForAssociate();
-
             ViewBag.TotalAmount = 0;
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -167,18 +155,14 @@ namespace DreamCrusher.Controllers
                     Obj.PermanentDate = r["PermanentDate"].ToString();
                     Obj.Amount = r["Amount"].ToString();
                     Obj.CssClass = r["CssClass"].ToString();
-
                     ViewBag.TotalAmount = Convert.ToDecimal(ViewBag.TotalAmount) + Convert.ToDecimal(r["Amount"].ToString());
                     lst1.Add(Obj);
                 }
                 model.lsttopupreport = lst1;
             }
-
             return View(model);
         }
-
         #endregion
-
         public ActionResult PayoutReceipt(string lid, string pno)
         {
             Profile model = new Profile();
@@ -186,12 +170,10 @@ namespace DreamCrusher.Controllers
             {
                 model.LoginId = Crypto.Decrypt(lid);
                 model.PayoutNo = Crypto.Decrypt(pno);
-
                 ViewBag.CompanyName = SoftwareDetails.CompanyName;
                 ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
                 ViewBag.Phone = SoftwareDetails.LandLine;
                 ViewBag.Email = SoftwareDetails.EmailID;
-
                 DataSet ds = model.GetPayoutReport();
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
@@ -207,25 +189,20 @@ namespace DreamCrusher.Controllers
                     model.NetAmount = ds.Tables[0].Rows[0]["NetAmount"].ToString();
                     model.LeadershipBonus = ds.Tables[0].Rows[0]["DirectLeaderShipBonus"].ToString();
                     model.ProductWallet = ds.Tables[0].Rows[0]["ProductWallet"].ToString();
-
                     model.FromDate = ds.Tables[1].Rows[0]["FromDate"].ToString();
                     model.ToDate = ds.Tables[1].Rows[0]["ToDate"].ToString();
-
                     ViewBag.Income = Convert.ToDecimal(model.BinaryIncome) + Convert.ToDecimal(model.DirectIncome) + Convert.ToDecimal(model.LeadershipBonus);
                     ViewBag.Deduction = Convert.ToDecimal(model.TDSAmount) + Convert.ToDecimal(model.ProcessingFee) + Convert.ToDecimal(model.ProductWallet);
                     ViewBag.NetIncome = Convert.ToDecimal(ViewBag.Income) - Convert.ToDecimal(ViewBag.Deduction);
-
                     ViewBag.TDSPercent = Convert.ToDecimal(model.TDSAmount) * 100 / Convert.ToDecimal(ViewBag.Income);
                     ViewBag.TDSPercent = ViewBag.TDSPercent + "%";
                 }
             }
             catch (Exception ex)
             {
-
             }
             return View(model);
         }
-
         #region BusinessReport
 
         public ActionResult BusinessReport(Reports model)
@@ -282,13 +259,11 @@ namespace DreamCrusher.Controllers
         }
 
         #endregion
-
         public ActionResult UnPaidProductIncomes(Reports objreports)
         {
             List<Reports> lst = new List<Reports>();
             objreports.LoginId = Session["LoginId"].ToString();
             DataSet ds = objreports.GetUnPaidProductIncomes();
-
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds.Tables[0].Rows)
@@ -297,16 +272,11 @@ namespace DreamCrusher.Controllers
                     obj.FromLoginId = r["FromLoginId"].ToString();
                     obj.FromUserName = r["FromUserName"].ToString();
                     obj.Amount = r["Amount"].ToString();
-
                     obj.IncomeType = (r["IncomeType"].ToString());
                     obj.Date = (r["CurrentDate"].ToString());
-
-
                     lst.Add(obj);
                 }
                 objreports.lstunpaidincomes = lst;
-
-
             }
             return View(objreports);
         }
@@ -314,10 +284,8 @@ namespace DreamCrusher.Controllers
         {
             Profile payoutDetail = new Profile();
             List<Profile> lst1 = new List<Profile>();
-
             payoutDetail.LoginId = Session["LoginID"].ToString();
             DataSet ds11 = payoutDetail.GetProductPayoutReport();
-
             if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds11.Tables[0].Rows)
@@ -379,7 +347,6 @@ namespace DreamCrusher.Controllers
             }
             return View(payoutDetail);
         }
-
         public ActionResult ProductPayoutReceipt(string lid, string pno)
         {
             Reports model = new Reports();
@@ -387,12 +354,10 @@ namespace DreamCrusher.Controllers
             {
                 model.LoginId = Crypto.Decrypt(lid);
                 model.PayoutNo = Crypto.Decrypt(pno);
-
                 ViewBag.CompanyName = SoftwareDetails.CompanyName;
                 ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
                 ViewBag.Phone = SoftwareDetails.LandLine;
                 ViewBag.Email = SoftwareDetails.EmailID;
-
                 DataSet ds = model.GetProductPayoutReport();
                 if (ds != null && ds.Tables[0].Rows.Count > 0)
                 {
@@ -408,25 +373,20 @@ namespace DreamCrusher.Controllers
                     model.NetAmount = ds.Tables[0].Rows[0]["NetAmount"].ToString();
                     model.LeadershipBonus = ds.Tables[0].Rows[0]["DirectLeaderShipBonus"].ToString();
                     model.ProductWallet = ds.Tables[0].Rows[0]["ProductWallet"].ToString();
-
                     model.FromDate = ds.Tables[1].Rows[0]["FromDate"].ToString();
                     model.ToDate = ds.Tables[1].Rows[0]["ToDate"].ToString();
-
                     ViewBag.Income = Convert.ToDecimal(model.BinaryIncome) + Convert.ToDecimal(model.DirectIncome) + Convert.ToDecimal(model.LeadershipBonus);
                     ViewBag.Deduction = Convert.ToDecimal(model.TDSAmount) + Convert.ToDecimal(model.ProcessingFee) + Convert.ToDecimal(model.ProductWallet);
                     ViewBag.NetIncome = Convert.ToDecimal(ViewBag.Income) - Convert.ToDecimal(ViewBag.Deduction);
-
                     ViewBag.TDSPercent = Convert.ToDecimal(model.TDSAmount) * 100 / Convert.ToDecimal(ViewBag.Income);
                     ViewBag.TDSPercent = ViewBag.TDSPercent + "%";
                 }
             }
             catch (Exception ex)
             {
-
             }
             return View(model);
         }
-
         #region BusinessReport
 
         public ActionResult ProductBusinessReport(Reports model)
@@ -483,10 +443,6 @@ namespace DreamCrusher.Controllers
         }
 
         #endregion
-
-
-
-
         public ActionResult PaidPayoutDetails(Reports model)
         {
             List<Reports> lst1 = new List<Reports>();
@@ -512,8 +468,6 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
-
-
         [HttpPost]
         [ActionName("PaidPayoutDetails")]
         [OnAction(ButtonName = "btnDetails")]
@@ -604,7 +558,6 @@ namespace DreamCrusher.Controllers
         [OnAction(ButtonName = "Search")]
         public ActionResult TopupReportBy(Reports newdata)
         {
-
             List<Reports> lst1 = new List<Reports>();
 			newdata.LoginId=Session["LoginId"].ToString();
             newdata.Package = newdata.Package == "0" ? null : newdata.Package;
@@ -657,7 +610,6 @@ namespace DreamCrusher.Controllers
             ViewBag.ddlProduct = ddlProduct;
 
             #endregion
-
             return View(newdata);
         }
         public ActionResult PrintTopUp(string ToLoginID)
@@ -675,7 +627,6 @@ namespace DreamCrusher.Controllers
                         foreach (DataRow r in ds.Tables[0].Rows)
                         {
                             Reports obj = new Reports();
-
                             obj.FK_InvestmentID = r["Pk_InvestmentId"].ToString();
                             //obj.EncryptKey = Crypto.Encrypt(r["Fk_SaleOrderId"].ToString());
                             //obj.ProductID = r["Fk_ProductId"].ToString();
@@ -688,9 +639,7 @@ namespace DreamCrusher.Controllers
                             //obj.TaxableAmount = r["TaxableAmount"].ToString();
                             obj.ProductName = r["ProductName"].ToString();
                             obj.HSNCode = r["HSNCode"].ToString();
-
                             ViewBag.OrderNo = r["Pk_InvestmentId"].ToString();
-
                             ViewBag.TotalFinalAmount = ds.Tables[1].Rows[0]["TotalFinalAmount"].ToString();
                             ViewBag.TotalFinalAmountWords = ds.Tables[1].Rows[0]["TotalFinalAmountWords"].ToString();
                             ViewBag.PurchaseDate = ds.Tables[0].Rows[0]["UpgradtionDate"].ToString();
@@ -699,7 +648,6 @@ namespace DreamCrusher.Controllers
                             ViewBag.AssociateAddress = ds.Tables[0].Rows[0]["Address"].ToString();
                             ViewBag.ValueBeforeTax = ds.Tables[1].Rows[0]["Taxable"].ToString();
                             ViewBag.TaxAdded = ds.Tables[1].Rows[0]["TaxAmount"].ToString();
-
                             ViewBag.CompanyName = SoftwareDetails.CompanyName;
                             ViewBag.CompanyAddress = SoftwareDetails.CompanyAddress;
                             ViewBag.Pin1 = SoftwareDetails.Pin1;
@@ -711,11 +659,9 @@ namespace DreamCrusher.Controllers
                             ViewBag.Website = SoftwareDetails.Website;
                             ViewBag.EmailID = SoftwareDetails.EmailID;
                             list.Add(obj);
-
                         }
                         model.lsttopupreport = list;
                     }
-
                 }
                 catch (Exception ex)
                 {
@@ -728,7 +674,6 @@ namespace DreamCrusher.Controllers
             List<Reports> lst1 = new List<Reports>();
             model.Fk_UserId = Session["Pk_userId"].ToString();
             DataSet ds11 = model.GetDCMIReportForAssociate();
-
             if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds11.Tables[0].Rows)
@@ -745,7 +690,6 @@ namespace DreamCrusher.Controllers
                     Obj.DCMIGrossIncome = r["DCMIGrossIncome"].ToString();
                     Obj.TDS = r["TDS"].ToString();
                     Obj.AdminCharge = r["AdminCharge"].ToString();
-
                     lst1.Add(Obj);
                 }
                 model.lstdcmireport = lst1;
@@ -757,7 +701,6 @@ namespace DreamCrusher.Controllers
         [OnAction(ButtonName = "Search")]
 		public ActionResult GetDCMIReport(Reports model)
 		{
-		     
             List<Reports> lst1 = new List<Reports>();
 			model.LoginId=Session["LoginId"].ToString();
             DataSet ds11 = model.GetDCMIReport();
@@ -784,5 +727,27 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
 		}
+        public ActionResult CourseView(Reports model)
+        {
+            model.LoginId = Session["LoginId"].ToString();
+            model.Package = Session["FK_ProductId"].ToString();
+            List<Reports> lst = new List<Reports>();
+            DataSet ds = model.GetCourseListForAllotCourses();
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Reports obj = new Reports();
+                    obj.CourseID = r["Pk_CourseId"].ToString();
+                    obj.CourseName = r["CourseName"].ToString();
+                    obj.CourseImage = r["CourseImage"].ToString();
+                    obj.CourseDate = r["CourseDate"].ToString();
+                    obj.CourseLink = r["CourseLink"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstCourse = lst;
+            }
+            return View(model);
+        }
     }
 }

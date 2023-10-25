@@ -18,22 +18,16 @@ namespace DreamCrusher.Models
             {
                 //connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=dreamcrusher;User Id=dreamuser;Password=Dre@m*_;Integrated Security=false;";
                 connectionString = "Data Source=103.48.51.111,1232;Initial Catalog=dreamcrusherdbtest;User Id=dreamuser;Password=Dre@m*_;Integrated Security=false;";
-
             }
             catch (Exception)
             {
                 throw;
             }
         }
-
         public static int ExecuteNonQuery(string commandText, params SqlParameter[] commandParameters)
         {
             int k = 0;
             try
-
-
-
-
             {
                 using (var connection = new SqlConnection(connectionString))
                 using (var command = new SqlCommand(commandText, connection))
@@ -50,7 +44,6 @@ namespace DreamCrusher.Models
                 return k;
             }
         }
-
         public static DataSet ExecuteQuery(string commandText, params SqlParameter[] parameters)
         {
             DataSet ds = new DataSet();
