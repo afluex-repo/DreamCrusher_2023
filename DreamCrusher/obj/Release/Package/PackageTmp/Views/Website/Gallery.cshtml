@@ -1,0 +1,80 @@
+﻿@model DreamCrusher.Models.Home
+
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
+}
+
+    <!-- Breadcrumbs Start -->
+    <div class="rs-breadcrumbs img1">
+        <div class="container">
+            <div class="breadcrumbs-inner">
+                <h1 class="page-title">
+                    Gallery
+                    <span class="watermark">Gallery</span>
+                </h1>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumbs End -->
+
+
+    <div class="rs-project style4 pt-100 pb-100 md-pt-70 md-pb-70">
+        <div class="container">
+            <div class="row">
+                @if (Model != null)
+                {
+                    if (Model.lstGallery != null)
+                    {
+                        int i = 1;
+                        foreach (var Item in Model.lstGallery)
+                        {
+                                <div class="col-lg-3 col-md-6 mb-30">
+                                    <div class="project-item">
+                                        <div class="project-img">
+                                            <a href="#!"><img src="@Item.Image" alt="images"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            i++;
+                        }
+                    }
+                }
+                @*<div class="col-lg-4 col-md-6 mb-30">
+                    <div class="project-item">
+                        <div class="project-img">
+                            <a href="#!"><img src="~/Websiteassets/images/project/style1/2.jpg" alt="images"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 mb-30">
+                    <div class="project-item">
+                        <div class="project-img">
+                            <a href="#!"><img src="~/Websiteassets/images/project/style1/3.jpg" alt="images"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 md-mb-30">
+                    <div class="project-item">
+                        <div class="project-img">
+                            <a href="#!"><img src="~/Websiteassets/images/project/style1/4.jpg" alt="images"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 sm-mb-30">
+                    <div class="project-item">
+                        <div class="project-img">
+                            <a href="#!"><img src="~/Websiteassets/images/project/style1/5.jpg" alt="images"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-item">
+                        <div class="project-img">
+                            <a href="#!"><img src="~/Websiteassets/images/project/style1/6.jpg" alt="images"></a>
+                        </div>
+                    </div>
+                </div>*@
+            </div>
+        </div>
+    </div>

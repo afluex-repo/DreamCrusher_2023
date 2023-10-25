@@ -1,0 +1,113 @@
+﻿@model DreamCrusher.Models.KYCDocuments
+
+@{
+    ViewBag.Title = "KYCDocuments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!-- /.row -->
+@using (Html.BeginForm("KYCDocuments", "KYCDocuments", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+            <div class="page-content">
+                <div class="row">
+                    <div class="col-12 col-lg-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <h5 class="mb-0">Upload KYC</h5>
+                                    <p style="color: #fff">@TempData["DocumentUpload"] </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-12 col-xl-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Adhar Number <span style="color:red">*</span></label>
+                                        @Html.TextBoxFor(m => m.AdharNumber, new { @class = "form-control", @required = "required" })
+                                        @Html.DisplayFor(m => m.AdharStatus, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.AdharNumber)
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Pan Number <span style="color:red">*</span></label>
+                                        @Html.TextBoxFor(m => m.PanNumber, new { @class = "form-control", @required = "required" })
+                                        @Html.DisplayFor(m => m.PanStatus, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.PanNumber)
+                                        @*<input type ="text" id="txtLastName" value="@item1.LastName" disabled="disabled" class="form-control" />*@
+
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Account No<span style="color:red">*</span></label>
+                                        @Html.TextBoxFor(m => m.MemberAccNo, new { @class = "form-control", @required = "required" })
+                                        @Html.DisplayFor(m => m.MemberAccNo, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.MemberAccNo)
+                                        @*<input type ="text" id="txtLastName" value="@item1.LastName" disabled="disabled" class="form-control" />*@
+
+                                    </div>
+                                    @*<div class="col-lg-4">
+                                        <div class="form-group">
+                                            <label>Document Number <span style="color:red">*</span></label>
+                                            @Html.TextBoxFor(m => m.DocumentNumber, new { @class = "form-control", @required = "required" })
+                                            @Html.DisplayFor(m => m.DocumentStatus, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.DocumentNumber)
+                                            @*<input type ="text" id="txtMobile"  value="@item1.Mobile" disabled="disabled" class="form-control" />*
+                                        </div>
+                                    </div>*@
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">IFSC Code<span style="color:red">*</span></label>
+                                        @Html.TextBoxFor(m => m.IFSCCode, new { @class = "form-control", @required = "required" })
+                                        @Html.DisplayFor(m => m.IFSCCode, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.IFSCCode)
+
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Bank Name<span style="color:red">*</span></label>
+                                        @Html.TextBoxFor(m => m.MemberBankName, new { @class = "form-control", @required = "required" })
+                                        @Html.DisplayFor(m => m.MemberBankName, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.MemberBankName)
+                                        @*<input type ="text" id="txtLastName" value="@item1.LastName" disabled="disabled" class="form-control" />*@
+
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Branch Name<span style="color:red">*</span></label>
+                                        @Html.TextBoxFor(m => m.MemberBranch, new { @class = "form-control", @required = "required" })
+                                        @Html.DisplayFor(m => m.MemberBranch, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.MemberBranch)
+                                        @*<input type ="text" id="txtLastName" value="@item1.LastName" disabled="disabled" class="form-control" />*@
+
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Adhar Image <span style="color:red">*</span></label>
+                                        <input type="file" name="postedFile" required="required" />
+                                        <br />
+                                        <img src="@Url.Content(Model.AdharImage)" height="120" width="180" />
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Pan Image <span style="color:red">*</span></label>
+                                        <input type="file" name="postedFile" required="required" />
+                                        <br />
+                                        <img src="@Url.Content(Model.PanImage)" height="120" width="180" />
+
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <label class="form-label">Passbook/Cheque Image <span style="color:red">*</span></label>
+                                        <input type="file" name="postedFile" required="required" />
+                                        <br />
+                                        <img src="@Url.Content(Model.DocumentImage)" height="120" width="180" />
+                                    </div>
+                                    <div class="col-md-4 mb-3">
+                                        <input type="submit" id="btnUpdate" class="btn btn-light px-3" name="btnUpdate" value="Update" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+}
+

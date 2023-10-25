@@ -31,6 +31,7 @@ namespace DreamCrusher.Models
         public List<Master> lstNews { get; set; }
 
         public List<Master> lstCourse { get; set; }
+        public List<Master> lstCourses { get; set; }
         public string CourseID { get; set; }
         public string FK_CourseID { get; set; }
         public string CourseName { get; set; }
@@ -38,7 +39,10 @@ namespace DreamCrusher.Models
         public string CourseImage { get; set; }
         public string CourseLink { get; set; }
         public string CourseDate { get; set; }
+        public string status { get; set; }
 
+
+        
         public string Package { get; set; }
         public string Fk_PackageId { get; set; }
         public DataTable dtTable { get; set; }

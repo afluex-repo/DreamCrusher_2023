@@ -1,0 +1,287 @@
+﻿@model DreamCrusher.Models.Wallet
+@{
+    ViewBag.Title = "Topup";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("TopUpByAdmin", "Accounts", FormMethod.Post, new { @id = "form1" }))
+{
+
+
+
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Team Direct List</h5>
+                            <span style="color: #fff">@TempData["Topup"] </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Login Id <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @Placeholder = "Login Id", @onchange = "getmembername(this);" })
+                                       
+                                        <span id="txtname" style="color: #fff"></span>
+                       
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Package <span style="color: red">*</span></label>
+                                        @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control form-select", @onchange = "FillAmount();" })
+                               
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Amount <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.Amount, new { @class = "form-control", @placeholder = "Topup Amount", @onkeypress = "return isNumberKey(event);" })
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Topup Date <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.TopUpDate, new { @class = "form-control", @Placeholder = "TopUp Date", @readonly = "readonly" }) 
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                    <label class="form-label">Description </label>
+                                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @Placeholder = "Description" })
+                              
+                            </div>
+                            <div class="col-md-4 mb-3" style="display:none" id="divPlotNumber">
+                             
+                                    <label  class="form-label">Plot Number <span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.PlotNumber, new { @class = "form-control", @Placeholder = "Plot Number" })
+                               
+                            </div>
+                            <div class="col-md-4 mb-3">
+                             
+                                    <label class="form-label">Payment Mode<span style="color: red">*</span></label>
+                                        @Html.DropDownListFor(m => m.PaymentMode, new SelectList(ViewBag.ddlpaymentmode, "Value", "Text"), new { @class = "form-control  form-select", @data_size = "7", @data_style = "select-with-transition", @onchange = "getpaymentdetails();" })
+                                        @Html.ValidationMessageFor(m => m.PaymentMode)
+                              
+                            </div>
+
+                            <div class="col-md-4 mb-3" id="chequeno" style="display: none">
+                        
+                                    <label  class="form-label">Transaction No<span style="color: red">*</span></label>
+                                  
+                                        @Html.TextBoxFor(m => m.DDChequeNo, new { @class = "form-control", @placeholder = "Transaction No" })
+                              
+                            </div>
+                            <div class="col-md-4 mb-3" id="chequdate" style="display: none">
+                               
+                                    <label  class="form-label"> Transaction Date <span style="color: red">*</span></label>
+                               
+                                        @Html.TextBoxFor(m => m.DDChequeDate, new { @class = "form-control", @placeholder = "Transaction Date" })
+                                   
+                            </div>
+                            <div class="col-md-4 mb-3" id="bankname" style="display: none">
+                               
+                                    <label  class="form-label">Bank Name<span style="color: red">*</span></label>
+                                
+                                        @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @placeholder = "Bank Name" })
+                                 
+                            </div>
+                            <div class="col-md-4 mb-3" id="bankbranch" style="display: none">
+                                    <label  class="form-label">Branch<span style="color: red">*</span></label>
+                                        @Html.TextBoxFor(m => m.BankBranch, new { @class = "form-control", @placeholder = "Bank Branch" })
+                              
+                            </div>
+
+                            <div class="col-md-4 mb-3">
+                                <label class="form-label d-block">&nbsp;</label>
+                                <input type="submit" class="btn btn-light px-3" onclick="return validateform()" value="Top Up"  />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+   
+    
+}
+
+<style>
+    .errortext {
+        border: 1px solid red !important;
+    }
+</style>
+
+
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
+<script>
+
+    $('#TopUpDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+    });
+    $('#DDChequeDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+    });
+    function isNumberKey(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+    function FillAmount() {
+        //$("#Fk_CityId").empty();
+        var Productid = "";
+
+        Productid = $('#Package').val();
+        if (Productid == "4") {
+
+            $("#divPlotNumber").show();
+            $("#Amount").val('');
+            $("#Amount").attr("disabled", false);
+        }
+        else {
+            $("#divPlotNumber").hide();
+            $("#Amount").attr("disabled", "disabled");
+        }
+
+        $.ajax({
+            url: "/Accounts/FillAmount",
+            Type: "Get",
+            DataType: "JSON",
+            data: { Productid: Productid },
+            success: function (data) {
+                debugger;
+                $('#Amount').val(data.Amount);
+            }
+
+        });
+    }
+    function getpaymentdetails() {
+        debugger;
+        var paymentmode = ($("#PaymentMode option:selected").text());
+        if (paymentmode == "Cash") {
+            bankname.style.display = "none";
+            chequeno.style.display = "none";
+            chequdate.style.display = "none";
+            bankbranch.style.display = "none";     
+        }
+        else if (paymentmode == "UPI")
+        {
+            bankname.style.display = "none";
+            chequdate.style.display = "block";
+            bankbranch.style.display = "none";
+           chequeno.style.display = "block";
+        }
+        else {
+            bankname.style.display = "block";
+            chequeno.style.display = "block";
+            chequdate.style.display = "block";
+            bankbranch.style.display = "block";
+        }
+    }
+
+    function validateform() {
+        $(".errortext").removeClass("errortext");
+        if ($('#LoginId').val() == '') {
+            $("#LoginId").addClass('errortext');
+            $('#LoginId').focus();
+            return false;
+        }
+        if ($('#Package').val() == '0') {
+            $("#Package").addClass('errortext');
+            $('#Package').focus();
+            return false;
+        }
+
+        if ($('#Package').val() == "4") {
+            if ($('#PlotNumber').val() == '') {
+                $("#PlotNumber").addClass('errortext');
+                $('#PlotNumber').focus();
+                return false;
+            }
+        }
+
+        if ($('#Amount').val() == '') {
+            $("#Amount").addClass('errortext');
+            $('#Amount').focus();
+            return false;
+        }
+        if ($('#TopUpDate').val() == '') {
+            $("#TopUpDate").addClass('errortext');
+            $('#TopUpDate').focus();
+            return false;
+        }
+        if (($("#PaymentMode option:selected").text()) != 'Cash' && ($("#PaymentMode option:selected").text())!='UPI') {
+            if ($('#BankName').val() == '') {
+                $("#BankName").addClass('errortext');
+                $('#BankName').focus();
+                return false;
+            }
+            if ($('#DDChequeNo').val() == '') {
+                $("#DDChequeNo").addClass('errortext');
+                $('#DDChequeNo').focus();
+                return false;
+            }
+            if ($('#DDChequeDate').val() == '') {
+                $("#DDChequeDate").addClass('errortext');
+                $('#DDChequeDate').focus();
+                return false;
+            }
+            if ($('#BankBranch').val() == '') {
+                $("#BankBranch").addClass('errortext');
+                $('#BankBranch').focus();
+                return false;
+            }
+        }
+        return true;
+
+    }
+    function getmembername() {
+        debugger;
+        var LoginId = $('#LoginId').val();
+        $.ajax({
+            url: '/Accounts/GetMemberName',
+            type: "GET",
+            dataType: "JSON",
+            data: { LoginId: LoginId },
+            success: function (data) {
+                debugger;
+                if (data.Result == "Yes") {
+                    $('#txtname').html(data.DisplayName);
+
+                    divname.style.display = "block";
+                } else {
+                    alert("Invalid Login ID");
+                    $("#LoginId").addClass('errortext');
+                    $('#txtname').html("");
+                    $('#LoginId').val("");
+                    $('#LoginId').focus();
+                }
+            }
+        });
+    }
+
+    function isNumberKey(evt) {
+
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+</script>
+
