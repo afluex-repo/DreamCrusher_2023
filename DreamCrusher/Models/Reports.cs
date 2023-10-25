@@ -124,6 +124,13 @@ namespace DreamCrusher.Models
         public string CourseImage { get; set; }
         public string CourseDate { get; set; }
         public string CourseLink { get; set; }
+        public List<Reports> lstcontactus { get; set; }
+        public string Message { get; set; }
+        public string Subject { get; set; }
+        public string ContactId { get; set; }
+        public string ContactDate { get; set; }
+
+
         public DataSet GetPayoutReport()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
@@ -670,6 +677,11 @@ namespace DreamCrusher.Models
                 new SqlParameter("@FK_UserID", Fk_UserId)
             };
             DataSet ds = DBHelper.ExecuteQuery("IDCard", para);
+            return ds;
+        }
+        public DataSet GetContactUsDetails()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("GetContactDetails");
             return ds;
         }
     }
