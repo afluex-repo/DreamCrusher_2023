@@ -34,7 +34,7 @@ namespace DreamCrusher.Controllers
                 {
                     if (ds.Tables[0].Rows[0][0].ToString() == "1")
                     {
-                        TempData["Savecontactus"] = "Your contact has been submitted successfully..";
+                        TempData["Savecontactus"] = "Contact details saved successfully !!";
                         FormName = "contact";
                         Controller = "Website";
                     }

@@ -1710,6 +1710,7 @@ namespace DreamCrusher.Controllers
                     Obj.Mobile = r["Mobile"].ToString();
                     Obj.Subject = r["Subject"].ToString();
                     Obj.Message = r["Message"].ToString();
+                    Obj.ContactDate = r["ContactDate"].ToString();
                     lst.Add(Obj);
                 }
                 model.lstcontactus = lst;

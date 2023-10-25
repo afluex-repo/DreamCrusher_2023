@@ -33,6 +33,7 @@ namespace DreamCrusher.Controllers
                     obj.DirectPercent = (r["DirectPercent"].ToString());
                     obj.ROIPercent = (r["ROIPercent"].ToString());
                     obj.BV = (r["BV"].ToString());
+                    obj.status = (r["Status"].ToString());
 
                     lst.Add(obj);
                 }
@@ -811,7 +812,79 @@ namespace DreamCrusher.Controllers
         }
 
 
-        
+        #region Status
+        public ActionResult ActiveProduct(string ProductID)
+        {
+            string FormName = " ";
+            string Controller = "";
+            try
+            {
+                if (ProductID != null)
+                {
+                    Master model = new Master();
+                    model.ProductID = ProductID;
+                    model.AddedBy = Session["PK_AdminId"].ToString();
+                    DataSet ds = model.ActiveProduct();
+                    if (ds != null && ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                        {
+                            TempData["Product"] = "Product Status Active!";
+                            FormName = "ProductList";
+                            Controller = "Master";
+                        }
+                        else
+                        {
+                            TempData["Product"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                            FormName = "ProductList";
+                            Controller = "Master";
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return RedirectToAction(FormName, Controller);
+        }
 
+        public ActionResult InactiveProduct(string ProductID)
+        {
+            string FormName = " ";
+            string Controller = "";
+            try
+            {
+                if (ProductID != null)
+                {
+                    Master model = new Master();
+                    model.ProductID = ProductID;
+                    model.AddedBy = Session["PK_AdminId"].ToString();
+                    DataSet ds = model.InactiveProduct();
+                    if (ds != null && ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                        {
+                            TempData["ErrProduct"] = "Product Status Inactive!";
+                            FormName = "ProductList";
+                            Controller = "Master";
+                        }
+                        else
+                        {
+                            TempData["ErrProduct"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                            FormName = "ProductList";
+                            Controller = "Master";
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return RedirectToAction(FormName, Controller);
+        }
+
+        #endregion
     }
 }

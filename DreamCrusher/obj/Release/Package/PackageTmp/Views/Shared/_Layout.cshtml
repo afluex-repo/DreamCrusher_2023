@@ -44,7 +44,7 @@
             <ul class="metismenu" id="menu">
                 @if (Session["Profile"] == "")
             {
-                    <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+                    <a
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="../assets/img/users/user.png" class="user-img" alt="Image" style="width:40px;"/>
                         <div class="user-info">
@@ -53,7 +53,7 @@
                 }
                 else
                 {
-                    <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
+                    <a
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="@Session["Profile"]" class="user-img" alt="Image" style="width:40px;">
                         <div class="user-info">
@@ -150,6 +150,7 @@
                         <li>
                             <a href="/UserReports/TopupReport"><i class='bx bx-radio-circle'></i>Product Details</a>
                             <a href="/UserReports/DCMIReport"><i class='bx bx-radio-circle'></i>DCMI Reports</a>
+                            <a href="/UserReports/CourseView"><i class='bx bx-radio-circle'></i>My Courses</a>
                         </li>
                     </ul>
                 </li>
@@ -834,7 +835,7 @@
                         {
                             <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="../assets/img/users/user.png" alt="Image" style="width:40px;" class="rounded-circle">
+                                <img src="../assets/img/users/user.png" alt="Image" style="height:42px;width:42px;" class="rounded-circle">
                                 <div class="user-info">
                                 </div>
                             </a>
@@ -843,7 +844,7 @@
                         {
                             <a class="d-flex align-items-center nav-link dropdown-toggle gap-3 dropdown-toggle-nocaret"
                                href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <img src="@Session["Profile"]" class="rounded-circle" alt="Image" style="width:40px;">
+                                <img src="@Session["Profile"]" class="rounded-circle" alt="Image" style="height:42px;width:42px;">
                                 <div class="user-info">
                                 </div>
                             </a>
