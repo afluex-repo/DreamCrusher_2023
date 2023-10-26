@@ -3,19 +3,35 @@
 @{
     Layout = null;
 }
-
-<!DOCTYPE html>
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>PayoutReceipt</title>
-    <link type="text/css" rel="stylesheet" href="../../AssociatePanelcss/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="~/assetsAdmin/images/favicon-32x32.png" type="image/png" />
+    <!--plugins-->
+    <link href="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <!-- loader-->
+    @*<link href="~/assetsAdmin/css/pace.min.css" rel="stylesheet" />*@
+    <script src="~/assetsAdmin/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="~/assetsAdmin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assetsAdmin/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link href="~/assetsAdmin/css/app.css" rel="stylesheet">
+    <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
+    <title>@ViewBag.Title</title>
 </head>
-<body>
+<body class="bg-theme bg-theme1">
     <div class="container">
         <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 mt-3 text-center">
                 <h3>Payout Receipt</h3>
             </div>
         </div>
@@ -29,7 +45,7 @@
                         @ViewBag.Email
                     </td>
                     <td>
-                        <img height="100" width="100" src="~/WebsiteCss/images/logo.png" class="pull-right" />
+                        <img height="auto" width="200" src="/Websiteassets/images/logo-white.png" class="pull-right" />
                     </td>
                 </tr>
             </table>
@@ -62,7 +78,7 @@
             <div class="col-md-12">
                 <h3>Income</h3>
                 <table style="width:100%" class="display nowrap table table-hover table-striped table-bordered">
-                    <thead style="background-color:forestgreen; color:white">
+                    <thead>
                         <tr>
                             <th style="width:10%">S No</th>
                             <th style="width:60%">Description</th>
@@ -96,7 +112,7 @@
             <div class="col-md-12">
                 <h3>Deduction</h3>
                 <table style="width:100%" class="display nowrap table table-hover table-striped table-bordered">
-                    <thead style="background-color:forestgreen; color:white">
+                    <thead>
                         <tr>
                             <th style="width:10%">S No</th>
                             <th style="width:60%">Description</th>
@@ -129,7 +145,7 @@
         <div class="row">
             <div class="col-md-12">
                 <table style="width:100%" class="display nowrap table table-hover table-striped table-bordered">
-                    <thead style="background-color:forestgreen; color:white">
+                    <thead>
                         <tr>
                             <th style="width:10%"></th>
                             <th style="width:60%">Gross Income - Gross Deduction</th>
