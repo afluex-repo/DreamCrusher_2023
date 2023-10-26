@@ -143,7 +143,7 @@ namespace DreamCrusher.Controllers
                         Session["Pk_AdminId"] = ds.Tables[0].Rows[0]["Pk_adminId"].ToString();
                         Session["UsertypeName"] = ds.Tables[0].Rows[0]["UsertypeName"].ToString();
                         Session["Name"] = ds.Tables[0].Rows[0]["Name"].ToString();
-                        Session["Profile"] = ds.Tables[0].Rows[0]["Profile"].ToString();
+                        //Session["Profile"] = ds.Tables[0].Rows[0]["Profile"].ToString();
                         if (ds.Tables[0].Rows[0]["isFranchiseAdmin"].ToString() == "True")
                         {
                             Session["FranchiseAdminID"] = ds.Tables[0].Rows[0]["Pk_adminId"].ToString();
