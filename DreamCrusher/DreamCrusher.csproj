@@ -3905,6 +3905,7 @@
     <Content Include="Views\Master\CourseView.cshtml" />
     <Content Include="Views\UserReports\CourseView.cshtml" />
     <Content Include="Views\AdminReports\ContactUsDetails.cshtml" />
+    <Content Include="Views\Admin\CalculateMonthlySpillBonus.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

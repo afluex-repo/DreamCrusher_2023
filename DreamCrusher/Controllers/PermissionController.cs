@@ -25,6 +25,7 @@ namespace DreamCrusher.Controllers
             ds1 = obj.BindFormTypeMaster();
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
             {
+                ddlformtype.Add(new SelectListItem { Text = "Select Menu", Value = "0" });
                 foreach (DataRow r in ds1.Tables[0].Rows)
                 { ddlformtype.Add(new SelectListItem { Text = r["FormType"].ToString(), Value = r["PK_FormTypeId"].ToString() }); }
             }
@@ -39,7 +40,9 @@ namespace DreamCrusher.Controllers
             ds1 = emp.GetEmployeeData();
             if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
             {
+                ddluser.Add(new SelectListItem { Text = "Select User", Value = "0" });
                 foreach (DataRow r in ds1.Tables[0].Rows)
+
                 { ddluser.Add(new SelectListItem { Text = r["Name"].ToString(), Value = r["PK_AdminId"].ToString() }); }
             }
             else
