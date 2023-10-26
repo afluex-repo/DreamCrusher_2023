@@ -30,6 +30,19 @@ namespace DreamCrusher.Models
         public string BV { get; set; }
         public List<Master> lstNews { get; set; }
 
+        public List<Master> lstCourse { get; set; }
+        public string CourseID { get; set; }
+        public string FK_CourseID { get; set; }
+        public string CourseName { get; set; }
+        public string CoursePrice { get; set; }
+        public string CourseImage { get; set; }
+        public string CourseLink { get; set; }
+        public string CourseDate { get; set; }
+
+        public string Package { get; set; }
+        public string Fk_PackageId { get; set; }
+        public DataTable dtTable { get; set; }
+
         #region ProductMaster
 
         public DataSet SaveProduct()
@@ -152,5 +165,72 @@ namespace DreamCrusher.Models
 
         #endregion
 
+        #region CourseMaster
+
+        public DataSet SaveCourse()
+        {
+            SqlParameter[] para = { new SqlParameter("@CourseName", CourseName),
+                                  new SqlParameter("@CourseImage", CourseImage),
+                                  new SqlParameter("@CourseLink", CourseLink),
+                                  new SqlParameter("@AddedBy", AddedBy)};
+
+            DataSet ds = DBHelper.ExecuteQuery("AddCourse", para);
+            return ds;
+        }
+
+        public DataSet CourseList()
+        {
+            SqlParameter[] para = {new SqlParameter("@PK_CourseID", CourseID)};
+            DataSet ds = DBHelper.ExecuteQuery("GetCourseList", para);
+            return ds;
+        }
+
+        public DataSet UpdateCourse()
+        {
+            SqlParameter[] para = {new SqlParameter("@CourseID", CourseID),
+                                  new SqlParameter("@CourseName", CourseName),
+                                  new SqlParameter("@CourseImage", CourseImage),
+                                  new SqlParameter("@CourseLink", CourseLink),
+                                  new SqlParameter("@UpdatedBy", UpdatedBy)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("UpdateCourse", para);
+            return ds;
+        }
+
+        public DataSet DeleteCourse()
+        {
+            SqlParameter[] para = { new SqlParameter("@CourseID", CourseID),
+                                  new SqlParameter("@DeletedBy", AddedBy),
+            };
+            DataSet ds = DBHelper.ExecuteQuery("DeleteCourse", para);
+            return ds;
+        }
+
+        #endregion
+
+        public DataSet GetPackageList()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("GetPackageList");
+            return ds;
+        }
+
+        public DataSet SaveAllotCoursesOnPackage()
+        {
+            SqlParameter[] para =
+             {
+                 new SqlParameter("@Fk_PackageId",Package),
+                 new SqlParameter("@dtcoursepackage",dtTable),
+                new SqlParameter("@AddedBy",AddedBy)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("SaveAllotCoursesOnPackage", para);
+            return ds;
+        }
+
+        public DataSet GetCourseListForAllotCourses()
+        {
+            SqlParameter[] para = { new SqlParameter("@FK_PackageId", Package)};
+            DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCourses", para);
+            return ds;
+        }
     }
 }

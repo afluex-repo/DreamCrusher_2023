@@ -17,89 +17,60 @@
                 </div>
             </div>
         </div>
-    </div>    
-    <div class="row">
-        <div class="col-12 col-lg-4 col-xl-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5> <i class="bx bx-book-reader"></i> Our Course Name</h5>
-
-                    <img src="https://png.pngtree.com/background/20210711/original/pngtree-literary-cartoon-book-teaching-banner-poster-picture-image_1078154.jpg" class="img-fluid rounded mb-3" />
-                    <div type="button" class="btn btn-light mb-2 position-relative">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="img-fluid w-25 position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal" />
-                        <iframe width="350px" height="100%" src="https://www.youtube.com/embed/efXOrthfd2U?si=QQ-up0ictKQZpNj3" title="YouTube video player" frameborder="0"></iframe>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <span class="text-white">http://localhost:58418/Admin/AdminDashBoard</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-4 col-xl-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5> <i class="bx bx-book-reader"></i> Our Course Name</h5>
-
-                    <img src="https://png.pngtree.com/background/20210711/original/pngtree-literary-cartoon-book-teaching-banner-poster-picture-image_1078154.jpg" class="img-fluid rounded mb-3" />
-                    <div type="button" class="btn btn-light mb-2 position-relative">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="img-fluid w-25 position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal" />
-                        <iframe width="350px" height="100%" src="https://www.youtube.com/embed/efXOrthfd2U?si=QQ-up0ictKQZpNj3" title="YouTube video player" frameborder="0"></iframe>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <span class="text-white">http://localhost:58418/Admin/AdminDashBoard</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-12 col-lg-4 col-xl-4">
-            <div class="card">
-                <div class="card-body">
-                    <h5> <i class="bx bx-book-reader"></i> Our Course Name</h5>
-
-                    <img src="https://png.pngtree.com/background/20210711/original/pngtree-literary-cartoon-book-teaching-banner-poster-picture-image_1078154.jpg" class="img-fluid rounded mb-3" />
-                    <div type="button" class="btn btn-light mb-2 position-relative">
-                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="img-fluid w-25 position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#exampleVerticallycenteredModal" />
-                        <iframe width="350px" height="100%" src="https://www.youtube.com/embed/efXOrthfd2U?si=QQ-up0ictKQZpNj3" title="YouTube video player" frameborder="0"></iframe>
-                    </div>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
-                            <span class="text-white">http://localhost:58418/Admin/AdminDashBoard</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
     </div>
-</div>
 
 
+    <div class="row">
+        @if (Model != null)
+        {
+            if (Model.lstCourse != null)
+            {
+                int i = 1;
+                foreach (var Item in Model.lstCourse)
+                {
+                    <div class="col-12 col-lg-12 col-xl-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5> <i class="bx bx-book-reader"></i> @Item.CourseName</h5>
+                                <img src="@Item.CourseImage" class="img-fluid rounded mb-3" />
+                                <div type="button" class="btn btn-light mb-2 position-relative">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" class="img-fluid w-25 position-absolute top-50 start-50 translate-middle" data-bs-toggle="modal" data-bs-target="#@Item.CourseID" />
+                                    <iframe width="350px" height="100%" src="@Item.CourseLink" title="YouTube video player" frameborder="0"></iframe>
+                                </div>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item d-flex justify-content-between align-items-center flex-wrap">
+                                        @*<span class="text-white" target="_blank" style="cursor:pointer">@Item.CourseLink</span>*@
+                                        <a href="@Item.CourseLink" class="text-white" target="_blank" style="cursor:pointer">@Item.CourseLink</a>
+                                    </li>
+                                </ul>
 
 
-
-
-
-@* modal video *@
-<div class="col">
-    <!-- Modal -->
-    <div class="modal fade" id="exampleVerticallycenteredModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Wacth This Video</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <iframe width="100%" height="400px" src="https://www.youtube.com/embed/efXOrthfd2U?si=cmGtjQaeMm9ex8hl" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                </div>
-                @*<div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>*@
-            </div>
-        </div>
+                                @* modal video *@
+                                <div class="col">
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="@Item.CourseID" tabindex="-1" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title">Wacth This Video</h5>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <iframe width="100%" height="400px" src="@Item.CourseLink" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                                                </div>
+                                                @*<div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                    </div>*@
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
     </div>
 </div>
