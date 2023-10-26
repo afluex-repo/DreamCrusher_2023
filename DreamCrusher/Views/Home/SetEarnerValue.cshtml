@@ -8,94 +8,95 @@
 <br />
 @using (Html.BeginForm("SetEarnerValue", "Home", FormMethod.Post, new { @id = "form1" }))
 {
-    <div class="row">
-        <div class="col-12 col-lg-12 col-xl-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">Set Earner Value</h5>
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Set Earner Value</h5>
 
-                        <p style="color:white">
-                        @TempData["SetEarnerValue"]
-                        </p>
+                            <p style="color:white">
+                                @TempData["SetEarnerValue"]
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="col-12 col-lg-12 col-xl-12">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row g-3">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
 
-                        <div class="col-md-3">
-                            <label for="EarnerValue" class="form-label"> Earner Value</label>
-                            @Html.TextBoxFor(m => m.EarnerValue, new { @class = "form-control", @placeholder = "Enter Value", @onkeypress = "return isNumberKey(event);", })
-                        </div>
-                        <div class="col-md-3">
-                            <label for="FromDate" class="form-label">From Date</label>
-                           @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @placeholder = "From Date", @readonly = "readonly" })
-                        </div>
-                        <div class="col-md-3">
-                            <label for="ToDate" class="form-label">To Date</label>
-                            @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @placeholder = "To Date", @readonly = "readonly" })
-                        </div>
+                            <div class="col-md-3">
+                                <label for="EarnerValue" class="form-label"> Earner Value</label>
+                                @Html.TextBoxFor(m => m.EarnerValue, new { @class = "form-control", @placeholder = "Enter Value", @onkeypress = "return isNumberKey(event);", })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="FromDate" class="form-label">From Date</label>
+                                @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @placeholder = "From Date", @readonly = "readonly" })
+                            </div>
+                            <div class="col-md-3">
+                                <label for="ToDate" class="form-label">To Date</label>
+                                @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control", @placeholder = "To Date", @readonly = "readonly" })
+                            </div>
 
-                        <div class="col-md-3">
-                            <br />
-                            <input type="submit" class="btn btn-light px-3" value="Update" name="Update" />
-                        </div>
+                            <div class="col-md-3">
+                                <br />
+                                <input type="submit" class="btn btn-light px-3" value="Update" name="Update" />
+                            </div>
 
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-
 }
 
-<script src="../vendor/jquery/jquery.min.js"></script>
+        <script src="../vendor/jquery/jquery.min.js"></script>
 
-<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
-<script>
-
-
-    function isNumberKey(evt) {
-
-        var charCode = (evt.which) ? evt.which : event.keyCode;
-        if (charCode != 46 && charCode > 31
-          && (charCode < 48 || charCode > 57))
-            return false;
-
-        return true;
-    }
-
-    $('#FromDate').datepicker({
-        dateFormat: 'dd/mm/yy',
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "-60:+0",
-    });
+        <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+        <script>
 
 
-    $('#ToDate').datepicker({
-        dateFormat: 'dd/mm/yy',
-        changeMonth: true,
-        changeYear: true,
-        yearRange: "-60:+0",
-    });
+            function isNumberKey(evt) {
+
+                var charCode = (evt.which) ? evt.which : event.keyCode;
+                if (charCode != 46 && charCode > 31
+                  && (charCode < 48 || charCode > 57))
+                    return false;
+
+                return true;
+            }
+
+            $('#FromDate').datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0",
+            });
 
 
-    $('#TransactionDate').datepicker({
-        dateFormat: 'yy-mm-dd',
-    });
-</script>
-<style>
-    .btn {
-        margin-top: 8px;
-    }
-</style>
+            $('#ToDate').datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                yearRange: "-60:+0",
+            });
+
+
+            $('#TransactionDate').datepicker({
+                dateFormat: 'yy-mm-dd',
+            });
+        </script>
+        <style>
+            .btn {
+                margin-top: 8px;
+            }
+        </style>
 
 
 
