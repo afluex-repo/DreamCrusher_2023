@@ -27,14 +27,14 @@
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label class="form-label">Select User <span style="color: red">*</span></label>
-                                @Html.DropDownListFor(m => m.Fk_UserId, new SelectList(ViewBag.ddluser, "Value", "Text"), new { @class = "form-control" })
+                                @Html.DropDownListFor(m => m.Fk_UserId, new SelectList(ViewBag.ddluser, "Value", "Text"), new { @class = "form-control form-select" })
                             </div>
                             <div class="col-md-4">
                                 <label class="form-label">Select Main Menu <span style="color: red">*</span></label>
-                                @Html.DropDownListFor(m => m.Fk_FormTypeId, new SelectList(ViewBag.ddlformtype, "Value", "Text"), new { @class = "form-control" })
+                                @Html.DropDownListFor(m => m.Fk_FormTypeId, new SelectList(ViewBag.ddlformtype, "Value", "Text"), new { @class = "form-control form-select" })
                             </div>
                             <div class="col-md-4 mt-5">
-                                <input type="submit" id="GetDetails" name="GetDetails" class="btn btn-light px-3" value="Get Details" />
+                                <input type="submit" id="GetDetails" name="GetDetails" class="btn btn-light px-3 bn" value="Get Details" onclick="return Validateform()" />
                             </div>
                         </div>
                     </div>
@@ -89,10 +89,35 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="form-group">
-                    <input type="submit" id="Save" name="Save" class="btn btn-light px-3" value="Update" />
+                    <input type="submit" id="Save" name="Save" class="btn btn-light px-3" value="Update" onclick="return Validateform()" />
                 </div>
             </div>
         </div>
     </div>
     <br />
 }
+<script>
+    function Validateform() {
+        debugger;
+        $(".errortext").removeClass("errortext");
+
+        if ($("#Fk_UserId").val() == "0") {
+            $("#Fk_UserId").addClass('errortext');
+            $("#Fk_UserId").focus();
+            return false;
+        }
+        if ($("#Fk_FormTypeId").val() == "0") {
+            $("#Fk_FormTypeId").addClass('errortext');
+            $("#Fk_FormTypeId").focus();
+            return false;
+        }
+      
+    }
+
+</script>
+<style>
+    .errortext {
+        border: 1px solid red !important;
+        background-color: #faa3a3 !important;
+    }
+</style>

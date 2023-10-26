@@ -33,6 +33,7 @@ namespace DreamCrusher.Controllers
                     obj.DirectPercent = (r["DirectPercent"].ToString());
                     obj.ROIPercent = (r["ROIPercent"].ToString());
                     obj.BV = (r["BV"].ToString());
+                    obj.status = (r["Status"].ToString());
 
                     lst.Add(obj);
                 }
@@ -680,27 +681,25 @@ namespace DreamCrusher.Controllers
             ViewBag.ddlPackage = ddlPackage;
             #endregion
 
+            List<Master> lst1 = new List<Master>();
             List<Master> lst = new List<Master>();
             model.Package = Package;
-            DataSet ds = model.GetCourseListForAllotCourses();
-
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            DataSet ds1 = model.GetCourseListForAllotCourses();
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
             {
-                foreach (DataRow r in ds.Tables[0].Rows)
+                foreach (DataRow r in ds1.Tables[0].Rows)
                 {
-                    Master obj1 = new Master();
-                    obj1.CourseID = r["Pk_CourseId"].ToString();
-                    obj1.FK_CourseID = r["FK_CourseID"].ToString();
-                    obj1.CourseName = r["CourseName"].ToString();
-                    obj1.CourseImage = r["CourseImage"].ToString();
-                    obj1.CourseDate = r["CourseDate"].ToString();
-                    obj1.CourseLink = r["CourseLink"].ToString();
-                    obj1.Fk_PackageId = r["Fk_PackageId"].ToString();
-                    lst.Add(obj1);
+                    Master obj11 = new Master();
+                    obj11.CourseID = r["PK_CourseID"].ToString();
+                    obj11.CourseName = r["CourseName"].ToString();
+                    obj11.CourseImage = r["CourseImage"].ToString();
+                    obj11.CourseDate = r["CourseDate"].ToString();
+                    obj11.CourseLink = r["CourseLink"].ToString();
+                    obj11.status = r["status"].ToString();
+                    lst1.Add(obj11);
                 }
-                model.lstCourse = lst;
+                model.lstCourses = lst1;
             }
-
             return View(model);
         }
 
@@ -721,23 +720,37 @@ namespace DreamCrusher.Controllers
                 string CourseName = "";
                 //string CourseImage = "";
                 int Id = 0;
+                string Status = "";
                 DataTable dtpayment = new DataTable();
                 dtpayment.Columns.Add("Id");
                 dtpayment.Columns.Add("CourseID");
                 dtpayment.Columns.Add("CourseName");
+                dtpayment.Columns.Add("Status");
+
                 //dtpayment.Columns.Add("CourseImage");
                 for (int i = 1; i < int.Parse(ctrRowCount); i++)
                 {
                     chk = Request["chkpayment_" + i];
-                    
+
                     if (chk == "on")
                     {
                         Id = dtpayment.Rows.Count + 1;
                         CourseID = Request["CourseID_" + i].ToString();
                         CourseName = Request["CourseName_" + i].ToString();
+                        Status = "1";
+
                         //CourseImage = Request["CourseImage_" + i].ToString();
                         //dtpayment.Rows.Add(Id, CourseID, CourseName, CourseImage);
-                        dtpayment.Rows.Add(Id, CourseID, CourseName);
+                        dtpayment.Rows.Add(Id, CourseID, CourseName, Status);
+                    }
+                    else
+                    {
+                        Id = dtpayment.Rows.Count + 1;
+                        CourseID = Request["CourseID_" + i].ToString();
+                        CourseName = Request["CourseName_" + i].ToString();
+                        Status = "0";
+                        dtpayment.Rows.Add(Id, CourseID, CourseName, Status);
+                        
                     }
                 }
                 model.dtTable = dtpayment;
@@ -797,5 +810,81 @@ namespace DreamCrusher.Controllers
             }
             return View(model);
         }
+
+
+        #region Status
+        public ActionResult ActiveProduct(string ProductID)
+        {
+            string FormName = " ";
+            string Controller = "";
+            try
+            {
+                if (ProductID != null)
+                {
+                    Master model = new Master();
+                    model.ProductID = ProductID;
+                    model.AddedBy = Session["PK_AdminId"].ToString();
+                    DataSet ds = model.ActiveProduct();
+                    if (ds != null && ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                        {
+                            TempData["Product"] = "Product Status Active!";
+                            FormName = "ProductList";
+                            Controller = "Master";
+                        }
+                        else
+                        {
+                            TempData["Product"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                            FormName = "ProductList";
+                            Controller = "Master";
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return RedirectToAction(FormName, Controller);
+        }
+
+        public ActionResult InactiveProduct(string ProductID)
+        {
+            string FormName = " ";
+            string Controller = "";
+            try
+            {
+                if (ProductID != null)
+                {
+                    Master model = new Master();
+                    model.ProductID = ProductID;
+                    model.AddedBy = Session["PK_AdminId"].ToString();
+                    DataSet ds = model.InactiveProduct();
+                    if (ds != null && ds.Tables.Count > 0)
+                    {
+                        if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                        {
+                            TempData["ErrProduct"] = "Product Status Inactive!";
+                            FormName = "ProductList";
+                            Controller = "Master";
+                        }
+                        else
+                        {
+                            TempData["ErrProduct"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                            FormName = "ProductList";
+                            Controller = "Master";
+                        }
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            return RedirectToAction(FormName, Controller);
+        }
+
+        #endregion
     }
 }

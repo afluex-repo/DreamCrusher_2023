@@ -420,13 +420,13 @@ a {
 
 	.wrapper.toggled.sidebar-hovered .sidebar-wrapper {
 
-		background-color: #171717;
+		background-color: #002542;
 
 	}
 
 	.wrapper.toggled.sidebar-hovered .sidebar-header {
 
-		background-color: #171717;
+		background-color: #002542;
 
 		border-bottom: 1px solid rgba(255, 255, 255, 0.12);
 
@@ -3256,6 +3256,7 @@ input::placeholder {
 	border: 0 solid #e5e5e5;
 
 	padding: 0;
+    margin:auto;
 
 }
 
@@ -4249,7 +4250,7 @@ body.bg-theme15 {
 
 	.sidebar-wrapper {
 
-		background: #171717;
+		background: #313260;
 
 		left: -300px;
 
@@ -4259,7 +4260,7 @@ body.bg-theme15 {
 
 	.sidebar-header {
 
-		background: #171717;
+		background: #313260;
 
 	}
 

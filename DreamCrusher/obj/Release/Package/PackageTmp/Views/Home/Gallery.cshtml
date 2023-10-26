@@ -1,0 +1,59 @@
+﻿@model DreamCrusher.Models.Home
+
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_WebisteLayout.cshtml";
+}
+
+<!--Page Title-->
+<section class="page-title" style="background-image:url(../WebsiteCss/images/background/5.jpg)">
+    <div class="auto-container">
+        <div class="clearfix">
+            <div class="pull-left">
+                <div class="title">Welcome to Digi Direct Pvt. Ltd.</div>
+                <h2>Gallery</h2>
+            </div>
+            <div class="pull-right">
+                <ul class="page-breadcrumb">
+                    <li><a href="index.html">home</a></li>
+                    <li>Gallery</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+<!--End Page Title-->
+<!-- Projects Page Section -->
+<section class="projects-page-section galleryhh">
+    <div class="auto-container">
+        <!-- MixitUp Galery -->
+        <div class="mixitup-gallery">
+            <div class="filter-list row clearfix">
+                <div class="row">
+                    @if (Model != null)
+                    {
+                        if (Model.lstGallery != null)
+                        {
+                            int i = 1;
+                            foreach (var Item in Model.lstGallery)
+                            {
+                                <div class="col-sm-4">
+
+
+                                    <div class="magnific-img">
+                                        <a class="image-popup-vertical-fit" href="@Item.Image" title=" ">
+                                            <img src="@Item.Image" alt="" style="height: 380px; margin-top:5px;margin-bottom:5px;">
+
+                                        </a>
+                                    </div>
+                                </div>
+                            }
+                        }
+                    }
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</section>
