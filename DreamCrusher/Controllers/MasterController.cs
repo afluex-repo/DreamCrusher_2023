@@ -33,6 +33,7 @@ namespace DreamCrusher.Controllers
                     obj.DirectPercent = (r["DirectPercent"].ToString());
                     obj.ROIPercent = (r["ROIPercent"].ToString());
                     obj.BV = (r["BV"].ToString());
+                    obj.DirectIncome = (r["DirectIncome"].ToString());
                     obj.status = (r["Status"].ToString());
 
                     lst.Add(obj);
@@ -100,6 +101,8 @@ namespace DreamCrusher.Controllers
                         obj.DirectPercent = ds.Tables[0].Rows[0]["DirectPercent"].ToString();
                         obj.ROIPercent = ds.Tables[0].Rows[0]["ROIPercent"].ToString();
                         obj.BV = ds.Tables[0].Rows[0]["BV"].ToString();
+                        obj.DirectIncome = ds.Tables[0].Rows[0]["DirectIncome"].ToString();
+                    
                     }
                 }
                 catch (Exception ex)
@@ -115,7 +118,7 @@ namespace DreamCrusher.Controllers
             
         }
 
-        public ActionResult SaveProduct(string ProductName, string ProductPrice, string IGST, string CGST, string SGST, string BinaryPercent, string DirectPercent, string ROIPercent,string BV)
+        public ActionResult SaveProduct(string ProductName, string ProductPrice, string IGST, string CGST, string SGST, string BinaryPercent, string DirectPercent, string ROIPercent,string BV, string DirectIncome)
         {
             Master obj = new Master();
             try
@@ -129,6 +132,7 @@ namespace DreamCrusher.Controllers
                 obj.DirectPercent = DirectPercent;
                 obj.ROIPercent = ROIPercent;
                 obj.BV = BV;
+                obj.DirectIncome = DirectIncome;
                 obj.AddedBy = Session["PK_AdminId"].ToString();
 
                 DataSet ds = obj.SaveProduct();
@@ -151,7 +155,7 @@ namespace DreamCrusher.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult UpdateProduct(string ProductID, string ProductName, string ProductPrice, string IGST, string CGST, string SGST, string BinaryPercent, string DirectPercent, string ROIPercent,string BV)
+        public ActionResult UpdateProduct(string ProductID, string ProductName, string ProductPrice, string IGST, string CGST, string SGST, string BinaryPercent, string DirectPercent, string ROIPercent,string BV, string DirectIncome)
         {
             Master obj = new Master();
             try
@@ -166,6 +170,7 @@ namespace DreamCrusher.Controllers
                 obj.DirectPercent = DirectPercent;
                 obj.ROIPercent = ROIPercent;
                 obj.BV = BV;
+                obj.DirectIncome = DirectIncome;
                 obj.UpdatedBy = Session["PK_AdminId"].ToString();
 
                 DataSet ds = obj.UpdateProduct();
@@ -459,6 +464,7 @@ namespace DreamCrusher.Controllers
                         obj.CourseID = ds.Tables[0].Rows[0]["Pk_CourseId"].ToString();
                         obj.CourseName = ds.Tables[0].Rows[0]["CourseName"].ToString();
                         obj.CourseImage = ds.Tables[0].Rows[0]["CourseImage"].ToString();
+                        obj.Title = ds.Tables[0].Rows[0]["Title"].ToString();
                     }
                 }
                 catch (Exception ex)
@@ -527,6 +533,7 @@ namespace DreamCrusher.Controllers
                     obj.CourseImage = r["CourseImage"].ToString();
                     obj.CourseDate = r["CourseDate"].ToString();
                     obj.CourseLink = r["CourseLink"].ToString();
+                    obj.Title = r["Title"].ToString();
                     lst.Add(obj);
                 }
                 model.lstCourse = lst;

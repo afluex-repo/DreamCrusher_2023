@@ -141,7 +141,7 @@ namespace DreamCrusher.Models
         }
         public DataSet BindProduct()
         {
-            DataSet ds = DBHelper.ExecuteQuery("GetProductList");
+            DataSet ds = DBHelper.ExecuteQuery("BindProduct");
             return ds;
         }
 

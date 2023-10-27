@@ -47,6 +47,11 @@
                             @Html.TextBoxFor(m => m.CourseLink, new { @placeholder = "Course Link", @class = "form-control" })
                         </div>
 
+                        <div class="col-md-4">
+                            <label for="inputFirstName" class="form-label">Title<span style="color: red">*</span></label>
+                            @Html.TextBoxFor(m => m.Title, new { @placeholder = "Title", @class = "form-control" })
+                        </div>
+
                         <div class="col-12">
                             @if (Model == null)
                             {
@@ -94,5 +99,14 @@
             $('#CourseLink').focus();
             return false;
         }
+        if ($('#Title').val() == '') {
+            $("#Title").addClass('errortext');
+            $('#Title').focus();
+            return false;
+        }
+
+
+
+        
     }
 </script>

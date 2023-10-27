@@ -11,7 +11,12 @@ body {
 	overflow-x: hidden
 
 }
-
+@media print {
+    body {
+        background: rgb(0,0,0);
+        background: linear-gradient(150deg, rgba(0,0,0,1) 0%, rgba(0,25,48,1) 0%, rgba(50,145,208,1) 48%, rgba(72,107,182,1) 100%) !important;
+    }
+}
 a {
 
 	text-decoration: none
@@ -4114,6 +4119,8 @@ body.bg-theme1 {
 
 }
 
+
+
 body.bg-theme2 {
 
 	background-image: url(../images/bg-themes/2.png);
@@ -4250,7 +4257,7 @@ body.bg-theme15 {
 
 	.sidebar-wrapper {
 
-		background: #171717;
+		background: #313260;
 
 		left: -300px;
 
@@ -4260,7 +4267,7 @@ body.bg-theme15 {
 
 	.sidebar-header {
 
-		background: #171717;
+		background: #313260;
 
 	}
 

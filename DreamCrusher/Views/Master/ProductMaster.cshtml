@@ -56,6 +56,12 @@
                                 <label class="col-sm-3 col-form-label">BV <span style="color: red">*</span></label>
                                 @Html.TextBoxFor(m => m.BV, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
                             </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Direct Income<span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.DirectIncome, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
+                            </div>
+
                             <div class="col-12">
 
                                 @if (Model == null)
@@ -189,12 +195,16 @@
             $('#BV').focus();
             return false;
         }
-
+        if ($('#DirectIncome').val() == '') {
+            $("#DirectIncome").addClass('errortext');
+            $('#DirectIncome').focus();
+            return false;
+        }
         $.ajax({
             url: "/Master/SaveProduct",
             Type: "Get",
             DataType: "JSON",
-            data: { ProductName: $("#ProductName").val(), ProductPrice: $("#ProductPrice").val(), IGST: $("#IGST").val(), CGST: $("#CGST").val(), SGST: $("#SGST").val(), BinaryPercent: $("#BinaryPercent").val(), DirectPercent: $("#DirectPercent").val(), ROIPercent: $("#ROIPercent").val(), BV: $("#BV").val() },
+            data: { ProductName: $("#ProductName").val(), ProductPrice: $("#ProductPrice").val(), IGST: $("#IGST").val(), CGST: $("#CGST").val(), SGST: $("#SGST").val(), BinaryPercent: $("#BinaryPercent").val(), DirectPercent: $("#DirectPercent").val(), ROIPercent: $("#ROIPercent").val(), BV: $("#BV").val(), DirectIncome: $("#DirectIncome").val() },
             success: function (data) {
                 alert(data.Result);
                 window.location.href = '@Url.Action("ProductList", "Master")';
@@ -251,12 +261,17 @@
             $('#BV').focus();
             return false;
         }
+        if ($('#DirectIncome').val() == '') {
+            $("#DirectIncome").addClass('errortext');
+            $('#DirectIncome').focus();
+            return false;
+        }
 
         $.ajax({
             url: "/Master/UpdateProduct",
             Type: "Get",
             DataType: "JSON",
-            data: { ProductID: $("#ProductID").val(), ProductName: $("#ProductName").val(), ProductPrice: $("#ProductPrice").val(), IGST: $("#IGST").val(), CGST: $("#CGST").val(), SGST: $("#SGST").val(), BinaryPercent: $("#BinaryPercent").val(), DirectPercent: $("#DirectPercent").val(), ROIPercent: $("#ROIPercent").val(), BV: $("#BV").val() },
+            data: { ProductID: $("#ProductID").val(), ProductName: $("#ProductName").val(), ProductPrice: $("#ProductPrice").val(), IGST: $("#IGST").val(), CGST: $("#CGST").val(), SGST: $("#SGST").val(), BinaryPercent: $("#BinaryPercent").val(), DirectPercent: $("#DirectPercent").val(), ROIPercent: $("#ROIPercent").val(), BV: $("#BV").val(), DirectIncome: $("#DirectIncome").val() },
             success: function (data) {
                 alert(data.Result);
                 window.location.href = '@Url.Action("ProductList", "Master")';

@@ -28,6 +28,10 @@ namespace DreamCrusher.Models
         public string NewsBody { get; set; }
         public string NewsDate { get; set; }
         public string BV { get; set; }
+        public string DirectIncome { get; set; }
+
+
+
         public List<Master> lstNews { get; set; }
 
         public List<Master> lstCourse { get; set; }
@@ -40,6 +44,8 @@ namespace DreamCrusher.Models
         public string CourseLink { get; set; }
         public string CourseDate { get; set; }
         public string status { get; set; }
+
+        public string Title { get; set; }
 
 
 
@@ -60,6 +66,7 @@ namespace DreamCrusher.Models
                                   new SqlParameter("@DirectPercent", DirectPercent),
                                   new SqlParameter("@ROIPercent", ROIPercent),
                                   new SqlParameter("@BV",BV),
+                                  new SqlParameter("@DirectIncome",DirectIncome),
                                   new SqlParameter("@AddedBy", AddedBy)};
 
             DataSet ds = DBHelper.ExecuteQuery("AddProduct", para);
@@ -111,6 +118,7 @@ namespace DreamCrusher.Models
                                   new SqlParameter("@DirectPercent", DirectPercent),
                                   new SqlParameter("@ROIPercent", ROIPercent),
                                   new SqlParameter("@BV", BV),
+                                       new SqlParameter("@DirectIncome",DirectIncome),
                                   new SqlParameter("@UpdatedBy", UpdatedBy)};
 
             DataSet ds = DBHelper.ExecuteQuery("UpdateProduct", para);
@@ -176,6 +184,7 @@ namespace DreamCrusher.Models
             SqlParameter[] para = { new SqlParameter("@CourseName", CourseName),
                                   new SqlParameter("@CourseImage", CourseImage),
                                   new SqlParameter("@CourseLink", CourseLink),
+                                       new SqlParameter("@Title", Title),
                                   new SqlParameter("@AddedBy", AddedBy)};
 
             DataSet ds = DBHelper.ExecuteQuery("AddCourse", para);
@@ -195,6 +204,7 @@ namespace DreamCrusher.Models
                                   new SqlParameter("@CourseName", CourseName),
                                   new SqlParameter("@CourseImage", CourseImage),
                                   new SqlParameter("@CourseLink", CourseLink),
+                                  new SqlParameter("@Title", Title),
                                   new SqlParameter("@UpdatedBy", UpdatedBy)
             };
             DataSet ds = DBHelper.ExecuteQuery("UpdateCourse", para);

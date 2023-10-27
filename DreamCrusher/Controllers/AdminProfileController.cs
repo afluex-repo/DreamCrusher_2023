@@ -275,30 +275,30 @@ namespace DreamCrusher.Controllers
             #endregion
             List<Reports> lst = new List<Reports>();
 
-            DataSet ds = model.GetAssociateList();
+            //DataSet ds = model.GetAssociateList();
 
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                foreach (DataRow r in ds.Tables[0].Rows)
-                {
-                    Reports obj = new Reports();
-                    obj.Fk_UserId = r["Pk_UserId"].ToString();
-                    obj.LoginId = r["LoginId"].ToString();
-                    obj.Name = r["Name"].ToString();
-                    obj.JoiningDate = r["JoiningDate"].ToString();
-                    obj.Password =Crypto.Decrypt( r["Password"].ToString());
-                    obj.Mobile = (r["Mobile"].ToString());
-                    obj.Email = (r["Email"].ToString());
-                    obj.SponsorId = (r["SponsorId"].ToString());
-                    obj.SponsorName = (r["SponsorName"].ToString());
-                    obj.isBlocked = (r["isBlocked"].ToString());
-                    obj.Status = r["MemberStatus"].ToString();
-                    lst.Add(obj);
-                }
-                model.lstassociate = lst;
+            //if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            //{
+            //    foreach (DataRow r in ds.Tables[0].Rows)
+            //    {
+            //        Reports obj = new Reports();
+            //        obj.Fk_UserId = r["Pk_UserId"].ToString();
+            //        obj.LoginId = r["LoginId"].ToString();
+            //        obj.Name = r["Name"].ToString();
+            //        obj.JoiningDate = r["JoiningDate"].ToString();
+            //        obj.Password =Crypto.Decrypt( r["Password"].ToString());
+            //        obj.Mobile = (r["Mobile"].ToString());
+            //        obj.Email = (r["Email"].ToString());
+            //        obj.SponsorId = (r["SponsorId"].ToString());
+            //        obj.SponsorName = (r["SponsorName"].ToString());
+            //        obj.isBlocked = (r["isBlocked"].ToString());
+            //        obj.Status = r["MemberStatus"].ToString();
+            //        lst.Add(obj);
+            //    }
+            //    model.lstassociate = lst;
 
 
-            }
+            //}
             return View(model);
         }
         [HttpPost]
