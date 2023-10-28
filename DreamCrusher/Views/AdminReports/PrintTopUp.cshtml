@@ -42,12 +42,12 @@
                                     <th style="width: 18%; vertical-align:middle;"><img src="/Websiteassets/images/logo-white.png" class="img-fluid" alt="logo"> </th>
                                     <th style="width: 40%;    vertical-align: inherit;">
                                         <div class="addres-details text-center">
-                                            <p class="text-center"><strong>Dream Crusher Pvt Ltd.</strong></p>
-                                            <p>@ViewBag.CompanyAddress</p>
+                                            <p class="text-center mb-0"><strong>Dream Crusher Pvt Ltd.</strong></p>
+                                            <p class="mb-0">@ViewBag.CompanyAddress</p>
                                             @*<p>@ViewBag.City1 (@ViewBag.State1) -@ViewBag.Pin1</p>*@
-                                            <p><strong>E-mail :</strong> @ViewBag.EmailID</p>
-                                            <p><strong>Contact No.:</strong> @ViewBag.ContactNo</p>
-                                            <p><strong>Website :</strong> @ViewBag.Website</p>
+                                            <p class="mb-0"><strong>E-mail :</strong> @ViewBag.EmailID</p>
+                                            <p class="mb-0"><strong>Contact No.:</strong> @ViewBag.ContactNo</p>
+                                            <p class="mb-0"><strong>Website :</strong> @ViewBag.Website</p>
                                         </div>
                                     </th>
                                     @*<th>
@@ -67,16 +67,16 @@
                                 <tr>
                                     <td>
                                         <div class="gstin">
-                                            <p><strong>GSTIN :</strong> @ViewBag.GSTNO</p>
-                                            <p><strong>Invoice Serial Number :</strong> @ViewBag.OrderNo</p>
-                                            <p><strong>Invoice Date :</strong> @ViewBag.UpgradtionDate</p>
+                                            <p class="mb-0"><strong>GSTIN :</strong> @ViewBag.GSTNO</p>
+                                            <p class="mb-0"><strong>Invoice Serial Number :</strong> @ViewBag.OrderNo</p>
+                                            <p class="mb-0"><strong>Invoice Date :</strong> @ViewBag.UpgradtionDate</p>
                                             @*<p><strong>Distributer ID :</strong> 809596808</p>*@
                                         </div>
                                     </td>
                                     <td>
                                         <div class="gstin">
-                                            <h6><b>Shipping Details</b></h6>
-                                            To, <br />
+                                            <h6 class="mb-0"><b>Shipping Details</b></h6>
+                                            To, 
                                             @ViewBag.Name (@ViewBag.Loginid)<br />
                                             @ViewBag.City,&nbsp; @ViewBag.State,&nbsp; @ViewBag.Pincode
                                             @*<p><strong>Name :</strong> @ViewBag.Name</p>
@@ -212,10 +212,6 @@
                                 <tr class="descript">
                                     <td class="text-center"><strong>Signature of Recipiet</strong></td>
                                     <td class="text-center"><strong>Authorised Signature</strong></td>
-                                </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
                                 </tr>
                             </tbody>
 
