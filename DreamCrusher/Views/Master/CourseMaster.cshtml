@@ -36,22 +36,18 @@
                            @Html.TextBoxFor(m => m.CourseName, new { @placeholder = "Course Name", @class = "form-control" })
                         @Html.HiddenFor(m => m.CourseID)
                         </div>
-
                         <div class="col-md-4">
                             <label for="inputFirstName" class="form-label">Course Image <span style="color: red">*</span></label>
                             <input type="file" id="CourseImage" name="CourseImage" class="form-control" />
                         </div>
-
                         <div class="col-md-4">
                             <label for="inputFirstName" class="form-label">Course Link<span style="color: red">*</span></label>
                             @Html.TextBoxFor(m => m.CourseLink, new { @placeholder = "Course Link", @class = "form-control" })
                         </div>
-
                         <div class="col-md-4">
                             <label for="inputTitle" class="form-label">Title<span style="color: red">*</span></label>
                             @Html.TextBoxFor(m => m.Title, new { @placeholder = "Title", @class = "form-control" })
                         </div>
-
                         <div class="col-12">
                             @if (Model == null)
                             {
@@ -61,7 +57,6 @@
                             {
                                 <input type="submit" id="btnUpdateCourse" class="btn btn-light px-5" name="btnUpdateCourse" value="Update"  />
                             }
-
                             <a class="btn btn-light px-5" href="/Master/CourseList">Back To List</a>
                         </div>
                     </div>
@@ -70,9 +65,7 @@
         </div>
     </div>
 </div>
-
 }
-
 <style>
     .errortext {
         border: 1px solid red !important;
@@ -83,7 +76,6 @@
     function validateForm() {
         $(".errortext").removeClass("errortext");
         debugger;
-
         if ($('#CourseName').val() == '') {
             $("#CourseName").addClass('errortext');
             $('#CourseName').focus();
@@ -103,10 +95,6 @@
             $("#Title").addClass('errortext');
             $('#Title').focus();
             return false;
-        }
-
-
-
-        
+        }    
     }
 </script>
