@@ -215,14 +215,9 @@ namespace DreamCrusher.Controllers
                 foreach (DataRow dr in Ds.Tables[3].Rows)
                 {
                     DashBoard details = new DashBoard();
-
-
                     details.Amount = (dr["Amount"].ToString());
                     details.Month = (dr["Month"].ToString());
-
-
                     dataList.Add(details);
-
                     count++;
                 }
             }
@@ -892,7 +887,6 @@ namespace DreamCrusher.Controllers
             ViewBag.Fk_UserId = "1";
             return PartialView("_Tree");
         }
-
         #region PayPayout
         public ActionResult PayPayout()
         {
@@ -1128,7 +1122,6 @@ namespace DreamCrusher.Controllers
                         Controller = "Admin";
                     }
                 }
-
             }
             catch (Exception ex)
             {
@@ -1147,7 +1140,6 @@ namespace DreamCrusher.Controllers
         [ActionName("CalculateMonthlySpillBonus")]
         public ActionResult Save(Reports model)
         {
-
             try
             {
                 model.AddedBy = Session["Pk_AdminId"].ToString();
@@ -1174,15 +1166,10 @@ namespace DreamCrusher.Controllers
             }
             return RedirectToAction("CalculateMonthlySpillBonus");
         }
-
-
-
         public ActionResult BinaryTrees()
         {
             ViewBag.Fk_UserId = "1";
             return View();
         }
-
-
     }
 }
