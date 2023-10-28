@@ -35,7 +35,6 @@ namespace DreamCrusher.Controllers
                     obj.BV = (r["BV"].ToString());
                     obj.DirectIncome = (r["DirectIncome"].ToString());
                     obj.status = (r["Status"].ToString());
-
                     lst.Add(obj);
                 }
                 model.lstproduct = lst;
