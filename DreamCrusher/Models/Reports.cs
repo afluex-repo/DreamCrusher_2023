@@ -124,6 +124,7 @@ namespace DreamCrusher.Models
         public string CourseImage { get; set; }
         public string CourseDate { get; set; }
         public string CourseLink { get; set; }
+        public string Title { get; set; }
         public List<Reports> lstcontactus { get; set; }
         public string Message { get; set; }
         public string Subject { get; set; }
