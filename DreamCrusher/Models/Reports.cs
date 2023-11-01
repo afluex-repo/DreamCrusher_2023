@@ -326,8 +326,10 @@ namespace DreamCrusher.Models
         }
         public DataSet GetBoosterAchieverForAssociate()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
-                                   new SqlParameter("@FromDate", FromDate),
+            SqlParameter[] para = {
+                new SqlParameter("@LoginId", LoginId),
+
+                new SqlParameter("@FromDate", FromDate),
                                   new SqlParameter("@ToDate", ToDate),};
             DataSet ds = DBHelper.ExecuteQuery("GetBoosterAchieverForAssociate", para);
             return ds;
