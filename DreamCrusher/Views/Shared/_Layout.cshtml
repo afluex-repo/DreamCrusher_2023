@@ -42,8 +42,8 @@
             </div>
             <!--navigation-->
             <ul class="metismenu" id="menu">
-                @if (Session["Profile"] == "")
-            {
+                @if(Session["ProfilePic"] == "")
+                 {
                     <a
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="../assets/img/users/user.png" class="user-img" alt="Image" style="width:40px;"/>
@@ -55,7 +55,7 @@
                 {
                     <a
                        href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="@Session["Profile"]" class="user-img" alt="Image" style="width:40px;">
+                        <img src="@Session["Profile"]" class="user-img" alt="Image">
                         <div class="user-info">
                         </div>
                     </a>
