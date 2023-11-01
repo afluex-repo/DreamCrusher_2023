@@ -1487,7 +1487,9 @@
     <Content Include="assets\img\spinner-white.svg" />
     <Content Include="assets\img\spinner.svg" />
     <Content Include="assets\img\typing.svg" />
+    <Content Include="assets\img\usdc.png" />
     <Content Include="assets\img\user.png" />
+    <Content Include="assets\img\userdreamcrusers.vcf" />
     <Content Include="assets\img\users\user-1.png" />
     <Content Include="assets\img\users\user-2.png" />
     <Content Include="assets\img\users\user-3.png" />
@@ -1498,6 +1500,7 @@
     <Content Include="assets\img\users\user-8.png" />
     <Content Include="assets\img\users\user-9.png" />
     <Content Include="assets\img\users\user.png" />
+    <Content Include="assets\img\user_dc.png" />
     <Content Include="assets\js\app.min.js" />
     <Content Include="assets\js\page\auth-register.js" />
     <Content Include="assets\js\page\calendar.js" />
