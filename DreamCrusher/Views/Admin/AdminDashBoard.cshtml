@@ -34,107 +34,170 @@
     </div>
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
 
+
         <div class="col">
-            <div class="card radius-10 tab1">
+            <div class="card radius-10" style="background:#feefe8">
                 <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0 text-white">Total Associates</p>
-                            <h4 class="my-1 text-white">@ViewBag.TotalUsers</h4>
+                    <div class="card mb-2" style="background:#fe7840;">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                    <i class="bx bx-user"></i>
+                                </div>
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="widgets-icons bg-light-transparent text-white ms-auto">
-                            <i class="bx bxs-group"></i>
+                    </div>
+                    <div class="d-flex align-items-center text-center justify-content-center">
+                        <div>
+                            <h5 class="mb-2 text-dark"><i class="bx bx-user"></i> @ViewBag.TotalUsers</h5>
+                            <h5 class="mb-0 text-dark">Total Associates</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 tab2">
+            <div class="card radius-10" style="background:#e4f9fc;">
                 <div class="card-body">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <p class="mb-0 text-white">Active Users</p>
-                            <h4 class="my-1 text-white">@ViewBag.ActiveUsers</h4>
+                    <div class="card mb-2" style="background:#0cc9da;">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                    <i class="bx bx-user"></i>
+                                </div>
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="widgets-icons bg-light-transparent text-white ms-auto">
-                            <i class="bx bxs-group"></i>
+                    </div>
+                    <div class="d-flex align-items-center text-center justify-content-center">
+                        <div>
+                            <h5 class="mb-2 text-dark"><i class="bx bx-user"></i> @ViewBag.ActiveUsers</h5>
+                            <h5 class="mb-0 text-dark">Active Users</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 tab3">
+            <div class="card radius-10" style="background:#fee6f3">
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <p class="mb-0 text-white">Blocked Users</p>
-                            <h4 class="my-1 text-white">@ViewBag.BlockedUsers</h4>
+                    <div class="card mb-2" style="background:#fd3c95;">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                    <i class="bx bx-block"></i>
+                                </div>
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="widgets-icons bg-light-transparent text-white">
-                            @*<i class="lni lni-ban"></i>*@
-                            <i class="bx bx-block"></i>
+                    </div>
+                    <div class="d-flex align-items-center text-center justify-content-center">
+                        <div>
+                            <h5 class="mb-2 text-dark"><i class="bx bx-user"></i> @ViewBag.BlockedUsers</h5>
+                            <h5 class="mb-0 text-dark">Blocked Users</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 tab3">
+            <div class="card radius-10" style="background:#e4f9fc">
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <p class="mb-0 text-white">Today Income</p>
-                            <h4 class="my-1 text-white">@ViewBag.TodayIncome</h4>
+                    <div class="card mb-2" style="background:#6d81f4;">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                    <i class="bx bx-rupee"></i>
+                                </div>
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="widgets-icons bg-light-transparent text-white">
-                            <i class="lni lni-rupee"></i>
+                    </div>
+                    <div class="d-flex align-items-center text-center justify-content-center">
+                        <div>
+                            <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.TodayIncome</h5>
+                            <h5 class="mb-0 text-dark">Today Income</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 tab1">
+            <div class="card radius-10" style="background:#f1e9f9">
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <p class="mb-0 text-white">Last 7 Days Income</p>
-                            <h4 class="my-1 text-white">@ViewBag.LastSevenDaysIncome</h4>
+                    <div class="card mb-2" style="background:#8241c6;">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                    <i class="bx bx-rupee"></i>
+                                </div>
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="widgets-icons bg-light-transparent text-white">
-                            <i class="lni lni-rupee"></i>
+                    </div>
+                    <div class="d-flex align-items-center text-center justify-content-center">
+                        <div>
+                            <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.LastSevenDaysIncome</h5>
+                            <h5 class="mb-0 text-dark">Last 7 Days Income</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 tab2">
+            <div class="card radius-10" style="background:#eef7f2">
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <p class="mb-0 text-white">Last 30 Days Income</p>
-                            <h4 class="my-1 text-white">@ViewBag.LastThirtyDaysIncome</h4>
+                    <div class="card mb-2" style="background:#3d6c54;">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                    <i class="bx bx-rupee"></i>
+                                </div>
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="widgets-icons bg-light-transparent text-white">
-                            <i class="lni lni-rupee"></i>
+                    </div>
+                    <div class="d-flex align-items-center text-center justify-content-center">
+                        <div>
+                            <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.LastThirtyDaysIncome</h5>
+                            <h5 class="mb-0 text-dark">Last 30 Days Income</h5>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col">
-            <div class="card radius-10 tab2">
+            <div class="card radius-10" style="background:#feefe8">
                 <div class="card-body">
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <p class="mb-0 text-white">Total Income</p>
-                            <h4 class="my-1 text-white">@ViewBag.TotalIncome</h4>
+                    <div class="card mb-2" style="background:#2e77c9;">
+                        <div class="card-body p-0">
+                            <div class="d-flex align-items-center">
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                    <i class="bx bx-rupee"></i>
+                                </div>
+                                <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                    <i class="bx bx-dots-vertical-rounded"></i>
+                                </div>
+                            </div>
                         </div>
-                        <div class="widgets-icons bg-light-transparent text-white">
-                            <i class="lni lni-rupee"></i>
+                    </div>
+                    <div class="d-flex align-items-center text-center justify-content-center">
+                        <div>
+                            <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.TotalIncome</h5>
+                            <h5 class="mb-0 text-dark">Total Income</h5>
                         </div>
                     </div>
                 </div>
