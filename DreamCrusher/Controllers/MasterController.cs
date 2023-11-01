@@ -10,7 +10,7 @@ using System.IO;
 
 namespace DreamCrusher.Controllers
 {
-    public class MasterController : Controller
+    public class MasterController : AdminBaseController
     {
         #region ProductMaster
         public ActionResult ProductList(Master model)
