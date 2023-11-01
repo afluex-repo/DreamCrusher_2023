@@ -3037,17 +3037,38 @@
     <Content Include="images\pdf.png" />
     <Content Include="images\Printer.png" />
     <Content Include="images\process.gif" />
+    <Content Include="images\ProfilePicture\033eae2a-8a6e-4cc6-80e0-acec11f34380.jpg" />
+    <Content Include="images\ProfilePicture\148f255c-942a-47c1-b8a6-5337f07922e6.jpg" />
+    <Content Include="images\ProfilePicture\150438a0-ed61-4a52-9238-99019e7d2028.jpg" />
     <Content Include="images\ProfilePicture\1b08199b-6889-491b-b0a3-18e5358cfee1.jpg" />
     <Content Include="images\ProfilePicture\1b9c20f2-7485-448f-8d39-4f3b91d07f86.jpg" />
     <Content Include="images\ProfilePicture\2224cca6-308b-42ab-8f4d-8a443be2b3c5.jpg" />
     <Content Include="images\ProfilePicture\233f7e38-d4c7-4ac7-8312-4610f805f340.png" />
+    <Content Include="images\ProfilePicture\249b2f7c-568b-4a58-8dc9-aade3ba8b806.jpg" />
     <Content Include="images\ProfilePicture\24ea7b20-05f3-4389-a950-029206fcf692.jpg" />
+    <Content Include="images\ProfilePicture\399320d8-b578-44fb-a1de-ddf2014545d8.jpg" />
+    <Content Include="images\ProfilePicture\54a6a2b2-2a1d-487b-a777-111b71b21ead.jpg" />
     <Content Include="images\ProfilePicture\5e956c02-2fe4-4b48-9a8f-f8f833c3094e.jpg" />
+    <Content Include="images\ProfilePicture\5f72ea01-4ed9-4314-b41d-0fde66ce8a24.jpg" />
+    <Content Include="images\ProfilePicture\622a1103-e04f-4aec-a6b4-50b9df38f113.jpg" />
     <Content Include="images\ProfilePicture\68107dd3-ee11-44a2-b9cb-da5cc61c7c44.jpg" />
+    <Content Include="images\ProfilePicture\6964a557-5458-4521-9820-d0b341cff199.jpg" />
     <Content Include="images\ProfilePicture\69fa6ced-f4f9-4647-9277-cbd3fc9411f5.jpg" />
+    <Content Include="images\ProfilePicture\79554306-ac9c-48e9-ad94-619675cd60bf.jpg" />
+    <Content Include="images\ProfilePicture\7d323fc0-12a2-4549-9974-55fc38d39c6e.jpg" />
+    <Content Include="images\ProfilePicture\8e4e1028-85e2-4321-aae0-6f3bb4b44e90.jpg" />
+    <Content Include="images\ProfilePicture\8ff18aca-cb55-43ed-9cc5-0cab574389c5.jpg" />
     <Content Include="images\ProfilePicture\990bc71f-d8bc-461f-8a5c-53b73956352f.jpg" />
     <Content Include="images\ProfilePicture\a3cf3cc1-3241-4ee7-8875-ad2d2b3154c0.jpg" />
+    <Content Include="images\ProfilePicture\a94b6126-06e0-4056-ac0e-34bce4a9c57d.jpg" />
+    <Content Include="images\ProfilePicture\aa6e6a47-ea9f-4161-b56b-b3642f25036e.webp" />
+    <Content Include="images\ProfilePicture\ab9625ba-e7b5-4731-bb76-521f1b7a418f.jpg" />
     <Content Include="images\ProfilePicture\b3e7ddcb-8957-41ad-a66c-b360dc0da54b.jpg" />
+    <Content Include="images\ProfilePicture\bda8e4fa-d989-46b6-b97a-99ddc49487d8.jpg" />
+    <Content Include="images\ProfilePicture\cdc03597-7b4d-4777-909c-51a746cbb061.jpg" />
+    <Content Include="images\ProfilePicture\d097af47-197a-460b-bfbd-beb5b9677b06.jpg" />
+    <Content Include="images\ProfilePicture\d7cb268f-ecd2-4688-9e12-f17e0f4a07bc.png" />
+    <Content Include="images\ProfilePicture\ddf90931-100b-4a6e-8204-2aacd45f69bb.png" />
     <Content Include="images\ProfilePicture\noimage.jpeg" />
     <Content Include="images\RewardImages\AMBASSADOR.jpg" />
     <Content Include="images\RewardImages\BLUEDIAMOND.jpg" />
@@ -3477,6 +3498,7 @@
     <Content Include="AssociatePanelcss\bower_components\summernote\dist\font\summernotef534.woff" />
     <Content Include="CourseImages\0aa2721c-703f-44c1-8bfd-2ccce6c800f7.webp" />
     <Content Include="CourseImages\3e4fe35f-0ca6-4f47-9fbf-3dff4a519087" />
+    <Content Include="images\ProfilePicture\719078c7-3d96-46c4-827f-6a74236a2f4e.webp" />
     <None Include="Properties\PublishProfiles\DigiDirect.pubxml" />
     <None Include="Properties\PublishProfiles\DreamCrusher.pubxml" />
     <None Include="Properties\PublishProfiles\Dreamcrusherr.pubxml" />
@@ -3906,6 +3928,7 @@
     <Content Include="Views\UserReports\CourseView.cshtml" />
     <Content Include="Views\AdminReports\ContactUsDetails.cshtml" />
     <Content Include="Views\Admin\CalculateMonthlySpillBonus.cshtml" />
+    <Content Include="Views\UserReports\PrintTopup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

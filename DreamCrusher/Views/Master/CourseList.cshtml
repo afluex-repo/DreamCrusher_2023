@@ -15,6 +15,9 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between">
                         <h5 class="mb-0">/ Master / Course List</h5>
+                        <p style="color: white;">
+                           @TempData["Course"]
+                        </p>
                         <a class="btn btn-light repeater-add-btn px-4" href="/Master/CourseMaster">Add New</a>
                     </div>
                 </div>
@@ -31,6 +34,7 @@
                                     <th>Course Name</th>
                                     <th>Course Image</th>
                                     <th>Course Link</th>
+                                    <th>Title</th>
                                     <th>Course Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -48,10 +52,11 @@
                                                 <td>@Item.CourseName</td>
                                                 <td><img width="100" height="100" src="@Item.CourseImage"/></td>
                                                 <td>@Item.CourseLink</td>
+                                                <td>@Item.Title</td>
                                                 <td>@Item.CourseDate</td>
                                                 <td>
                                                     <a href="/Master/CourseMaster?CourseID=@Item.CourseID" class="btn btn-info btn-sm">Edit</a>
-                                                    <a href="/Master/DeleteCourse/@Item.CourseID" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Course?');" name="btnDelete">Delete</a>
+                                                    <a href="/Master/DeleteCourse?id=@Item.CourseID" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this Course?');" name="btnDelete">Delete</a>
                                                 </td>
                                             </tr>
                                             i++;

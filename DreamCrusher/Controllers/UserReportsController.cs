@@ -743,6 +743,7 @@ namespace DreamCrusher.Controllers
                     obj.CourseImage = r["CourseImage"].ToString();
                     obj.CourseDate = r["CourseDate"].ToString();
                     obj.CourseLink = r["CourseLink"].ToString();
+                    obj.Title = r["Title"].ToString();
                     lst.Add(obj);
                 }
                 model.lstCourse = lst;
