@@ -53,9 +53,16 @@
                 <div class="card b-radius-5 bg-white">
                     <div class="card-body text-center">
                         <div class="p-2">
-                            <img src="https://cdni.iconscout.com/illustration/premium/thumb/female-avatar-8187688-6590630.png" width="110" height="110" class="rounded-circle shadow p-1 bg-white" alt="">
+                           @if (Session["ProfilePic"] == "")
+                           {
+                            <img src="../assets/img/users/user.png" width="110" height="110" class="rounded-circle shadow p-1 bg-white" alt="Image" />
+                           }
+                           else
+                           {
+                            <img src="@Session["Profile"]" width="110" height="110" class="rounded-circle shadow p-1 bg-white" alt="">
+                           }
                             <h5 class="mb-0 mt-2 mb-2 text-dark">Dream Crushers</h5>
-                            <h6 class="mt-2 text-dark text-muted">Branding Master</h6>
+                            @*<h6 class="mt-2 text-dark text-muted">Branding Master</h6>*@
                         </div>
                     </div>
                 </div>
