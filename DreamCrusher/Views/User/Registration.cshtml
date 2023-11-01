@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label"> Under Place Id</label>
+                            <label class="form-label"> Under Place Id <span style="color: red">*</span></label>
                             @Html.TextBoxFor(m => m.UnderPlaceId, new { @class = "form-control", @Placeholder = "Under Place Id", @onchange = "getsponsordetails1(this);" })
                         </div>
                         <div class="col-md-4 mb-3">
@@ -224,6 +224,11 @@
         if ($('#SponsorId').val() == '') {
             $("#SponsorId").addClass('errortext');
             $('#SponsorId').focus();
+            return false;
+        }
+        if ($('#UnderPlaceId').val() == '') {
+            $("#UnderPlaceId").addClass('errortext');
+            $('#UnderPlaceId').focus();
             return false;
         }
         if ($('#FirstName').val() == '') {

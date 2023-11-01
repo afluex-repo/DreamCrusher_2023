@@ -8,10 +8,6 @@
 
 @using (Html.BeginForm("TopUpByAdmin", "Accounts", FormMethod.Post, new { @id = "form1" }))
 {
-
-
-
-
     <div class="page-content">
         <div class="row">
             <div class="col-12 col-lg-12 col-xl-12">
@@ -19,7 +15,7 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between">
                             <h5 class="mb-0">Team Direct List</h5>
-                            <span style="color: #fff">@TempData["Topup"] </span>
+                            <span style="color:red">@TempData["Topup"] </span>
                         </div>
                     </div>
                 </div>

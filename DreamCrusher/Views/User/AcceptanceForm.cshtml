@@ -28,18 +28,29 @@
     <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
     <title>@ViewBag.Title</title>
     <style>
-        @@media screen, print {
+        @@media print {
             .logod img {
-                width: 200px;
+                width: 250px;
                 height: auto;
                 margin: 10px auto;
                 display: block;
             }
-
             .logod {
                 margin-bottom: 10px;
             }
+            #download {
+                     display: none;
+            }
         }
+        .logod img {
+                width: 350px;
+                height: auto;
+                margin: 10px auto;
+                display: block;
+            }
+            .logod {
+                margin-bottom: 10px;
+            }
     </style>
 </head>
 <body class="bg-theme bg-theme1">
@@ -49,7 +60,7 @@
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="logod">
                         <img src="/Websiteassets/images/logo-white.png"  class="img-fluid" alt="logo" />
-                        <button id="download" class="text-end btn btn-light px-4 my-4" onclick="downloadPDF()">Download Pdf</button>
+                        <button id="download" class="text-end btn btn-light px-4 my-4" onclick="javascript: window.print();">Download Pdf</button>
                     </div>
                    
                 </div>
@@ -144,7 +155,7 @@
                                 @ViewBag.JoiningDate
                             </div>
                             <div class="col-md-2">
-                                Introducing Dream Crusher Representative
+                                Introducing Dream Crushers Representative
                                 (Sponsor):
                             </div>
                             <div class="col-md-4" style="border:1px;border-bottom:solid">
