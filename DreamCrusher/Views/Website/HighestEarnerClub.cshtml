@@ -6,7 +6,12 @@
 }
 
 
-    
+        <style>
+            .rs-project.style3 .project-item .project-img a img {
+                height: 452px;
+                width: 100%;
+            }
+        </style>
 
          <!-- Breadcrumbs Start -->
          <div class="rs-breadcrumbs img1">
@@ -35,9 +40,7 @@
                             <div class="col-lg-4 col-md-6 mb-30">
                             <div class="project-item">
                             <div class="project-img">
-                                <div class="head">
-                                    <h3>@i</h3>
-                                </div>
+                                
                                 @if (Item.ProfilePic == "" || Item.ProfilePic == null)
                                 {
 
@@ -52,8 +55,11 @@
                             </div>
                             <div class="project-content">
                                 <div class="portfolio-inner">
-                                    <span class="category"><a href="project-single.html">@Item.Name</a></span>
-                                    <h3 class="title"><a href="project-single.html">@Item.GrossAmount</a></h3>
+                                    <div class="head">
+                                        <h3 class="mb-0 bg-white rounded-circle d-block" style="width:50px; height:50px; text-align:center">@i</h3>
+                                    </div>
+                                    <h3 class="mb-0 text-white">@Item.Name</h3>
+                                    <h2 class="title"><a href="project-single.html">@Item.GrossAmount</a></h2>
                                 </div>
                             </div>
                         </div>
@@ -62,72 +68,6 @@
                             }
                         }
                     }
-                    @*<div class="col-lg-4 col-md-6 mb-30">
-                        <div class="project-item">
-                            <div class="project-img">
-                                <a href="project-single.html"><img src="~/Websiteassets/images/project/style1/2.jpg" alt="images"></a>
-                            </div>
-                            <div class="project-content">
-                                <div class="portfolio-inner">
-                                    <span class="category"><a href="project-single.html">Investment</a></span>
-                                    <h3 class="title"><a href="project-single.html">Strength solutions</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mb-30">
-                        <div class="project-item">
-                            <div class="project-img">
-                                <a href="project-single.html"><img src="~/Websiteassets/images/project/style1/3.jpg" alt="images"></a>
-                            </div>
-                            <div class="project-content">
-                                <div class="portfolio-inner">
-                                    <span class="category"><a href="project-single.html">Business Strategy</a></span>
-                                    <h3 class="title"><a href="project-single.html">Business analytics</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 md-mb-30">
-                        <div class="project-item">
-                            <div class="project-img">
-                                <a href="project-single.html"><img src="~/Websiteassets/images/project/style1/4.jpg" alt="images"></a>
-                            </div>
-                            <div class="project-content">
-                                <div class="portfolio-inner">
-                                    <span class="category"><a href="project-single.html">Business Strategy</a></span>
-                                    <h3 class="title"><a href="project-single.html">Stock market analysis</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 sm-mb-30">
-                        <div class="project-item">
-                            <div class="project-img">
-                                <a href="project-single.html"><img src="~/Websiteassets/images/project/style1/5.jpg" alt="images"></a>
-                            </div>
-                            <div class="project-content">
-                                <div class="portfolio-inner">
-                                    <span class="category"><a href="project-single.html">Financial</a></span>
-                                    <h3 class="title"><a href="project-single.html">Sales analysis</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="project-item">
-                            <div class="project-img">
-                                <a href="project-single.html"><img src="~/Websiteassets/images/project/style1/6.jpg" alt="images"></a>
-                            </div>
-                            <div class="project-content">
-                                <div class="portfolio-inner">
-                                    <span class="category"><a href="project-single.html">Tax Consulting</a></span>
-                                    <h3 class="title"><a href="project-single.html">Stock investments</a></h3>
-                                </div>
-                            </div>
-                        </div>
-                    </div>*@
-                    
 
                 </div>
             </div>
