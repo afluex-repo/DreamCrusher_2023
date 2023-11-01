@@ -344,7 +344,7 @@ namespace DreamCrusher.Models
 
     public class SoftwareDetails
     {
-        public static string CompanyName = "Dream Crushers Pvt. Ltd.";
+        public static string CompanyName = "Dream Crushers PVT. LTD.";
         public static string CompanyAddress = "Devkali Bypass, Lucknow Road, Ayodhya, UP, 224001, India";
         public static string Pin1 = "224001";
         public static string State1 = "UP";

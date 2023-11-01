@@ -12,7 +12,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Product Master</h5>
+                            <h5 class="mb-0">/ Master / Product Master</h5>
                         </div>
                         <p style="color: white;;display: block; margin-bottom:0px; text-align:center">
                             @TempData["Product"]
@@ -60,6 +60,11 @@
                             <div class="col-md-4">
                                 <label class="form-label">Direct Income<span style="color: red">*</span></label>
                                 @Html.TextBoxFor(m => m.DirectIncome, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
+                            </div>
+
+                            <div class="col-md-4">
+                                <label class="form-label">Self Direct Income Limit<span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.SelfDirectIncomeLimit, new { @class = "form-control", @onkeypress = "return isNumberKey(event)" })
                             </div>
 
                             <div class="col-12">
@@ -200,11 +205,16 @@
             $('#DirectIncome').focus();
             return false;
         }
+        if ($('#SelfDirectIncomeLimit').val() == '') {
+            $("#SelfDirectIncomeLimit").addClass('errortext');
+            $('#SelfDirectIncomeLimit').focus();
+            return false;
+        }
         $.ajax({
             url: "/Master/SaveProduct",
             Type: "Get",
             DataType: "JSON",
-            data: { ProductName: $("#ProductName").val(), ProductPrice: $("#ProductPrice").val(), IGST: $("#IGST").val(), CGST: $("#CGST").val(), SGST: $("#SGST").val(), BinaryPercent: $("#BinaryPercent").val(), DirectPercent: $("#DirectPercent").val(), ROIPercent: $("#ROIPercent").val(), BV: $("#BV").val(), DirectIncome: $("#DirectIncome").val() },
+            data: { ProductName: $("#ProductName").val(), ProductPrice: $("#ProductPrice").val(), IGST: $("#IGST").val(), CGST: $("#CGST").val(), SGST: $("#SGST").val(), BinaryPercent: $("#BinaryPercent").val(), DirectPercent: $("#DirectPercent").val(), ROIPercent: $("#ROIPercent").val(), BV: $("#BV").val(), DirectIncome: $("#DirectIncome").val(), SelfDirectIncomeLimit: $("#SelfDirectIncomeLimit").val() },
             success: function (data) {
                 alert(data.Result);
                 window.location.href = '@Url.Action("ProductList", "Master")';
@@ -266,12 +276,17 @@
             $('#DirectIncome').focus();
             return false;
         }
+        if ($('#SelfDirectIncomeLimit').val() == '') {
+            $("#SelfDirectIncomeLimit").addClass('errortext');
+            $('#SelfDirectIncomeLimit').focus();
+            return false;
+        }
 
         $.ajax({
             url: "/Master/UpdateProduct",
             Type: "Get",
             DataType: "JSON",
-            data: { ProductID: $("#ProductID").val(), ProductName: $("#ProductName").val(), ProductPrice: $("#ProductPrice").val(), IGST: $("#IGST").val(), CGST: $("#CGST").val(), SGST: $("#SGST").val(), BinaryPercent: $("#BinaryPercent").val(), DirectPercent: $("#DirectPercent").val(), ROIPercent: $("#ROIPercent").val(), BV: $("#BV").val(), DirectIncome: $("#DirectIncome").val() },
+            data: { ProductID: $("#ProductID").val(), ProductName: $("#ProductName").val(), ProductPrice: $("#ProductPrice").val(), IGST: $("#IGST").val(), CGST: $("#CGST").val(), SGST: $("#SGST").val(), BinaryPercent: $("#BinaryPercent").val(), DirectPercent: $("#DirectPercent").val(), ROIPercent: $("#ROIPercent").val(), BV: $("#BV").val(), DirectIncome: $("#DirectIncome").val(), SelfDirectIncomeLimit: $("#SelfDirectIncomeLimit").val() },
             success: function (data) {
                 alert(data.Result);
                 window.location.href = '@Url.Action("ProductList", "Master")';
