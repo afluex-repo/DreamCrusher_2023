@@ -96,6 +96,8 @@ namespace DreamCrusher.Controllers
                     Obj.PlotNumber = r["PlotNumber"].ToString();
 					Obj.TransactionNo = r["TransactionNo"].ToString();
                     Obj.Description = r["Description"].ToString();
+                    Obj.SponsorId = r["SponsorId"].ToString();
+                    Obj.SponsorName = r["SponsorName"].ToString();
 
                     lst1.Add(Obj);
                 }
@@ -157,6 +159,8 @@ namespace DreamCrusher.Controllers
                     Obj.PlotNumber = r["PlotNumber"].ToString();
 					Obj.TransactionNo = r["TransactionNo"].ToString();
                     Obj.Description = r["Description"].ToString();
+                    Obj.SponsorId = r["SponsorId"].ToString();
+                    Obj.SponsorName = r["SponsorName"].ToString();
                     lst1.Add(Obj);
                 }
                 newdata.lsttopupreport = lst1;
