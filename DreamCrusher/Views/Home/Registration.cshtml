@@ -171,13 +171,13 @@
                                         </div>
                                         <div class="d-flex loginBtn">
                                             <div class="form-group mb-0">
-                                                <input class="readon submit orange-more rounded" id="Confirm" name="Confirm" type="submit" value="Confirm" onclick="return confirmregistration();">
+                                                <input class="readon submit orange-more rounded" id="Confirm" name="Confirm" type="button" style="display: none" value="Confirm" onclick="return confirmregistration();">
                                             </div>
                                             <div class="form-group mb-0 ml-4">
-                                                <input class="readon submit orange-more rounded" id="Register" name="Register" type="submit" style="display: none" value="Register" onclick="return saveregistration();">
+                                                <input class="readon submit orange-more rounded" id="Register" name="Register" type="button" style="display: none" value="Register" onclick="return saveregistration();">
                                             </div>
                                             <div class="form-group mb-0 ml-4">
-                                                <input class="readon submit orange-more rounded" id="Edit" name="Edit" type="submit" value="Edit" style="display: none" onclick="return editregistration();">
+                                                <input class="readon submit orange-more rounded" id="Edit" name="Edit" type="button" value="Edit" style="display: none" onclick="return editregistration();">
                                             </div>
                                             <div class="form-group mb-0 ml-4">
                                                 <a href="/Home/Login" class="readon submit orange2-color rounded">Sign In</a>
@@ -266,6 +266,8 @@
 
     $(document).ready(function () {
         $("#divload").css({ 'display': 'none' });
+
+        $('#Confirm').show();
     });
 
     function getsponsordetails(obj) {
@@ -390,7 +392,6 @@
             var b = $('#DOB').val();
 
 
-
             var birth = new Date(b);
 
             var birthyear = birth.getFullYear();
@@ -411,11 +412,17 @@
             $('#SponsorId').focus();
             return false;
         }
+        if ($('#UnderPlaceId').val() == '') {
+            $("#UnderPlaceId").addClass('errortext');
+            $('#UnderPlaceId').focus();
+            return false;
+        }
         if ($('#FirstName').val() == '') {
             $("#FirstName").addClass('errortext');
             $('#FirstName').focus();
             return false;
         }
+        
         if ($('#MobileNo').val() == '') {
             $("#MobileNo").addClass('errortext');
             $('#MobileNo').focus();
