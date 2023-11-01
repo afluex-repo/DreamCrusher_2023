@@ -344,11 +344,11 @@ namespace DreamCrusher.Models
 
     public class SoftwareDetails
     {
-        public static string CompanyName = "Digi Direct";
-        public static string CompanyAddress = "Khasra No 937, Patwari ka Purwa, Devkali, Faizabad.";
+        public static string CompanyName = "Dream Crushers PVT. LTD.";
+        public static string CompanyAddress = "Devkali Bypass, Lucknow Road, Ayodhya, UP, 224001, India";
         public static string Pin1 = "224001";
         public static string State1 = "UP";
-        public static string City1 = "Faizabad";
+        public static string City1 = "Ayodhya";
         public static string ContactNo = "7275065834";
         public static string LandLine = "7275065834";
         public static string GSTNO = "09AAHCD3782E1ZJ";

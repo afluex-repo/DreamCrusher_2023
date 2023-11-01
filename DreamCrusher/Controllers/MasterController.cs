@@ -10,7 +10,7 @@ using System.IO;
 
 namespace DreamCrusher.Controllers
 {
-    public class MasterController : Controller
+    public class MasterController : AdminBaseController
     {
         #region ProductMaster
         public ActionResult ProductList(Master model)
@@ -35,7 +35,6 @@ namespace DreamCrusher.Controllers
                     obj.BV = (r["BV"].ToString());
                     obj.DirectIncome = (r["DirectIncome"].ToString());
                     obj.status = (r["Status"].ToString());
-
                     lst.Add(obj);
                 }
                 model.lstproduct = lst;

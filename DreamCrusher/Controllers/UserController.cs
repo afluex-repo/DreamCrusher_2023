@@ -392,11 +392,10 @@ namespace DreamCrusher.Controllers
         //}
 
         public ActionResult DailyIncomeReport1(Reports model)
-        {
+        { 
             List<Reports> lst1 = new List<Reports>();
             model.Fk_UserId = Session["Pk_UserId"].ToString();
             DataSet ds11 = model.DailyIncomeReport();
-
             if (ds11 != null && ds11.Tables.Count > 0 && ds11.Tables[0].Rows.Count > 0)
             {
                 foreach (DataRow r in ds11.Tables[0].Rows)

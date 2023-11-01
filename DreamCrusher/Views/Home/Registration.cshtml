@@ -412,11 +412,17 @@
             $('#SponsorId').focus();
             return false;
         }
+        if ($('#UnderPlaceId').val() == '') {
+            $("#UnderPlaceId").addClass('errortext');
+            $('#UnderPlaceId').focus();
+            return false;
+        }
         if ($('#FirstName').val() == '') {
             $("#FirstName").addClass('errortext');
             $('#FirstName').focus();
             return false;
         }
+        
         if ($('#MobileNo').val() == '') {
             $("#MobileNo").addClass('errortext');
             $('#MobileNo').focus();
