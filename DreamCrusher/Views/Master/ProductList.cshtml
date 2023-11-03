@@ -4,27 +4,26 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<
+
 @using (Html.BeginForm("ProductList", "Master", FormMethod.Post, new { @id = "form1", name = "formKYC" }))
 {
-
-
-
-
+    
     <div class="page-content">
         <div class="row">
             <div class="col-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Product List</h5>
+                            <h5 class="mb-0">/ Master / Product List</h5>
+
+                            <p style="color: lightgreen;display: block; margin-bottom:0px; text-align:center">
+                                @TempData["Product"]
+                            </p>
+                            <p style="color: red;display: block; margin-bottom:0px; text-align:center">
+                                @TempData["ErrProduct"]
+                            </p>
+                            <a class="btn btn-light repeater-add-btn px-4" href="/Master/ProductMaster">Add New</a>
                         </div>
-                        <p style="color: lightgreen;display: block; margin-bottom:0px; text-align:center">
-                            @TempData["Product"]
-                        </p>
-                        <p style="color: red;display: block; margin-bottom:0px; text-align:center">
-                            @TempData["ErrProduct"]
-                        </p>
                     </div>
                 </div>
             </div>
@@ -44,6 +43,7 @@
                                         <th>Binary Percent</th>
                                         <th>BV</th>
                                         <th>Direct Income</th>
+                                        <th>Self Direct Income Limit</th>
                                         <th>Status</th>
                                         <th>Action</th>
                                     </tr>
@@ -66,6 +66,7 @@
                                                     <td>@Item.BinaryPercent</td>
                                                     <td>@Item.BV</td>
                                                     <td>@Item.DirectIncome</td>
+                                                    <td>@Item.SelfDirectIncomeLimit</td>
                                                     <td>
                                                         @if (Item.status == "False")
                                                         {
