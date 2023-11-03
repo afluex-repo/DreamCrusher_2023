@@ -77,7 +77,9 @@ namespace DreamCrusher.Models
 
         public DataSet ProductList()
         {
-            SqlParameter[] para = { new SqlParameter("@ProductID", ProductID) };
+            SqlParameter[] para = {
+                new SqlParameter("@ProductID", ProductID)
+                                  };
             DataSet ds = DBHelper.ExecuteQuery("GetProductList", para);
             return ds;
         }
