@@ -383,27 +383,27 @@
     }
     function confirmregistration() {
 
-        if ($('#DOB').val() != null) {
+        //if ($('#DOB').val() != null) {
 
-            var today = new Date();
-            var nowyear = today.getFullYear();
-            var nowmonth = today.getMonth();
-            var nowday = today.getDate();
-            var b = $('#DOB').val();
+        //    var today = new Date();
+        //    var nowyear = today.getFullYear();
+        //    var nowmonth = today.getMonth();
+        //    var nowday = today.getDate();
+        //    var b = $('#DOB').val();
 
 
-            var birth = new Date(b);
+        //    var birth = new Date(b);
 
-            var birthyear = birth.getFullYear();
-            var birthmonth = birth.getMonth();
-            var birthday = birth.getDate();
+        //    var birthyear = birth.getFullYear();
+        //    var birthmonth = birth.getMonth();
+        //    var birthday = birth.getDate();
 
-            var age = nowyear - birthyear;
-            if (age < 18) {
-                alert("Age must be more than 18 Years.")
-                return false;
-            }
-        }
+        //    var age = nowyear - birthyear;
+        //    if (age < 18) {
+        //        alert("Age must be more than 18 Years.")
+        //        return false;
+        //    }
+        //}
 
 
         $(".errortext").removeClass("errortext");
