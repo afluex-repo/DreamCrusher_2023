@@ -19,18 +19,18 @@
     }
 </style>
 <div class="page-content">
-    <div class="row">
+    <div class="">
         <div class="row">
             <div class="col-12 col-lg-12 col-xl-12">
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="mb-0">Dashboard</h4>
+                        <h4 class="mb-0 text-md-dark">Dashboard</h4>
                     </div>
                 </div>
             </div>
         </div>
         <div class="row">
-            <div class="col-12 col-lg-12 col-xl-12">
+            @*<div class="col-12 col-lg-12 col-xl-12">
                 <div class="card dash1">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between">
@@ -48,11 +48,150 @@
                         </div>
                     </div>
                 </div>
+            </div>*@
+            <div class="col-12 col-lg-3 col-xl-4 d-lg-none d-md-block d-sm-block">
+                <div class="card b-radius-5 bg-white">
+                    <div class="card-body text-center">
+                        <div class="p-2">
+                           @if (Session["ProfilePic"] == "")
+                           {
+                            <img src="../assets/img/users/user.png" width="110" height="110" class="rounded-circle shadow p-1 bg-white" alt="Image" />
+                           }
+                           else
+                           {
+                            <img src="@Session["Profile"]" width="110" height="110" class="rounded-circle shadow p-1 bg-white" alt="">
+                           }
+                            <h5 class="mb-0 mt-2 mb-2 text-dark">@Session["FullName"]</h5>
+                            @*<h6 class="mt-2 text-dark text-muted">Branding Master</h6>*@
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 row-cols-xl-3">
+            @*<div class="col">
+                <div class="card radius-10" style="background:#e4f9fc">
+                    <div class="card-body">
+                        <div class="card mb-2"  style="background:#fe7840;">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                        <i class="bx bx-rupee"></i>
+                                    </div>
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.TodayIncome</h5>
+                                <h5 class="mb-0 text-dark">Today's Earning</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col">
+                <div class="card radius-10" style="background:#f1e9f9">
+                    <div class="card-body">
+                        <div class="card mb-2" style="background:#0cc9da;">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                        <i class="bx bx-rupee"></i>
+                                    </div>
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.LastSevenDaysIncome</h5>
+                                <h5 class="mb-0 text-dark">Last 7 Days Earning</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10" style="background:#eef7f2">
+                    <div class="card-body">
+                        <div class="card mb-2" style="background:#fd3c95;">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                        <i class="bx bx-rupee"></i>
+                                    </div>
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.LastThirtyDaysIncome</h5>
+                                <h5 class="mb-0 text-dark">Last 30 Days Earning</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card radius-10" style="background:#feefe8">
+                    <div class="card-body">
+                        <div class="card mb-2" style="background:#6d81f4;">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                        <i class="bx bx-rupee"></i>
+                                    </div>
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.TotalIncome</h5>
+                                <h5 class="mb-0 text-dark">All Time Earnings</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+
+            <div class="col">
+                <div class="card radius-10" style="background:#feefe8">
+                    <div class="card-body">
+                            <div class="card mb-2" style="background:#6d81f4;">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                            <i class="bx bx-user"></i>
+                                        </div>
+                                        <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-user"></i> @ViewBag.TotalDownline</h5>
+                                <h5 class="mb-0 text-dark">Total Team</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @*<div class="col">
                 <div class="card radius-10 tab1">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
@@ -66,67 +205,103 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
             <div class="col">
-                <div class="card radius-10 tab2">
+                <div class="card radius-10" style="background:#e4f9fc;">
                     <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div>
-                                <p class="mb-0 text-white">Direct</p>
-                                <h4 class="my-1 text-white">@ViewBag.TotalDirects</h4>
+                            <div class="card mb-2" style="background:#8241c6;">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                            <i class="bx bx-user"></i>
+                                        </div>
+                                        <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widgets-icons bg-light-transparent text-white ms-auto">
-                                <i class="bx bxs-down-arrow-alt"></i>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-user"></i>@ViewBag.TotalDirects</h5>
+                                <h5 class="mb-0 text-dark">Direct</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card radius-10 tab3">
+                <div class="card radius-10" style="background:#fee6f3">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <p class="mb-0 text-white">Active Ids</p>
-                                <h4 class="my-1 text-white">@ViewBag.TotalActive</h4>
+                            <div class="card mb-2" style="background:#3d6c54;">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                            <i class="bx bx-user"></i>
+                                        </div>
+                                        <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widgets-icons bg-light-transparent text-white">
-                                <i class="bx bxs-group"></i>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-user"></i>@ViewBag.TotalActive</h5>
+                                <h5 class="mb-0 text-dark">Active Ids</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col">
-                <div class="card radius-10 tab2">
+                <div class="card radius-10" style="background:#e4f9fc">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <p class="mb-0 text-white">Total Payout</p>
-                                <h4 class="my-1 text-white">@ViewBag.TotalPayout</h4>
+                            <div class="card mb-2" style="background:#2e77c9;">
+                                <div class="card-body p-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                            <i class="bx bx-rupee"></i>
+                                        </div>
+                                        <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                            <i class="bx bx-dots-vertical-rounded"></i>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widgets-icons bg-light-transparent text-white">
-                                <i class="lni lni-rupee"></i>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-rupee"></i> @ViewBag.TotalPayout</h5>
+                                <h5 class="mb-0 text-dark">Total Payout</h5>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card radius-10 tab1">
+            @*<div class="col">
+                <div class="card radius-10" style="background:#f1e9f9">
                     <div class="card-body">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <p class="mb-0 text-white">Recognition</p>
-                                <h4 class="my-1 text-white">@ViewBag.Recognition</h4>
+                        <div class="card mb-2" style="background:#8241c6;">
+                            <div class="card-body p-0">
+                                <div class="d-flex align-items-center">
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white">
+                                        <i class="bx bx-anchor"></i>
+                                    </div>
+                                    <div class="widgets-icons widgets-icons-custom bg-light-transparent text-white ms-auto">
+                                        <i class="bx bx-dots-vertical-rounded"></i>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="widgets-icons bg-light-transparent text-white">
-                                <i class='bx bx-anchor'></i>
+                        </div>
+                        <div class="d-flex align-items-center text-center justify-content-center">
+                            <div>
+                                <h5 class="mb-2 text-dark"><i class="bx bx-anchor pr-2"></i> @ViewBag.Recognition</h5>
+                                <h5 class="mb-0 text-dark">Recognition</h5>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div>*@
         </div>
         <div class="row">
             <div class="col-12 col-lg-12 col-xl-12">

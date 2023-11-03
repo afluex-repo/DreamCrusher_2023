@@ -29,6 +29,7 @@ namespace DreamCrusher.Models
         public string NewsDate { get; set; }
         public string BV { get; set; }
         public string DirectIncome { get; set; }
+        public string SelfDirectIncomeLimit { get; set; }
 
 
 
@@ -67,6 +68,7 @@ namespace DreamCrusher.Models
                                   new SqlParameter("@ROIPercent", ROIPercent),
                                   new SqlParameter("@BV",BV),
                                   new SqlParameter("@DirectIncome",DirectIncome),
+                                  new SqlParameter("@SelfDirectIncomeLimit",SelfDirectIncomeLimit),
                                   new SqlParameter("@AddedBy", AddedBy)};
 
             DataSet ds = DBHelper.ExecuteQuery("AddProduct", para);
@@ -120,7 +122,8 @@ namespace DreamCrusher.Models
                                   new SqlParameter("@DirectPercent", DirectPercent),
                                   new SqlParameter("@ROIPercent", ROIPercent),
                                   new SqlParameter("@BV", BV),
-                                       new SqlParameter("@DirectIncome",DirectIncome),
+                                  new SqlParameter("@DirectIncome",DirectIncome),
+                                  new SqlParameter("@SelfDirectIncomeLimit",SelfDirectIncomeLimit),
                                   new SqlParameter("@UpdatedBy", UpdatedBy)};
 
             DataSet ds = DBHelper.ExecuteQuery("UpdateProduct", para);
