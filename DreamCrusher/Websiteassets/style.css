@@ -5711,6 +5711,8 @@ body .search-modal .close:hover {
   overflow: hidden;
   border-radius: 0;
   z-index: 1;
+      border: 2px solid red;
+    border-radius: 20px;
 }
 .rs-project.style3 .project-item .project-img {
   position: relative;
@@ -5770,7 +5772,7 @@ body .search-modal .close:hover {
   width: 100%;
   height: 100%;
   transition: all .3s ease 0s;
-  background: rgba(0, 0, 0, 0.4);
+  background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 4%, rgba(16,26,31,0.8379726890756303) 46%, rgba(59,93,113,0.5438550420168067) 78%, rgba(118,186,225,0) 127%);
   opacity: 1;
 }
 .rs-project.style3 .project-item:hover .project-img a img {
