@@ -12,6 +12,8 @@ namespace DreamCrusher.Models
         public string LoginId { get; set; }
         public string Password { get; set; }
         public string NewPassword { get; set; }
+        public string ConfirmNewPassword { get; set; }
+        public string Pk_AdminID { get; set; }
 
         public DataSet ChangeAssociatePassword()
         {
@@ -28,6 +30,7 @@ namespace DreamCrusher.Models
         {
             SqlParameter[] para = { 
                                       new SqlParameter("@LoginId", LoginId) ,
+                                      new SqlParameter("@Pk_AdminId", Pk_AdminID) ,
                                       new SqlParameter("@OldPassword", Password) ,
                                       new SqlParameter("@NewPassword", NewPassword) 
                                   };
