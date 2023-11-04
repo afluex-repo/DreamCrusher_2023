@@ -73,23 +73,24 @@ namespace DreamCrusher.Controllers
         {
             try
             {
+                obj.Pk_AdminID = Session["Pk_AdminId"].ToString();
                 obj.LoginId = Session["LoginId"].ToString();
                 DataSet ds = obj.ChangeAdminPassword();
-                if (ds != null && ds.Tables.Count > 0)
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count>0)
                 {
-                    if (ds.Tables[0].Rows[0][0].ToString() == "1")
+                    if (ds.Tables[0].Rows[0]["Msg"].ToString() == "1")
                     {
-                        TempData["ChangeAsspassword"] = "Password Changed successfully";
+                        TempData["ChangeAsspassword"] = "Password Changed Successfully";
                     }
                     else
                     {
-                        TempData["ChangeAsspassword"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        TempData["ErrChangeAsspassword"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                     }
                 }
             }
             catch (Exception ex)
             {
-                TempData["ChangeAsspassword"] = ex.Message;
+                TempData["ErrChangeAsspassword"] = ex.Message;
             }
             return RedirectToAction("ChangePassword", "Setting");
         }

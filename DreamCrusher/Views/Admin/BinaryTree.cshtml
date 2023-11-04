@@ -3,9 +3,8 @@
     ViewBag.Title = "Tree";
     //Layout = "~/Views/Shared/_AdminLayout.cshtml";
     Layout = "~/Views/Shared/_AdminLayoutForTree.cshtml";
-    
-}
 
+}
 <link href="../../css/tree-responsive.css" rel="stylesheet" />
 <link href="../../css/tree.css" rel="stylesheet" />
 <style type="text/css">
@@ -486,7 +485,6 @@
 }
 </style>
 
-
 <div class="page-content">
     <div class="row">
         <div class="col-12 col-lg-12 col-xl-12">
@@ -496,11 +494,7 @@
                 </div>
             </div>
         </div>
-
-
         <div class="col-12 col-lg-12 col-xl-12">
-
-
             <div class="card">
                 <div class="card-body">
                     <div class="row g-3">
@@ -517,15 +511,11 @@
                                 <input type="hidden" id="lblRequest" />Go Up
                             </a>
                             <a id="btnRoot" class="btn btn-light px-3">Root</a>
+
                         </div>
                     </div>
-
-
-
                     <div class="form-row">
                         <div class="col-md-2"></div>
-
-
                         <div class="form-group col-md-12">
                             <div class="col-sm-12 col-md-12" id="chart">
                                 <div class="tree family-tree clearfix">
@@ -537,15 +527,7 @@
                                         </li>
                                     </ul>
                                 </div>
-
-
 @*---------------------------------------------------------------------------------------------*@
-
-
-
-
-
-
                                 <div class="container-fluid" id="member-details" style="background-color: white">
 
                                     <div class="row">
@@ -560,6 +542,7 @@
 
                                                             </button>
                                                             <div class="media-body">
+                                                               
                                                                 <h3 class="mb-0" id="lblDisplayName" style="text-align: center;color:black">@ViewBag.Fk_UserId</h3>
                                                                 <p class="mb-0" id="lblMemberId" style="text-align: center;color:black"></p>
                                                                 <p class="mb-0" id="lblSpillby" style="text-align: center;color:black"></p>
@@ -572,9 +555,10 @@
                                                         <div class="form-group col-md-3">
                                                             <br />
                                                             <button type="button" id="close">&times;</button>
-                                                            <img src="../../images/treeicon.jpg" id="userimage" style="width: 50px; height: 50px;" width="50" height= "50"/>
+                                                            <img src="../../images/treeicon.jpg" id="userimage" style="width: 50px; height: 50px;border:1px solid" height="50" width="50"/>
                                                         </div>
                                                         <div class="form-group col-md-12 table-responsive">
+                                                           
                                                             <table class="display nowrap table table-hover table-striped table-bordered" style="border:1px solid black">
                                                                 <tr>
                                                                     <td style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Topup Amount</td>
@@ -588,7 +572,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td style="border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b">Spill Details</td>
-                                                                    <th id="lblParnetId" style="font-size: 13px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b" ">: </th>
+                                                                    <th id="lblParnetId" style="font-size: 13px;border-bottom: 1px solid #29166f; border-top: 1px solid #29166f;color:#29292b" >: </th>
                                                                 </tr>
 
                                                             </table>
@@ -657,16 +641,9 @@
                                         </div>
                                     </div>
                                 </div>
-
                                 @*---------------------------------------------------------------------------------------------*@
-
-
-
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
             </div>
@@ -674,14 +651,7 @@
         </div>
     </div>
 </div>
-            
-
-
-
-
-
-
-
+        
 <input type="hidden" id="firtsMemberID" value="@ViewBag.Fk_UserId" />
 
 <script src="../../vendor/jquery/jquery.min.js"></script>
@@ -696,7 +666,7 @@
         $("a").popover('hide');
     });
     function openPopup(obj, sponsorid, cssclaa, item1, item2, item3, item4, item5, JoiningDate, ProductName, AllLeg1, AllLeg2, PermanentLeg1, PermanentLeg2, InactiveLeft, InactiveRight, PCountLeg1, PCountLeg2, PaidLeg1, PaidLeg2, BalanceLeft, BalanceRight, Profilepic, ActivationDate, AllBusinessLeft, AllBusinessRight, ProductRightBusiness, ProductLeftBusiness) {
-
+        
         var loginid = 'LoginId - ' + ' ' + item2;
         var JoiningDate = 'JoiningDate - ' + ' ' + JoiningDate;
         $("#lblFk_UserId").text(item1);
