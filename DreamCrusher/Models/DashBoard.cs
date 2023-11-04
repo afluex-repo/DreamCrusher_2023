@@ -11,7 +11,7 @@ namespace DreamCrusher.Models
     {
         public string JoiningDate { get; set; }
         public string Total { get; set; }
-
+        public List<DashBoard> lstinvestmentmax { get; set; }
         public string Status { get; set; }
         public string Fk_UserId { get; set; }
 
