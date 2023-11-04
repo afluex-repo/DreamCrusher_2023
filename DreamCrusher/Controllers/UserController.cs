@@ -61,6 +61,8 @@ namespace DreamCrusher.Controllers
                 ViewBag.TodayIncome = ds.Tables[5].Rows[0]["TodayIncome"].ToString();
                 ViewBag.LastSevenDaysIncome = ds.Tables[6].Rows[0]["LastSevenDaysIncome"].ToString();
                 ViewBag.LastThirtyDaysIncome = ds.Tables[7].Rows[0]["LastThirtyDaysIncome"].ToString();
+                ViewBag.HighAmount = ds.Tables[8].Rows[0]["Amount"].ToString();
+                ViewBag.ProductName = ds.Tables[8].Rows[0]["ProductName"].ToString();
             }
             #region Messages
 
@@ -98,7 +100,9 @@ namespace DreamCrusher.Controllers
                     Obj.Amount = r["Amount"].ToString();
                     Obj.Status = r["Status"].ToString();
 
+                  
                     lstinvestment.Add(Obj);
+
                 }
                 model.lstinvestment = lstinvestment;
             }

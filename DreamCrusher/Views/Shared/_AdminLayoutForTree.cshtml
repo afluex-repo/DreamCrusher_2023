@@ -15,15 +15,20 @@
     <link href="~/assetsAdmin/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
     <link href="~/assetsAdmin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
     <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    @*<link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />*@
+    @*<link href="~/assets/AcceptanceCSS/css/bootstrap.min.css" rel="stylesheet" />*@
     <!-- loader-->
     @*<link href="~/assetsAdmin/css/pace.min.css" rel="stylesheet" />*@
-    <script src="~/assetsAdmin/js/pace.min.js"></script>
+    @*<script src="~/assetsAdmin/js/pace.min.js"></script>*@
     <!-- Bootstrap CSS -->
     <link href="~/assetsAdmin/css/bootstrap.min.css" rel="stylesheet">
     <link href="~/assetsAdmin/css/bootstrap-extended.css" rel="stylesheet">
+  
+    <link href="~/AssociatePanelcss/bower_components/fullcalendar/dist/fullcalendar.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+    @*<script src="~/AssociatePanelcss/bower_components/fullcalendar/dist/fullcalendar.min.js"></script>*@
     <link href="~/assetsAdmin/css/app.css" rel="stylesheet">
+    <link href="~/Datatablecss/css/amchart/export.css" rel="stylesheet" />
     <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
     <title>@ViewBag.Title</title>
 </head>
@@ -832,8 +837,6 @@
     <!-- JS Libraies -->
     <script src="../assets/bundles/echart/echarts.js"></script>
 
-    <script src="../assets/bundles/chartjs/chart.min.js"></script>
-    <script src="../assets/bundles/apexcharts/apexcharts.min.js"></script>
     <!-- Page Specific JS File -->
     <script src="../assets/js/page/index.js"></script>
     <!-- Template JS File -->
@@ -857,13 +860,20 @@
     <script src="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
     <script src="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
     <script src="~/assetsAdmin/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="~/assetsAdmin/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
     <script src="~/assetsAdmin/plugins/jquery-knob/excanvas.js"></script>
     <script src="~/assetsAdmin/plugins/jquery-knob/jquery.knob.js"></script>
     <script src="~/assetsAdmin/plugins/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="~/assetsAdmin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
+    @*<script src="~/assetsAdmin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>*@
+    <script src="~/assets/AcceptanceCSS/js/bootstrap.min.js"></script>
+
+    @*<script src="~/Datatablecss/datatables/datatables.min.js"></script>
+    <script src="~/Datatablecss/datatables/datatables-init.js"></script>
+    <script src="~/Datatablecss/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+    <script src="~/Datatablecss/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+    <script src="~/Datatablecss/datatables/cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+    <script src="~/Datatablecss/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+    <script src="~/Datatablecss/datatables/cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+    <script src="~/Datatablecss/datatables/cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>*@
     <script>
 		$(function () {
 			$(".knob").knob();
