@@ -9,6 +9,10 @@ namespace DreamCrusher.Models
 {
     public class Master : Common
     {
+        //public HttpPostedFileBase postedFile { get; set; }
+        public string DeletedBy { get; set; }
+        public string Pk_ProductServiceID { get; set; }
+        public string UploadDate { get; set; }
         public string Image { get; set; }
         public List<Master> lstGallery1 { get; set; }
         public string PK_GalleryID { get; set; }
@@ -32,7 +36,7 @@ namespace DreamCrusher.Models
         public string SelfDirectIncomeLimit { get; set; }
 
 
-
+        public List<Master> lstproductandServices { get; set; }
         public List<Master> lstNews { get; set; }
 
         public List<Master> lstCourse { get; set; }
@@ -270,6 +274,54 @@ namespace DreamCrusher.Models
                                       new SqlParameter("@RejectedBy", AddedBy)
                                      };
             DataSet ds = DBHelper.ExecuteQuery("InactiveProduct", para);
+            return ds;
+        }
+
+        public DataSet SaveProductandServices()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@ProductName", ProductName),
+                                    new SqlParameter("@Amount", ProductPrice),
+                                    new SqlParameter("@Image", Image),
+                                    new SqlParameter("@AddedBy", AddedBy)
+                                  };
+
+            DataSet ds = DBHelper.ExecuteQuery("InsertProductandServices", para);
+            return ds;
+        }
+
+        public DataSet ProductandServicesList()
+        {
+            SqlParameter[] para =
+            {
+                new SqlParameter("@Pk_ProductServiceID",Pk_ProductServiceID)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetProductandServicesList",para);
+            return ds;
+        }
+
+        public DataSet DeleteProductandServices()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@Pk_ProductServiceID",Pk_ProductServiceID),
+                                    new SqlParameter("@DeletedBy",DeletedBy)
+                                  };
+
+            DataSet ds = DBHelper.ExecuteQuery("DeleteProductandServices", para);
+            return ds;
+        }
+
+        public DataSet UpdateProductandServices()
+        {
+            SqlParameter[] para = {
+                                    new SqlParameter("@Pk_ProductServiceID",Pk_ProductServiceID),
+                                    new SqlParameter("@ProductName", ProductName),
+                                    new SqlParameter("@Amount", ProductPrice),
+                                    new SqlParameter("@Image", Image),
+                                    new SqlParameter("@UpdatedBy", UpdatedBy)
+                                  };
+
+            DataSet ds = DBHelper.ExecuteQuery("UpdateProductandServices", para);
             return ds;
         }
     }

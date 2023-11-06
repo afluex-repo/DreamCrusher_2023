@@ -4557,6 +4557,8 @@
     <Content Include="Views\AdminReports\ContactUsDetails.cshtml" />
     <Content Include="Views\Admin\CalculateMonthlySpillBonus.cshtml" />
     <Content Include="Views\UserReports\PrintTopup.cshtml" />
+    <Content Include="Views\Master\ProductandServices.cshtml" />
+    <Content Include="Views\Master\ProductandServicesList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -4566,6 +4568,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="images\ProductandServices\" />
     <Folder Include="KYCDocuments\" />
     <Folder Include="RequestImage\" />
     <Folder Include="Views\AgentServices\" />
