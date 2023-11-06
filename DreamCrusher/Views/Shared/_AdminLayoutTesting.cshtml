@@ -1,25 +1,230 @@
-﻿<!doctype html>
-<html lang="en">
+﻿<!DOCTYPE html>
+<title>@ViewBag.Title</title>
+<html>
 <head>
+   
+
     <title>DreamCrusher</title>
+    <!-- General CSS Files -->
+    <link rel="stylesheet" href="../assets/css/app.min.css">
+    @*===============================================================================================================================*@
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" /> <!-- Menu External-->
-    <link href="~/assetsAdmin/css/bootstrap.min.css" rel="stylesheet">  <!-- sreucture damage-->
-    <link href="~/assetsAdmin/css/bootstrap-extended.css" rel="stylesheet"><!-- background color-->
-    <link href="~/assetsAdmin/css/app.css" rel="stylesheet"><!-- tree and menu sreucture kharaab-->
-    <link href="~/assetsAdmin/css/icons.css" rel="stylesheet"><!-- Only menu Icon-->
+    <!--favicon-->
+    <link rel="icon" href="~/assetsAdmin/images/favicon-32x32.png" type="image/png" />
+    <!--plugins-->
+    <link href="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <!-- loader-->
+    @*<link href="~/assetsAdmin/css/pace.min.css" rel="stylesheet" />*@
+    <script src="~/assetsAdmin/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="~/assetsAdmin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assetsAdmin/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link href="~/assetsAdmin/css/app.css" rel="stylesheet">
+    <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
     <title>@ViewBag.Title</title>
-    @*=======================================================main css start for tree tables===========================================================*@
 
-    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Raleway:400,100,200,300,500,600,700,800,900/" />
-    <link type="text/css" rel="stylesheet" href="../../AssociatePanelcss/bower_components/bootstrap/dist/css/bootstrap.min.css" />
 
-    @*=======================================================main css end  for tree tables=====================================================*@
 
+
+
+
+
+
+
+    @*============================================================main css start========================================================================*@
+
+    @*<link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Raleway:400,100,200,300,500,600,700,800,900/" />
+    <link type="text/css" rel="stylesheet" href="../../AssociatePanelcss/bower_components/bootstrap/dist/css/bootstrap.min.css" />*@
+
+    @*================================================================main css end====================================================================*@
+
+    @*<link href="~/assetsAdmin/css/app.css" rel="stylesheet">*@
+
+    <style>
+        .dataTables_wrapper {
+            padding-top: 10px;
+        }
+
+        * {
+            outline: none;
+        }
+
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+
+        user agent stylesheet div {
+            display: block;
+        }
+
+        .card {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+
+        .dt-buttons {
+            display: inline-block;
+            margin-bottom: 15px;
+            padding-top: 5px;
+        }
+
+        * {
+            outline: none;
+        }
+
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+
+        user agent stylesheet div {
+            display: block;
+        }
+
+        .card {
+            position: relative;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-orient: vertical;
+            -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+            flex-direction: column;
+            min-width: 0;
+            word-wrap: break-word;
+            background-color: #fff;
+            background-clip: border-box;
+            border: 1px solid rgba(0,0,0,.125);
+            border-radius: .25rem;
+        }
+
+        .dt-buttons .dt-button {
+            background: #1976d2 none repeat scroll 0 0;
+            border-radius: 4px;
+            color: black;
+            margin-right: 3px;
+            padding: 5px 15px;
+        }
+
+        a {
+            color: #0c0c0c;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+        }
+
+        * {
+            outline: none;
+        }
+
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+
+        user agent stylesheet a:-webkit-any-link {
+            color: -webkit-link;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .dataTables_filter {
+            float: right;
+        }
+
+        * {
+            outline: none;
+        }
+
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+
+        user agent stylesheet div {
+            display: block;
+        }
+
+        .dataTables_info, .dataTables_length {
+            display: inline-block;
+        }
+
+        * {
+            outline: none;
+        }
+
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+
+        user agent stylesheet div {
+            display: block;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button.disabled, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active, .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+            background: transparent none repeat scroll 0 0;
+            border: 1px solid rgba(120,130,140,.13);
+            box-shadow: none;
+            color: #67757c;
+            cursor: default;
+        }
+
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            border: 1px solid rgba(120,130,140,.13);
+            box-sizing: border-box;
+            color: #67757c;
+            cursor: pointer;
+            display: inline-block;
+            min-width: 1.5em;
+            padding: .5em 1em;
+            text-align: center;
+            text-decoration: none;
+        }
+
+        a {
+            color: #0c0c0c;
+            text-decoration: none;
+            background-color: transparent;
+            -webkit-text-decoration-skip: objects;
+        }
+
+        * {
+            outline: none;
+        }
+
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+
+        .dataTables_wrapper .dataTables_paginate {
+            float: right;
+            padding-top: .25em;
+            text-align: right;
+        }
+
+        .dt-buttons {
+            margin-left: 0px !important;
+        }
+    </style>
 </head>
+
 <body class="bg-theme bg-theme1">
-    <!--wrapper-->
     <div class="wrapper">
         <!--sidebar wrapper -->
         <div class="sidebar-wrapper" data-simplebar="true">
@@ -35,6 +240,29 @@
                 </div>
             </div>
             <!--navigation-->
+            @*<ul class="metismenu" id="menu">
+                    <li>
+                        <a href="javascript:;">
+                            <div class="parent-icon">
+                                <i class='bx bx-home-alt'></i>
+                            </div>
+                            <div class="menu-title">Dashboard</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="has-arrow">
+                            <div class="parent-icon">
+                                <i class="bx bx-category"></i>
+                            </div>
+                            <div class="menu-title">Application</div>
+                        </a>
+                        <ul>
+                            <li>
+                                <a href="#!"><i class='bx bx-radio-circle'></i>Email</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>*@
             @{
                 Html.RenderAction("Menu", "Home", new { area = "" });
             }
@@ -738,7 +966,7 @@
                     @*-----------------------------------------------------------------------*@
                     <div class="main-wrapper main-wrapper-1">
                         <div class="navbar-bg"></div>
-                        <nav class="navbar navbar-expand-lg main-navbar m-0 mt-4">
+                        <nav class="navbar navbar-expand-lg main-navbar">
 
                             <ul class="navbar-nav navbar-right">
                                 <li class="dropdown">
@@ -751,13 +979,12 @@
                                     }
                                     else
                                     {
-                                        <a href="#" data-toggle="dropdown" style="display: block;margin-right: 18px;">
+                                        <a href="#" data-toggle="dropdown">
                                             <img src="@Session["Profile"]" class="user-img" alt="Image">
                                             @*<span class="d-sm-none d-lg-inline-block"></span>*@
                                         </a>
-
                                     }
-                                    <div class="dropdown-menu bg-dark dropdown-menu-right">
+                                    <div class="dropdown-menu dropdown-menu-right">
 
                                         @*<div class="dropdown-divider"></div>*@
                                         <a href="/Home/Login" class="dropdown-item has-icon text-white">
@@ -795,17 +1022,90 @@
         </footer>
     </div>
 
-    @*=======================================================main js start for tree tables===========================================================*@
-    <script type="text/javascript" src="../../AssociatePanelcss/bower_components/jquery/dist/jquery.min.js"></script>
+
+
+    @*<script type="text/javascript" src="../../AssociatePanelcss/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../../AssociatePanelcss/bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../../AssociatePanelcss/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    @*=======================================================main js end for tree tables===========================================================*@
+    <script type="text/javascript" src="../../AssociatePanelcss/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>*@
 
 
-    <script src="~/assetsAdmin/plugins/metismenu/js/metisMenu.min.js"></script>    <!--External-->
-    <script src="~/assetsAdmin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>      <!--External-->
-    <script src="~/assetsAdmin/js/app.js"></script>  <!--External-->
+
+    <!-- General JS Scripts -->
+    <script src="../assets/js/app.min.js"></script>
+    <!-- JS Libraies -->
+    <script src="../assets/bundles/echart/echarts.js"></script>
+
+    <script src="../assets/bundles/chartjs/chart.min.js"></script>
+    <script src="../assets/bundles/apexcharts/apexcharts.min.js"></script>
+    <!-- Page Specific JS File -->
+    <script src="../assets/js/page/index.js"></script>
+    <!-- Template JS File -->
+    <script src="../assets/js/scripts.js"></script>
+    <script src="../assets/bundles/jquery.sparkline.min.js"></script>
+    @*=====================================================================================================================================*@
+    <!--end wrapper-->
+    <!-- Bootstrap JS -->
+    @*<script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>*@
+
+    <!-- apexcharts JS start -->
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
+    <!-- apexcharts JS end -->
+    <!--plugins-->
+    @*<script src="~/assetsAdmin/js/jquery.min.js"></script>*@
+    <script src="~/assetsAdmin/plugins/simplebar/js/simplebar.min.js"></script>
+    <script src="~/assetsAdmin/plugins/metismenu/js/metisMenu.min.js"></script>
+    <script src="~/assetsAdmin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
+    <script src="~/assetsAdmin/plugins/chartjs/chart.min.js"></script>
+    <script src="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/assetsAdmin/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
+    <script src="~/assetsAdmin/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
+    <script src="~/assetsAdmin/plugins/jquery-knob/excanvas.js"></script>
+    <script src="~/assetsAdmin/plugins/jquery-knob/jquery.knob.js"></script>
+    <script src="~/assetsAdmin/plugins/datatable/js/jquery.dataTables.min.js"></script>
+    <script src="~/assetsAdmin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
+    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
+    <script>
+		$(function () {
+			$(".knob").knob();
+		});
+        //data table js
+		$(document).ready(function () {
+		    var table = $('#example2').DataTable({
+		        lengthChange: false,
+		        "pageLength": 50,
+		        buttons: ['copy', 'excel', 'pdf', 'print']
+		    });
+
+		    table.buttons().container()
+				.appendTo('#example2_wrapper .col-md-6:eq(0)');
+		});
+    </script>
+    <script src="~/assetsAdmin/js/index.js"></script>
+    <!--app JS-->
+    <script src="~/assetsAdmin/js/app.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+        jQuery(document).ready(function () {
+            Main.init();
+            Index.init();
+        });
+    </script>
 </body>
+
 </html>
 
 
