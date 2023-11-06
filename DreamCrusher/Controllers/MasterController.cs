@@ -821,7 +821,6 @@ namespace DreamCrusher.Controllers
             return View(model);
         }
 
-
         #region Status
         public ActionResult ActiveProduct(string ProductID)
         {
@@ -950,13 +949,13 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        TempData["ProductandServices"] = "Product Save Successfully";
+                        TempData["ProductandServices"] = "Product Saved Successfully";
                         FormName = "ProductandServices";
                         Controller = "Master";
                     }
                     else
                     {
-                        TempData["ProductandServices"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        TempData["ErrProductandServices"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                         FormName = "ProductandServices";
                         Controller = "Master";
                     }
@@ -964,7 +963,7 @@ namespace DreamCrusher.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ProductandServices"] = ex.Message;
+                TempData["ErrProductandServices"] = ex.Message;
                 FormName = "ProductandServices";
                 Controller = "Master";
             }
@@ -1057,7 +1056,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        TempData["ProductandServices"] = "Product Data Updated Successfully";
+                        TempData["ProductandServices"] = "Product Updated Successfully";
                         FormName = "ProductandServices";
                         Controller = "Master";
                     }
