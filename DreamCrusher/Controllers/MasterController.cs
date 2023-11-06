@@ -467,7 +467,9 @@ namespace DreamCrusher.Controllers
                         obj.CourseID = ds.Tables[0].Rows[0]["Pk_CourseId"].ToString();
                         obj.CourseName = ds.Tables[0].Rows[0]["CourseName"].ToString();
                         obj.CourseImage = ds.Tables[0].Rows[0]["CourseImage"].ToString();
+                        obj.CourseLink = ds.Tables[0].Rows[0]["CourseLink"].ToString();
                         obj.Title = ds.Tables[0].Rows[0]["Title"].ToString();
+                        obj.Description = ds.Tables[0].Rows[0]["Description"].ToString();
                     }
                 }
                 catch (Exception ex)
@@ -537,6 +539,7 @@ namespace DreamCrusher.Controllers
                     obj.CourseDate = r["CourseDate"].ToString();
                     obj.CourseLink = r["CourseLink"].ToString();
                     obj.Title = r["Title"].ToString();
+                    obj.Description = r["Description"].ToString();
                     lst.Add(obj);
                 }
                 model.lstCourse = lst;
@@ -821,7 +824,6 @@ namespace DreamCrusher.Controllers
             return View(model);
         }
 
-
         #region Status
         public ActionResult ActiveProduct(string ProductID)
         {
@@ -950,13 +952,13 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        TempData["ProductandServices"] = "Product Save Successfully";
+                        TempData["ProductandServices"] = "Product Saved Successfully";
                         FormName = "ProductandServices";
                         Controller = "Master";
                     }
                     else
                     {
-                        TempData["ProductandServices"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        TempData["ErrProductandServices"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
                         FormName = "ProductandServices";
                         Controller = "Master";
                     }
@@ -964,7 +966,7 @@ namespace DreamCrusher.Controllers
             }
             catch (Exception ex)
             {
-                TempData["ProductandServices"] = ex.Message;
+                TempData["ErrProductandServices"] = ex.Message;
                 FormName = "ProductandServices";
                 Controller = "Master";
             }
@@ -1057,7 +1059,7 @@ namespace DreamCrusher.Controllers
                 {
                     if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
                     {
-                        TempData["ProductandServices"] = "Product Data Updated Successfully";
+                        TempData["ProductandServices"] = "Product Updated Successfully";
                         FormName = "ProductandServices";
                         Controller = "Master";
                     }

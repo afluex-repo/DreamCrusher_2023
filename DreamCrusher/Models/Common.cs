@@ -139,6 +139,11 @@ namespace DreamCrusher.Models
             DataSet ds = DBHelper.ExecuteQuery("GetMemberDetailsForFranchiseSale", para);
             return ds;
         }
+        public DataSet GetCourseListForAllotCourses()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCourses");
+            return ds;
+        }
         public DataSet BindProduct()
         {
             DataSet ds = DBHelper.ExecuteQuery("BindProduct");

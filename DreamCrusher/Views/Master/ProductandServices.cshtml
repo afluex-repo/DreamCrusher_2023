@@ -16,8 +16,11 @@
                         <div class="d-flex align-items-center justify-content-between">
                             <h5 class="mb-0">Product and Services Master</h5>
                         </div>
-                        <p style="color: white;;display: block; margin-bottom:0px; text-align:center">
+                        <p style="color: lightgreen;display: block; margin-bottom:0px; text-align:center">
                             @TempData["ProductandServices"]
+                        </p>
+                        <p style="color: red;display: block; margin-bottom:0px; text-align:center">
+                            @TempData["ErrProductandServices"]
                         </p>
                     </div>
                 </div>
@@ -39,7 +42,7 @@
                                 <label class="form-label">Product Image<span style="color: red">*</span></label>
                                 <input type="file" name="postedFile" id="Image" class="form-control" />
                             </div>
-
+                           
                             <div class="col-12">
 
                                 @if (Model.Pk_ProductServiceID == null)
@@ -70,19 +73,29 @@
 </style>
 <script>
     function validate() {
+        debugger;
         $(".errortext").removeClass("errortext");
         if ($('#ProductName').val() == '') {
             $("#ProductName").addClass('errortext');
             $('#ProductName').focus();
             return false;
         }
-        if ($('#ProductPrice').val() == '') {
+        
+         if ($('#ProductPrice').val() == '') {
             $("#ProductPrice").addClass('errortext');
             $('#ProductPrice').focus();
             return false;
         }
+
+        if ($('#Pk_ProductServiceID').val() == '') {
+            if ($('#Image').val() == '') {
+                $("#Image").addClass('errortext');
+                $('#Image').focus();
+                return false;
+            }
     }
 
+        }
     function isNumberKey(evt) {
 
         var charCode = (evt.which) ? evt.which : event.keyCode;
