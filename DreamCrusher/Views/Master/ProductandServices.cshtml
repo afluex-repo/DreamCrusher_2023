@@ -1,0 +1,97 @@
+﻿@model DreamCrusher.Models.Master
+
+@{
+    ViewBag.Title = "ProductandServices";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("ProductandServices", "Master", FormMethod.Post, new { @id = "form1", @enctype = "multipart/form-data",@autocomplete="off" }))
+{
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Product and Services Master</h5>
+                        </div>
+                        <p style="color: white;;display: block; margin-bottom:0px; text-align:center">
+                            @TempData["ProductandServices"]
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Product Name <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.ProductName, new { @placeholder = "Product Name", @class = "form-control" })
+                                @Html.HiddenFor(m=> m.Pk_ProductServiceID)
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Product Price <span style="color: red">*</span></label>
+                                @Html.TextBoxFor(m => m.ProductPrice, new { @placeholder = "Product Price", @class = "form-control", @onkeypress = "return isNumberKey(event)" })
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Product Image<span style="color: red">*</span></label>
+                                <input type="file" name="postedFile" id="Image" class="form-control" />
+                            </div>
+
+                            <div class="col-12">
+
+                                @if (Model.Pk_ProductServiceID == null)
+                                {
+                                    <input type="submit" id="btnProductServices" class="btn btn-light px-5" name="btnProductServices" value="Save" onclick="return validate()" />
+                                }
+                                else
+                                {
+                                    <input type="submit" class="btn btn-success pull-right" value="Update" id="btnUpdate" name="btnUpdate" />
+                                }
+
+                                <a class="btn btn-light px-3" href="/Master/ProductandServicesList">Back To List</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+<style>
+    .errortext {
+        border: 1px solid red !important;
+        /*background-color: #fff0f0 !important;*/
+    }
+</style>
+<script>
+    function validate() {
+        $(".errortext").removeClass("errortext");
+        if ($('#ProductName').val() == '') {
+            $("#ProductName").addClass('errortext');
+            $('#ProductName').focus();
+            return false;
+        }
+        if ($('#ProductPrice').val() == '') {
+            $("#ProductPrice").addClass('errortext');
+            $('#ProductPrice').focus();
+            return false;
+        }
+    }
+
+    function isNumberKey(evt) {
+
+        var charCode = (evt.which) ? evt.which : event.keyCode;
+        if (charCode != 46 && charCode > 31
+          && (charCode < 48 || charCode > 57))
+            return false;
+
+        return true;
+    }
+
+  
+</script>

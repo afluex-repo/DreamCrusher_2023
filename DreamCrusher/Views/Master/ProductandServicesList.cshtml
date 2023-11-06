@@ -1,0 +1,82 @@
+﻿@model DreamCrusher.Models.Master
+
+@{
+    ViewBag.Title = "ProductandServicesList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+@using (Html.BeginForm("ProductandServicesList", "Master", FormMethod.Post, new { @id = "form1" }))
+{
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Product and Services List</h5>
+
+                            <p style="color: lightgreen;display: block; margin-bottom:0px; text-align:center">
+                                @TempData["ProductandServices"]
+                            </p>
+                            <p style="color: red;display: block; margin-bottom:0px; text-align:center">
+                                @TempData["ErrProductandServices"]
+                            </p>
+                            <a class="btn btn-light repeater-add-btn px-4" href="/Master/ProductandServices">Add New</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table id="example2" class="table table-striped table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>S No.</th>
+                                        <th>Product Name</th>
+                                        <th>Product Price</th>
+                                        <th>Image</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null)
+                                    {
+                                        if (Model.lstproductandServices != null)
+                                        {
+                                            int i = 1;
+                                            foreach (var Item in Model.lstproductandServices)
+                                            {
+                                                <tr class="text-left">
+                                                    <td>@i</td>
+                                                    <td>@Item.ProductName</td>
+                                                    <td>@Item.ProductPrice</td>
+                                                    <td><img width="100" height="100" src="@Item.Image" /></td>
+                                                    <td>
+                                                        <a href="/Master/ProductandServices?Pk_ProductServiceID=@Item.Pk_ProductServiceID" class="btn btn-primary px-3 btn-sm">EDIT</a>
+                                                        <a href="/Master/DeleteProductandServices?Pk_ProductServiceID=@Item.Pk_ProductServiceID" class="btn btn-danger px-3 btn-sm" onclick="return confirm('Are you sure you want to delete this Product?');" name="btnDelete">Delete</a>
+                                                    </td>
+                                                </tr>
+
+                                                i++;
+                                            }
+                                        }
+                                    }
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+}
+

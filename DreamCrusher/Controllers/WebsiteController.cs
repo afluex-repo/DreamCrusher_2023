@@ -66,10 +66,27 @@ namespace DreamCrusher.Controllers
             }
             return RedirectToAction(FormName, Controller);
         }
-        public ActionResult ProductServies()
+
+        public ActionResult ProductServies(Website model)
         {
-            return View();
+            List<Website> lst = new List<Website>();
+            DataSet ds = model.ProductandServicesList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Website obj = new Website();
+                    obj.ProductName = r["ProductName"].ToString();
+                    obj.ProductPrice = r["Amount"].ToString();
+                    obj.Image = r["Image"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstproductandServices = lst;
+            }
+            return View(model);
         }
+
         public ActionResult OurBankers()
         {
             return View();
