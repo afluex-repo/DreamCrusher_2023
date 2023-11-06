@@ -5,7 +5,13 @@
     Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
 }
 
-
+<style>
+   @@media (min-width:992px){
+        .rs-project.style6 .project-item .project-img{
+            height: 393px;
+        }
+   }
+</style>
     <!-- Breadcrumbs Start -->
     <div class="rs-breadcrumbs img1">
         <div class="container">
@@ -23,7 +29,38 @@
     <div class="rs-project style6 gray-bg pt-100 pb-100 md-pt-70 md-pb-70">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-30">
+
+
+                @if (Model != null)
+                {
+                    if (Model.lstproductandServices != null)
+                    {
+                        foreach (var Item in Model.lstproductandServices)
+                        {
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="@Item.Image" alt="images">
+                                        <a class="p-icon" href="#!"><i class="custom-icon"></i></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h4 class="title"><a href="#!">@Item.ProductName</a></h4>
+                                        <span class="category"><a href="#!">MRP @Item.ProductPrice/-</a></span>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        }
+                    }
+                }
+
+
+
+
+
+
+                @*<div class="col-lg-3 col-md-6 mb-30">
                     <div class="project-item">
                         <div class="project-img">
                             <img src="~/Websiteassets/images/product/1.jpg" alt="images">
@@ -70,7 +107,8 @@
                             <span class="category"><a href="#!">MRP 3150/-</a></span>
                         </div>
                     </div>
-                </div>
+                </div>*@
+
             </div>
         </div>
     </div>
