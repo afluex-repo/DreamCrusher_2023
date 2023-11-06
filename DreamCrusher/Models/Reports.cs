@@ -6,6 +6,7 @@ namespace DreamCrusher.Models
 {
     public class Reports : Common
     {
+        public string Packages { get; set; }
         public string AdminCharge { get; set; }
         public string TDS { get; set; }
         public string DCMIGrossIncome { get; set; }
@@ -668,7 +669,7 @@ namespace DreamCrusher.Models
         public DataSet GetCourseListForAllotCourses()
         {
             SqlParameter[] para = {
-                new SqlParameter("@FK_PackageId", Package),
+                new SqlParameter("@FK_PackageId", Packages),
                 new SqlParameter("@loginid", LoginId)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCoursesForUser", para);
