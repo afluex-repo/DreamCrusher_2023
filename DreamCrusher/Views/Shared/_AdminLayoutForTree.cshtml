@@ -2,30 +2,21 @@
 <html lang="en">
 <head>
     <title>DreamCrusher</title>
-    <!-- General CSS Files -->
-    <link rel="stylesheet" href="../assets/css/app.min.css">
-    @*===============================================================================================================================*@
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--favicon-->
-    <link rel="icon" href="~/assetsAdmin/images/favicon-32x32.png" type="image/png" />
-    <!--plugins-->
-    <link href="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
-    <link href="~/assetsAdmin/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
-    <link href="~/assetsAdmin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
-    <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
-    <link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
-    <!-- loader-->
-    @*<link href="~/assetsAdmin/css/pace.min.css" rel="stylesheet" />*@
-    <script src="~/assetsAdmin/js/pace.min.js"></script>
-    <!-- Bootstrap CSS -->
-    <link href="~/assetsAdmin/css/bootstrap.min.css" rel="stylesheet">
-    <link href="~/assetsAdmin/css/bootstrap-extended.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
-    <link href="~/assetsAdmin/css/app.css" rel="stylesheet">
-    <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
+    <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" /> <!-- Menu External-->
+    <link href="~/assetsAdmin/css/bootstrap.min.css" rel="stylesheet">  <!-- sreucture damage-->
+    <link href="~/assetsAdmin/css/bootstrap-extended.css" rel="stylesheet"><!-- background color-->
+    <link href="~/assetsAdmin/css/app.css" rel="stylesheet"><!-- tree and menu sreucture kharaab-->
+    <link href="~/assetsAdmin/css/icons.css" rel="stylesheet"><!-- Only menu Icon-->
     <title>@ViewBag.Title</title>
+    @*=======================================================main css start for tree tables===========================================================*@
+
+    <link type="text/css" rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700|Raleway:400,100,200,300,500,600,700,800,900/" />
+    <link type="text/css" rel="stylesheet" href="../../AssociatePanelcss/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+
+    @*=======================================================main css end  for tree tables=====================================================*@
+
 </head>
 <body class="bg-theme bg-theme1">
     <!--wrapper-->
@@ -44,29 +35,6 @@
                 </div>
             </div>
             <!--navigation-->
-            @*<ul class="metismenu" id="menu">
-                    <li>
-                        <a href="javascript:;">
-                            <div class="parent-icon">
-                                <i class='bx bx-home-alt'></i>
-                            </div>
-                            <div class="menu-title">Dashboard</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" class="has-arrow">
-                            <div class="parent-icon">
-                                <i class="bx bx-category"></i>
-                            </div>
-                            <div class="menu-title">Application</div>
-                        </a>
-                        <ul>
-                            <li>
-                                <a href="#!"><i class='bx bx-radio-circle'></i>Email</a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>*@
             @{
                 Html.RenderAction("Menu", "Home", new { area = "" });
             }
@@ -770,7 +738,7 @@
                     @*-----------------------------------------------------------------------*@
                     <div class="main-wrapper main-wrapper-1">
                         <div class="navbar-bg"></div>
-                        <nav class="navbar navbar-expand-lg main-navbar">
+                        <nav class="navbar navbar-expand-lg main-navbar m-0 mt-4">
 
                             <ul class="navbar-nav navbar-right">
                                 <li class="dropdown">
@@ -783,12 +751,13 @@
                                     }
                                     else
                                     {
-                                        <a href="#" data-toggle="dropdown">
+                                        <a href="#" data-toggle="dropdown" style="display: block;margin-right: 18px;">
                                             <img src="@Session["Profile"]" class="user-img" alt="Image">
                                             @*<span class="d-sm-none d-lg-inline-block"></span>*@
                                         </a>
+
                                     }
-                                    <div class="dropdown-menu dropdown-menu-right">
+                                    <div class="dropdown-menu bg-dark dropdown-menu-right">
 
                                         @*<div class="dropdown-divider"></div>*@
                                         <a href="/Home/Login" class="dropdown-item has-icon text-white">
@@ -825,243 +794,19 @@
             <p class="mb-0">© Copyright 2023 Dream Crushers All right reserved.</p>
         </footer>
     </div>
-    <!-- General JS Scripts -->
-    <script src="../assets/js/app.min.js"></script>
-    <!-- JS Libraies -->
-    <script src="../assets/bundles/echart/echarts.js"></script>
 
-    <script src="../assets/bundles/chartjs/chart.min.js"></script>
-    <script src="../assets/bundles/apexcharts/apexcharts.min.js"></script>
-    <!-- Page Specific JS File -->
-    <script src="../assets/js/page/index.js"></script>
-    <!-- Template JS File -->
-    <script src="../assets/js/scripts.js"></script>
-    <script src="../assets/bundles/jquery.sparkline.min.js"></script>
-    @*=====================================================================================================================================*@
-    <!--end wrapper-->
-    <!-- Bootstrap JS -->
-    @*<script src="~/assetsAdmin/js/bootstrap.bundle.min.js"></script>*@
+    @*=======================================================main js start for tree tables===========================================================*@
+    <script type="text/javascript" src="../../AssociatePanelcss/bower_components/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../../AssociatePanelcss/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../../AssociatePanelcss/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    @*=======================================================main js end for tree tables===========================================================*@
 
-    <!-- apexcharts JS start -->
-    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
-    <!-- apexcharts JS end -->
-    <!--plugins-->
-    @*<script src="~/assetsAdmin/js/jquery.min.js"></script>*@
-    <script src="~/assetsAdmin/plugins/simplebar/js/simplebar.min.js"></script>
-    <script src="~/assetsAdmin/plugins/metismenu/js/metisMenu.min.js"></script>
-    <script src="~/assetsAdmin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>
-    <script src="~/assetsAdmin/plugins/chartjs/chart.min.js"></script>
-    <script src="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="~/assetsAdmin/plugins/jquery.easy-pie-chart/jquery.easypiechart.min.js"></script>
-    <script src="~/assetsAdmin/plugins/sparkline-charts/jquery.sparkline.min.js"></script>
-    <script src="~/assetsAdmin/plugins/jquery-knob/excanvas.js"></script>
-    <script src="~/assetsAdmin/plugins/jquery-knob/jquery.knob.js"></script>
-    <script src="~/assetsAdmin/plugins/datatable/js/jquery.dataTables.min.js"></script>
-    <script src="~/assetsAdmin/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
-    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apexcharts.min.js"></script>
-    <script src="~/assetsAdmin/plugins/apexcharts-bundle/js/apex-custom.js"></script>
-    <script>
-$(function () {
-$(".knob").knob();
-});
-        //data table js
-$(document).ready(function () {
-   var table = $('#example2').DataTable({
-       lengthChange: false,
-       "pageLength": 50,
-       buttons: ['copy', 'excel', 'pdf', 'print']
-   });
 
-   table.buttons().container()
-.appendTo('#example2_wrapper .col-md-6:eq(0)');
-});
-    </script>
-    <script src="~/assetsAdmin/js/index.js"></script>
-    <!--app JS-->
-    <script src="~/assetsAdmin/js/app.js"></script>
+    <script src="~/assetsAdmin/plugins/metismenu/js/metisMenu.min.js"></script>    <!--External-->
+    <script src="~/assetsAdmin/plugins/perfect-scrollbar/js/perfect-scrollbar.js"></script>      <!--External-->
+    <script src="~/assetsAdmin/js/app.js"></script>  <!--External-->
 </body>
 </html>
-<script type="text/javascript">
-
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(bindusers);
-
-    function bindusers() {
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: '/Admin/GetUserDetails',
-            data: JSON.stringify(),
-            success:
-            function (response) {
-                var datare = response;
-                var data = new google.visualization.DataTable();
-
-                data.addColumn('string', 'Status');
-                data.addColumn('number', 'Total');
-                for (var i = 0; i < datare.length; i++) {
-                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
-                }
-
-                var chart = new google.visualization.PieChart(document.getElementById('divusers'));
-                var options = {
-                    pieSliceText: 'value-and-percentage',
-                    format: 'decimal',
-                    is3D: true,
-                    legend: { position: 'bottom' },
-                    animation: {
-                        startup: true,
-                        duration: 1000,
-                        easing: 'out',
-                    }, chartArea: { width: "100%", height: "80%" }
-                };
-
-                chart.draw(data, options);
-            },
-            error: function () {
-            }
-        });
-    }
-</script>
-<script type="text/javascript">
-
-    google.charts.load('current', { 'packages': ['corechart'] });
-    google.charts.setOnLoadCallback(bindrecharegedetails);
-
-    function bindrecharegedetails() {
-        $.ajax({
-            type: 'POST',
-            dataType: 'json',
-            contentType: 'application/json',
-            url: '/Admin/GetPayoutStatus',
-            data: JSON.stringify(),
-            success:
-            function (response) {
-                var datare = response;
-                var data = new google.visualization.DataTable();
-
-                data.addColumn('string', 'Status');
-                data.addColumn('number', 'Total');
-                for (var i = 0; i < datare.length; i++) {
-                    data.addRow([datare[i].Status, parseInt(datare[i].Total)]);
-                }
-
-                var chart = new google.visualization.PieChart(document.getElementById('divpayout'));
-                var options = {
-                    pieSliceText: 'value-and-percentage',
-                    format: 'decimal',
-                    is3D: true,
-                    legend: { position: 'bottom' },
-                    animation: {
-                        startup: true,
-                        duration: 1000,
-                        easing: 'out',
-                    }, chartArea: { width: "100%", height: "80%" }
-                };
-
-                chart.draw(data, options);
 
 
 
-
-            },
-            error: function () {
-            }
-        });
-    }
-
-</script>
-<script type="text/javascript">
-
-        google.charts.load("current", { packages: ["imagebarchart"] });
-        google.charts.setOnLoadCallback(drawChart);
-
-        function drawChart() {
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
-                url: '/Admin/GetInvestmentDetails',
-                data: JSON.stringify(),
-                success:
-                function (response) {
-                    var datare = response;
-                    var data = new google.visualization.DataTable();
-
-                    data.addColumn('string', 'Month');
-                    data.addColumn('number', 'Investment');
-                    for (var i = 0; i < datare.length; i++) {
-                        data.addRow([datare[i].Month, parseInt(datare[i].Amount)]);
-                    }
-
-                    var chart = new google.visualization.ImageBarChart(document.getElementById('divinvestment'));
-                    var options = {
-                        pieSliceText: 'value-and-percentage',
-                        format: 'decimal',
-                        is3D: true,
-                        legend: { position: 'bottom' },
-                        animation: {
-                            startup: true,
-                            duration: 1000,
-                            easing: 'out',
-                        }, chartArea: { width: "100%", height: "80%" }
-                    };
-                    chart.draw(data, options);
-                },
-                error: function () {
-                }
-            });
-        }
-
-</script>
-<script type="text/javascript">
-
-        google.charts.load("current", { packages: ["imagebarchart"] });
-        google.charts.setOnLoadCallback(joiningdata);
-
-        function joiningdata() {
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                contentType: 'application/json',
-                url: '/Admin/GetJoiningDeatils',
-                data: JSON.stringify(),
-                success:
-                function (response) {
-                    var datare = response;
-                    var data = new google.visualization.DataTable();
-
-                    data.addColumn('string', 'Month');
-                    data.addColumn('number', 'Total Users');
-                    for (var i = 0; i < datare.length; i++) {
-                        data.addRow([datare[i].Month, parseInt(datare[i].Total)]);
-                    }
-
-                    var chart = new google.visualization.ImageBarChart(document.getElementById('divjoining'));
-                    var options = {
-                        pieSliceText: 'value-and-percentage',
-                        format: 'decimal',
-                        is3D: true,
-                        legend: { position: 'bottom' },
-                        animation: {
-                            startup: true,
-                            duration: 1000,
-                            easing: 'out',
-                        }, chartArea: { width: "100%", height: "80%" }
-                    };
-
-                    chart.draw(data, options);
-
-
-
-
-                },
-                error: function () {
-                }
-            });
-        }
-
-</script>

@@ -467,7 +467,9 @@ namespace DreamCrusher.Controllers
                         obj.CourseID = ds.Tables[0].Rows[0]["Pk_CourseId"].ToString();
                         obj.CourseName = ds.Tables[0].Rows[0]["CourseName"].ToString();
                         obj.CourseImage = ds.Tables[0].Rows[0]["CourseImage"].ToString();
+                        obj.CourseLink = ds.Tables[0].Rows[0]["CourseLink"].ToString();
                         obj.Title = ds.Tables[0].Rows[0]["Title"].ToString();
+                        obj.Description = ds.Tables[0].Rows[0]["Description"].ToString();
                     }
                 }
                 catch (Exception ex)
@@ -537,6 +539,7 @@ namespace DreamCrusher.Controllers
                     obj.CourseDate = r["CourseDate"].ToString();
                     obj.CourseLink = r["CourseLink"].ToString();
                     obj.Title = r["Title"].ToString();
+                    obj.Description = r["Description"].ToString();
                     lst.Add(obj);
                 }
                 model.lstCourse = lst;
@@ -821,7 +824,6 @@ namespace DreamCrusher.Controllers
             return View(model);
         }
 
-
         #region Status
         public ActionResult ActiveProduct(string ProductID)
         {
@@ -896,5 +898,189 @@ namespace DreamCrusher.Controllers
         }
 
         #endregion
+
+        #region ProductandServices
+
+        public ActionResult ProductandServices(string Pk_ProductServiceID)
+        {
+            Master obj = new Master();
+            if (Pk_ProductServiceID != null)
+            {
+                try
+                {
+                    obj.Pk_ProductServiceID = Pk_ProductServiceID;
+
+                    DataSet ds = obj.ProductandServicesList();
+                    if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                    {
+                        obj.Pk_ProductServiceID = ds.Tables[0].Rows[0]["Pk_ProductServiceID"].ToString();
+                        obj.ProductName = ds.Tables[0].Rows[0]["ProductName"].ToString();
+                        obj.ProductPrice = ds.Tables[0].Rows[0]["Amount"].ToString();
+                        obj.Image = ds.Tables[0].Rows[0]["Image"].ToString();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    TempData["ProductandServices"] = ex.Message;
+                }
+            }
+              return View(obj);
+        }
+
+
+        [HttpPost]
+        [OnAction(ButtonName = "btnProductServices")]
+        [ActionName("ProductandServices")]
+        public ActionResult SaveProductandServices(Master obj, IEnumerable<HttpPostedFileBase> postedFile)
+        {
+            string FormName = "";
+            string Controller = "";
+            try
+            {
+                obj.AddedBy = Session["PK_AdminId"].ToString();
+                foreach (var file in postedFile)
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+
+                        obj.Image = "/images/ProductandServices/" + Guid.NewGuid() + Path.GetExtension(file.FileName);
+                        file.SaveAs(Path.Combine(Server.MapPath(obj.Image)));
+                    }
+                }
+                DataSet ds = obj.SaveProductandServices();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
+                    {
+                        TempData["ProductandServices"] = "Product Saved Successfully";
+                        FormName = "ProductandServices";
+                        Controller = "Master";
+                    }
+                    else
+                    {
+                        TempData["ErrProductandServices"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        FormName = "ProductandServices";
+                        Controller = "Master";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrProductandServices"] = ex.Message;
+                FormName = "ProductandServices";
+                Controller = "Master";
+            }
+            return RedirectToAction(FormName, Controller);
+        }
+
+
+        public ActionResult ProductandServicesList(Master model)
+        {
+            List<Master> lst = new List<Master>();
+            DataSet ds = model.ProductandServicesList();
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+            {
+                foreach (DataRow r in ds.Tables[0].Rows)
+                {
+                    Master obj = new Master();
+                    obj.Pk_ProductServiceID = r["Pk_ProductServiceID"].ToString();
+                    obj.ProductName = r["ProductName"].ToString();
+                    obj.ProductPrice = r["Amount"].ToString();
+                    obj.Image = r["Image"].ToString();
+                    obj.UploadDate = r["UploadDate"].ToString();
+                    lst.Add(obj);
+                }
+                model.lstproductandServices = lst;
+            }
+            return View(model);
+        }
+
+        
+        public ActionResult DeleteProductandServices(string Pk_ProductServiceID)
+        {
+            string FormName = "";
+            string Controller = "";
+            try
+            {
+                Master obj = new Master();
+                obj.DeletedBy = Session["PK_AdminId"].ToString();
+                obj.Pk_ProductServiceID = Pk_ProductServiceID;
+                DataSet ds = obj.DeleteProductandServices();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
+                    {
+                        TempData["ProductandServices"] = "Product Deleted Successfully";
+                        FormName = "ProductandServicesList";
+                        Controller = "Master";
+                    }
+                    else
+                    {
+                        TempData["ErrProductandServices"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        FormName = "ProductandServicesList";
+                        Controller = "Master";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrProductandServices"] = ex.Message;
+                FormName = "ProductandServicesList";
+                Controller = "Master";
+            }
+            return RedirectToAction(FormName, Controller);
+        }
+
+        [HttpPost]
+        [OnAction(ButtonName = "btnUpdate")]
+        [ActionName("ProductandServices")]
+        public ActionResult UpdateProductandServices(Master obj,string Pk_ProductServiceID, IEnumerable<HttpPostedFileBase> postedFile)
+        {
+            string FormName = "";
+            string Controller = "";
+            try
+            {
+                //Master obj = new Master();
+                obj.UpdatedBy = Session["PK_AdminId"].ToString();
+                obj.Pk_ProductServiceID = Pk_ProductServiceID;
+
+                foreach (var file in postedFile)
+                {
+                    if (file != null && file.ContentLength > 0)
+                    {
+
+                        obj.Image = "/images/ProductandServices/" + Guid.NewGuid() + Path.GetExtension(file.FileName);
+                        file.SaveAs(Path.Combine(Server.MapPath(obj.Image)));
+                    }
+                }
+                DataSet ds = obj.UpdateProductandServices();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
+                {
+                    if ((ds.Tables[0].Rows[0][0].ToString() == "1"))
+                    {
+                        TempData["ProductandServices"] = "Product Updated Successfully";
+                        FormName = "ProductandServices";
+                        Controller = "Master";
+                    }
+                    else
+                    {
+                        TempData["ErrProductandServices"] = ds.Tables[0].Rows[0]["ErrorMessage"].ToString();
+                        FormName = "ProductandServices";
+                        Controller = "Master";
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                TempData["ErrProductandServices"] = ex.Message;
+                FormName = "ProductandServices";
+                Controller = "Master";
+            }
+            return RedirectToAction(FormName, Controller);
+        }
+     
+        #endregion
+
     }
 }
