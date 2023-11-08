@@ -42,14 +42,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3 mb-3">
+                            @*<div class="col-md-3 mb-3">
                                 <label class="form-label"> Package</label>
                                 @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control form-select" })
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label class="form-label">Status</label>
                                 @Html.DropDownListFor(m => m.Status, new SelectList(ViewBag.ddlstatus, "Value", "Text"), new { @class = "form-control form-select" })
-                            </div>
+                            </div>*@
                             <div class="col-md-3 mb-3">
                                 <label class="form-label">From Date  </label>
                                 @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @readonly = "readonly" })
@@ -158,6 +158,9 @@
     .errortext {
         border: 1px solid red !important;
         background-color: #fff0f0 !important;
+    }
+    .btn-light{
+        margin-top:28px;
     }
 </style>
 
