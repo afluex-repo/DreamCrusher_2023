@@ -670,6 +670,7 @@ namespace DreamCrusher.Models
         {
             SqlParameter[] para = {
                 new SqlParameter("@FK_PackageId", Packages),
+                new SqlParameter("@CourseID", CourseID),
                 new SqlParameter("@loginid", LoginId)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCoursesForUser", para);

@@ -22,6 +22,8 @@
         margin-top:28px;
     }
 </style>
+@using (Html.BeginForm("CourseView", "UserReports", FormMethod.Post, new { @id = "form1" }))
+{
 <div class="page-content">
     <div class="row">
         <div class="col-12 col-lg-12 col-xl-12">
@@ -40,11 +42,11 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <label class="form-label"> Package</label>
-                            @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control form-select" })
+                            @Html.DropDownListFor(m => m.Packages, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control form-select" })
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Courses </label>
-                            @Html.DropDownListFor(m => m.CourseName,new SelectList(ViewBag.ddlCourse,"Value","Text"), new { @class = "form-control form-select"})
+                            @Html.DropDownListFor(m => m.CourseID, new SelectList(ViewBag.ddlCourse, "Value", "Text"), new { @class = "form-control form-select" })
                         </div>
                         <div class="col-md-4 mb-3">
                             <input class="btn btn-light px-3" type="submit" value="Search" name="btnCourseSearch" id="btnCourseSearch" />
@@ -106,3 +108,4 @@
         }
     </div>
 </div>
+}
