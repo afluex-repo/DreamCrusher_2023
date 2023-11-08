@@ -11,6 +11,14 @@
             height: 393px;
         }
    }
+   /*.read-more-content{
+	display: none;
+	padding-top: 22px;
+}*/
+
+   .hidden-text {
+            display: none;
+        }
 </style>
     <!-- Breadcrumbs Start -->
     <div class="rs-breadcrumbs img1">
@@ -47,17 +55,23 @@
                                     <div class="project-content">
                                         <h4 class="title"><a href="#!">@Item.ProductName</a></h4>
                                         <span class="category"><a href="#!">MRP @Item.ProductPrice/-</a></span>
-                                        <p class="text-dark d-inline-block">@Item.Description</p>
+                                        @*<p class="text-dark d-inline-block">@Item.Description</p>*@
+
+
+                                        <p class="hidden-text teal-dark">
+                                            @Item.Description
+                                        </p>
+                                        <button class="read-more btn text-white" style="background:#bb0b0b;">Read More</button>
                                     </div>
+
+
                                 </div>
-                            </div>
+                               </div>
                             
                         }
                     }
                 }
-
-
-
+                
 
 
 
@@ -116,3 +130,28 @@
 
 
 
+<!-- jquery latest version -->
+<script src="/Websiteassets/js/jquery.min.js"></script>
+
+<script>
+        //$('.read-more').click(function () {
+        //        $(this).prev().slideToggle();
+        //        if (($(this).text()) == "Read More") {
+        //            $(this).text("Read Less");
+        //        } else {
+        //            $(this).text("Read More");
+        //        }
+    //});
+
+    $(document).ready(function () {
+        $('.read-more').click(function () {
+            var $textContainer = $(this).prev();
+            $textContainer.toggle();
+            if ($textContainer.is(':visible')) {
+                $(this).text("Read Less");
+            } else {
+                $(this).text("Read More");
+            }
+        });
+    });
+</script>
