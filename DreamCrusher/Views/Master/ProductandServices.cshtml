@@ -42,7 +42,10 @@
                                 <label class="form-label">Product Image<span style="color: red">*</span></label>
                                 <input type="file" name="postedFile" id="Image" class="form-control" />
                             </div>
-                           
+                            <div class="col-md-4">
+                                <label class="form-label">Description</label>
+                                @Html.TextBoxFor(m=> m.Description,new { @placeholder= "Description",@class="form-control" })
+                            </div>
                             <div class="col-12">
 
                                 @if (Model.Pk_ProductServiceID == null)
