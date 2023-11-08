@@ -9,6 +9,7 @@ namespace DreamCrusher.Models
 {
     public class Website
     {
+        public string Description { get; set; }
         public string AddedBy { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
