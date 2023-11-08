@@ -8,6 +8,7 @@ namespace DreamCrusher.Models
 {
     public class Common
     {
+        public string LoginId { get; set; }
         public string AddedBy { get; set; }
         public string UpdatedBy { get; set; }
         public string ReferBy { get; set; }

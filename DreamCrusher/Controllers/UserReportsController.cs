@@ -750,12 +750,13 @@ namespace DreamCrusher.Controllers
             }
             #region Product Bind
             Common objcomm = new Common();
+            //objcomm.LoginId = Session["LoginId"].ToString();
             List<SelectListItem> ddlProduct = new List<SelectListItem>();
             DataSet ds1 = objcomm.BindProduct();
-            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
             {
                 int count = 0;
-                foreach (DataRow r in ds1.Tables[0].Rows)
+                foreach (DataRow r in ds1.Tables[1].Rows)
                 {
                     if (count == 0)
                     {
@@ -800,6 +801,7 @@ namespace DreamCrusher.Controllers
         public ActionResult SearchCourseView(Reports model)
         {
             List<Reports> lst = new List<Reports>();
+            model.LoginId = Session["LoginId"].ToString();
             model.Packages = model.Packages == "0" ? null : model.Packages;
             model.CourseID = model.CourseID == "0" ? null : model.CourseID;
             DataSet ds = model.GetCourseListForAllotCourses();
