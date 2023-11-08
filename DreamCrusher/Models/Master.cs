@@ -9,7 +9,7 @@ namespace DreamCrusher.Models
 {
     public class Master : Common
     {
-        //public HttpPostedFileBase postedFile { get; set; }
+        public string Description { get; set; }
         public string DeletedBy { get; set; }
         public string Pk_ProductServiceID { get; set; }
         public string UploadDate { get; set; }
@@ -193,7 +193,8 @@ namespace DreamCrusher.Models
             SqlParameter[] para = { new SqlParameter("@CourseName", CourseName),
                                   new SqlParameter("@CourseImage", CourseImage),
                                   new SqlParameter("@CourseLink", CourseLink),
-                                       new SqlParameter("@Title", Title),
+                                  new SqlParameter("@Title", Title),
+                                  new SqlParameter("@Description",Description),
                                   new SqlParameter("@AddedBy", AddedBy)};
 
             DataSet ds = DBHelper.ExecuteQuery("AddCourse", para);
@@ -214,6 +215,7 @@ namespace DreamCrusher.Models
                                   new SqlParameter("@CourseImage", CourseImage),
                                   new SqlParameter("@CourseLink", CourseLink),
                                   new SqlParameter("@Title", Title),
+                                  new SqlParameter("@Description",Description),
                                   new SqlParameter("@UpdatedBy", UpdatedBy)
             };
             DataSet ds = DBHelper.ExecuteQuery("UpdateCourse", para);

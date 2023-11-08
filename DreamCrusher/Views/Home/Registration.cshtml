@@ -109,7 +109,7 @@
                                             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @Placeholder = "Last Name" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email id" })
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email-Id *", @onchange = "ValidateEmailIDCheck(event)" })
                                             @Html.ValidationMessageFor(m => m.Email)
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
@@ -329,7 +329,20 @@
         //}
     });
 
+    function ValidateEmailIDCheck(event) {
+        debugger
+        var emailVal = $('#Email').val();
+        var regemail = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
+        if (regemail.test(emailVal)) {
+            $("#Email").removeClass('errortext');
+        }
+        else {
+            alert("Invalid Email ID");
+            $("#Email").val('');
+            $("#Email").addClass('errortext');
+        }
+    }
     function validatepan(event) {
         $(".errortext").removeClass("errortext");
         var regExp = /[a-zA-z]{5}\d{4}[a-zA-Z]{1}/;
@@ -422,7 +435,11 @@
             $('#FirstName').focus();
             return false;
         }
-        
+        if ($('#Email').val() == '') {
+            $("#Email").addClass('errortext');
+            $('#Email').focus();
+            return false;
+        }
         if ($('#MobileNo').val() == '') {
             $("#MobileNo").addClass('errortext');
             $('#MobileNo').focus();

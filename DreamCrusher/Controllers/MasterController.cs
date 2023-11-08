@@ -467,7 +467,9 @@ namespace DreamCrusher.Controllers
                         obj.CourseID = ds.Tables[0].Rows[0]["Pk_CourseId"].ToString();
                         obj.CourseName = ds.Tables[0].Rows[0]["CourseName"].ToString();
                         obj.CourseImage = ds.Tables[0].Rows[0]["CourseImage"].ToString();
+                        obj.CourseLink = ds.Tables[0].Rows[0]["CourseLink"].ToString();
                         obj.Title = ds.Tables[0].Rows[0]["Title"].ToString();
+                        obj.Description = ds.Tables[0].Rows[0]["Description"].ToString();
                     }
                 }
                 catch (Exception ex)
@@ -537,6 +539,7 @@ namespace DreamCrusher.Controllers
                     obj.CourseDate = r["CourseDate"].ToString();
                     obj.CourseLink = r["CourseLink"].ToString();
                     obj.Title = r["Title"].ToString();
+                    obj.Description = r["Description"].ToString();
                     lst.Add(obj);
                 }
                 model.lstCourse = lst;
