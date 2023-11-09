@@ -729,68 +729,51 @@ namespace DreamCrusher.Controllers
 		}
         public ActionResult CourseView(Reports model)
         {
-            model.LoginId = Session["LoginId"].ToString();
-            //model.Packages = Session["FK_ProductId"].ToString();
-            List<Reports> lst = new List<Reports>();
-            DataSet ds = model.GetCourseListForAllotCourses();
-            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
-            {
-                foreach (DataRow r in ds.Tables[0].Rows)
+                model.LoginId = Session["LoginId"].ToString();
+                //model.Packages = Session["FK_ProductId"].ToString();
+                List<Reports> lst = new List<Reports>();
+                DataSet ds = model.GetCourseListForAllotCourses();
+                if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
-                    Reports obj = new Reports();
-                    obj.CourseID = r["Pk_CourseId"].ToString();
-                    obj.CourseName = r["CourseName"].ToString();
-                    obj.CourseImage = r["CourseImage"].ToString();
-                    obj.CourseDate = r["CourseDate"].ToString();
-                    obj.CourseLink = r["CourseLink"].ToString();
-                    obj.Title = r["Title"].ToString();
-                    lst.Add(obj);
-                }
-                model.lstCourse = lst;
-            }
-            #region Product Bind
-            Common objcomm = new Common();
-            List<SelectListItem> ddlProduct = new List<SelectListItem>();
-            DataSet ds1 = objcomm.BindProduct();
-            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
-            {
-                int count = 0;
-                foreach (DataRow r in ds1.Tables[0].Rows)
-                {
-                    if (count == 0)
+                    foreach (DataRow r in ds.Tables[0].Rows)
                     {
-                        ddlProduct.Add(new SelectListItem { Text = "Select Package", Value = "0" });
+                        Reports obj = new Reports();
+                        obj.CourseID = r["Pk_CourseId"].ToString();
+                        obj.CourseName = r["CourseName"].ToString();
+                        obj.CourseImage = r["CourseImage"].ToString();
+                        obj.CourseDate = r["CourseDate"].ToString();
+                        obj.CourseLink = r["CourseLink"].ToString();
+                        obj.Title = r["Title"].ToString();
+                        lst.Add(obj);
                     }
-                    ddlProduct.Add(new SelectListItem { Text = r["ProductName"].ToString(), Value = r["Pk_ProductId"].ToString() });
-                    count++;
+                    model.lstCourse = lst;
                 }
-            }
+                #region Product Bind
+                Common objcomm = new Common();
+                objcomm.LoginId = Session["LoginId"].ToString();
+                List<SelectListItem> ddlProduct = new List<SelectListItem>();
+                DataSet ds1 = objcomm.BindProduct();
+                if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
+                {
+                    int count = 0;
+                    foreach (DataRow r in ds1.Tables[1].Rows)
+                    {
+                        if (count == 0)
+                        {
+                            ddlProduct.Add(new SelectListItem { Text = "Select Package", Value = "0" });
+                        }
+                        ddlProduct.Add(new SelectListItem { Text = r["ProductName"].ToString(), Value = r["Pk_ProductId"].ToString() });
+                        count++;
+                    }
+                }
 
-            ViewBag.ddlProduct = ddlProduct;
+                ViewBag.ddlProduct = ddlProduct;
 
             #endregion
 
-            #region Courses
-
-            Common objcourse = new Common();
-            List<SelectListItem> ddlCourse = new List<SelectListItem>();
-            DataSet dsc = objcourse.GetCourseListForAllotCourses();
-            if (dsc != null && dsc.Tables.Count > 0 && dsc.Tables[0].Rows.Count > 0)
-            {
-                int count = 0;
-                foreach (DataRow r in dsc.Tables[0].Rows)
-                {
-                    if (count == 0)
-                    {
-                        ddlCourse.Add(new SelectListItem { Text = "Select Course", Value = "0" });
-                    }
-                    ddlCourse.Add(new SelectListItem { Text = r["CourseName"].ToString(), Value = r["PK_CourseID"].ToString() });
-                    count++;
-                }
-            }
-            ViewBag.ddlCourse = ddlCourse;
-
-            #endregion
+                List<SelectListItem> ddlProductCourses = new List<SelectListItem>();
+                ddlProductCourses.Add(new SelectListItem { Text = "Select Course", Value = "0" });
+                ViewBag.ddlProductCourses = ddlProductCourses;
             return View(model);
         }
 
@@ -800,6 +783,7 @@ namespace DreamCrusher.Controllers
         public ActionResult SearchCourseView(Reports model)
         {
             List<Reports> lst = new List<Reports>();
+            model.LoginId = Session["LoginId"].ToString();
             model.Packages = model.Packages == "0" ? null : model.Packages;
             model.CourseID = model.CourseID == "0" ? null : model.CourseID;
             DataSet ds = model.GetCourseListForAllotCourses();
@@ -820,12 +804,13 @@ namespace DreamCrusher.Controllers
             }
             #region Product Bind
             Common objcomm = new Common();
+            objcomm.LoginId = Session["LoginId"].ToString();
             List<SelectListItem> ddlProduct = new List<SelectListItem>();
             DataSet ds1 = objcomm.BindProduct();
-            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[0].Rows.Count > 0)
+            if (ds1 != null && ds1.Tables.Count > 0 && ds1.Tables[1].Rows.Count > 0)
             {
                 int count = 0;
-                foreach (DataRow r in ds1.Tables[0].Rows)
+                foreach (DataRow r in ds1.Tables[1].Rows)
                 {
                     if (count == 0)
                     {
@@ -840,30 +825,44 @@ namespace DreamCrusher.Controllers
 
             #endregion
 
-            #region Courses
-
-            Common objcourse = new Common();
-            List<SelectListItem> ddlCourse = new List<SelectListItem>();
-            DataSet dsc = objcourse.GetCourseListForAllotCourses();
-            if (dsc != null && dsc.Tables.Count > 0 && dsc.Tables[0].Rows.Count > 0)
-            {
-                int count = 0;
-
-
-                foreach (DataRow r in dsc.Tables[0].Rows)
-                {
-                    if (count == 0)
-                    {
-                        ddlCourse.Add(new SelectListItem { Text = "Select Course", Value = "0" });
-                    }
-                    ddlCourse.Add(new SelectListItem { Text = r["CourseName"].ToString(), Value = r["PK_CourseID"].ToString() });
-                    count++;
-                }
-            }
-            ViewBag.ddlCourse = ddlCourse;
-
-            #endregion
+            List<SelectListItem> ddlProductCourses = new List<SelectListItem>();
+            ddlProductCourses.Add(new SelectListItem { Text = "Select Course", Value = "0" });
+            ViewBag.ddlProductCourses = ddlProductCourses;
             return View(model);
         }
+        #region ProductChangetoCourse
+        public ActionResult GetProductChangetoCourse(string Packages)
+        {
+            Reports model = new Reports();
+            if (Packages != null)
+            {
+                model.Packages = Packages;
+                #region GetProductChangetoCourse
+                List<SelectListItem> ddlProductCourses = new List<SelectListItem>();
+                DataSet ds = model.GetProductChangetoCourse();
+
+                if (ds != null && ds.Tables.Count > 0)
+                {
+                    foreach (DataRow r in ds.Tables[0].Rows)
+                    {
+                        ddlProductCourses.Add(new SelectListItem { Text = r["CourseName"].ToString(), Value = r["FK_CourseID"].ToString() });
+
+                    }
+                }
+                model.ddlProductCourses = ddlProductCourses;
+                #endregion
+            }
+            else
+            {
+
+                List<SelectListItem> ddlProductCourses = new List<SelectListItem>();
+                ddlProductCourses.Add(new SelectListItem { Text = "Select Course", Value = "0" });
+                ViewBag.ddlProductCourses = ddlProductCourses;
+               
+            }
+            return Json(model, JsonRequestBehavior.AllowGet);
+
+        }
+        #endregion
     }
 }

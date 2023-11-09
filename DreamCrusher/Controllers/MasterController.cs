@@ -917,6 +917,7 @@ namespace DreamCrusher.Controllers
                         obj.ProductName = ds.Tables[0].Rows[0]["ProductName"].ToString();
                         obj.ProductPrice = ds.Tables[0].Rows[0]["Amount"].ToString();
                         obj.Image = ds.Tables[0].Rows[0]["Image"].ToString();
+                        obj.Description = ds.Tables[0].Rows[0]["Description"].ToString();
                     }
                 }
                 catch (Exception ex)
@@ -988,6 +989,7 @@ namespace DreamCrusher.Controllers
                     obj.ProductName = r["ProductName"].ToString();
                     obj.ProductPrice = r["Amount"].ToString();
                     obj.Image = r["Image"].ToString();
+                    obj.Description = r["Description"].ToString();
                     obj.UploadDate = r["UploadDate"].ToString();
                     lst.Add(obj);
                 }
