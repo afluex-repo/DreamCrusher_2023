@@ -42,11 +42,11 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <label class="form-label"> Package</label>
-                            @Html.DropDownListFor(m => m.Packages, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control form-select" })
+                            @Html.DropDownListFor(m => m.Packages, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control form-select",@onchange= "return onProductChangetoCourse();" })
                         </div>
                         <div class="col-md-4">
                             <label class="form-label">Courses </label>
-                            @Html.DropDownListFor(m => m.CourseID, new SelectList(ViewBag.ddlCourse, "Value", "Text"), new { @class = "form-control form-select" })
+                            @Html.DropDownListFor(m => m.CourseID, new SelectList(ViewBag.ddlProductCourses, "Value", "Text"), new { @class = "form-control form-select" })
                         </div>
                         <div class="col-md-4 mb-3">
                             <input class="btn btn-light px-3" type="submit" value="Search" name="btnCourseSearch" id="btnCourseSearch" />
@@ -109,3 +109,34 @@
     </div>
 </div>
 }
+
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+<script>
+    function onProductChangetoCourse() {
+        $("#divload").css({ 'display': '' });
+        var value = $('#Packages').val();
+        debugger;
+        $.ajax({
+            url: "/UserReports/GetProductChangetoCourse",
+            Type: "Get",
+            DataType: "JSON",
+            data: { Packages: value },
+            success: function (data) {
+                debugger;
+                $("#divload").css({ 'display': 'none' });
+                    $("#CourseID").html(""); // clear before appending new list
+                    $("#CourseID").empty();
+                    $("#CourseID").append(
+                          $('<option></option>').val(0).html('Select Course'));
+                    $.each(data.ddlProductCourses, function (index, Coursecount) {
+                        $("#CourseID").append(
+                              $('<option></option>').val(Coursecount.Value).html(Coursecount.Text));
+
+                    });
+            }
+
+        });
+
+    }
+</script>

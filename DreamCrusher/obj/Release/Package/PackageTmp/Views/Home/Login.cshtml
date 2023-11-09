@@ -50,8 +50,9 @@
                                         <img src="../WebsiteCss/images/loginDream.png" width="100" alt="logo not found" />
                                     </div>
                                     <div class="text-center mb-4">
-                                        <h5 class="">Dream Crusher</h5>
+                                        <h5 class="">Dream Crushers</h5>
                                         <p class="mb-0">Please log in to your account</p>
+                                        <p class="mb-0">@TempData["Login"]</p>
                                     </div>
                                      @using (Html.BeginForm("LoginAction", "Home", FormMethod.Post, new { @id = "signupForm" }))
                                     {
