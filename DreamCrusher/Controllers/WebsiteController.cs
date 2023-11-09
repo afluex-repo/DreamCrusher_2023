@@ -80,6 +80,7 @@ namespace DreamCrusher.Controllers
                     obj.ProductName = r["ProductName"].ToString();
                     obj.ProductPrice = r["Amount"].ToString();
                     obj.Image = r["Image"].ToString();
+                    obj.Description = r["Description"].ToString();
                     lst.Add(obj);
                 }
                 model.lstproductandServices = lst;

@@ -285,6 +285,7 @@ namespace DreamCrusher.Models
                                     new SqlParameter("@ProductName", ProductName),
                                     new SqlParameter("@Amount", ProductPrice),
                                     new SqlParameter("@Image", Image),
+                                    new SqlParameter("@Description",Description),
                                     new SqlParameter("@AddedBy", AddedBy)
                                   };
 
@@ -320,6 +321,7 @@ namespace DreamCrusher.Models
                                     new SqlParameter("@ProductName", ProductName),
                                     new SqlParameter("@Amount", ProductPrice),
                                     new SqlParameter("@Image", Image),
+                                    new SqlParameter("@Description",Description),
                                     new SqlParameter("@UpdatedBy", UpdatedBy)
                                   };
 
