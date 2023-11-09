@@ -142,12 +142,14 @@ namespace DreamCrusher.Models
         }
         public DataSet GetCourseListForAllotCourses()
         {
+
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCourses");
             return ds;
         }
         public DataSet BindProduct()
         {
-            DataSet ds = DBHelper.ExecuteQuery("BindProduct");
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId), };
+            DataSet ds = DBHelper.ExecuteQuery("BindProduct",para);
             return ds;
         }
 

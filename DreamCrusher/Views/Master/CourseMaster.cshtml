@@ -48,8 +48,9 @@
                         </div>
                         <div class="col-md-4">
                             <label for="inputDescription" class="form-label">Description<span style="color: red">*</span></label>
-                            @Html.TextBoxFor(m => m.Description, new { @placeholder = "Description", @class = "form-control" })
+                            @Html.TextAreaFor(m => m.Description, new { @placeholder = "Description", @class = "form-control" })
                         </div>
+
                         <div class="col-12">
                             @if (Model == null)
                             {
