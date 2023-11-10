@@ -10,7 +10,6 @@ namespace DreamCrusher.Models
     public class Transactions : Common
     {
         public string PK_UserID { get; set; }
-        public string LoginID { get; set; }
         public string NewLoginID { get; set; }
         public string MemberName { get; set; }
         public string ClosingDate { get; set; }
@@ -28,13 +27,13 @@ namespace DreamCrusher.Models
         public List<Transactions> lstassociate { get; set; }
         public DataSet GetDitributePaymentList()
         {
-            //SqlParameter[] para = { new SqlParameter("@LoginId", LoginID) };
+            //SqlParameter[] para = { new SqlParameter("@LoginId", LoginId) };
             DataSet ds = DBHelper.ExecuteQuery("MakePaymentList");
             return ds;
         }
         public DataSet GetProductDitributePaymentList()
         {
-            //SqlParameter[] para = { new SqlParameter("@LoginId", LoginID) };
+            //SqlParameter[] para = { new SqlParameter("@LoginId", LoginId) };
             DataSet ds = DBHelper.ExecuteQuery("ProductMakePaymentList");
             return ds;
         }
@@ -47,7 +46,7 @@ namespace DreamCrusher.Models
         }
         public DataSet UpdateMemberLogin()
         {
-            SqlParameter[] para = { new SqlParameter("@OldLoginID", LoginID),
+            SqlParameter[] para = { new SqlParameter("@OldLoginID", LoginId),
                                     new SqlParameter("@NewLoginID", NewLoginID),
                                     new SqlParameter("@UpdatedBy", UpdatedBy) };
             DataSet ds = DBHelper.ExecuteQuery("UpdateMemberLogin", para);
@@ -56,14 +55,14 @@ namespace DreamCrusher.Models
 
         public DataSet GetAssociateList()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID) };
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId) };
             DataSet ds = DBHelper.ExecuteQuery("GetAssociateList", para);
             return ds;
         }
 
         public DataSet ActivateUser()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID),
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@UpdatedBy", UpdatedBy)};
             DataSet ds = DBHelper.ExecuteQuery("ActivateUser", para);
             return ds;
@@ -71,7 +70,7 @@ namespace DreamCrusher.Models
 
         public DataSet DeactivateUser()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID),
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@UpdatedBy", UpdatedBy)};
             DataSet ds = DBHelper.ExecuteQuery("DeactivateUser", para);
             return ds;
@@ -79,7 +78,7 @@ namespace DreamCrusher.Models
 
         public DataSet EwalletDeduction()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID),
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@Amount", Amount),
                                     new SqlParameter("@TransactionType", TransactionAction),
                                     new SqlParameter("@UpdatedBy", UpdatedBy)
@@ -91,7 +90,7 @@ namespace DreamCrusher.Models
 
         public DataSet PayoutDeduction()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID),
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@Amount", Amount),
                                     new SqlParameter("@TransactionType", TransactionAction),
                                     new SqlParameter("@UpdatedBy", UpdatedBy)

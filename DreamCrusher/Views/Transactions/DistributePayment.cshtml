@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@using (Html.BeginForm("DistiributePayemntToMembers", "Transactions", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("DistiributePayemntToMembers", "Transactions", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data",@autocomplete="off" }))
 {
    
     <br />
@@ -79,7 +79,7 @@
                                             {
                                                 <tr class="text-left">
                                                     <td>@i</td>
-                                                    <td>@Item.LoginID</td>
+                                                    <td>@Item.LoginId</td>
                                                     <td>@Item.FirstName</td>
                                                     <td>@Item.BinaryIncome</td>
                                                     <td>@Item.DirectIncome</td>
