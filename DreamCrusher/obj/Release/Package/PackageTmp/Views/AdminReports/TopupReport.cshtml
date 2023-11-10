@@ -71,7 +71,9 @@
                                     <tr>
                                         <th>Sr No.</th>
                                         <th>Login Id</th>
-                                        <th>Name</th>
+                                        <th style="min-width:120px;">Name</th>
+                                        <th>Sponsor Id</th>
+                                        <th style="min-width:120px;">Sponsor Name</th>
                                         <th style="display:none">PlotNo</th>
                                         <th>Transaction No.</th>
                                         <th>Description</th>
@@ -94,6 +96,8 @@
                                                     <td>@i</td>
                                                     <td>@Item.LoginId</td>
                                                     <td>@Item.DisplayName</td>
+                                                    <td>@Item.SponsorId</td>
+                                                    <td>@Item.SponsorName</td>
                                                     <td style="display:none">@Item.PlotNumber</td>
                                                     <td>@Item.TransactionNo</td>
                                                     <td>@Item.Description</td>

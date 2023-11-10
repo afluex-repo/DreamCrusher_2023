@@ -4,51 +4,61 @@
 
     Layout = null;
 }
-
-<!DOCTYPE html>
-
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width">
-    <title>Tax Invoice</title>
-    <link href="~/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="~/css/style.css" rel="stylesheet" />
-    <script src="~/scripts/bootstrap.min.js"></script>
-
-    <link type="text/css" rel="stylesheet" href="../../AssociatePanelcss/bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="~/assetsAdmin/images/favicon-32x32.png" type="image/png" />
+    <!--plugins-->
+    <link href="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <!-- loader-->
+    @*<link href="~/assetsAdmin/css/pace.min.css" rel="stylesheet" />*@
+    <script src="~/assetsAdmin/js/pace.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link href="~/assetsAdmin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assetsAdmin/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link href="~/assetsAdmin/css/app.css" rel="stylesheet">
+    <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
+    <title>@ViewBag.Title</title>
 </head>
-
-<body>
+<body class="bg-theme bg-theme1">
     <div class="tax-invoice-main">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-lg-12 col-sm-12">
-                    <div class="table-responsive">
-                        <h3 class="text-center">Tax Invoice</h3><br />
+                    <div class="table-responsive mt-3">
+                        <h4 class="text-center">Tax Invoice</h4><br />
                         <table class="table table-bordered zestier">
                             <thead>
                                 <tr>
-                                    <th style="width: 18%;"><img src="~/WebsiteCss/images/logo.png" class="img-fluid" alt="logo"> </th>
+                                    <th style="width: 18%; vertical-align:middle;"><img src="/Websiteassets/images/logo-white.png" class="img-fluid" alt="logo"> </th>
                                     <th style="width: 40%;    vertical-align: inherit;">
                                         <div class="addres-details text-center">
-                                            <p class="text-center"><strong style="font-size:xx-large">Digi Direct PRIVATE LIMITED</strong></p>
-                                            <p>@ViewBag.CompanyAddress</p>
+                                            <p class="text-center mb-0"><strong>Dream Crushers PVT. LTD.</strong></p>
+                                            <p class="mb-0">@ViewBag.CompanyAddress</p>
                                             @*<p>@ViewBag.City1 (@ViewBag.State1) -@ViewBag.Pin1</p>*@
-                                            <p><strong>E-mail :</strong> @ViewBag.EmailID</p>
-                                            <p><strong>Contact No.:</strong> @ViewBag.ContactNo</p>
-                                            <p><strong>Website :</strong> @ViewBag.Website</p>
+                                            <p class="mb-0"><strong>E-mail :</strong> @ViewBag.EmailID</p>
+                                            <p class="mb-0"><strong>Contact No.:</strong> @ViewBag.ContactNo</p>
+                                            <p class="mb-0"><strong>Website :</strong> @ViewBag.Website</p>
                                         </div>
                                     </th>
                                     @*<th>
-                                        <div class="addres-details">
-                                            <p>Bank Details</p>
-                                            <p>Bank Name: </p>
-                                            <p>A/c No.:</p>
-                                            <p>IFS Code:</p>
-                                            <p>Branch</p>
-                                        </div>
-                                    </th>*@
+                                            <div class="addres-details">
+                                                <p>Bank Details</p>
+                                                <p>Bank Name: </p>
+                                                <p>A/c No.:</p>
+                                                <p>IFS Code:</p>
+                                                <p>Branch</p>
+                                            </div>
+                                        </th>*@
                                 </tr>
                             </thead>
                         </table>
@@ -57,16 +67,16 @@
                                 <tr>
                                     <td>
                                         <div class="gstin">
-                                            <p><strong>GSTIN :</strong> @ViewBag.GSTNO</p>
-                                            <p><strong>Invoice Serial Number :</strong> @ViewBag.OrderNo</p>
-                                            <p><strong>Invoice Date :</strong> @ViewBag.UpgradtionDate</p>
+                                            <p class="mb-0"><strong>GSTIN :</strong> @ViewBag.GSTNO</p>
+                                            <p class="mb-0"><strong>Invoice Serial Number :</strong> @ViewBag.OrderNo</p>
+                                            <p class="mb-0"><strong>Invoice Date :</strong> @ViewBag.UpgradtionDate</p>
                                             @*<p><strong>Distributer ID :</strong> 809596808</p>*@
                                         </div>
                                     </td>
                                     <td>
                                         <div class="gstin">
-                                            <h6><b>Shipping Details</b></h6>
-                                            To, <br />
+                                            <h6 class="mb-0"><b>Shipping Details</b></h6>
+                                            To, 
                                             @ViewBag.Name (@ViewBag.Loginid)<br />
                                             @ViewBag.City,&nbsp; @ViewBag.State,&nbsp; @ViewBag.Pincode
                                             @*<p><strong>Name :</strong> @ViewBag.Name</p>
@@ -80,101 +90,101 @@
                         <table class="table table-bordered zestier">
                             <tbody>
                                 <tr>
-                            <td>SNo</td>
+                                    <td>SNo</td>
 
-                            <td colspan="4">Product Name</td>
-                            <td colspan="4">HSN Code</td>
-                            @*<td colspan="2">Batch No</td>*@
-                            <td>SGST</td>
-                            <td>CGST</td>
-                            <td>IGST</td>
-                            <td colspan="2">Qty</td>
-                            </tr>
-                            @if (Model != null)
+                                    <td colspan="4">Product Name</td>
+                                    <td colspan="4">HSN Code</td>
+                                    @*<td colspan="2">Batch No</td>*@
+                                    <td>SGST</td>
+                                    <td>CGST</td>
+                                    <td>IGST</td>
+                                    <td colspan="2">Qty</td>
+                                </tr>
+                                @if (Model != null)
             {
                 if (Model.lsttopupreport != null)
                 {
                     int i = 1;
                     foreach (var Item in Model.lsttopupreport)
                     {
-                                        <tr>
-                                            <td>
-                                                @i
-                                            </td>
-                                            <td colspan="4">@Item.ProductName</td>
-                                            <td colspan="4">@Item.HSNCode</td>
-                                            @*<td colspan="2">@Item.BatchNo</td>*@
-                                            <td>@Item.SGST</td>
-                                            <td>@Item.CGST</td>
-                                            <td>0</td>
-                                            <td colspan="2">@Item.Quantity</td>
-                                        </tr>
-                                        i++;
+                                            <tr>
+                                                <td>
+                                                    @i
+                                                </td>
+                                                <td colspan="4">@Item.ProductName</td>
+                                                <td colspan="4">@Item.HSNCode</td>
+                                                @*<td colspan="2">@Item.BatchNo</td>*@
+                                                <td>@Item.SGST</td>
+                                                <td>@Item.CGST</td>
+                                                <td>0</td>
+                                                <td colspan="2">@Item.Quantity</td>
+                                            </tr>
+                                            i++;
+                                        }
                                     }
                                 }
-                            }
-                            <tr>
-                                <td colspan="14">
-                                    Remarks :
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="9"></td>
-                                <td colspan="3">Total</td>
-                                <td colspan="2">@ViewBag.TotalFinalAmount</td>
-                            </tr>
-                            <tr>
-                                <td rowspan="6" colspan="5">
-                                    Tax Summary<br />
+                                <tr>
+                                    <td colspan="14">
+                                        Remarks :
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="9"></td>
+                                    <td colspan="3">Total</td>
+                                    <td colspan="2">@ViewBag.TotalFinalAmount</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="6" colspan="5">
+                                        Tax Summary<br />
 
-                                </td>
-                                <td colspan="4"></td>
-                                <td colspan="3">Less Discount</td>
-                                <td colspan="2">0.00</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"></td>
-                                <td colspan="3">Total Sale Value before Tax</td>
-                                <td colspan="2">@ViewBag.ValueBeforeTax</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"></td>
-                                <td colspan="3">Added Tax</td>
-                                <td colspan="2">@ViewBag.TaxAdded</td>
-                            </tr>
-                            <tr>
-                                <td colspan="4"></td>
-                                <td colspan="3">Total Value after Tax</td>
-                                <td colspan="2">@ViewBag.TotalFinalAmount</td>
-                            </tr>
-                            @*<tr>
+                                    </td>
                                     <td colspan="4"></td>
-                                    <td colspan="3">Total Value before Round Off</td>
-                                    <td colspan="2">4324.00</td>
+                                    <td colspan="3">Less Discount</td>
+                                    <td colspan="2">0.00</td>
                                 </tr>
                                 <tr>
                                     <td colspan="4"></td>
-                                    <td colspan="3">Round Off</td>
-                                    <td colspan="2">0.00</td>
-                                </tr>*@
-                            <tr>
-                                <td colspan="4"></td>
-                                <td colspan="3">
-                                    Grand Total :
-                                </td>
-                                <td colspan="2">
-                                    @ViewBag.TotalFinalAmount
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="14" style="text-align:right">
-                                    Total Value (in Words) : @ViewBag.TotalFinalAmountWords
-                                </td>
-                            </tr>
+                                    <td colspan="3">Total Sale Value before Tax</td>
+                                    <td colspan="2">@ViewBag.ValueBeforeTax</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <td colspan="3">Added Tax</td>
+                                    <td colspan="2">@ViewBag.TaxAdded</td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <td colspan="3">Total Value after Tax</td>
+                                    <td colspan="2">@ViewBag.TotalFinalAmount</td>
+                                </tr>
+                                @*<tr>
+                                        <td colspan="4"></td>
+                                        <td colspan="3">Total Value before Round Off</td>
+                                        <td colspan="2">4324.00</td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="4"></td>
+                                        <td colspan="3">Round Off</td>
+                                        <td colspan="2">0.00</td>
+                                    </tr>*@
+                                <tr>
+                                    <td colspan="4"></td>
+                                    <td colspan="3">
+                                        Grand Total :
+                                    </td>
+                                    <td colspan="2">
+                                        @ViewBag.TotalFinalAmount
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="14" style="text-align:right">
+                                        Total Value (in Words) : @ViewBag.TotalFinalAmountWords
+                                    </td>
+                                </tr>
                             </tbody>
 
                         </table>
-                        
+
                         <table class="table table-bordered zestier">
                             <tbody>
                                 <tr class="descript">
@@ -182,9 +192,9 @@
                                         <div class="condition">
                                             Terms & Conditions :
                                             <ul>
-                                               
-                                                
-                                              
+
+
+
 
                                                 <li>Certified that the particulars mentioned above are true and correct .</li>
                                                 <li>Good Once sold will not be taken back .</li>
@@ -203,10 +213,6 @@
                                     <td class="text-center"><strong>Signature of Recipiet</strong></td>
                                     <td class="text-center"><strong>Authorised Signature</strong></td>
                                 </tr>
-                                <tr>
-                                    <td>&nbsp;</td>
-                                    <td>&nbsp;</td>
-                                </tr>
                             </tbody>
 
                         </table>
@@ -223,7 +229,6 @@
             crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
             integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script> 
+            crossorigin="anonymous"></script>
 </body>
 </html>
-

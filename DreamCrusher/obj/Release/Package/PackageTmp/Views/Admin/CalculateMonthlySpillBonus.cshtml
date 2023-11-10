@@ -1,0 +1,75 @@
+﻿@model DreamCrusher.Models.Reports
+
+@{
+    ViewBag.Title = "CalculateMonthlySpillBonus";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+
+@using (Html.BeginForm("CalculateMonthlySpillBonus", "Admin", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+{
+
+    <div class="page-content">
+        <div class="row">
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <h5 class="mb-0">Monthly Spill Bonus</h5>
+                            <p style="color:#ffffff">
+                                @TempData["FProduct"]
+                            </p>
+                            @*<button class="btn btn-light repeater-add-btn px-4">Add</button>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 col-xl-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label for="PaymentDate" class="form-label">Date</label>
+                                @Html.TextBoxFor(m => m.PaymentDate, new { @class = "form-control", @readonly = true,@placeholder= "Payment Date" })
+                            </div>
+                            <div class="col-12">
+                                <input class="btn btn-light px-3" type="submit" value="Calculate" name="Save" id="Save" onclick="return validateform()"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+}
+<script src="../../vendor/jquery/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.0/themes/smoothness/jquery-ui.css">
+
+<script>
+    $('#PaymentDate').datepicker({
+        dateFormat: 'dd/mm/yy',
+        changeMonth: true,
+        changeYear: true,
+    });
+    function validateform() {
+        $(".errortext").removeClass("errortext");
+
+        if ($('#PaymentDate').val() == '') {
+            $("#PaymentDate").addClass('errortext');
+            $('#PaymentDate').focus();
+            $("#divload").css({ 'display': 'none' });
+            return false;
+        }
+        return true;
+    }
+</script>
+
+<style>
+    .errortext {
+        border: 1px solid red !important;
+    }
+</style>
+

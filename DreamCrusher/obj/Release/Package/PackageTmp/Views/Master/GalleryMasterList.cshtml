@@ -15,11 +15,13 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex align-items-center justify-content-between">
-                            <h5 class="mb-0">Gallery List</h5>
+                            <h5 class="mb-0">/ Master / Gallery List</h5>
+
+                            <p style="color: white;display: block; margin-bottom:0px; text-align:center">
+                                @TempData["GalleryMasterList"]
+                            </p>
+                            <a class="btn btn-light repeater-add-btn px-4" href="/Master/GalleryMaster">Add New</a>
                         </div>
-                        <p style="color: white;display: block; margin-bottom:0px; text-align:center">
-                            @TempData["GalleryMasterList"]
-                        </p>
                     </div>
                 </div>
             </div>
