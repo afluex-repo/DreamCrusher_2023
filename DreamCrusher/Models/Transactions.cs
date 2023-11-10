@@ -10,6 +10,7 @@ namespace DreamCrusher.Models
     public class Transactions : Common
     {
         public string PK_UserID { get; set; }
+        //public string LoginId { get; set; }
         public string NewLoginID { get; set; }
         public string MemberName { get; set; }
         public string ClosingDate { get; set; }

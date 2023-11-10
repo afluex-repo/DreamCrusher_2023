@@ -27,7 +27,7 @@
                         <div class="row g-3">
                             <div class="col-md-4">
                                 <label class="col-sm-3 col-form-label">Login Id <span style="color: red">*</span></label>
-                                @Html.TextBoxFor(m => m.LoginID, new { @id = "txtLoginID", @required = "required", @class = "form-control", @onchange = "getMemberDetails(this);" })
+                                @Html.TextBoxFor(m => m.LoginId, new { @id = "txtLoginID", @required = "required", @class = "form-control", @onchange = "getMemberDetails(this);" })
                             </div>
                             <div class="col-md-4">
                                 <label class="col-sm-3 col-form-label">Name <span style="color: red">*</span></label>
@@ -63,7 +63,7 @@
             url: '/Transactions/GetMemberDetails',
             type: 'GET',
             dataType: 'JSON',
-            data: { 'LoginID': $(obj).val() },
+            data: { 'LoginId': $(obj).val() },
             success: function (response) {
                 if (response.Result == "Yes") {
 

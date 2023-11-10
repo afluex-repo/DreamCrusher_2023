@@ -29,7 +29,7 @@ namespace DreamCrusher.Models
             return ds;
         }
 
-        public string LoginId { get; set; }
+        //public string LoginId { get; set; }
 
 
      
