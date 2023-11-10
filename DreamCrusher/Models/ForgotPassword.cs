@@ -9,12 +9,12 @@ namespace DreamCrusher.Models
 {
     public class ForgotPassword : Common
     {
-        public string LoginID { get; set; }
+        //public string LoginId { get; set; }
         public string MobileNumber { get; set; }
 
         public DataSet ValidateData()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID),
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                   new SqlParameter("@Mobile", MobileNumber)};
             DataSet ds = DBHelper.ExecuteQuery("ForgotPassword", para);
             return ds;

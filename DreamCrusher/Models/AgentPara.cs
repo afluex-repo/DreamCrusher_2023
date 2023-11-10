@@ -46,7 +46,7 @@ namespace DreamCrusher.Models.DAL
         public string FK_PlanId { get; set; }
         //Get:Incomes
         public string CurrentDate { get; set; }
-        public string LoginID { get; set; }
+        public string LoginId { get; set; }
         public string MemberName { get; set; }
         public string BusinessAmount { get; set; }
         public string programme { get; set; }
@@ -112,7 +112,7 @@ namespace DreamCrusher.Models.DAL
 
     public class GetTransactionPassword
     {
-        public string LoginID { get; set; }
+        public string LoginId { get; set; }
         public string Mobile { get; set; }
         public string Email { get; set; }
 

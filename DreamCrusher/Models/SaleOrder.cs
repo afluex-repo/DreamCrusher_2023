@@ -21,7 +21,7 @@ namespace DreamCrusher.Models
         public string BatchNo { get; set; }
         public string Stock { get; set; }
         public string SaleDate { get; set; }
-        public string LoginID { get; set; }
+        //public string LoginId { get; set; }
         public DataTable dtStock { get; set; }
         public string ProductID { get; set; }
         public string Action { get; set; }
@@ -130,7 +130,7 @@ namespace DreamCrusher.Models
                                     new SqlParameter("@PaymentMode", PaymentMode),
                                     new SqlParameter("@FromDate", FromDate),
                                     new SqlParameter("@ToDate", ToDate),
-                                    new SqlParameter("@LoginId", LoginID), };
+                                    new SqlParameter("@LoginId", LoginId), };
             DataSet ds = DBHelper.ExecuteQuery("SaleOrderList", para);
             return ds;
         }
@@ -142,7 +142,7 @@ namespace DreamCrusher.Models
                                     new SqlParameter("@PaymentMode", PaymentMode),
                                     new SqlParameter("@FromDate", FromDate),
                                     new SqlParameter("@ToDate", ToDate),
-                                    new SqlParameter("@LoginId", LoginID), };
+                                    new SqlParameter("@LoginId", LoginId), };
             DataSet ds = DBHelper.ExecuteQuery("SaleListForFranchise", para);
             return ds;
         }
@@ -155,7 +155,7 @@ namespace DreamCrusher.Models
                              new SqlParameter("@PaymentMode", PaymentMode),
                                new SqlParameter("@FromDate", FromDate),
                                  new SqlParameter("@ToDate", ToDate),
-                                   new SqlParameter("@LoginId", LoginID),
+                                   new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@FLogiID", FranchiseType),
                                    new SqlParameter("@FranchiseName", FranchiseName),
 

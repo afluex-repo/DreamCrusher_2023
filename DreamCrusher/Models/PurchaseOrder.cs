@@ -19,7 +19,7 @@ namespace DreamCrusher.Models
         public string PaymentModeID { get; set; }
         public DataTable dtPurchaseOrder { get; set; }
         public string TotalFinalAmount { get; set; }
-        public string LoginID { get; set; }
+        //public string LoginId { get; set; }
         public DataTable dtStock { get; set; }
         public string ProductID { get; set; }
         public string Action { get; set; }

@@ -13,7 +13,7 @@ namespace DreamCrusher.Models
         public string FK_MemID { get; set; }
         public string FK_PlanId { get; set; }
         public string CurrentDate { get; set; }
-        public string LoginID { get; set; }
+        public string LoginId { get; set; }
         public string MemberName { get; set; }
         public string BusinessAmount { get; set; }
         public string programme { get; set; }
