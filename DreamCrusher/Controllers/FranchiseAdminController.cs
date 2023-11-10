@@ -3962,7 +3962,7 @@ namespace DreamCrusher.Controllers
             }
             return RedirectToAction("ApproveKitRequest");
         }
-        public ActionResult ApproveRequestKit(string requestID, string approveQty, string loginid, string kitid, string batch)
+        public ActionResult ApproveRequestKit(string requestID, string approveQty, string LoginId, string kitid, string batch)
         {
             Franchise model = new Franchise();
             List<Franchise> ds1 = Session["tbl"] as List<Franchise>;
@@ -3993,7 +3993,7 @@ namespace DreamCrusher.Controllers
                 model.RequestID = requestID;
                 model.Quantity = approveQty;
                 model.KitID = kitid;
-                model.LoginId = loginid;
+                model.LoginId = LoginId;
                 model.BatchID = batch;
                 model.AddedBy = Session["FranchiseAdminID"].ToString();
 

@@ -30,7 +30,7 @@
                 @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", @placeholder = "Quantity", @onchange = "return validateQty(this);", @onkeypress = "return isNumberKey(event);" })
                 @Html.HiddenFor(m => m.RequestID)
                 @Html.HiddenFor(m => m.KitID)
-                @Html.HiddenFor(m => m.LoginID)
+                @Html.HiddenFor(m => m.LoginId)
                 <input type="hidden" id="hdqty" />
                 <input type="hidden" id="hdreqqty" />
                 <input type="hidden" id="hdkitid" />

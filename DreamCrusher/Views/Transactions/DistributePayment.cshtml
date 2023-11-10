@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-@using (Html.BeginForm("DistiributePayemntToMembers", "Transactions", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("DistiributePayemntToMembers", "Transactions", FormMethod.Post, new { @id = "form1", enctype = "multipart/form-data",@autocomplete="off" }))
 {
    
     <br />
