@@ -285,7 +285,7 @@ namespace DreamCrusher.Controllers
                         Franchise obj = new Franchise();
                         obj.EncryptKey = Crypto.Encrypt(r["PK_FranchsieID"].ToString());
                         obj.Password = Crypto.Decrypt(r["Password"].ToString());
-                        obj.LoginID = r["LoginID"].ToString();
+                        obj.LoginId = r["LoginID"].ToString();
                         obj.PK_FranchiseID = r["PK_FranchsieID"].ToString();
                         obj.FranchiseType = r["FK_FranchiseTypeID"].ToString();
                         obj.FirmName = r["FirmName"].ToString();
@@ -329,7 +329,7 @@ namespace DreamCrusher.Controllers
                         Franchise obj = new Franchise();
                         obj.EncryptKey = Crypto.Encrypt(r["PK_FranchsieID"].ToString());
                         obj.Password = Crypto.Decrypt(r["Password"].ToString());
-                        obj.LoginID = r["LoginID"].ToString();
+                        obj.LoginId = r["LoginID"].ToString();
                         obj.PK_FranchiseID = r["PK_FranchsieID"].ToString();
                         obj.FranchiseType = r["FK_FranchiseTypeID"].ToString();
                         obj.FirmName = r["FirmName"].ToString();
@@ -2540,7 +2540,7 @@ namespace DreamCrusher.Controllers
                     foreach (DataRow r in ds.Tables[0].Rows)
                     {
                         Franchise obj = new Franchise();
-                        obj.LoginID = r["LoginID"].ToString();
+                        obj.LoginId = r["LoginID"].ToString();
                         obj.PK_FranchiseID = r["FK_FranchiseID"].ToString();
                         obj.ProductID = r["FK_ProductID"].ToString();
                         obj.Credit = r["Credit"].ToString();
@@ -2619,7 +2619,7 @@ namespace DreamCrusher.Controllers
                     foreach (DataRow r in ds.Tables[0].Rows)
                     {
                         Franchise obj = new Franchise();
-                        obj.LoginID = r["LoginID"].ToString();
+                        obj.LoginId = r["LoginID"].ToString();
                         obj.PK_FranchiseID = r["FK_FranchiseID"].ToString();
                         obj.ProductID = r["FK_ProductID"].ToString();
                         obj.Credit = r["Credit"].ToString();
@@ -3301,12 +3301,12 @@ namespace DreamCrusher.Controllers
             return View(model);
         }
 
-        public ActionResult GetFranchiseName(string LoginID)
+        public ActionResult GetFranchiseName(string LoginId)
         {
             try
             {
                 Franchise model = new Franchise();
-                model.LoginID = LoginID;
+                model.LoginId = LoginId;
 
                 #region GetSiteRate
                 DataSet dsSiteRate = model.FranchiseList();
@@ -3885,7 +3885,7 @@ namespace DreamCrusher.Controllers
                         obj.Quantity = r["RequestQty"].ToString();
                         obj.TotalAmount = r["TotalAmount"].ToString();
                         obj.PaymentMode = r["PaymentMode"].ToString();
-                        obj.LoginID = r["LoginID"].ToString();
+                        obj.LoginId = r["LoginID"].ToString();
                         obj.RequestImage = r["RequestImage"].ToString();
 
                         obj.EncryptKitID = Crypto.Encrypt(r["FK_KitID"].ToString());
@@ -3993,7 +3993,7 @@ namespace DreamCrusher.Controllers
                 model.RequestID = requestID;
                 model.Quantity = approveQty;
                 model.KitID = kitid;
-                model.LoginID = loginid;
+                model.LoginId = loginid;
                 model.BatchID = batch;
                 model.AddedBy = Session["FranchiseAdminID"].ToString();
 
@@ -4037,7 +4037,7 @@ namespace DreamCrusher.Controllers
                     {
                         Franchise obj = new Franchise();
                         obj.FromDate = r["TransactionDate"].ToString();
-                        obj.LoginID = r["LoginId"].ToString();
+                        obj.LoginId = r["LoginId"].ToString();
                         obj.FranchiseName = r["FranchiseName"].ToString();
                         obj.KitName = r["KitName"].ToString();
                         obj.TotalAmount = r["KitAmount"].ToString();
@@ -4080,7 +4080,7 @@ namespace DreamCrusher.Controllers
                     {
                         Franchise obj = new Franchise();
                         obj.FromDate = r["TransactionDate"].ToString();
-                        obj.LoginID = r["LoginId"].ToString();
+                        obj.LoginId = r["LoginId"].ToString();
                         obj.FranchiseName = r["FranchiseName"].ToString();
                         obj.KitName = r["KitName"].ToString();
                         obj.TotalAmount = r["KitAmount"].ToString();
@@ -4278,7 +4278,7 @@ namespace DreamCrusher.Controllers
                 model.PK_FranchiseID = Session["FranchiseAdminID"].ToString();
                 model.KitID = Crypto.Decrypt(kid);
                 model.RequestID = Crypto.Decrypt(rid);
-                model.LoginID = Crypto.Decrypt(lid);
+                model.LoginId = Crypto.Decrypt(lid);
                 model.ApprovedQuantity = Crypto.Decrypt(rqty);
 
                 #region GetProductByKit

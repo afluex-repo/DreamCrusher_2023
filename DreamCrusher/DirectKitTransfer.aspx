@@ -174,10 +174,10 @@
     <script src="../../AssociatePanelcss/bower_components/jquery/dist/jquery.min.js"></script>
     <script>
         function GetFranchiseName() {
-            var LoginID = $('#txtLoginID').val();
+            var LoginId = $('#txtLoginID').val();
             $.ajax({
                 url: '/FranchiseAdmin/GetFranchiseName', type: 'post', dataType: 'json',
-                data: { 'LoginID': LoginID },
+                data: { 'LoginId': LoginId },
                 success: function (data) {
                     if (data.Result == "yes") {
                         $("#txtFranchiseName").val(data.FranchiseName);

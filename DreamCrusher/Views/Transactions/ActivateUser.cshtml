@@ -50,7 +50,7 @@
                                     {
                                 <tr class="text-left">
                                     <td>@i</td>
-                                    <td>@Item.LoginID</td>
+                                    <td>@Item.LoginId</td>
                                     <td>@Item.Password</td>
                                     <td>@Item.Name</td>
                                     <td>@Item.SponsorId</td>
@@ -62,13 +62,13 @@
                                     <td>
                                         @if(Item.TemPermanent == "P")
                                         {
-                                            <a href="/Transactions/DeactivateUserByAdmin?MemberID=@Item.LoginID" class="btn btn-danger">
+                                            <a href="/Transactions/DeactivateUserByAdmin?MemberID=@Item.LoginId" class="btn btn-danger">
                                                 Deactivate
                                             </a>
                                         }
                                         else
                                         {
-                                            <a href="/Transactions/ActivateUserByAdmin?MemberID=@Item.LoginID" class="btn btn-success">
+                                            <a href="/Transactions/ActivateUserByAdmin?MemberID=@Item.LoginId" class="btn btn-success">
                                                 Activate
                                             </a>
                                         }

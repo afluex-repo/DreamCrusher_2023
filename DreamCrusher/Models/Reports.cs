@@ -50,7 +50,7 @@ namespace DreamCrusher.Models
         public string ToActivationDate { get; set; }
         public string PAN { get; set; }
         public string Leg { get; set; }
-        public string LoginId { get; set; }
+        //public string LoginId { get; set; }
         public string Name { get; set; }
         public string JoiningDate { get; set; }
         public string Mobile { get; set; }

@@ -55,10 +55,10 @@ namespace DreamCrusher.Controllers
             return RedirectToAction(FormName, Controller);
         }
 
-        public ActionResult GetMemberDetails(string LoginID)
+        public ActionResult GetMemberDetails(string LoginId)
         {
             Common obj = new Common();
-            obj.ReferBy = LoginID;
+            obj.ReferBy = LoginId;
             DataSet ds = obj.GetMemberDetails();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
@@ -82,7 +82,7 @@ namespace DreamCrusher.Controllers
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     Transactions obj = new Transactions();
-                    obj.LoginID = r["LoginId"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
                     obj.Name = r["Name"].ToString();
                     obj.JoiningDate = r["JoiningDate"].ToString();
                     obj.Password = r["Password"].ToString();
@@ -107,7 +107,7 @@ namespace DreamCrusher.Controllers
             try
             {
                 Transactions obj = new Transactions();
-                obj.LoginID = MemberID;
+                obj.LoginId = MemberID;
                 obj.UpdatedBy = Session["Pk_AdminId"].ToString();
                 DataSet ds = obj.ActivateUser();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -143,7 +143,7 @@ namespace DreamCrusher.Controllers
             try
             {
                 Transactions obj = new Transactions();
-                obj.LoginID = MemberID;
+                obj.LoginId = MemberID;
                 obj.UpdatedBy = Session["Pk_AdminId"].ToString();
                 DataSet ds = obj.DeactivateUser();
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -292,7 +292,7 @@ namespace DreamCrusher.Controllers
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     Transactions obj = new Transactions();
-                    obj.LoginID = r["LoginId"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
                     obj.FirstName = r["FirstName"].ToString();
                     obj.BinaryIncome = r["BinaryIncome"].ToString();
                     obj.DirectIncome = r["DirectIncome"].ToString();
@@ -403,7 +403,7 @@ namespace DreamCrusher.Controllers
                 foreach (DataRow r in ds.Tables[0].Rows)
                 {
                     Transactions obj = new Transactions();
-                    obj.LoginID = r["LoginId"].ToString();
+                    obj.LoginId = r["LoginId"].ToString();
                     obj.FirstName = r["FirstName"].ToString();
                     obj.BinaryIncome = r["BinaryIncome"].ToString();
                     obj.DirectIncome = r["DirectIncome"].ToString();

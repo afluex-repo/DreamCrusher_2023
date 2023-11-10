@@ -434,7 +434,7 @@ namespace DreamCrusher.Controllers
             #region upperLevelFranchise
             int count = 0;
             List<SelectListItem> ddlUpperFranchise = new List<SelectListItem>();
-            model.LoginID = Session["LoginID"].ToString();
+            model.LoginId = Session["LoginID"].ToString();
             DataSet dsFranchiseList = model.GetUpperLevelFranchise();
             if (dsFranchiseList != null && dsFranchiseList.Tables.Count > 0 && dsFranchiseList.Tables[0].Rows.Count > 0)
             {
@@ -1436,12 +1436,12 @@ namespace DreamCrusher.Controllers
             return View(model);
         }
 
-        public ActionResult GetFranchiseName(string LoginID)
+        public ActionResult GetFranchiseName(string LoginId)
         {
             try
             {
                 Franchise model = new Franchise();
-                model.LoginID = LoginID;
+                model.LoginId = LoginId;
 
                 #region GetSiteRate
                 DataSet dsSiteRate = model.FranchiseList();
@@ -1576,10 +1576,10 @@ namespace DreamCrusher.Controllers
             return View(model);
         }
 
-        public ActionResult GetAssociateName(string LoginID)
+        public ActionResult GetAssociateName(string LoginId)
         {
             Franchise obj = new Franchise();
-            obj.LoginID = LoginID;
+            obj.LoginId = LoginId;
             obj.Status = "T";
             DataSet ds = obj.GetAssociateList();
             if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
@@ -1794,7 +1794,7 @@ namespace DreamCrusher.Controllers
             #region upperLevelFranchise
             int count = 0;
             List<SelectListItem> ddlUpperFranchise = new List<SelectListItem>();
-            model.LoginID = Session["LoginID"].ToString();
+            model.LoginId = Session["LoginID"].ToString();
             DataSet dsFranchiseList = model.GetUpperLevelFranchise();
             if (dsFranchiseList != null && dsFranchiseList.Tables.Count > 0 && dsFranchiseList.Tables[0].Rows.Count > 0)
             {
