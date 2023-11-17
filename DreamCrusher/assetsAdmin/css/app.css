@@ -169,25 +169,18 @@ a {
 
 .page-footer {
 
-	background: rgb(0 0 0 / 20%);
-
-	position: absolute;
-
-	left: 250px;
-
-	right: 0;
-
-	text-align: center;
-
-	padding: 7px;
-
-	color: #fff;
-
-	font-size: 14px;
-
-	border-top: 1px solid rgb(255 255 255 / 15%);
-
-	z-index: 3
+	background: rgb(0 77 106);
+    position: fixed;
+    /* left: 250px; */
+    /* right: 0; */
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+    padding: 7px;
+    color: #fff;
+    font-size: 14px;
+    border-top: 1px solid rgb(255 255 255 / 15%);
+    z-index: 1;
 
 }
 

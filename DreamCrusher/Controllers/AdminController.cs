@@ -1019,7 +1019,6 @@ namespace DreamCrusher.Controllers
             for (int i = 1; i < int.Parse(hdrows2); i++)
             {
                 Pk_PaidBoosterId_ = Request["Fk_UserId_ " + i].ToString();
-                
                 amount = "";
 
                 transactiono = Request["txttranno_ " + i].ToString();
@@ -1050,7 +1049,7 @@ namespace DreamCrusher.Controllers
 
             }
             TempData["PayPayout"] = "Paymnent Done";
-            return RedirectToAction("PayPayout", "Admin");
+            return RedirectToAction("PayPayout");
         }
         #endregion
 
@@ -1089,7 +1088,7 @@ namespace DreamCrusher.Controllers
             return View(objewallet);
         }
         #endregion
-        public ActionResult RejectKYC(string Id, string DocumentType, string LoginId)
+		public ActionResult RejectKYC(string Id, string DocumentType, string LoginId)
         {
             string FormName = "";
             string Controller = "";
