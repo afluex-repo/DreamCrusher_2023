@@ -86,7 +86,7 @@
                                                 <tr class="text-left">
                                                     <td hidden>@Item.KitID</td>
                                                     <td hidden>@Item.PK_FranchiseID</td>
-                                                    <td hidden>@Item.LoginID</td>
+                                                    <td hidden>@Item.LoginId</td>
                                                     <td>@i</td>
                                                     <td>@Item.RequestCode</td>
                                                     <td>@Item.RequestFrom</td>
@@ -96,9 +96,9 @@
                                                     <td>@Item.PaymentMode</td>
                                                     <td><a href="../../@Item.RequestImage" target="_blank"><img src="../../@Item.RequestImage" style="height:50px;width:50px" /></a></td>
                                                     <td>
-                                                        @*<a class="btn btn-sm btn-success" href="/ApproveKitRequest.aspx?fid=@Item.PK_FranchiseID&kid=@Item.KitID&rid=@Item.RequestID&lid=@Item.LoginID&rqty=@Item.Quantity">Approve</a>*@
+                                                        @*<a class="btn btn-sm btn-success" href="/ApproveKitRequest.aspx?fid=@Item.PK_FranchiseID&kid=@Item.KitID&rid=@Item.RequestID&lid=@Item.LoginId&rqty=@Item.Quantity">Approve</a>*@
                                                         <a class="btn btn-sm btn-success" href="/FranchiseAdmin/KitRequestDetails?fid=@Item.PK_FranchiseID&kid=@Item.EncryptKitID&rid=@Item.EncryptRequestID&lid=@Item.EncryptLoginID&rqty=@Item.EncryptRequestQty">Approve</a>
-                                                        @*<input type="button" class="btn btn-sm btn-success" value="Approve" onclick="openCancelPopup('@Item.RequestID','@Item.KitID','@Item.LoginID','@Item.PK_FranchiseID','@Item.Quantity');" />*@
+                                                        @*<input type="button" class="btn btn-sm btn-success" value="Approve" onclick="openCancelPopup('@Item.RequestID','@Item.KitID','@Item.LoginId','@Item.PK_FranchiseID','@Item.Quantity');" />*@
                                                     </td>
                                                 </tr>
 
@@ -144,7 +144,7 @@
                                 @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", @placeholder = "Quantity", @onchange = "return GetAmt(this);" })
                                 @Html.HiddenFor(m => m.RequestID)
                                 @Html.HiddenFor(m => m.KitID)
-                                @Html.HiddenFor(m => m.LoginID)
+                                @Html.HiddenFor(m => m.LoginId)
                                 <input type="hidden" id="hdqty" />
                                 <input type="hidden" id="hdreqqty" />
                                 <input type="hidden" id="hdkitid" />
@@ -211,10 +211,10 @@
         });
     }
 
-    function openCancelPopup(RequestID, KitID, LoginID, PK_FranchiseID, ReqQty) {
+    function openCancelPopup(RequestID, KitID, LoginId, PK_FranchiseID, ReqQty) {
         $("#RequestID").val(RequestID);
         $("#KitID").val(KitID);
-        $("#LoginID").val(LoginID);
+        $("#LoginId").val(LoginId);
         document.getElementById('hdreqqty').value = ReqQty;
         document.getElementById('hdkitid').value = KitID;
         $("#ApprovedQuantity").val(ReqQty);
@@ -278,7 +278,7 @@
         $.ajax({
             url: '/FranchiseAdmin/ApproveRequestKit', type: 'post', dataType: 'json',
             data: {
-                'requestID': $('#RequestID').val(), 'approveQty': document.getElementById('hdqty').value, 'loginid': $('#LoginID').val(),
+                'requestID': $('#RequestID').val(), 'approveQty': document.getElementById('hdqty').value, 'loginid': $('#LoginId').val(),
                 'kitid': $('#KitID').val(), 'batch': $('#BatchID').find(":selected").text()
             },
             success: function (data) {

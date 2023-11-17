@@ -97,7 +97,7 @@ namespace DreamCrusher.Controllers
             return View(model);
         }
 
-        public ActionResult ApproveKYC(string Id, string DocumentType, string LoginID)
+        public ActionResult ApproveKYC(string Id, string DocumentType, string LoginId)
         {
             string FormName = "";
             string Controller = "";
@@ -108,7 +108,7 @@ namespace DreamCrusher.Controllers
                 List<Reports> lst = new List<Reports>();
 
                 Reports model = new Reports();
-                model.LoginId = LoginID;
+                model.LoginId = LoginId;
                 model.PK_DocumentID = Id;
                 model.DocumentType = DocumentType;
                 model.Status = "Approved";
@@ -1019,6 +1019,7 @@ namespace DreamCrusher.Controllers
             for (int i = 1; i < int.Parse(hdrows2); i++)
             {
                 Pk_PaidBoosterId_ = Request["Fk_UserId_ " + i].ToString();
+                
                 amount = "";
 
                 transactiono = Request["txttranno_ " + i].ToString();
@@ -1049,7 +1050,7 @@ namespace DreamCrusher.Controllers
 
             }
             TempData["PayPayout"] = "Paymnent Done";
-            return RedirectToAction("PayPayout");
+            return RedirectToAction("PayPayout", "Admin");
         }
         #endregion
 
@@ -1088,7 +1089,7 @@ namespace DreamCrusher.Controllers
             return View(objewallet);
         }
         #endregion
-		public ActionResult RejectKYC(string Id, string DocumentType, string LoginID)
+        public ActionResult RejectKYC(string Id, string DocumentType, string LoginId)
         {
             string FormName = "";
             string Controller = "";
@@ -1099,7 +1100,7 @@ namespace DreamCrusher.Controllers
                 List<Reports> lst = new List<Reports>();
 
                 Reports model = new Reports();
-                model.LoginId = LoginID;
+                model.LoginId = LoginId;
                 model.PK_DocumentID = Id;
                 model.DocumentType = DocumentType;
                 model.Status = "Rejected";

@@ -106,20 +106,20 @@
                                                     <td>@Item.Mobile</td>
                                                     <td>@Item.Email</td>
                                                     <td>
-                                                        <a href="/AdminProfile/UpdateAssociateProfile?LoginID=@Item.LoginId" class="btn btn-info">
+                                                        <a href="/AdminProfile/UpdateAssociateProfile?LoginId=@Item.LoginId" class="btn btn-info">
                                                             Edit
                                                         </a>
                                                     </td>
                                                     <td>
                                                         @if (Item.isBlocked == "False")
                                                         {
-                                                            <a href="/AdminProfile/BlockAssociate?LoginID=@Item.LoginId" class="btn btn-danger">
+                                                            <a href="/AdminProfile/BlockAssociate?LoginId=@Item.LoginId" class="btn btn-danger">
                                                                 Block
                                                             </a>
                                                         }
                                                         else
                                                         {
-                                                            <a href="/AdminProfile/UnblockAssociate?LoginID=@Item.LoginId" class="btn btn-success">
+                                                            <a href="/AdminProfile/UnblockAssociate?LoginId=@Item.LoginId" class="btn btn-success">
                                                                 Unblock
                                                             </a>
                                                         }
@@ -139,7 +139,7 @@
                                                         }
                                                     </td>
                                                     <td>
-                                                        <a href="/AdminProfile/WelcomeLetter?LoginID=@Item.LoginId" class="btn btn-info">
+                                                        <a href="/AdminProfile/WelcomeLetter?LoginId=@Item.LoginId" class="btn btn-info">
                                                             Print
                                                         </a>
                                                     </td>

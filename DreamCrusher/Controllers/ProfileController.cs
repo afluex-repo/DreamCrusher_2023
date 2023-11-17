@@ -59,11 +59,11 @@ namespace DreamCrusher.Controllers
             return RedirectToAction(FormName, Controller);
         }
 
-        public ActionResult UpdateAssociateProfile(string LoginID)
+        public ActionResult UpdateAssociateProfile(string LoginId)
         {
             //Profile objProfile = new Profile();
             Profile obj = new Profile();
-            obj.LoginId = LoginID;
+            obj.LoginId = LoginId;
             DataSet ds = obj.GetUserProfile();
 
             
