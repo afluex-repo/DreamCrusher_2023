@@ -4213,7 +4213,6 @@
     <Content Include="Views\Transactions\UpdateMemberLogin.cshtml" />
     <Content Include="Views\User\AssociateDashBoard.cshtml" />
     <Content Include="Views\User\BinaryTree.cshtml" />
-    <Content Include="Views\User\ConfirmRegistration.cshtml" />
     <Content Include="Views\User\Registration.cshtml" />
     <Content Include="Views\User\ViewProfile.cshtml" />
     <Content Include="Views\UserReports\PayoutReport.cshtml" />
@@ -4532,6 +4531,7 @@
     <Content Include="Views\UserReports\PrintTopup.cshtml" />
     <Content Include="Views\Master\ProductandServices.cshtml" />
     <Content Include="Views\Master\ProductandServicesList.cshtml" />
+    <Content Include="Views\User\ConfirmRegistration.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
