@@ -8,7 +8,7 @@ namespace DreamCrusher.Models
 {
     public class Common
     {
-        public string LoginId { get; set; }
+        public string LoginId{ get; set; }
         public string AddedBy { get; set; }
         public string UpdatedBy { get; set; }
         public string ReferBy { get; set; }
@@ -142,12 +142,14 @@ namespace DreamCrusher.Models
         }
         public DataSet GetCourseListForAllotCourses()
         {
+
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCourses");
             return ds;
         }
         public DataSet BindProduct()
         {
-            DataSet ds = DBHelper.ExecuteQuery("BindProduct");
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId), };
+            DataSet ds = DBHelper.ExecuteQuery("BindProduct",para);
             return ds;
         }
 

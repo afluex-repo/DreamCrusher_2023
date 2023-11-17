@@ -354,7 +354,7 @@ namespace DreamCrusher.Controllers
             return Json(obj, JsonRequestBehavior.AllowGet);
         }
         
-        public ActionResult UpdateAssociateProfile(string LoginID)
+        public ActionResult UpdateAssociateProfile(string LoginId)
         {
             #region ddlgender
             List<SelectListItem> ddlgender = Common.BindGender();
@@ -365,7 +365,7 @@ namespace DreamCrusher.Controllers
             ViewBag.Relation = Relation;
             #endregion
             Profile obj = new Profile();
-            obj.LoginId = LoginID;
+            obj.LoginId = LoginId;
            
             DataSet ds = obj.GetUserProfile();
             
@@ -434,7 +434,7 @@ namespace DreamCrusher.Controllers
             return RedirectToAction(FormName, Controller);
         }
 
-        public ActionResult BlockAssociate(Profile obj, string LoginID)
+        public ActionResult BlockAssociate(Profile obj, string LoginId)
         {
             string FormName = "";
             string Controller = "";
@@ -467,7 +467,7 @@ namespace DreamCrusher.Controllers
             return RedirectToAction(FormName, Controller);
         }
 
-        public ActionResult UnblockAssociate(Profile obj, string LoginID)
+        public ActionResult UnblockAssociate(Profile obj, string LoginId)
         {
             string FormName = "";
             string Controller = "";

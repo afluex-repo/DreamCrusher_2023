@@ -42,14 +42,14 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="row">
-                            <div class="col-md-3 mb-3">
+                            @*<div class="col-md-3 mb-3">
                                 <label class="form-label"> Package</label>
-                                @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control" })
+                                @Html.DropDownListFor(m => m.Package, new SelectList(ViewBag.ddlProduct, "Value", "Text"), new { @class = "form-control form-select" })
                             </div>
                             <div class="col-md-3 mb-3">
                                 <label class="form-label">Status</label>
-                                @Html.DropDownListFor(m => m.Status, new SelectList(ViewBag.ddlstatus, "Value", "Text"), new { @class = "form-control" })
-                            </div>
+                                @Html.DropDownListFor(m => m.Status, new SelectList(ViewBag.ddlstatus, "Value", "Text"), new { @class = "form-control form-select" })
+                            </div>*@
                             <div class="col-md-3 mb-3">
                                 <label class="form-label">From Date  </label>
                                 @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control", @readonly = "readonly" })
@@ -75,7 +75,7 @@
                                         <th>Sr No.</th>
                                         <th>Login Id</th>
                                         <th>Name</th>
-                                        <th>PlotNo</th>
+                                        @*<th>PlotNo</th>*@
                                         <th>Description</th>
                                         <th>Upgradation Date</th>
                                         <th>Package</th>
@@ -96,7 +96,7 @@
                                                     <td>@i</td>
                                                     <td>@Item.LoginId</td>
                                                     <td>@Item.DisplayName</td>
-                                                    <td>@Item.PlotNumber</td>
+                                                    @*<td>@Item.PlotNumber</td>*@
                                                     <td>@Item.Description</td>
                                                     <td>@Item.UpgradtionDate</td>
 
@@ -158,6 +158,9 @@
     .errortext {
         border: 1px solid red !important;
         background-color: #fff0f0 !important;
+    }
+    .btn-light{
+        margin-top:28px;
     }
 </style>
 

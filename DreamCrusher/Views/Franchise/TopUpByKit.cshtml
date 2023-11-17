@@ -42,7 +42,7 @@
                         <div class="col-lg-4">
                             <div class="form-group">
                                 Associate ID
-                                @Html.TextBoxFor(m => m.LoginID, new { @class = "form-control", @onchange = "return GetAssociateName();" })
+                                @Html.TextBoxFor(m => m.LoginId, new { @class = "form-control", @onchange = "return GetAssociateName();" })
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -85,10 +85,10 @@
 
 <script>
     function GetAssociateName() {
-        var value3 = $('#LoginID').val();
+        var value3 = $('#LoginId').val();
         $.ajax({
             url: '/Franchise/GetAssociateName', type: 'post', dataType: 'json',
-            data: { 'LoginID': value3 }, success: function (data) {
+            data: { 'LoginId': value3 }, success: function (data) {
                 //$('#TotalAmount').val('');
                 if (data.Result == "Yes") {
                     $('#DisplayName').val(data.DisplayName);                
@@ -128,9 +128,9 @@
 
             return false;
         }
-        if ($('#LoginID').val() == '') {
-            $("#LoginID").addClass('errortext');
-            $('#LoginID').focus();
+        if ($('#LoginId').val() == '') {
+            $("#LoginId").addClass('errortext');
+            $('#LoginId').focus();
 
             return false;
         }

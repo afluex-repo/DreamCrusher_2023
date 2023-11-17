@@ -109,7 +109,7 @@
                                             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @Placeholder = "Last Name" })
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
-                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email id" })
+                                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email-Id *", @onchange = "ValidateEmailIDCheck(event)" })
                                             @Html.ValidationMessageFor(m => m.Email)
                                         </div>
                                         <div class="col-lg-4 col-md-6 col-sm-6 mb-10">
@@ -171,13 +171,13 @@
                                         </div>
                                         <div class="d-flex loginBtn">
                                             <div class="form-group mb-0">
-                                                <input class="readon submit orange-more rounded" id="Confirm" name="Confirm" type="submit" value="Confirm" onclick="return confirmregistration();">
+                                                <input class="readon submit orange-more rounded" id="Confirm" name="Confirm" type="button" style="display: none" value="Confirm" onclick="return confirmregistration();">
                                             </div>
                                             <div class="form-group mb-0 ml-4">
-                                                <input class="readon submit orange-more rounded" id="Register" name="Register" type="submit" style="display: none" value="Register" onclick="return saveregistration();">
+                                                <input class="readon submit orange-more rounded" id="Register" name="Register" type="button" style="display: none" value="Register" onclick="return saveregistration();">
                                             </div>
                                             <div class="form-group mb-0 ml-4">
-                                                <input class="readon submit orange-more rounded" id="Edit" name="Edit" type="submit" value="Edit" style="display: none" onclick="return editregistration();">
+                                                <input class="readon submit orange-more rounded" id="Edit" name="Edit" type="button" value="Edit" style="display: none" onclick="return editregistration();">
                                             </div>
                                             <div class="form-group mb-0 ml-4">
                                                 <a href="/Home/Login" class="readon submit orange2-color rounded">Sign In</a>
@@ -266,6 +266,8 @@
 
     $(document).ready(function () {
         $("#divload").css({ 'display': 'none' });
+
+        $('#Confirm').show();
     });
 
     function getsponsordetails(obj) {
@@ -327,7 +329,20 @@
         //}
     });
 
+    function ValidateEmailIDCheck(event) {
+        debugger
+        var emailVal = $('#Email').val();
+        var regemail = /^([\w-\.]+)@@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 
+        if (regemail.test(emailVal)) {
+            $("#Email").removeClass('errortext');
+        }
+        else {
+            alert("Invalid Email ID");
+            $("#Email").val('');
+            $("#Email").addClass('errortext');
+        }
+    }
     function validatepan(event) {
         $(".errortext").removeClass("errortext");
         var regExp = /[a-zA-z]{5}\d{4}[a-zA-Z]{1}/;
@@ -381,28 +396,27 @@
     }
     function confirmregistration() {
 
-        if ($('#DOB').val() != null) {
+        //if ($('#DOB').val() != null) {
 
-            var today = new Date();
-            var nowyear = today.getFullYear();
-            var nowmonth = today.getMonth();
-            var nowday = today.getDate();
-            var b = $('#DOB').val();
+        //    var today = new Date();
+        //    var nowyear = today.getFullYear();
+        //    var nowmonth = today.getMonth();
+        //    var nowday = today.getDate();
+        //    var b = $('#DOB').val();
 
 
+        //    var birth = new Date(b);
 
-            var birth = new Date(b);
+        //    var birthyear = birth.getFullYear();
+        //    var birthmonth = birth.getMonth();
+        //    var birthday = birth.getDate();
 
-            var birthyear = birth.getFullYear();
-            var birthmonth = birth.getMonth();
-            var birthday = birth.getDate();
-
-            var age = nowyear - birthyear;
-            if (age < 18) {
-                alert("Age must be more than 18 Years.")
-                return false;
-            }
-        }
+        //    var age = nowyear - birthyear;
+        //    if (age < 18) {
+        //        alert("Age must be more than 18 Years.")
+        //        return false;
+        //    }
+        //}
 
 
         $(".errortext").removeClass("errortext");
@@ -411,9 +425,19 @@
             $('#SponsorId').focus();
             return false;
         }
+        if ($('#UnderPlaceId').val() == '') {
+            $("#UnderPlaceId").addClass('errortext');
+            $('#UnderPlaceId').focus();
+            return false;
+        }
         if ($('#FirstName').val() == '') {
             $("#FirstName").addClass('errortext');
             $('#FirstName').focus();
+            return false;
+        }
+        if ($('#Email').val() == '') {
+            $("#Email").addClass('errortext');
+            $('#Email').focus();
             return false;
         }
         if ($('#MobileNo').val() == '') {

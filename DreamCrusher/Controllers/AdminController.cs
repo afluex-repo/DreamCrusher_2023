@@ -97,7 +97,7 @@ namespace DreamCrusher.Controllers
             return View(model);
         }
 
-        public ActionResult ApproveKYC(string Id, string DocumentType, string LoginID)
+        public ActionResult ApproveKYC(string Id, string DocumentType, string LoginId)
         {
             string FormName = "";
             string Controller = "";
@@ -108,7 +108,7 @@ namespace DreamCrusher.Controllers
                 List<Reports> lst = new List<Reports>();
 
                 Reports model = new Reports();
-                model.LoginId = LoginID;
+                model.LoginId = LoginId;
                 model.PK_DocumentID = Id;
                 model.DocumentType = DocumentType;
                 model.Status = "Approved";
@@ -1088,7 +1088,7 @@ namespace DreamCrusher.Controllers
             return View(objewallet);
         }
         #endregion
-		public ActionResult RejectKYC(string Id, string DocumentType, string LoginID)
+		public ActionResult RejectKYC(string Id, string DocumentType, string LoginId)
         {
             string FormName = "";
             string Controller = "";
@@ -1099,7 +1099,7 @@ namespace DreamCrusher.Controllers
                 List<Reports> lst = new List<Reports>();
 
                 Reports model = new Reports();
-                model.LoginId = LoginID;
+                model.LoginId = LoginId;
                 model.PK_DocumentID = Id;
                 model.DocumentType = DocumentType;
                 model.Status = "Rejected";

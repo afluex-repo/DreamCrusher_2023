@@ -61,8 +61,8 @@ namespace DreamCrusher.Controllers
                 ViewBag.TodayIncome = ds.Tables[5].Rows[0]["TodayIncome"].ToString();
                 ViewBag.LastSevenDaysIncome = ds.Tables[6].Rows[0]["LastSevenDaysIncome"].ToString();
                 ViewBag.LastThirtyDaysIncome = ds.Tables[7].Rows[0]["LastThirtyDaysIncome"].ToString();
-                ViewBag.HighAmount = ds.Tables[8].Rows[0]["Amount"].ToString();
-                ViewBag.ProductName = ds.Tables[8].Rows[0]["ProductName"].ToString();
+                //ViewBag.HighAmount = ds.Tables[8].Rows[0]["Amount"].ToString();
+                //ViewBag.ProductName = ds.Tables[8].Rows[0]["ProductName"].ToString();
             }
             #region Messages
 
@@ -107,6 +107,14 @@ namespace DreamCrusher.Controllers
                 model.lstinvestment = lstinvestment;
             }
             #endregion Investment
+            #region HighInvestment
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[8].Rows.Count > 0)
+            {
+               ViewBag.ProductName =ds.Tables[8].Rows[0]["ProductName"].ToString();
+               ViewBag.HighAmount = ds.Tables[8].Rows[0]["Amount"].ToString();
+            }
+            #endregion HighInvestment
+
             return View(model);
         }
         public ActionResult ViewProfile()
