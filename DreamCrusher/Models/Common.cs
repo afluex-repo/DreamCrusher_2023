@@ -149,7 +149,7 @@ namespace DreamCrusher.Models
         public DataSet BindProduct()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId), };
-            DataSet ds = DBHelper.ExecuteQuery("BindProduct",para);
+            DataSet ds = DBHelper.ExecuteQuery("GetBindProduct", para);
             return ds;
         }
 

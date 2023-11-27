@@ -6,21 +6,26 @@
     <section class="custom-padding about-us">
         <div class="container">
 
-            <div class="row text-center mb-3" style="border:solid 1px">
-                <div class="col-md-12 form-group">
-                    <br><br> <h2 style="color:#0fad00">Successfully !!</h2>
+            <div class="row justify-content-center my-5">
+            
+                <div class="col-md-8 text-center" >
+                    <div class="card shadow">
+                        <div class="card-body ">
+                            <h2 style="color:#0fad00">Successfully !!</h2>
 
-                    <img src="../../images/success1.gif" style="height:150px" />
-                    <h3>Dear, @Session["DisplayName"]</h3>
-                    <p style="font-size:20px;color:#5C5C5C;text-align:center">
-                        Thank you for your registration. Now you are Dream Crushers Associate.Your Details are as Below:
-                        <br />
-                        <span class="border-box">Login ID: @Session["LoginId"]</span>
-                        <span class="border-box">Password:  @Session["Password"]</span>
-                    </p>
-                    <a href="/Home/Login" class="btn btn-info">     Back To Login     </a>
-                    <a href="/Home/Registration" class="btn btn-info">    Add New    </a>
-                    <br><br>
+                            <img src="../../images/sccuess-check.gif" style="height:150px" class="rounded" />
+                            <h3 class="my-2">Dear, @Session["DisplayName"]</h3>
+                            <p style="font-size:18px;color:#5C5C5C;text-align:center">
+                                Thank you for your registration. Now you are Dream Crushers Associate.<br/>Your Details are as Below:
+                                <br />
+                                <span class="border-box"><span class="text-danger">Login ID:</span> @Session["LoginId"]</span>
+                                <span class="border-box"><span class="text-danger">Password:</span>  @Session["Password"]</span>
+                            </p>
+                            <a href="/Home/Login" class="btn btn-info text-white">     Back To Login     </a>
+                            <a href="/Home/Registration" class="btn text-white" style="background:#bb0b0b">    Add New    </a>
+                            <br><br>
+                        </div>
+                    </div>
                 </div>
             </div>
 
