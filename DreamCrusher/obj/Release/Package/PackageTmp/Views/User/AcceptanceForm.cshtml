@@ -5,49 +5,113 @@
 }
 <!doctype html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.2/jspdf.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--favicon-->
+    <link rel="icon" href="~/assetsAdmin/images/favicon-32x32.png" type="image/png" />
+    <!--plugins-->
+    <link href="~/assetsAdmin/plugins/vectormap/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/simplebar/css/simplebar.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/metismenu/css/metisMenu.min.css" rel="stylesheet" />
+    <link href="~/assetsAdmin/plugins/datatable/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+    <!-- loader-->
+    @*<link href="~/assetsAdmin/css/pace.min.css" rel="stylesheet" />*@
+    <script src="~/assetsAdmin/js/pace.min.js"></script>
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="../assets/AcceptanceCSS/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../assets/AcceptanceCSS/css/style.css">
-
-    <title>Acceptance Form</title>
+    <link href="~/assetsAdmin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assetsAdmin/css/bootstrap-extended.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&amp;display=swap" rel="stylesheet">
+    <link href="~/assetsAdmin/css/app.css" rel="stylesheet">
+    <link href="~/assetsAdmin/css/icons.css" rel="stylesheet">
+    <title>@ViewBag.Title</title>
+    <style>
+        @@media print {
+            .logod img {
+                width: 250px;
+                height: auto;
+                margin: 10px auto;
+                display: block;
+            }
+            .logod {
+                margin-bottom: 10px;
+            }
+            #download {
+                     display: none;
+            }
+        }
+        .logod img {
+                width: 350px;
+                height: auto;
+                margin: 10px auto;
+                display: block;
+            }
+            .logod {
+                margin-bottom: 10px;
+            }
+    </style>
 </head>
-
-<body>
-    <button  id="download" onclick="downloadPDF()">Download Pdf</button>
-
+<body class="bg-theme bg-theme1">
     <div class="main-file">
-        <div class="container"  id="printableArea">
+        <div class="container" id="printableArea">
             <div class="row">
-                <div class="col-md-3 col-lg-3 col-sm-12">
+                <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="logod">
-                     <img src="../assets/AcceptanceCSS/images/logo.png" class="img-fluid" alt="logo" />
+                        <img src="/Websiteassets/images/logo-white.png"  class="img-fluid" alt="logo" />
+                        <button id="download" class="text-end btn btn-light px-4 my-4" onclick="javascript: window.print();">Download Pdf</button>
                     </div>
+                   
                 </div>
-                <div class="col-md-4 col-lg-4 col-sm-12">
+                <div class="col-md-6 col-lg-6 col-sm-12">
                     <div class="logo-detail">
                         <h4>ACCEPTANCE FORM</h4>
-                        <p>ACCEPTANCE of ONLINE AGREEMENT / CONTRACT with Digi Direct Pvt. Ltd</p>
+                        <p>ACCEPTANCE of ONLINE AGREEMENT / CONTRACT with Dream Crushers Pvt. Ltd</p>
                     </div>
                 </div>
-                <div class="col-md-5 col-lg-5 col-sm-12">
+                <div class="col-md-6 col-lg-6 col-sm-12">
                     <div class="logo-detail">
-                        <h4>Digi Direct PVT. LTD.</h4>
+                        <h4>Dream Crushers PVT. LTD.</h4>
                         <p>
-                            Khasra no 937, patwari ka purwa,devkali bypass Lucknow Road,Ayodhya
-                            224001 (Uttar Pradesh)
+                            Devkali Bypass, Lucknow Road, Ayodhya, Uttar Pradesh, 224001, India
                         </p>
                     </div>
                 </div>
             </div>
 
             <div class="row">
-                <div class="col-md-12 col-lg-12 col-sm-12">
+                <div class="col-12 col-lg-12 col-xl-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>User ID:</th>
+                                            <th>Name:</th>
+                                            <th>Permanent Address:</th>
+                                            <th>Contact No.:</th>
+                                            <th> Registration Date:</th>
+                                            <th>  Introducing Dream Crushers Representative (Sponsor):</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="text-left">
+                                            <td>@ViewBag.LoginId</td>
+                                            <td>@ViewBag.DisplayName</td>
+                                            <td>@ViewBag.Address  </td>
+                                            <td>@ViewBag.Mobile</td>
+                                            <td>@ViewBag.JoiningDate</td>
+                                            <td>@ViewBag.SponsorId</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @*<div class="col-md-12 col-lg-12 col-sm-12">
                     <form>
                         <div class="form-row">
                             <div class="col-md-2">
@@ -63,7 +127,7 @@
                             <div class="col-md-4" style="border:1px;border-bottom:solid">
                                 @ViewBag.DisplayName
                             </div>
-                        </div><br />
+                        </div>
                         <div class="form-row">
                             <div class="col-md-2">
                                 Permanent Address:
@@ -82,16 +146,16 @@
 
 
 
-                        </div><br />
+                        </div>
                         <div class="form-row">
                             <div class="col-md-2">
-                               Registration Date:
+                                Registration Date:
                             </div>
                             <div class="col-md-4" style="border:1px;border-bottom:solid">
                                 @ViewBag.JoiningDate
                             </div>
                             <div class="col-md-2">
-                                Introducing Digi Direct Representative
+                                Introducing Dream Crushers Representative
                                 (Sponsor):
                             </div>
                             <div class="col-md-4" style="border:1px;border-bottom:solid">
@@ -100,17 +164,17 @@
 
                         </div>
                     </form>
-                </div>
+                </div>*@
             </div>
             <br />
             <div class="row">
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="declaration">
-                        <h2 class="text-center">DECLARATION</h2>
+                        <h4 class="text-center">DECLARATION</h4>
                         <p><strong>I solemnly declare and affirm as under –</strong></p>
                         <p>1. I declare that I am of the age of 18 years or more and competent to contract</p>
                         <p>
-                            2. That I have read and understood the terms and conditions for appointment of Digi Direct
+                            2. That I have read and understood the terms and conditions for appointment of Dream Crushers
                             Retailer / Representative (Direct Seller) of the Company, and accept to them.
                         </p>
                         <p>
@@ -153,16 +217,12 @@
                         <table class="table table-bordered">
                             <tbody>
                                 <tr>
-                                    <td> <br></td>
-                                    <td> <br></td>
-                                </tr>
-                                <tr>
                                     <td class="text-center">
-                                        Signatures of Joining Direct Seller<br>(Digi Direct
+                                        Signatures of Joining Direct Seller<br>(Dream Crushers
                                         Retailer)
                                     </td>
                                     <td class="text-center">
-                                        Signatures of Sponsoring Digi Direct Representative<br>
+                                        Signatures of Sponsoring Dream Crushers Representative<br>
                                         (WITNESS)
                                     </td>
                                 </tr>
@@ -190,35 +250,35 @@
                 <div class="col-md-12 col-lg-12 col-sm-12">
                     <div class="note">
                         <p>
-                            <strong>NOTE :</strong> It is the sole responsibility of the joining Digi Direct Retailer to submit authentic
+                            <strong>NOTE :</strong> It is the sole responsibility of the joining Dream Crushers Retailer to submit authentic
                             documents and information, any discrepancy or any civil/criminal liability arising due to
-                            this regard would be the full and complete responsibility of the said joining Digi Direct
+                            this regard would be the full and complete responsibility of the said joining Dream Crushers
                             Retailer. The company shall not be responsible in this regard in any way
                         </p>
                     </div>
                 </div>
             </div>
         </div>
-    
+
     </div>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     @*<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-            integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-            integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
-            crossorigin="anonymous"></script>
-    <script src="../assets/AcceptanceCSS/js/bootstrap.min.js"></script>*@
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+                crossorigin="anonymous"></script>
+        <script src="../assets/AcceptanceCSS/js/bootstrap.min.js"></script>*@
 </body>
 
 
-</html> 
+</html>
 
 @*<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.0.272/jspdf.debug.js"></script>*@
 <script>
     //function downloadPDF()
     //{

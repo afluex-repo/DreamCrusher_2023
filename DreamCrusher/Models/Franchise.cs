@@ -22,7 +22,7 @@ namespace DreamCrusher.Models
         public string OldPassword { get; set; }
         public string NewPassword { get; set; }
         public string TaxableAmount { get; set; }
-        public string LoginID { get; set; }
+        //public string LoginId { get; set; }
         public DataTable dtStock { get; set; }
         public DataTable dtKitDetails { get; set; }
         public string ProductID { get; set; }
@@ -117,7 +117,7 @@ namespace DreamCrusher.Models
         public DataSet FranchiseList()
         {
             SqlParameter[] para = { new SqlParameter("@PK_FranchiseID", PK_FranchiseID),
-                new SqlParameter("@LoginID", LoginID),
+                new SqlParameter("@LoginID", LoginId),
                 new SqlParameter("@FranchiseName", FranchiseName),
                 new SqlParameter("@FirmName", FirmName),
 
@@ -266,7 +266,7 @@ namespace DreamCrusher.Models
                                    new SqlParameter("@FK_FranchiseID", PK_FranchiseID),
                                    new SqlParameter("@FranchiseName", FranchiseName),
                                    new SqlParameter("@FK_ProductID", ProductID),
-                                   new SqlParameter("@LoginID", LoginID),
+                                   new SqlParameter("@LoginID", LoginId),
                                    new SqlParameter("@BatchNo", BatchNo), };
             DataSet ds = DBHelper.ExecuteQuery("StockReport", para);
             return ds;
@@ -282,7 +282,7 @@ namespace DreamCrusher.Models
             SqlParameter[] para = {
                 new SqlParameter("@RequestCode", RequestCode),
                 new SqlParameter("@RequestFrom", RequestFrom),
-                new SqlParameter("@RequestLoginId", LoginID),
+                new SqlParameter("@RequestLoginId", LoginId),
                 new SqlParameter("@PaymentMode", PaymentMode),
             };
             DataSet ds = DBHelper.ExecuteQuery("GetproductRequestList", para);
@@ -299,7 +299,7 @@ namespace DreamCrusher.Models
         }
         public DataSet GetUpperLevelFranchise()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginID", LoginID), };
+            SqlParameter[] para = { new SqlParameter("@LoginID", LoginId), };
             DataSet ds = DBHelper.ExecuteQuery("GetUpperLevelFranchise", para);
             return ds;
         }
@@ -453,7 +453,7 @@ namespace DreamCrusher.Models
         public DataSet TransferKit()
         {
             SqlParameter[] para = { new SqlParameter("@dtKitTransferDetails", dtKitDetails),
-                                    new SqlParameter("@FranchiseCode", LoginID),
+                                    new SqlParameter("@FranchiseCode", LoginId),
                                     new SqlParameter("@Fk_KitId", KitID),
                                     new SqlParameter("@Quantity", Quantity),
                                     new SqlParameter("@AddedBy", AddedBy),
@@ -470,7 +470,7 @@ namespace DreamCrusher.Models
         public DataSet TransferKitByFranchise()
         {
             SqlParameter[] para = {
-                            new SqlParameter("@FranchiseCode", LoginID),
+                            new SqlParameter("@FranchiseCode", LoginId),
                             new SqlParameter("@Fk_KitId", KitID),
                              new SqlParameter("@Quantity", Quantity),
                             new SqlParameter("@AddedBy", AddedBy),
@@ -494,14 +494,14 @@ namespace DreamCrusher.Models
 
         public DataSet GetAssociateList()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID),
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                     new SqlParameter("@Status", Status), };
             DataSet ds = DBHelper.ExecuteQuery("GetAssociateList", para);
             return ds;
         }
         public DataSet TopUpByKit()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID),
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                 new SqlParameter("@Fk_KitId", KitID),
                 new SqlParameter("@AddedBy", AddedBy),
             };
@@ -556,7 +556,7 @@ namespace DreamCrusher.Models
         public DataSet ApproveKitRequestByAdmin()
         {
             SqlParameter[] para = { new SqlParameter("@dtKitTransferDetails", dtKitDetails),
-                                    new SqlParameter("@FranchiseCode", LoginID),
+                                    new SqlParameter("@FranchiseCode", LoginId),
                                     new SqlParameter("@Fk_KitId", KitID),
                                     new SqlParameter("@Quantity", Quantity),
                                     new SqlParameter("@AddedBy", AddedBy),
@@ -566,7 +566,7 @@ namespace DreamCrusher.Models
         }
         public DataSet ChangeFPassword()
         {
-            SqlParameter[] para = { new SqlParameter("@LoginId", LoginID),
+            SqlParameter[] para = { new SqlParameter("@LoginId", LoginId),
                                         new SqlParameter("@Password", Password),
                                          new SqlParameter("@UpdatedBy", AddedBy),
                                   };
@@ -576,7 +576,7 @@ namespace DreamCrusher.Models
         public DataSet TransferKitReport()
         {
             SqlParameter[] para = { new SqlParameter("@Fk_FranchiseId", PK_FranchiseID),
-                                        new SqlParameter("@LoginID", LoginID),
+                                        new SqlParameter("@LoginID", LoginId),
                                         new SqlParameter("@FromDate", FromDate),
                                         new SqlParameter("@ToDate", ToDate),
                                   };

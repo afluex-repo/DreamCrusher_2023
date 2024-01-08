@@ -194,7 +194,7 @@ namespace DreamCrusher
                 }
 
                 model.dtKitDetails = dtKitDetails;
-                model.LoginID = txtLoginID.Text;
+                model.LoginId = txtLoginID.Text;
                 model.KitID = ddlKit.SelectedValue;
                 model.Quantity = txtQuantity.Text;
                 model.AddedBy = Session["FranchiseAdminID"].ToString();

@@ -19,7 +19,7 @@ namespace DreamCrusher.Models
         public string PaymentDate { get; set; }
         public string PaymentToDate { get; set; }
         public string PaymentFromDate { get; set; }
-        public string LoginId { get; set; }
+        //public string LoginId { get; set; }
         public string Amount { get; set; }
         public string EwalletBalance { get; set; }
         public string PayoutBalance { get; set; }

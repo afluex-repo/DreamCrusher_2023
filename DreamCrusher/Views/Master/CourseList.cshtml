@@ -14,7 +14,7 @@
             <div class="card">
                 <div class="card-body">
                     <div class="d-flex align-items-center justify-content-between">
-                        <h5 class="mb-0">/ Master / Course List</h5>
+                        <h5 class="mb-0">Course List</h5>
                         <p style="color: white;">
                            @TempData["Course"]
                         </p>
@@ -35,6 +35,7 @@
                                     <th>Course Image</th>
                                     <th>Course Link</th>
                                     <th>Title</th>
+                                    <th>Description</th>
                                     <th>Course Date</th>
                                     <th>Action</th>
                                 </tr>
@@ -53,6 +54,7 @@
                                                 <td><img width="100" height="100" src="@Item.CourseImage"/></td>
                                                 <td>@Item.CourseLink</td>
                                                 <td>@Item.Title</td>
+                                                <td>@Item.Description</td>
                                                 <td>@Item.CourseDate</td>
                                                 <td>
                                                     <a href="/Master/CourseMaster?CourseID=@Item.CourseID" class="btn btn-info btn-sm">Edit</a>

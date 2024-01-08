@@ -9,12 +9,17 @@ namespace DreamCrusher.Models
 {
     public class Website
     {
+        public string Description { get; set; }
         public string AddedBy { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
         public string Phonenumber { get; set; }
         public string Subject { get; set; }
         public string Message { get; set; }
+        public string Image { get; set; }
+        public string ProductPrice { get; set; }
+        public string ProductName { get; set; }
+        public List<Website> lstproductandServices { get; set; }
 
         public DataSet Savecontactus()
         {
@@ -27,6 +32,12 @@ namespace DreamCrusher.Models
                  new SqlParameter("@AddedBy", AddedBy)
             };
             DataSet ds = DBHelper.ExecuteQuery("SaveContactUs", para);
+            return ds;
+        }
+
+        public DataSet ProductandServicesList()
+        {
+            DataSet ds = DBHelper.ExecuteQuery("GetProductandServicesList");
             return ds;
         }
     }

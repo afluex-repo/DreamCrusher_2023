@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -279,12 +281,53 @@ namespace DreamCrusher.Controllers
                         Session["PassWord"] = Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString());
                         Session["Transpassword"] = Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString());
                         Session["MobileNo"] = ds.Tables[0].Rows[0]["MobileNo"].ToString();
-                        try
+                        //try
+                        //{
+                        //    string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
+                        //    BLSMS.SendSMSNew(MobileNo, str2);
+                        //}
+                        //catch (Exception ex) { }
+
+
+                        
+
+               //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+                        if (obj.Email != null)
                         {
-                            string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
-                            BLSMS.SendSMSNew(MobileNo, str2);
+                            string mailbody = "";
+                            try
+                            {
+                                mailbody = "Dear  " + Session["DisplayName"] + ", <br/> Your Registration is Successfully. <br/> Your LoginID is " + Session["LoginId"] + "<br/>  Password is " + Session["PassWord"];
+                                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
+                                {
+                                    Host = "smtp.gmail.com",
+                                    Port = 587,
+                                    EnableSsl = true,
+                                    DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                                    UseDefaultCredentials = true,
+                                    Credentials = new NetworkCredential("developer2.afluex@gmail.com", "devel@#123456")
+                                };
+                                using (var message = new MailMessage("developer2.afluex@gmail.com", obj.Email)
+                                {
+                                    IsBodyHtml = true,
+                                    Subject = "Registration",
+                                    Body = mailbody
+                                })
+                                    smtp.Send(message);
+                            }
+                            catch (Exception ex)
+                            {
+                                obj.Response = ex.Message;
+                            }
                         }
-                        catch (Exception ex) { }
+
+
+
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                        
                         obj.Response = "1";
                     }
                     else

@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Web.Mvc;
 
 namespace DreamCrusher.Models
 {
     public class Reports : Common
     {
+        public string Packages { get; set; }
         public string AdminCharge { get; set; }
         public string TDS { get; set; }
         public string DCMIGrossIncome { get; set; }
@@ -48,7 +50,7 @@ namespace DreamCrusher.Models
         public string ToActivationDate { get; set; }
         public string PAN { get; set; }
         public string Leg { get; set; }
-        public string LoginId { get; set; }
+        //public string LoginId { get; set; }
         public string Name { get; set; }
         public string JoiningDate { get; set; }
         public string Mobile { get; set; }
@@ -66,6 +68,7 @@ namespace DreamCrusher.Models
         public string Date { get; set; }
         public List<Reports> lstunpaidincomes { get; set; }
         public List<Reports> lstRequestlist { get; set; }
+        public List<SelectListItem> ddlProductCourses { get; set; }
         public string TransactionDate { get; set; }
         public string FromName { get; set; }
         public string ToName { get; set; }
@@ -668,7 +671,8 @@ namespace DreamCrusher.Models
         public DataSet GetCourseListForAllotCourses()
         {
             SqlParameter[] para = {
-                new SqlParameter("@FK_PackageId", Package),
+                new SqlParameter("@FK_PackageId", Packages),
+                new SqlParameter("@CourseID", CourseID),
                 new SqlParameter("@loginid", LoginId)
             };
             DataSet ds = DBHelper.ExecuteQuery("GetCourseListForAllotCoursesForUser", para);
@@ -685,6 +689,14 @@ namespace DreamCrusher.Models
         public DataSet GetContactUsDetails()
         {
             DataSet ds = DBHelper.ExecuteQuery("GetContactDetails");
+            return ds;
+        }
+        public DataSet GetProductChangetoCourse()
+        {
+            SqlParameter[] para = {
+                new SqlParameter("@ProductID", Packages)
+            };
+            DataSet ds = DBHelper.ExecuteQuery("GetProductChangetoCourse",para);
             return ds;
         }
     }

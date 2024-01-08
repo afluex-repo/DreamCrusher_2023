@@ -54,7 +54,7 @@
                         <br />
 
                         <div class="table-responsive">
-                            <table id="example2" class="table table-striped table-bordered">
+                            <table id="example222" class="table table-striped table-bordered">
                                 <thead>
                                     <tr>
                                         <th>Sr No.</th>
@@ -117,7 +117,7 @@
                                                 </tr>
                                                 i++;
                                             }
-                                            <input type="hidden" id="hdRows2" name="hdRows2" value="@i" />
+                                            <input type="text" id="hdRows2" name="hdRows2" value="@i" style="display:none"/>
                                         }
                                     }
                                 </tbody>
@@ -174,9 +174,28 @@
             }
 
         </script>
+
         <style>
             .btn {
                 margin-top: 8px;
             }
         </style>
 
+
+
+<script>
+        $(function () {
+            $(".knob").knob();
+        });
+        //data table js
+        $(document).ready(function () {
+            var table = $('#example222').DataTable({
+                lengthChange: false,
+                "pageLength": 50,
+                buttons: ['copy', 'excel', 'pdf', 'print']
+            });
+
+            table.buttons().container()
+				.appendTo('#example222_wrapper .col-md-6:eq(0)');
+        });
+</script>

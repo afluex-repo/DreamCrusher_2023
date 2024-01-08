@@ -5,7 +5,21 @@
     Layout = "~/Views/Shared/_LayoutWebsite.cshtml";
 }
 
+<style>
+   @@media (min-width:992px){
+        .rs-project.style6 .project-item .project-img{
+            height: 393px;
+        }
+   }
+   /*.read-more-content{
+	display: none;
+	padding-top: 22px;
+}*/
 
+   .hidden-text {
+            display: none;
+        }
+</style>
     <!-- Breadcrumbs Start -->
     <div class="rs-breadcrumbs img1">
         <div class="container">
@@ -23,7 +37,45 @@
     <div class="rs-project style6 gray-bg pt-100 pb-100 md-pt-70 md-pb-70">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-30">
+
+
+                @if (Model != null)
+                {
+                    if (Model.lstproductandServices != null)
+                    {
+                        foreach (var Item in Model.lstproductandServices)
+                        {
+
+                            <div class="col-lg-3 col-md-6 mb-30">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="@Item.Image" alt="images">
+                                        <a class="p-icon" href="#!"><i class="custom-icon"></i></a>
+                                    </div>
+                                    <div class="project-content">
+                                        <h4 class="title"><a href="#!">@Item.ProductName</a></h4>
+                                        <span class="category"><a href="#!">MRP @Item.ProductPrice/-</a></span>
+                                        @*<p class="text-dark d-inline-block">@Item.Description</p>*@
+
+
+                                        <p class="hidden-text teal-dark">
+                                            @Item.Description
+                                        </p>
+                                        <button class="read-more btn text-white" style="background:#bb0b0b;">Read More</button>
+                                    </div>
+
+
+                                </div>
+                               </div>
+                            
+                        }
+                    }
+                }
+                
+
+
+
+                @*<div class="col-lg-3 col-md-6 mb-30">
                     <div class="project-item">
                         <div class="project-img">
                             <img src="~/Websiteassets/images/product/1.jpg" alt="images">
@@ -70,10 +122,36 @@
                             <span class="category"><a href="#!">MRP 3150/-</a></span>
                         </div>
                     </div>
-                </div>
+                </div>*@
+
             </div>
         </div>
     </div>
 
 
 
+<!-- jquery latest version -->
+<script src="/Websiteassets/js/jquery.min.js"></script>
+
+<script>
+        //$('.read-more').click(function () {
+        //        $(this).prev().slideToggle();
+        //        if (($(this).text()) == "Read More") {
+        //            $(this).text("Read Less");
+        //        } else {
+        //            $(this).text("Read More");
+        //        }
+    //});
+
+    $(document).ready(function () {
+        $('.read-more').click(function () {
+            var $textContainer = $(this).prev();
+            $textContainer.toggle();
+            if ($textContainer.is(':visible')) {
+                $(this).text("Read Less");
+            } else {
+                $(this).text("Read More");
+            }
+        });
+    });
+</script>

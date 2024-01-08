@@ -5,6 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<style>
+    .errortext{
+        border:1px solid red;
+    }
+</style>
 <div class="page-content">
     <div class="row">
         <div class="col-12 col-lg-12 col-xl-12">
@@ -39,7 +44,7 @@
                         </div>
 
                         <div class="col-md-4 mb-3">
-                            <label class="form-label"> Under Place Id</label>
+                            <label class="form-label"> Under Place Id <span style="color: red">*</span></label>
                             @Html.TextBoxFor(m => m.UnderPlaceId, new { @class = "form-control", @Placeholder = "Under Place Id", @onchange = "getsponsordetails1(this);" })
                         </div>
                         <div class="col-md-4 mb-3">
@@ -58,7 +63,7 @@
                             @Html.TextBoxFor(m => m.LastName, new { @class = "form-control", @Placeholder = "Last Name" })
                         </div>
                         <div class="col-md-4 mb-3">
-                            <label class="form-label"> Email Id</label>
+                            <label class="form-label"> Email Id <span style="color: red">*</span></label>
                             @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @Placeholder = "Email id" })
                         </div>
                         <div class="col-md-4 mb-3">
@@ -226,9 +231,19 @@
             $('#SponsorId').focus();
             return false;
         }
+        if ($('#UnderPlaceId').val() == '') {
+            $("#UnderPlaceId").addClass('errortext');
+            $('#UnderPlaceId').focus();
+            return false;
+        }
         if ($('#FirstName').val() == '') {
             $("#FirstName").addClass('errortext');
             $('#FirstName').focus();
+            return false;
+        }
+        if ($('#Email').val() == '') {
+            $("#Email").addClass('errortext');
+            $('#Email').focus();
             return false;
         }
         if ($('#MobileNo').val() == '') {

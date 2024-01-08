@@ -122,10 +122,10 @@
     function GetFranchiseName() {
         //$("#divload").css({ 'display': '' });
 
-        var LoginID = $('#LoginID').val();
+        var LoginId = $('#LoginId').val();
         $.ajax({
             url: '/FranchiseAdmin/GetFranchiseName', type: 'post', dataType: 'json',
-            data: { 'LoginID': LoginID },
+            data: { 'LoginId': LoginId },
             success: function (data) {
                 //$("#divload").css({ 'display': 'none' });
                 if (data.Result == "yes") {
@@ -196,9 +196,9 @@
         $(".errortext").removeClass("errortext");
 
 
-        if ($('#LoginID').val() == '') {
-            $("#LoginID").addClass('errortext');
-            $('#LoginID').focus();
+        if ($('#LoginId').val() == '') {
+            $("#LoginId").addClass('errortext');
+            $('#LoginId').focus();
 
             return false;
         }
