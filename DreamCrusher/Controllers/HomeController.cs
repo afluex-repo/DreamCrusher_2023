@@ -281,17 +281,17 @@ namespace DreamCrusher.Controllers
                         Session["PassWord"] = Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString());
                         Session["Transpassword"] = Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString());
                         Session["MobileNo"] = ds.Tables[0].Rows[0]["MobileNo"].ToString();
-                        //try
-                        //{
-                        //    string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
-                        //    BLSMS.SendSMSNew(MobileNo, str2);
-                        //}
-                        //catch (Exception ex) { }
+                        try
+                        {
+                            string str2 = BLSMS.Registration(ds.Tables[0].Rows[0]["Name"].ToString(), ds.Tables[0].Rows[0]["LoginId"].ToString(), Crypto.Decrypt(ds.Tables[0].Rows[0]["Password"].ToString()));
+                            BLSMS.SendSMSNew(MobileNo, str2);
+                        }
+                        catch (Exception ex) { }
 
 
-                        
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-               //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 
 
                         if (obj.Email != null)
@@ -307,9 +307,9 @@ namespace DreamCrusher.Controllers
                                     EnableSsl = true,
                                     DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
                                     UseDefaultCredentials = true,
-                                    Credentials = new NetworkCredential("developer2.afluex@gmail.com", "devel@#123456")
+                                    Credentials = new NetworkCredential("dreamcrushers2023@gmail.com", "yayp vjni xwas mvni")
                                 };
-                                using (var message = new MailMessage("developer2.afluex@gmail.com", obj.Email)
+                                using (var message = new MailMessage("dreamcrushers2023@gmail.com", obj.Email)
                                 {
                                     IsBodyHtml = true,
                                     Subject = "Registration",
@@ -324,10 +324,10 @@ namespace DreamCrusher.Controllers
                         }
 
 
+         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                        
+
                         obj.Response = "1";
                     }
                     else

@@ -149,7 +149,7 @@ namespace DreamCrusher.Models
         public DataSet BindProduct()
         {
             SqlParameter[] para = { new SqlParameter("@LoginId", LoginId), };
-            DataSet ds = DBHelper.ExecuteQuery("BindProduct",para);
+            DataSet ds = DBHelper.ExecuteQuery("GetBindProduct", para);
             return ds;
         }
 
@@ -359,7 +359,7 @@ namespace DreamCrusher.Models
         public static string City1 = "Ayodhya";
         public static string ContactNo = "7275065834";
         public static string LandLine = "7275065834";
-        public static string GSTNO = "09AAHCD3782E1ZJ";
+        public static string GSTNO = "09AAHCD8857C1ZD";
         public static string Website = "www.dreamcrushers.in";
         public static string EmailID = "support@dreamcrushers.in";
     }
