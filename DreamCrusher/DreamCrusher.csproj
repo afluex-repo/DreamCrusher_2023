@@ -1820,6 +1820,7 @@
     <Content Include="AssociatePanelcss\bower_components\x-editable\dist\inputs-ext\typeaheadjs\lib\typeahead.js" />
     <Content Include="AssociatePanelcss\bower_components\x-editable\dist\inputs-ext\typeaheadjs\lib\typeahead.js-bootstrap.css" />
     <Content Include="AssociatePanelcss\bower_components\x-editable\dist\inputs-ext\typeaheadjs\typeaheadjs.js" />
+    <Content Include="bootstrap\css\bootstrap.min.css" />
     <Content Include="CourseImages\2667e48a-136b-4624-8208-18ff135f8aa0.png" />
     <Content Include="CourseImages\31c6420f-1f3c-4863-8565-c553e213af2c.png" />
     <Content Include="CourseImages\32f05239-adca-4e55-b12f-1dd0f061fdd7.jpg" />
@@ -3696,6 +3697,7 @@
     <Content Include="images\XwHw.gif" />
     <Content Include="MenuCss\style.css" />
     <Content Include="Models\WebService\AgentServices.asmx" />
+    <Content Include="PayPayouMail.html" />
     <Content Include="ProductRewardImages\alto.jpg" />
     <Content Include="ProductRewardImages\bike.jpg" />
     <Content Include="ProductRewardImages\bullet.jpg" />
@@ -3763,6 +3765,13 @@
     <Content Include="assets\fonts\webfonts\fa-solid-900.woff2" />
     <Content Include="assets\fonts\webfonts\fa-solid-900d41d.eot" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="SendPayPayoutMail\images\bootstrap.min.css" />
+    <Content Include="SendPayPayoutMail\images\celebration.png" />
+    <Content Include="SendPayPayoutMail\images\electroninc.png" />
+    <Content Include="SendPayPayoutMail\images\printer.png" />
+    <Content Include="SendPayPayoutMail\images\public-relation.png" />
+    <Content Include="SendPayPayoutMail\images\road.png" />
+    <Content Include="SendPayPayoutMail\PayPayouMail.html" />
     <Content Include="Views\User\IDCard.cshtml" />
     <Content Include="Websiteassets\css\animate.css" />
     <Content Include="Websiteassets\css\bootstrap.min.css" />
@@ -4307,6 +4316,7 @@
     <Compile Include="Models\AgentIncomes.cs" />
     <Compile Include="Models\AgentModel.cs" />
     <Compile Include="Models\AgentPara.cs" />
+    <Compile Include="Models\BLMail.cs" />
     <Compile Include="Models\BLSMS.cs" />
     <Compile Include="Models\Common.cs" />
     <Compile Include="Models\Crypto.cs" />

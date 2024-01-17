@@ -174,9 +174,30 @@
             }
 
         </script>
+
         <style>
             .btn {
                 margin-top: 8px;
             }
         </style>
 
+
+
+<script>
+        $(function () {
+            $(".knob").knob();
+        });
+        //data table js
+        $(document).ready(function () {
+            var table = $('#example222').DataTable({
+                lengthChange: false,
+                "pageLength": 50,
+                buttons: ['copy', 'excel', 'pdf', 'print']
+            });
+
+            table.buttons().container()
+				.appendTo('#example222_wrapper .col-md-6:eq(0)');
+        });
+
+
+</script>

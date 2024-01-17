@@ -1027,12 +1027,43 @@ namespace DreamCrusher.Controllers
                 model.Fk_UserId = Pk_PaidBoosterId_;
 
                 model.TransactionNo = transactiono;
+                
                 DataSet ds = null;
                 if (!string.IsNullOrEmpty(transactiondate))
                 {
                     model.TransactionDate = transactiondate;
+                    
                     model.AddedBy = Session["Pk_AdminId"].ToString();
                     ds = model.SavePayPayout();
+
+                    Session["FullName"] = ds.Tables[0].Rows[0]["FullName"].ToString();
+                    Session["Amount"] = ds.Tables[0].Rows[0]["Amount"].ToString();
+                   Session["TransactionDate"] = ds.Tables[0].Rows[0]["TransactionDate"].ToString();
+                    //Session["TransactionDate"] = model.TransactionDate;
+                    model.Email = ds.Tables[0].Rows[0]["Email"].ToString();
+
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+                    if (model.Email != "" && model.Email != null)
+                    {
+                        try
+                        {
+                            BLMail.SendPayPayoutMail(Session["FullName"].ToString(), Session["Amount"].ToString(), Session["TransactionDate"].ToString(), "Payment Successful", model.Email);
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                        }
+                    }
+
+                    
+
+                    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                
+
                 }
                 if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
                 {
@@ -1088,7 +1119,7 @@ namespace DreamCrusher.Controllers
             return View(objewallet);
         }
         #endregion
-		public ActionResult RejectKYC(string Id, string DocumentType, string LoginId)
+        public ActionResult RejectKYC(string Id, string DocumentType, string LoginId)
         {
             string FormName = "";
             string Controller = "";

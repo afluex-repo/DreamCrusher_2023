@@ -5,6 +5,8 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 
@@ -285,6 +287,47 @@ namespace DreamCrusher.Controllers
                             BLSMS.SendSMSNew(MobileNo, str2);
                         }
                         catch (Exception ex) { }
+
+
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+                        if (obj.Email != null)
+                        {
+                            string mailbody = "";
+                            try
+                            {
+                                mailbody = "Dear  " + Session["DisplayName"] + ", <br/> Your Registration is Successfully. <br/> Your LoginID is " + Session["LoginId"] + "<br/>  Password is " + Session["PassWord"];
+                                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient
+                                {
+                                    Host = "smtp.gmail.com",
+                                    Port = 587,
+                                    EnableSsl = true,
+                                    DeliveryMethod = System.Net.Mail.SmtpDeliveryMethod.Network,
+                                    UseDefaultCredentials = true,
+                                    Credentials = new NetworkCredential("dreamcrushers2023@gmail.com", "yayp vjni xwas mvni")
+                                };
+                                using (var message = new MailMessage("dreamcrushers2023@gmail.com", obj.Email)
+                                {
+                                    IsBodyHtml = true,
+                                    Subject = "Registration",
+                                    Body = mailbody
+                                })
+                                    smtp.Send(message);
+                            }
+                            catch (Exception ex)
+                            {
+                                obj.Response = ex.Message;
+                            }
+                        }
+
+
+         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
                         obj.Response = "1";
                     }
                     else
